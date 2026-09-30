@@ -3,1206 +3,874 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GameHub — Modern Professional Gaming & Telemetry Dashboard</title>
-  <meta name="description" content="A minimalist, modern, and professional gaming analytics and AI strategy dashboard.">
+  <title>RAGEZONE 9000 — The Gaming Website That Wants You to Lose</title>
+  <meta name="description" content="The most absurdly interactive, intentionally annoying, ragebait gaming website ever created.">
   <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="assets/cyber_strike_cover.jpg">
 </head>
 <body>
-  <!-- TOAST NOTIFICATION CONTAINER -->
-  <div id="toast-container" class="toast-stack" aria-live="polite"></div>
 
-  <!-- APPLICATION SHELL WRAPPER -->
-  <div class="app-layout">
-    
-    <!-- LEFT SIDEBAR -->
-    <aside class="app-sidebar" aria-label="Main Navigation">
-      <div class="sidebar-brand">
-        <div class="brand-logo">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2" y="6" width="20" height="12" rx="2"/>
-            <path d="M6 12h4m-2-2v4m10-2h.01m-3 0h.01"/>
-          </svg>
-        </div>
-        <span class="brand-name">GameHub</span>
+  <!-- PARTICLE CANVAS FOR CLICK & HOVER EFFECTS -->
+  <canvas id="particle-canvas" class="particle-overlay"></canvas>
+
+  <!-- SCREEN EFFECT OVERLAYS (RAGE BORDER & CRITICAL EVENTS) -->
+  <div id="rage-screen-border" class="rage-overlay-border"></div>
+  <div id="max-rage-modal" class="max-rage-banner" style="display: none;">
+    <div class="max-rage-box">
+      <h2>🔥 MAXIMUM RAGE ACHIEVED (100%) 🔥</h2>
+      <p>YOUR BLOOD PRESSURE HAS EXCEEDED SYSTEM LIMITS. PLEASE STEP AWAY FROM THE KEYBOARD.</p>
+      <button id="btn-cooldown-rage" class="btn-rage-dismiss">VENT STEAM (-30 RAGE)</button>
+    </div>
+  </div>
+
+  <!-- ANNOYING POPUP MODAL ENGINE -->
+  <div id="annoying-popup-modal" class="popup-overlay" style="display: none;" role="dialog" aria-modal="true">
+    <div class="popup-box">
+      <div class="popup-header">
+        <span id="popup-title" class="popup-title-text">🚨 SYSTEM NOTIFICATION</span>
+        <button id="btn-popup-close" class="btn-popup-x" title="Close popup">✖</button>
       </div>
-
-      <nav class="sidebar-nav">
-        <button class="nav-item active" data-tab="dashboard" id="nav-dashboard">
-          <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3" y="3" width="7" height="7"/>
-            <rect x="14" y="3" width="7" height="7"/>
-            <rect x="14" y="14" width="7" height="7"/>
-            <rect x="3" y="14" width="7" height="7"/>
-          </svg>
-          <span>Dashboard</span>
-        </button>
-
-        <button class="nav-item" data-tab="games" id="nav-games">
-          <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polygon points="12 2 2 7 12 12 22 7 12 2"/>
-            <polyline points="2 17 12 22 22 17"/>
-            <polyline points="2 12 12 17 22 12"/>
-          </svg>
-          <span>Games</span>
-        </button>
-
-        <button class="nav-item" data-tab="advisory-form" id="nav-advisory-form">
-          <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 2a8 8 0 0 0-8 8c0 3.37 2.1 6.26 5.09 7.42V19a2 2 0 0 0 2 2h1.82a2 2 0 0 0 2-2v-1.58A8.001 8.001 0 0 0 12 2z"/>
-            <path d="M9 21h6"/>
-          </svg>
-          <span>AI Strategy</span>
-        </button>
-
-        <button class="nav-item" data-tab="advisory-results" id="nav-advisory-results">
-          <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-            <polyline points="14 2 14 8 20 8"/>
-            <line x1="16" y1="13" x2="8" y2="13"/>
-            <line x1="16" y1="17" x2="8" y2="17"/>
-            <polyline points="10 9 9 9 8 9"/>
-          </svg>
-          <span>Analysis Results</span>
-          <span class="nav-badge" id="advisory-count-badge">1</span>
-        </button>
-
-        <button class="nav-item" data-tab="leaderboard" id="nav-leaderboard">
-          <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/>
-            <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/>
-            <path d="M4 22h16"/>
-            <path d="M10 14.66V17c0 .55-.45 1-1 1H7c-.55 0-1-.45-1-1v-2.34"/>
-            <path d="M18 14.66V17c0 .55-.45 1-1 1h-2c-.55 0-1-.45-1-1v-2.34"/>
-            <path d="M12 2v8"/>
-            <path d="M6 4h12v7a6 6 0 0 1-12 0V4z"/>
-          </svg>
-          <span>Leaderboard</span>
-        </button>
-
-        <button class="nav-item" data-tab="analytics" id="nav-analytics">
-          <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="18" y1="20" x2="18" y2="10"/>
-            <line x1="12" y1="20" x2="12" y2="4"/>
-            <line x1="6" y1="20" x2="6" y2="14"/>
-          </svg>
-          <span>Statistics</span>
-        </button>
-
-        <button class="nav-item" data-tab="database-pg" id="nav-database">
-          <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <ellipse cx="12" cy="5" rx="9" ry="3"/>
-            <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
-            <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
-          </svg>
-          <span>Data Store</span>
-        </button>
-
-        <button class="nav-item" data-tab="settings" id="nav-settings">
-          <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="3"/>
-            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
-          </svg>
-          <span>Settings</span>
-        </button>
-      </nav>
-
-      <div class="sidebar-footer">
-        <div class="system-status-indicator">
-          <span class="status-dot"></span>
-          <span class="status-label">All Systems Normal</span>
+      <div class="popup-content">
+        <div class="popup-emoji" id="popup-emoji">🎁</div>
+        <div class="popup-message">
+          <h3 id="popup-heading">YOU WON A PRIZE!</h3>
+          <p id="popup-desc">Prize: Absolutely nothing. Your account balance remains 0 coins.</p>
         </div>
       </div>
-    </aside>
+      <div class="popup-footer">
+        <button id="btn-popup-primary" class="btn btn-primary btn-sm">ACCEPT DEFEAT</button>
+        <button id="btn-popup-secondary" class="btn btn-secondary btn-sm">WHY DID I CLICK</button>
+      </div>
+    </div>
+  </div>
 
-    <!-- MAIN VIEW AREA -->
-    <div class="app-main-wrapper">
-      
-      <!-- TOP NAVIGATION BAR -->
-      <header class="app-topbar">
-        <div class="topbar-left">
-          <button id="btn-sidebar-toggle" class="btn-icon mobile-only" aria-label="Toggle menu">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <line x1="3" y1="12" x2="21" y2="12"/>
-              <line x1="3" y1="6" x2="21" y2="6"/>
-              <line x1="3" y1="18" x2="21" y2="18"/>
-            </svg>
-          </button>
-          <div class="breadcrumb-container">
-            <span class="breadcrumb-root">GameHub</span>
-            <span class="breadcrumb-separator">/</span>
-            <span class="breadcrumb-active" id="breadcrumb-current">Dashboard</span>
-          </div>
+  <!-- FAKE PROGRESS / LOADING MODAL -->
+  <div id="loading-dialog-modal" class="popup-overlay" style="display: none;">
+    <div class="popup-box loading-box">
+      <h3 id="loading-dialog-title">DOWNLOADING FREE LEGENDARY SKIN...</h3>
+      <div class="loading-track">
+        <div id="loading-dialog-bar" class="loading-bar-fill" style="width: 0%;"></div>
+      </div>
+      <p id="loading-dialog-status" class="loading-status-text">Connecting to skin server (0%)...</p>
+      <button id="btn-loading-cancel" class="btn btn-secondary btn-sm mt-12">Cancel Download</button>
+    </div>
+  </div>
+
+  <!-- NOTIFICATION CENTER DRAWER -->
+  <aside id="notification-drawer" class="notification-drawer" style="display: none;">
+    <div class="drawer-header">
+      <h3>🔔 Notifications <span id="drawer-unread-count" class="badge-tag">3</span></h3>
+      <div class="drawer-actions">
+        <button id="btn-mark-all-read" class="btn-text-sm">Mark Read</button>
+        <button id="btn-close-drawer" class="btn-popup-x">✖</button>
+      </div>
+    </div>
+    <div class="drawer-list" id="notification-list">
+      <!-- Injected dynamically via JS -->
+    </div>
+  </aside>
+
+  <!-- ACHIEVEMENT UNLOCK TOAST STACK -->
+  <div id="achievement-toast-container" class="toast-stack" aria-live="polite"></div>
+
+  <!-- ====================================================================== -->
+  <!-- TOP TELEMETRY HUD BAR                                                 -->
+  <!-- ====================================================================== -->
+  <header class="hud-top-bar">
+    <div class="hud-left">
+      <div class="brand-cluster" id="brand-logo-trigger" title="Click me 5 times for a secret!">
+        <div class="brand-glitch-icon">⚡</div>
+        <div>
+          <h1 class="brand-title">RAGEZONE 9000</h1>
+          <span class="brand-subtitle">THE GAMING WEBSITE THAT WANTS YOU TO LOSE</span>
         </div>
-
-        <div class="topbar-right">
-          <div class="search-input-group">
-            <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="11" cy="11" r="8"/>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"/>
-            </svg>
-            <input type="text" id="global-search" class="search-input" placeholder="Search games, telemetry, guides...">
-          </div>
-
-          <button id="btn-sound-toggle" class="btn-icon" title="Toggle audio feedback" aria-label="Toggle audio feedback">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
-              <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
-            </svg>
-          </button>
-
-          <button class="btn-icon" title="Notifications" aria-label="Notifications" onclick="triggerNotification('No new system alerts.')">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
-              <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
-            </svg>
-          </button>
-
-          <div class="user-profile-badge" id="top-user-profile" onclick="switchTab('settings')">
-            <div class="user-avatar" id="avatar-initials">AM</div>
-            <div class="user-meta desktop-only">
-              <span class="user-name" id="user-display-name">Alex Morgan</span>
-              <span class="user-role" id="user-display-role">Diamond Tier</span>
-            </div>
-          </div>
-        </div>
-      </header>
-
-      <!-- CONTENT CONTAINER -->
-      <main class="content-container">
-
-        <!-- ========================================== -->
-        <!-- VIEW 1: DASHBOARD                          -->
-        <!-- ========================================== -->
-        <section class="tab-pane active" id="view-dashboard">
-          
-          <div class="page-header">
-            <h1 class="page-title">Good morning, Gamer</h1>
-            <p class="page-subtitle">Here's what's happening with your gaming activity and telemetry.</p>
-          </div>
-
-          <!-- 4 STATS CARDS -->
-          <div class="stats-grid">
-            <div class="stat-card">
-              <div class="stat-header">
-                <span class="stat-label">Total Games</span>
-                <div class="stat-icon-wrapper">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <rect x="2" y="6" width="20" height="12" rx="2"/>
-                    <path d="M6 12h4m-2-2v4m10-2h.01m-3 0h.01"/>
-                  </svg>
-                </div>
-              </div>
-              <div class="stat-value">42</div>
-              <div class="stat-change positive">
-                <span>+3 added this month</span>
-              </div>
-            </div>
-
-            <div class="stat-card">
-              <div class="stat-header">
-                <span class="stat-label">Hours Played</span>
-                <div class="stat-icon-wrapper">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10"/>
-                    <polyline points="12 6 12 12 16 14"/>
-                  </svg>
-                </div>
-              </div>
-              <div class="stat-value">128h</div>
-              <div class="stat-change neutral">
-                <span>14.2h this week</span>
-              </div>
-            </div>
-
-            <div class="stat-card">
-              <div class="stat-header">
-                <span class="stat-label">Win Rate</span>
-                <div class="stat-icon-wrapper">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
-                  </svg>
-                </div>
-              </div>
-              <div class="stat-value">68%</div>
-              <div class="stat-change positive">
-                <span>+4.2% vs last season</span>
-              </div>
-            </div>
-
-            <div class="stat-card">
-              <div class="stat-header">
-                <span class="stat-label">Current Rank</span>
-                <div class="stat-icon-wrapper">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/>
-                    <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/>
-                    <path d="M6 4h12v7a6 6 0 0 1-12 0V4z"/>
-                  </svg>
-                </div>
-              </div>
-              <div class="stat-value">Diamond III</div>
-              <div class="stat-change positive">
-                <span>Top 4.8% of players</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- HERO FEATURE CARD -->
-          <div class="hero-feature-card">
-            <div class="hero-content">
-              <span class="hero-badge">AI Assistant</span>
-              <h2 class="hero-title">Improve your gameplay</h2>
-              <p class="hero-description">
-                Analyze your telemetry, input latency, and match dynamics with the Google Gemini AI integration to receive tailored loadouts and tactical adjustments.
-              </p>
-              <div class="hero-actions">
-                <button class="btn btn-primary" onclick="switchTab('advisory-form')">
-                  Start Analysis
-                </button>
-                <button class="btn btn-secondary" onclick="switchTab('games')">
-                  Explore Library
-                </button>
-              </div>
-            </div>
-            <div class="hero-visual">
-              <img src="assets/cyber_strike_cover.jpg" alt="Featured game illustration" class="hero-image">
-            </div>
-          </div>
-
-          <!-- TWO-COLUMN DASHBOARD ROW: FEATURED GAMES & PERFORMANCE -->
-          <div class="dashboard-grid">
-            
-            <!-- FEATURED GAMES -->
-            <div class="section-card">
-              <div class="section-card-header">
-                <div>
-                  <h3 class="card-heading">Featured Titles</h3>
-                  <p class="card-subheading">Recently updated and recommended for your profile.</p>
-                </div>
-                <button class="btn btn-text" onclick="switchTab('games')">View all</button>
-              </div>
-
-              <div class="game-items-list">
-                <div class="game-row-item">
-                  <img src="assets/cyber_strike_cover.jpg" alt="Cyber Strike" class="game-row-thumb">
-                  <div class="game-row-info">
-                    <h4 class="game-row-title">Cyber Strike</h4>
-                    <span class="game-row-genre">FPS · Multiplayer Competitive</span>
-                  </div>
-                  <div class="game-row-rating">
-                    <span class="star-rating">★ 4.8</span>
-                    <span class="player-count">12.4K online</span>
-                  </div>
-                  <button class="btn btn-secondary btn-sm" onclick="switchTab('advisory-form')">Analyze</button>
-                </div>
-
-                <div class="game-row-item">
-                  <img src="assets/shadow_realm_cover.jpg" alt="Echos of Aethel" class="game-row-thumb">
-                  <div class="game-row-info">
-                    <h4 class="game-row-title">Echos of Aethel</h4>
-                    <span class="game-row-genre">Action RPG · Open World</span>
-                  </div>
-                  <div class="game-row-rating">
-                    <span class="star-rating">★ 4.9</span>
-                    <span class="player-count">48.1K online</span>
-                  </div>
-                  <button class="btn btn-secondary btn-sm" onclick="switchTab('advisory-form')">Analyze</button>
-                </div>
-              </div>
-            </div>
-
-            <!-- PERFORMANCE HARDWARE CARD -->
-            <div class="section-card">
-              <div class="section-card-header">
-                <div>
-                  <h3 class="card-heading">Hardware & Telemetry</h3>
-                  <p class="card-subheading">Live system diagnostics for competitive stability.</p>
-                </div>
-                <span class="badge-success">Optimal</span>
-              </div>
-
-              <div class="performance-metrics">
-                <div class="metric-row">
-                  <div class="metric-info">
-                    <span class="metric-label">Framerate</span>
-                    <span class="metric-value">144 FPS</span>
-                  </div>
-                  <div class="progress-track">
-                    <div class="progress-fill fill-purple" style="width: 96%;"></div>
-                  </div>
-                </div>
-
-                <div class="metric-row">
-                  <div class="metric-info">
-                    <span class="metric-label">Network Latency</span>
-                    <span class="metric-value">24 ms</span>
-                  </div>
-                  <div class="progress-track">
-                    <div class="progress-fill fill-green" style="width: 20%;"></div>
-                  </div>
-                </div>
-
-                <div class="metric-row">
-                  <div class="metric-info">
-                    <span class="metric-label">CPU Utilization</span>
-                    <span class="metric-value">62%</span>
-                  </div>
-                  <div class="progress-track">
-                    <div class="progress-fill fill-purple" style="width: 62%;"></div>
-                  </div>
-                </div>
-
-                <div class="metric-row">
-                  <div class="metric-info">
-                    <span class="metric-label">GPU Utilization</span>
-                    <span class="metric-value">71%</span>
-                  </div>
-                  <div class="progress-track">
-                    <div class="progress-fill fill-purple" style="width: 71%;"></div>
-                  </div>
-                </div>
-
-                <div class="metric-row">
-                  <div class="metric-info">
-                    <span class="metric-label">Memory Allocation</span>
-                    <span class="metric-value">12.4 / 32 GB</span>
-                  </div>
-                  <div class="progress-track">
-                    <div class="progress-fill fill-purple" style="width: 38%;"></div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="card-footer-note">
-                <span>DirectX 12 Ultimate · NVIDIA Reflex Low Latency Enabled</span>
-              </div>
-            </div>
-
-          </div>
-
-          <!-- RECENT MATCH ACTIVITY TABLE -->
-          <div class="section-card mt-24">
-            <div class="section-card-header">
-              <div>
-                <h3 class="card-heading">Recent Telemetry Sessions</h3>
-                <p class="card-subheading">Latest match profiles stored in PostgreSQL data repository.</p>
-              </div>
-              <button class="btn btn-secondary btn-sm" onclick="switchTab('database-pg')">Open Data Store</button>
-            </div>
-
-            <div class="table-responsive">
-              <table class="data-table">
-                <thead>
-                  <tr>
-                    <th>Session ID</th>
-                    <th>Timestamp</th>
-                    <th>Game Title</th>
-                    <th>Player Handle</th>
-                    <th>Rank Tier</th>
-                    <th>Target K/D</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody id="dashboard-table-body">
-                  <!-- Injected via JavaScript -->
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-        </section>
-
-
-        <!-- ========================================== -->
-        <!-- VIEW 2: GAMES CATALOG                      -->
-        <!-- ========================================== -->
-        <section class="tab-pane" id="view-games">
-          
-          <div class="page-header">
-            <h1 class="page-title">Games Library</h1>
-            <p class="page-subtitle">Select a title to analyze performance metrics or calibrate custom settings.</p>
-          </div>
-
-          <div class="games-cards-grid">
-            <div class="game-card">
-              <div class="game-card-media">
-                <img src="assets/cyber_strike_cover.jpg" alt="Cyber Strike" class="game-card-img">
-                <span class="card-tag">Competitive</span>
-              </div>
-              <div class="game-card-body">
-                <h3 class="game-card-title">Cyber Strike</h3>
-                <p class="game-card-meta">Tactical FPS · Multiplayer</p>
-                <div class="game-card-stats">
-                  <span class="star-rating">★ 4.8</span>
-                  <span class="player-count">12.4K active</span>
-                </div>
-                <button class="btn btn-primary btn-block" onclick="startAnalysisFor('Cyber Strike')">
-                  Analyze Gameplay
-                </button>
-              </div>
-            </div>
-
-            <div class="game-card">
-              <div class="game-card-media">
-                <img src="assets/shadow_realm_cover.jpg" alt="Echos of Aethel" class="game-card-img">
-                <span class="card-tag">Action RPG</span>
-              </div>
-              <div class="game-card-body">
-                <h3 class="game-card-title">Echos of Aethel</h3>
-                <p class="game-card-meta">Dark Fantasy · Open World</p>
-                <div class="game-card-stats">
-                  <span class="star-rating">★ 4.9</span>
-                  <span class="player-count">48.1K active</span>
-                </div>
-                <button class="btn btn-primary btn-block" onclick="startAnalysisFor('Echos of Aethel')">
-                  Analyze Gameplay
-                </button>
-              </div>
-            </div>
-
-            <div class="game-card">
-              <div class="game-card-media">
-                <img src="assets/cyber_strike_cover.jpg" alt="Apex Legends" class="game-card-img">
-                <span class="card-tag">Battle Royale</span>
-              </div>
-              <div class="game-card-body">
-                <h3 class="game-card-title">Apex Legends</h3>
-                <p class="game-card-meta">Movement Shooter · Squads</p>
-                <div class="game-card-stats">
-                  <span class="star-rating">★ 4.7</span>
-                  <span class="player-count">94.5K active</span>
-                </div>
-                <button class="btn btn-primary btn-block" onclick="startAnalysisFor('Apex Legends')">
-                  Analyze Gameplay
-                </button>
-              </div>
-            </div>
-
-            <div class="game-card">
-              <div class="game-card-media">
-                <img src="assets/shadow_realm_cover.jpg" alt="Valorant" class="game-card-img">
-                <span class="card-tag">Tactical</span>
-              </div>
-              <div class="game-card-body">
-                <h3 class="game-card-title">Valorant</h3>
-                <p class="game-card-meta">Hero Shooter · 5v5 Ranked</p>
-                <div class="game-card-stats">
-                  <span class="star-rating">★ 4.6</span>
-                  <span class="player-count">132K active</span>
-                </div>
-                <button class="btn btn-primary btn-block" onclick="startAnalysisFor('Valorant')">
-                  Analyze Gameplay
-                </button>
-              </div>
-            </div>
-          </div>
-
-        </section>
-
-
-        <!-- ========================================== -->
-        <!-- VIEW 3: AI STRATEGY & LOADOUT FORM         -->
-        <!-- ========================================== -->
-        <section class="tab-pane" id="view-advisory-form">
-          
-          <div class="page-header">
-            <h1 class="page-title">AI Gaming Assistant</h1>
-            <p class="page-subtitle">Configure your player telemetry parameters to receive tailored strategic recommendations.</p>
-          </div>
-
-          <!-- ASSISTANT CAPABILITY CARDS -->
-          <div class="assistant-pillars-grid">
-            <div class="pillar-card">
-              <div class="pillar-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <line x1="18" y1="20" x2="18" y2="10"/>
-                  <line x1="12" y1="20" x2="12" y2="4"/>
-                  <line x1="6" y1="20" x2="6" y2="14"/>
-                </svg>
-              </div>
-              <h4 class="pillar-title">Performance Analysis</h4>
-              <p class="pillar-desc">Evaluates your latency, framerate, and input sensitivity for hardware optimization.</p>
-            </div>
-
-            <div class="pillar-card">
-              <div class="pillar-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <circle cx="12" cy="12" r="10"/>
-                  <line x1="12" y1="8" x2="12" y2="12"/>
-                  <line x1="12" y1="16" x2="12.01" y2="16"/>
-                </svg>
-              </div>
-              <h4 class="pillar-title">Loadout Recommendations</h4>
-              <p class="pillar-desc">Generates meta weapon combinations, crosshairs, and optimal sensitivity calibrations.</p>
-            </div>
-
-            <div class="pillar-card">
-              <div class="pillar-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M12 2a8 8 0 0 0-8 8c0 3.37 2.1 6.26 5.09 7.42V19a2 2 0 0 0 2 2h1.82a2 2 0 0 0 2-2v-1.58A8.001 8.001 0 0 0 12 2z"/>
-                </svg>
-              </div>
-              <h4 class="pillar-title">Strategy Suggestions</h4>
-              <p class="pillar-desc">Provides actionable positioning, rotation, and counter-tactics against opponents.</p>
-            </div>
-
-            <div class="pillar-card">
-              <div class="pillar-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                  <polyline points="22 4 12 14.01 9 11.01"/>
-                </svg>
-              </div>
-              <h4 class="pillar-title">Game Improvement</h4>
-              <p class="pillar-desc">Establishes mental focus routines, break cadences, and projected K/D progression.</p>
-            </div>
-          </div>
-
-          <!-- FORM CARD -->
-          <div class="form-container-card">
-            <div id="form-validation-box" class="form-error-banner" style="display: none;" role="alert"></div>
-
-            <form id="agri-advisory-form" class="clean-form" novalidate>
-              
-              <!-- SECTION 1 -->
-              <div class="form-fieldset">
-                <h3 class="form-section-heading">1. Game & Player Profile</h3>
-                <div class="form-row">
-                  <div class="form-group col-6">
-                    <label for="crop-type" class="form-label">Target Title <span class="required">*</span></label>
-                    <select id="crop-type" name="cropType" class="form-select" required>
-                      <option value="">Select a game title...</option>
-                      <option value="Cyber Strike" selected>Cyber Strike (Tactical FPS)</option>
-                      <option value="Echos of Aethel">Echos of Aethel (Action RPG)</option>
-                      <option value="Apex Legends">Apex Legends (Battle Royale)</option>
-                      <option value="Valorant">Valorant (Tactical Shooter)</option>
-                      <option value="Counter-Strike 2">Counter-Strike 2 (Competitive)</option>
-                      <option value="Overwatch 2">Overwatch 2 (Hero Shooter)</option>
-                    </select>
-                  </div>
-
-                  <div class="form-group col-6">
-                    <label for="crop-variety-nickname" class="form-label">Player Tag / Clan Handle</label>
-                    <input type="text" id="crop-variety-nickname" name="cropNickname" class="form-input" placeholder="e.g. Apex_Morgan">
-                  </div>
-                </div>
-
-                <div class="form-row">
-                  <div class="form-group col-4">
-                    <label for="growth-stage" class="form-label">Current Rank Tier <span class="required">*</span></label>
-                    <select id="growth-stage" name="growthStage" class="form-select" required>
-                      <option value="Bronze / Silver">Bronze / Silver Tier</option>
-                      <option value="Gold / Platinum">Gold / Platinum Tier</option>
-                      <option value="Diamond III" selected>Diamond III (Advanced)</option>
-                      <option value="Master / Grandmaster">Master / Grandmaster Tier</option>
-                      <option value="Top 500 / Challenger">Top 500 / Challenger Elite</option>
-                    </select>
-                  </div>
-
-                  <div class="form-group col-4">
-                    <label for="crop-mood" class="form-label">Session Focus Challenge</label>
-                    <select id="crop-mood" name="cropMood" class="form-select">
-                      <option value="Optimal Focus">Optimal Focus & High Energy</option>
-                      <option value="Minor Tilt / Fatigue" selected>Minor Fatigue / Latency Drops</option>
-                      <option value="Plateauing K/D">Plateauing Skill Ceiling</option>
-                      <option value="Warmup Phase">Pre-Tournament Warmup</option>
-                    </select>
-                  </div>
-
-                  <div class="form-group col-4">
-                    <label for="target-yield" class="form-label">Target K/D Ratio <span class="required">*</span></label>
-                    <input type="number" id="target-yield" name="targetYield" class="form-input" min="0.1" max="20" step="0.1" value="2.4" required>
-                  </div>
-                </div>
-              </div>
-
-              <!-- SECTION 2 -->
-              <div class="form-fieldset">
-                <h3 class="form-section-heading">2. Hardware & Input Telemetry</h3>
-                <div class="form-row">
-                  <div class="form-group col-4">
-                    <label for="soil-type" class="form-label">Hardware Platform <span class="required">*</span></label>
-                    <select id="soil-type" name="soilType" class="form-select" required>
-                      <option value="High-End Desktop (RTX 4080/4090)" selected>High-End Desktop (RTX 4080/4090)</option>
-                      <option value="Mid-Range Desktop (RTX 3060/4060)">Mid-Range Desktop (RTX 3060/4060)</option>
-                      <option value="Performance Gaming Laptop">Performance Gaming Laptop</option>
-                      <option value="Next-Gen Console (PS5 / Xbox Series X)">Next-Gen Console (PS5 / Series X)</option>
-                    </select>
-                  </div>
-
-                  <div class="form-group col-4">
-                    <label for="soil-ph" class="form-label">Mouse Sensitivity (DPI): <span id="ph-display" class="font-medium text-purple">800 DPI</span></label>
-                    <input type="range" id="soil-ph" name="soilPh" min="400" max="3200" step="50" value="800" class="form-range">
-                  </div>
-
-                  <div class="form-group col-4">
-                    <label for="soil-moisture" class="form-label">Average Latency (ms) <span class="required">*</span></label>
-                    <input type="number" id="soil-moisture" name="soilMoisture" class="form-input" min="1" max="500" value="24" required>
-                  </div>
-                </div>
-
-                <div class="form-row">
-                  <div class="form-group col-4">
-                    <label for="soil-n" class="form-label">Display Refresh Rate (Hz) <span class="required">*</span></label>
-                    <input type="number" id="soil-n" name="soilN" class="form-input" min="60" max="360" value="144" required>
-                  </div>
-
-                  <div class="form-group col-4">
-                    <label for="soil-p" class="form-label">Average Framerate (FPS) <span class="required">*</span></label>
-                    <input type="number" id="soil-p" name="soilP" class="form-input" min="30" max="500" value="144" required>
-                  </div>
-
-                  <div class="form-group col-4">
-                    <label for="soil-k" class="form-label">Ergonomics Rating (1-100) <span class="required">*</span></label>
-                    <input type="number" id="soil-k" name="soilK" class="form-input" min="1" max="100" value="85" required>
-                  </div>
-                </div>
-              </div>
-
-              <!-- SECTION 3 -->
-              <div class="form-fieldset">
-                <h3 class="form-section-heading">3. Dynamics & Role Parameters</h3>
-                <div class="form-row">
-                  <div class="form-group col-4">
-                    <label for="farm-acreage" class="form-label">Weekly Training Hours <span class="required">*</span></label>
-                    <input type="number" id="farm-acreage" name="acreage" class="form-input" min="0.5" max="80" step="0.5" value="14.5" required>
-                  </div>
-
-                  <div class="form-group col-4">
-                    <label for="irrigation-type" class="form-label">Primary In-Game Role <span class="required">*</span></label>
-                    <select id="irrigation-type" name="irrigationType" class="form-select" required>
-                      <option value="Entry Fragger / Duelist" selected>Entry Fragger / Duelist</option>
-                      <option value="Tactical IGL / Anchor">Tactical IGL / Anchor</option>
-                      <option value="Recon / Support">Recon / Support</option>
-                      <option value="Flex / Sniper">Flex / Sniper</option>
-                    </select>
-                  </div>
-
-                  <div class="form-group col-4">
-                    <label for="tractor-paint" class="form-label">Energy & Nutrition Protocol</label>
-                    <select id="tractor-paint" name="tractorPaint" class="form-select">
-                      <option value="Hydrated (Electrolytes & Water)" selected>Hydrated (Electrolytes & Water)</option>
-                      <option value="Moderate Caffeine (Coffee/Tea)">Moderate Caffeine (Coffee/Tea)</option>
-                      <option value="Pre-Workout Supplement">Pre-Workout Supplement</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label class="form-label">Identify Primary In-Game Friction Factors:</label>
-                  <div class="checkbox-grid">
-                    <label class="checkbox-label"><input type="checkbox" name="pests" value="Sub-Optimal Crosshair Placement"> Crosshair Placement</label>
-                    <label class="checkbox-label"><input type="checkbox" name="pests" value="Over-Aggressive Peeking"> Over-Aggressive Peeking</label>
-                    <label class="checkbox-label"><input type="checkbox" name="pests" value="Packet Loss / Ping Spikes"> Ping Spikes / Packet Loss</label>
-                    <label class="checkbox-label"><input type="checkbox" name="pests" value="Fatigue After Hour 3"> Fatigue After Hour 3</label>
-                    <label class="checkbox-label"><input type="checkbox" name="pests" value="Communication Misalignments"> Team Communication</label>
-                  </div>
-                </div>
-              </div>
-
-              <!-- SECTION 4 -->
-              <div class="form-fieldset">
-                <h3 class="form-section-heading">4. AI Engine Configuration</h3>
-                <div class="form-row">
-                  <div class="form-group col-4">
-                    <label for="ai-persona" class="form-label">Analysis Persona</label>
-                    <select id="ai-persona" name="aiPersona" class="form-select">
-                      <option value="Technical Performance Analyst" selected>Technical Performance Analyst</option>
-                      <option value="Professional Esports Coach">Professional Esports Coach</option>
-                      <option value="Tactical Strategist">Tactical Strategist</option>
-                    </select>
-                  </div>
-
-                  <div class="form-group col-4">
-                    <label for="gemini-model-select" class="form-label">Gemini Model</label>
-                    <select id="gemini-model-select" name="geminiModel" class="form-select">
-                      <option value="gemini-1.5-flash" selected>Gemini 1.5 Flash (Recommended)</option>
-                      <option value="gemini-1.5-pro">Gemini 1.5 Pro (Deep Analytics)</option>
-                      <option value="local-agri-engine">Local Offline Telemetry Model</option>
-                    </select>
-                  </div>
-
-                  <div class="form-group col-4">
-                    <label for="gemini-api-key" class="form-label">Google Gemini API Key (Optional)</label>
-                    <input type="password" id="gemini-api-key" name="geminiKey" class="form-input" placeholder="AIzaSy... (Saved locally)">
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="farmer-notes" class="form-label">Specific Areas for Improvement</label>
-                  <textarea id="farmer-notes" name="farmerNotes" rows="2" class="form-textarea" placeholder="e.g. Inconsistent mid-range spray control during overtime rounds."></textarea>
-                </div>
-              </div>
-
-              <div class="form-actions">
-                <button type="submit" id="btn-generate-advisory" class="btn btn-primary btn-lg">
-                  Run Performance Analysis
-                </button>
-                <button type="button" class="btn btn-secondary btn-lg" onclick="switchTab('dashboard')">
-                  Cancel
-                </button>
-              </div>
-
-            </form>
-          </div>
-
-        </section>
-
-
-        <!-- ========================================== -->
-        <!-- VIEW 4: ANALYSIS RESULTS VIEW              -->
-        <!-- ========================================== -->
-        <section class="tab-pane" id="view-advisory-results">
-          
-          <div class="page-header flex-header">
-            <div>
-              <h1 class="page-title">Analysis Results</h1>
-              <p class="page-subtitle">Telemetry-driven diagnostic and tactical strategy summary.</p>
-            </div>
-            <div class="header-action-group">
-              <button class="btn btn-secondary" id="btn-print-results">Print Summary</button>
-              <button class="btn btn-secondary" id="btn-save-to-pg">Commit to DB</button>
-              <button class="btn btn-primary" id="btn-new-advisory">New Analysis</button>
-            </div>
-          </div>
-
-          <!-- SESSION META STRIP -->
-          <div class="meta-strip-card">
-            <div class="meta-item">
-              <span class="meta-label">Target Title</span>
-              <span class="meta-value" id="res-crop-name">Cyber Strike</span>
-            </div>
-            <div class="meta-item">
-              <span class="meta-label">Training Hours</span>
-              <span class="meta-value" id="res-acreage">14.5 hrs/week</span>
-            </div>
-            <div class="meta-item">
-              <span class="meta-label">Input DPI</span>
-              <span class="meta-value" id="res-soil-ph">800 DPI</span>
-            </div>
-            <div class="meta-item">
-              <span class="meta-label">Database Record</span>
-              <span class="meta-value text-purple" id="res-db-status">Session ID #101 Verified</span>
-            </div>
-          </div>
-
-          <!-- CARDS GRID -->
-          <div class="results-cards-grid">
-            
-            <!-- CARD 1 -->
-            <div class="result-card">
-              <div class="result-card-header">
-                <span class="result-icon-badge icon-purple">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10"/>
-                    <line x1="12" y1="8" x2="12" y2="12"/>
-                    <line x1="12" y1="16" x2="12.01" y2="16"/>
-                  </svg>
-                </span>
-                <h3 class="result-card-title">Priority Focus Area</h3>
-              </div>
-              <div class="result-card-body">
-                <h4 class="recommendation-headline" id="res-urgent-title">Latency Stability & Input Timing</h4>
-                <p class="recommendation-text" id="res-urgent-body">
-                  Network jitter is within nominal tolerance (24ms). Primary performance variance stems from micro-adjustments during high-velocity peeks.
-                </p>
-                <div class="bullet-list-box" id="res-urgent-bullets">
-                  <!-- Injected via JS -->
-                </div>
-              </div>
-            </div>
-
-            <!-- CARD 2 -->
-            <div class="result-card">
-              <div class="result-card-header">
-                <span class="result-icon-badge icon-green">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polygon points="12 2 2 7 12 12 22 7 12 2"/>
-                    <polyline points="2 17 12 22 22 17"/>
-                    <polyline points="2 12 12 17 22 12"/>
-                  </svg>
-                </span>
-                <h3 class="result-card-title">Loadout & Calibration</h3>
-              </div>
-              <div class="result-card-body">
-                <h4 class="recommendation-headline" id="res-fert-title">Sensitivity & Weapon Meta</h4>
-                <div class="loadout-pills" id="res-npk-formula">
-                  <!-- Injected via JS -->
-                </div>
-                <p class="recommendation-text mt-12" id="res-fert-timing">
-                  Allocate 20 minutes to static crosshair placement drills prior to entering competitive lobbies.
-                </p>
-              </div>
-            </div>
-
-            <!-- CARD 3 -->
-            <div class="result-card">
-              <div class="result-card-header">
-                <span class="result-icon-badge icon-blue">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10"/>
-                    <polyline points="12 6 12 12 16 14"/>
-                  </svg>
-                </span>
-                <h3 class="result-card-title">Session & Focus Management</h3>
-              </div>
-              <div class="result-card-body">
-                <h4 class="recommendation-headline" id="res-water-title">Recovery & Endurance Cadence</h4>
-                <div class="routine-box" id="res-water-schedule">
-                  <!-- Injected via JS -->
-                </div>
-              </div>
-            </div>
-
-            <!-- CARD 4 -->
-            <div class="result-card">
-              <div class="result-card-header">
-                <span class="result-icon-badge icon-purple">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                  </svg>
-                </span>
-                <h3 class="result-card-title">Tactical Defense Protocol</h3>
-              </div>
-              <div class="result-card-body">
-                <h4 class="recommendation-headline" id="res-pest-title">Positioning & Counter-Tactics</h4>
-                <div class="routine-box" id="res-pest-tactics">
-                  <!-- Injected via JS -->
-                </div>
-              </div>
-            </div>
-
-            <!-- EXECUTIVE VERDICT CARD -->
-            <div class="result-card col-span-2">
-              <div class="result-card-header">
-                <span class="result-icon-badge icon-purple">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                    <polyline points="14 2 14 8 20 8"/>
-                    <line x1="16" y1="13" x2="8" y2="13"/>
-                    <line x1="16" y1="17" x2="8" y2="17"/>
-                  </svg>
-                </span>
-                <h3 class="result-card-title">Executive Coach Synthesis</h3>
-              </div>
-              <div class="result-card-body">
-                <div class="executive-quote-box" id="res-ai-raw-text">
-                  "Analysis of your recent telemetry indicates solid mechanical foundation with 144Hz synchronization. Aligning crosshair height during site transitions will yield an estimated +18% duel conversion rate. Maintain the 800 DPI calibration for consistent muscle memory across all competitive matches."
-                </div>
-                <div class="meta-tags-row">
-                  <span class="badge-neutral">Model: Gemini 1.5 Flash</span>
-                  <span class="badge-neutral">Inference Latency: 218ms</span>
-                  <span class="badge-neutral">Projected K/D Trajectory: +0.28</span>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-        </section>
-
-
-        <!-- ========================================== -->
-        <!-- VIEW 5: LEADERBOARD                        -->
-        <!-- ========================================== -->
-        <section class="tab-pane" id="view-leaderboard">
-          
-          <div class="page-header">
-            <h1 class="page-title">Competitive Leaderboard</h1>
-            <p class="page-subtitle">Global standings for the current competitive season.</p>
-          </div>
-
-          <div class="section-card">
-            <div class="table-responsive">
-              <table class="data-table">
-                <thead>
-                  <tr>
-                    <th>Rank</th>
-                    <th>Player</th>
-                    <th>Rating</th>
-                    <th>Wins</th>
-                    <th>Win Rate</th>
-                    <th>Division</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="rank-badge rank-1">01</span></td>
-                    <td class="font-medium text-white">ShadowX</td>
-                    <td>2,840</td>
-                    <td>142</td>
-                    <td><span class="text-green">78%</span></td>
-                    <td>Grandmaster</td>
-                  </tr>
-                  <tr>
-                    <td><span class="rank-badge rank-2">02</span></td>
-                    <td class="font-medium text-white">Nova</td>
-                    <td>2,710</td>
-                    <td>137</td>
-                    <td><span class="text-green">74%</span></td>
-                    <td>Master</td>
-                  </tr>
-                  <tr>
-                    <td><span class="rank-badge rank-3">03</span></td>
-                    <td class="font-medium text-white">Apex</td>
-                    <td>2,640</td>
-                    <td>129</td>
-                    <td><span class="text-green">71%</span></td>
-                    <td>Master</td>
-                  </tr>
-                  <tr>
-                    <td><span class="rank-badge">04</span></td>
-                    <td class="font-medium text-white">Valkyrie</td>
-                    <td>2,580</td>
-                    <td>121</td>
-                    <td><span class="text-green">69%</span></td>
-                    <td>Diamond I</td>
-                  </tr>
-                  <tr>
-                    <td><span class="rank-badge">05</span></td>
-                    <td class="font-medium text-white">Cipher</td>
-                    <td>2,510</td>
-                    <td>118</td>
-                    <td><span class="text-green">68%</span></td>
-                    <td>Diamond I</td>
-                  </tr>
-                  <!-- CURRENT USER ROW -->
-                  <tr class="table-row-highlight">
-                    <td><span class="rank-badge rank-highlight">48</span></td>
-                    <td class="font-medium text-purple">Alex Morgan (You)</td>
-                    <td>2,180</td>
-                    <td>88</td>
-                    <td><span class="text-green">68%</span></td>
-                    <td>Diamond III</td>
-                  </tr>
-                  <tr>
-                    <td><span class="rank-badge">49</span></td>
-                    <td class="font-medium text-white">Kestrel</td>
-                    <td>2,165</td>
-                    <td>85</td>
-                    <td><span class="text-green">66%</span></td>
-                    <td>Diamond III</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-        </section>
-
-
-        <!-- ========================================== -->
-        <!-- VIEW 6: HARDWARE & STATISTICS              -->
-        <!-- ========================================== -->
-        <section class="tab-pane" id="view-analytics">
-          
-          <div class="page-header">
-            <h1 class="page-title">Performance Analytics</h1>
-            <p class="page-subtitle">Telemetry trends, input responsiveness, and hardware resource distribution.</p>
-          </div>
-
-          <div class="analytics-cards-grid">
-            <div class="section-card">
-              <h3 class="card-heading">Input Accuracy Distribution</h3>
-              <p class="card-subheading">Breakdown of hit placement across competitive matches.</p>
-              
-              <div class="distribution-bars mt-16">
-                <div class="dist-row">
-                  <span class="dist-label">Headshot Ratio</span>
-                  <div class="progress-track"><div class="progress-fill fill-purple" style="width: 38%;"></div></div>
-                  <span class="dist-val">38%</span>
-                </div>
-                <div class="dist-row">
-                  <span class="dist-label">Upper Torso</span>
-                  <div class="progress-track"><div class="progress-fill fill-purple" style="width: 46%;"></div></div>
-                  <span class="dist-val">46%</span>
-                </div>
-                <div class="dist-row">
-                  <span class="dist-label">Lower Torso & Limbs</span>
-                  <div class="progress-track"><div class="progress-fill fill-purple" style="width: 16%;"></div></div>
-                  <span class="dist-val">16%</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="section-card">
-              <h3 class="card-heading">Latency Stability</h3>
-              <p class="card-subheading">Network ping consistency over last 24 hours.</p>
-
-              <div class="distribution-bars mt-16">
-                <div class="dist-row">
-                  <span class="dist-label">Lowest Latency</span>
-                  <span class="dist-val text-green">14 ms</span>
-                </div>
-                <div class="dist-row">
-                  <span class="dist-label">Average Latency</span>
-                  <span class="dist-val">24 ms</span>
-                </div>
-                <div class="dist-row">
-                  <span class="dist-label">Packet Loss</span>
-                  <span class="dist-val text-green">0.00%</span>
-                </div>
-                <div class="dist-row">
-                  <span class="dist-label">Jitter</span>
-                  <span class="dist-val text-green">&plusmn;1.2 ms</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </section>
-
-
-        <!-- ========================================== -->
-        <!-- VIEW 7: DATA STORE (POSTGRESQL)            -->
-        <!-- ========================================== -->
-        <section class="tab-pane" id="view-database-pg">
-          
-          <div class="page-header">
-            <h1 class="page-title">PostgreSQL Data Store</h1>
-            <p class="page-subtitle">Interactive SQL console and persistent telemetry database store.</p>
-          </div>
-
-          <div class="section-card mb-24">
-            <div class="terminal-header">
-              <span class="terminal-title">Query Terminal — postgres@gamehub-db:5432/telemetry</span>
-              <span class="badge-success">Connected</span>
-            </div>
-
-            <div class="terminal-body">
-              <textarea id="sql-query-input" class="sql-textarea" rows="3" spellcheck="false">SELECT id, crop_name AS game_title, acreage AS hours_played, soil_ph AS mouse_dpi, target_yield AS target_kd, status, created_at FROM farm_advisories ORDER BY id DESC;</textarea>
-            </div>
-
-            <div class="terminal-actions">
-              <button class="btn btn-primary btn-sm" id="btn-run-sql">Execute Query</button>
-              <button class="btn btn-secondary btn-sm" id="btn-sql-insert">Insert Sample Session</button>
-              <button class="btn btn-secondary btn-sm" id="btn-sql-reset">Reset Repository</button>
-              <span class="status-msg" id="sql-status-text">Ready</span>
-            </div>
-          </div>
-
-          <div class="section-card">
-            <div class="table-tabs-header">
-              <div class="tab-pill-group">
-                <button class="tab-pill active" data-table="advisories">Player Telemetry (<span id="count-advisories">0</span>)</button>
-                <button class="tab-pill" data-table="crops">Games Catalog (<span id="count-crops">6</span>)</button>
-                <button class="tab-pill" data-table="soil">Hardware Sensors (<span id="count-soil">5</span>)</button>
-              </div>
-            </div>
-
-            <div class="table-responsive">
-              <table class="data-table">
-                <thead id="pg-table-head"></thead>
-                <tbody id="pg-table-body"></tbody>
-              </table>
-            </div>
-          </div>
-
-        </section>
-
-
-        <!-- ========================================== -->
-        <!-- VIEW 8: SETTINGS                           -->
-        <!-- ========================================== -->
-        <section class="tab-pane" id="view-settings">
-          
-          <div class="page-header">
-            <h1 class="page-title">Settings & Preferences</h1>
-            <p class="page-subtitle">Manage your profile, API keys, and application preferences.</p>
-          </div>
-
-          <div class="settings-cards-grid">
-            
-            <div class="section-card">
-              <h3 class="card-heading">Active Profile</h3>
-              <p class="card-subheading">Change operator session or simulated rank tier.</p>
-
-              <div class="profile-summary-box">
-                <div class="user-avatar-lg" id="profile-avatar-large">AM</div>
-                <div class="profile-summary-info">
-                  <h4 class="profile-name" id="auth-username-display">Alex Morgan</h4>
-                  <p class="profile-title" id="auth-role-display">Diamond III (Competitive Tier)</p>
-                </div>
-              </div>
-
-              <div class="form-group mt-16">
-                <label for="switch-user-select" class="form-label">Switch Profile Session:</label>
-                <select id="switch-user-select" class="form-select">
-                  <option value="bob">Alex Morgan (Diamond III)</option>
-                  <option value="alice">Coach Dave (Esports Strategist)</option>
-                  <option value="overseer">System AI Analyst</option>
-                  <option value="guest">Guest Profile</option>
-                </select>
-              </div>
-
-              <button class="btn btn-secondary mt-12" id="btn-switch-user">Switch Session</button>
-            </div>
-
-            <div class="section-card">
-              <h3 class="card-heading">Google Gemini API</h3>
-              <p class="card-subheading">Provide your own key to route analysis through live Gemini models.</p>
-
-              <div class="form-group mt-16">
-                <label for="cfg-gemini-key" class="form-label">API Key:</label>
-                <input type="password" id="cfg-gemini-key" class="form-input" placeholder="AIzaSy... (Stored in browser localStorage)">
-              </div>
-
-              <div class="flex-row-gap mt-12">
-                <button class="btn btn-primary btn-sm" id="btn-save-key">Save Key</button>
-                <button class="btn btn-secondary btn-sm" id="btn-clear-key">Clear Key</button>
-              </div>
-
-              <span class="status-msg mt-12 display-block" id="api-key-status">
-                Using built-in gaming performance model (No key required).
-              </span>
-            </div>
-
-            <div class="section-card">
-              <h3 class="card-heading">Audio & Feedback</h3>
-              <p class="card-subheading">Interface audio feedback and notification settings.</p>
-
-              <div class="flex-row-between mt-16">
-                <div>
-                  <h4 class="font-medium text-white">Audio Feedback</h4>
-                  <p class="text-sm text-secondary">Play subtle acoustic click on actions.</p>
-                </div>
-                <button class="btn btn-secondary btn-sm" id="btn-test-sound">Test Sound</button>
-              </div>
-
-              <div class="flex-row-between mt-16 pt-16 border-t">
-                <div>
-                  <h4 class="font-medium text-white">Toast Alerts</h4>
-                  <p class="text-sm text-secondary">Display feedback confirmations.</p>
-                </div>
-                <button class="btn btn-secondary btn-sm" onclick="triggerNotification('Test notification verified.')">Send Test Alert</button>
-              </div>
-            </div>
-
-          </div>
-
-        </section>
-
-      </main>
-
-      <!-- APPLICATION FOOTER -->
-      <footer class="app-footer">
-        <div class="footer-left">
-          <span>&copy; 2026 GameHub. Built for Competitive Telemetry & Performance Analysis.</span>
-        </div>
-        <div class="footer-right">
-          <a href="#dashboard" class="footer-link">Dashboard</a>
-          <a href="#games" class="footer-link">Library</a>
-          <a href="#advisory-form" class="footer-link">AI Assistant</a>
-          <a href="#leaderboard" class="footer-link">Leaderboard</a>
-          <a href="#database-pg" class="footer-link">PostgreSQL Data</a>
-        </div>
-      </footer>
-
+      </div>
     </div>
 
-  </div>
+    <!-- DYNAMIC LIVE FLUCTUATING TELEMETRY METRICS -->
+    <div class="hud-metrics">
+      <div class="metric-chip" title="Hardware Framerate (fluctuates wildly)">
+        <span class="chip-label">FPS:</span>
+        <span class="chip-val text-green" id="hud-fps-val">144</span>
+      </div>
+      <div class="metric-chip" title="Network Latency">
+        <span class="chip-label">PING:</span>
+        <span class="chip-val text-orange" id="hud-ping-val">42ms</span>
+      </div>
+      <div class="metric-chip" title="Live CPU Load">
+        <span class="chip-label">CPU:</span>
+        <span class="chip-val" id="hud-cpu-val">61%</span>
+      </div>
+      <div class="metric-chip" title="Live GPU Load">
+        <span class="chip-label">GPU:</span>
+        <span class="chip-val" id="hud-gpu-val">82%</span>
+      </div>
+      <div class="metric-chip metric-skill" title="Skill Evaluation Matrix">
+        <span class="chip-label">SKILL:</span>
+        <span class="chip-val text-purple" id="hud-skill-val">QUESTIONABLE</span>
+      </div>
+      <div class="metric-chip metric-rage-chip" id="hud-rage-chip" title="Click to view rage options">
+        <span class="chip-label">RAGE:</span>
+        <span class="chip-val text-red" id="hud-rage-val">45%</span>
+      </div>
+    </div>
+
+    <!-- USER LEVEL, COINS, AUDIO & NOTIFICATIONS -->
+    <div class="hud-right">
+      <div class="user-xp-widget" id="user-xp-widget" title="Click to view level perks">
+        <div class="xp-level-badge" id="hud-user-level">LVL 1</div>
+        <div class="xp-info">
+          <div class="xp-text"><span id="hud-user-xp">0</span> / <span id="hud-next-xp">100</span> XP</div>
+          <div class="xp-mini-track">
+            <div class="xp-mini-fill" id="hud-xp-fill" style="width: 0%;"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="coins-badge" id="hud-coins-display" title="Your imaginary currency">
+        🪙 <span id="hud-coins-count">42</span>
+      </div>
+
+      <button id="btn-sound-toggle" class="hud-btn" title="Toggle Sound (Web Audio API)">
+        <span id="sound-icon">🔇</span> <span id="sound-label" class="desktop-only">SOUND: OFF</span>
+      </button>
+
+      <button id="btn-open-notifications" class="hud-btn notification-bell-btn" title="Notification Drawer">
+        🔔 <span id="hud-notif-badge" class="bell-badge">3</span>
+      </button>
+
+      <button id="btn-mobile-nav" class="hud-btn mobile-only" title="Open Menu">☰</button>
+    </div>
+  </header>
+
+  <!-- ====================================================================== -->
+  <!-- MAIN NAVIGATION BAR                                                    -->
+  <!-- ====================================================================== -->
+  <nav class="main-nav-bar" id="main-nav" aria-label="Game Navigation">
+    <div class="nav-scroll-track">
+      <button class="nav-tab active" data-tab="home" id="nav-home">🏠 HOME</button>
+      <button class="nav-tab" data-tab="games" id="nav-games">🎮 GAMES & LAUNCHER</button>
+      <button class="nav-tab" data-tab="minigames" id="nav-minigames">🕹️ MINI-GAMES <span class="hot-pill">PLAYABLE</span></button>
+      <button class="nav-tab" data-tab="loadout" id="nav-loadout">🎒 LOADOUT BUILDER</button>
+      <button class="nav-tab" data-tab="leaderboard" id="nav-leaderboard">🏆 LEADERBOARD</button>
+      <button class="nav-tab" data-tab="ai-coach" id="nav-ai-coach">🤖 AI COACH CHAT</button>
+      <button class="nav-tab" data-tab="pc-stats" id="nav-pc-stats">🖥️ PC DIAGNOSTIC</button>
+      <button class="nav-tab" data-tab="fake-shop" id="nav-fake-shop">🛒 FAKE SHOP</button>
+      <button class="nav-tab" data-tab="achievements" id="nav-achievements">🏅 ACHIEVEMENTS (<span id="unlocked-achieve-count">0</span>/10)</button>
+      <button class="nav-tab" data-tab="database-pg" id="nav-database">💾 DATA STORE</button>
+      <button class="nav-tab" data-tab="settings" id="nav-settings">⚙️ SETTINGS</button>
+    </div>
+  </nav>
+
+  <!-- ====================================================================== -->
+  <!-- MAIN CONTENT CONTAINER                                                 -->
+  <!-- ====================================================================== -->
+  <main class="main-stage" id="main-stage">
+
+    <!-- ==================================================================== -->
+    <!-- VIEW 1: HOME (RAGE METER & CLICKABLE CHAOS)                          -->
+    <!-- ==================================================================== -->
+    <section class="tab-view active" id="view-home">
+      
+      <!-- HERO GREETING -->
+      <div class="hero-rage-banner">
+        <div class="hero-banner-content">
+          <div class="hero-status-pill">● LIVE CHALLENGE ACTIVE</div>
+          <h2 class="hero-main-title">WELCOME BACK, PROBABLY</h2>
+          <p class="hero-subtext">Your gaming career has been thoroughly evaluated by our neural algorithms and determined to be 84% luck, 16% button mashing, and 0% actual aim.</p>
+        </div>
+        <div class="hero-banner-art">
+          <img src="assets/cyber_strike_cover.jpg" alt="Ragezone art" class="hero-art-img">
+        </div>
+      </div>
+
+      <!-- THE CORE RAGE METER COMPONENT -->
+      <div class="rage-meter-panel">
+        <div class="rage-meter-header">
+          <div class="rage-title-group">
+            <span class="rage-flame-icon">🔥</span>
+            <div>
+              <h3 class="rage-heading">RAGE METER</h3>
+              <span class="rage-status-quote" id="rage-status-quote">"Current Status: Mildly irritated by enemy hitboxes."</span>
+            </div>
+          </div>
+          <div class="rage-number-display" id="rage-percent-display">45%</div>
+        </div>
+
+        <div class="rage-bar-track">
+          <div class="rage-bar-fill" id="rage-bar-fill" style="width: 45%;">
+            <div class="rage-bar-sparks"></div>
+          </div>
+        </div>
+
+        <div class="rage-triggers-bar">
+          <span>Manual Rage Stimulators:</span>
+          <button class="btn btn-rage-add" id="btn-add-rage-5">+5 RAGE</button>
+          <button class="btn btn-rage-add" id="btn-add-rage-15">+15 RAGE (DESK SLAP)</button>
+          <button class="btn btn-rage-sub" id="btn-sub-rage-10">-10 RAGE (COPING)</button>
+          <button class="btn btn-secondary btn-sm" id="btn-trigger-low-fps-event">Simulate Low FPS Drop</button>
+        </div>
+      </div>
+
+      <!-- PRIMARY ACTION BUTTONS (EVERY BUTTON DOES SOMETHING ANNOYING!) -->
+      <h3 class="section-title">⚡ HIGH-VOLTAGE GAMER BUTTONS (CLICK AT YOUR OWN RISK)</h3>
+      <div class="interactive-buttons-grid">
+        
+        <div class="action-card">
+          <h4>👑 BECOME PRO INSTANTLY</h4>
+          <p>Instantly upload Shroud and Simple's muscle memory directly into your mouse hand.</p>
+          <button class="btn btn-action-glow btn-block" id="btn-become-pro">ACTIVATE PRO STATUS</button>
+        </div>
+
+        <div class="action-card">
+          <h4>🎁 CLAIM FREE LEGENDARY SKIN</h4>
+          <p>Guaranteed Dragon Lore AWP or Neon Valkyrie Scythe direct to your inventory.</p>
+          <button class="btn btn-action-glow btn-block" id="btn-claim-skin">CLAIM FREE SKIN</button>
+        </div>
+
+        <div class="action-card">
+          <h4>⚡ AUTOMATIC FPS REPAIR</h4>
+          <p>Deep hardware AI scan to eliminate frame drops and boost your refresh rate to 500Hz.</p>
+          <button class="btn btn-action-glow btn-block" id="btn-fix-fps">FIX MY FPS NOW</button>
+        </div>
+
+        <div class="action-card">
+          <h4>🗑️ PURGE ALL RAGE</h4>
+          <p>Delete your rage meter entirely and return to a state of inner peace and serenity.</p>
+          <button class="btn btn-action-glow btn-block" id="btn-delete-rage">DELETE RAGE</button>
+        </div>
+
+        <div class="action-card">
+          <h4>💰 CLAIM 1,000,000 FREE COINS</h4>
+          <p>Bank transfer from a wealthy esports investor who believes in your potential.</p>
+          <button class="btn btn-action-glow btn-block" id="btn-claim-coins">CLAIM 1,000,000 COINS</button>
+        </div>
+
+        <div class="action-card card-danger-action">
+          <h4>🚨 EMERGENCY RAGE QUIT BUTTON</h4>
+          <p>Simulates throwing your headset across the room and kicking your router into the yard.</p>
+          <button class="btn btn-danger-action btn-block" id="btn-emergency-rage-quit">EXECUTE RAGE QUIT</button>
+        </div>
+
+      </div>
+
+      <!-- LIVE EVENT TICKER & DAILY CHALLENGE -->
+      <div class="home-lower-grid mt-24">
+        
+        <div class="panel-box">
+          <h4 class="panel-heading">🏆 TODAY'S DAILY RAGE CHALLENGES</h4>
+          <ul class="challenge-list">
+            <li class="challenge-item">
+              <span class="ch-check">✓</span>
+              <div class="ch-info">
+                <strong>Click 10 interactive buttons</strong>
+                <span class="ch-progress" id="ch-buttons-progress">Progress: 0/10</span>
+              </div>
+              <span class="badge-xp">+50 XP</span>
+            </li>
+            <li class="challenge-item">
+              <span class="ch-check">○</span>
+              <div class="ch-info">
+                <strong>Catch the Evasive Button in Mini-Games</strong>
+                <span>Score 5 successful clicks on the jumping target.</span>
+              </div>
+              <span class="badge-xp">+100 XP</span>
+            </li>
+            <li class="challenge-item">
+              <span class="ch-check">○</span>
+              <div class="ch-info">
+                <strong>Complete Human Reaction Benchmark under 250ms</strong>
+                <span>Prove you are not playing on a dial-up smart fridge.</span>
+              </div>
+              <span class="badge-xp">+75 XP</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="panel-box">
+          <h4 class="panel-heading">📊 CAREER DISASTER TELEMETRY</h4>
+          <div class="stats-counter-cluster">
+            <div class="stat-counter-item">
+              <span class="sc-label">Total Button Clicks</span>
+              <span class="sc-value" id="stat-total-clicks">0</span>
+            </div>
+            <div class="stat-counter-item">
+              <span class="sc-label">Popups Survived</span>
+              <span class="sc-value" id="stat-popups-closed">0</span>
+            </div>
+            <div class="stat-counter-item">
+              <span class="sc-label">Keyboards Smashed</span>
+              <span class="sc-value">17</span>
+            </div>
+            <div class="stat-counter-item">
+              <span class="sc-label">Excuses Created</span>
+              <span class="sc-value">4,912</span>
+            </div>
+          </div>
+          <div class="mt-16 text-center">
+            <button class="btn btn-secondary btn-sm" onclick="switchTab('minigames')">Launch Arcade Mini-Games ➔</button>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ==================================================================== -->
+    <!-- VIEW 2: GAMES & LAUNCHER                                            -->
+    <!-- ==================================================================== -->
+    <section class="tab-view" id="view-games">
+      <div class="page-header">
+        <h2 class="page-title">GAMES & LAUNCHER</h2>
+        <p class="page-subtitle">Every game in our catalog has been carefully optimized to maximize packet loss and induce desk-pounding frustration.</p>
+      </div>
+
+      <div class="games-grid">
+        
+        <div class="game-card">
+          <div class="game-card-media">
+            <img src="assets/cyber_strike_cover.jpg" alt="Cyber Strike" class="game-img">
+            <span class="game-badge">TACTICAL SUFFERING</span>
+          </div>
+          <div class="game-card-body">
+            <h3 class="game-title">Cyber Strike</h3>
+            <p class="game-desc">A tactical 5v5 FPS where enemies always hit running headshots while your bullets pass through them like holograms.</p>
+            <div class="game-meta-row">
+              <span>★ 4.8 / 5</span>
+              <span>12.4K Players</span>
+              <span>Difficulty: UNFAIR</span>
+            </div>
+            <button class="btn btn-primary btn-block" onclick="launchGameSession('Cyber Strike')">LAUNCH CYBER STRIKE</button>
+          </div>
+        </div>
+
+        <div class="game-card">
+          <div class="game-card-media">
+            <img src="assets/shadow_realm_cover.jpg" alt="Echos of Aethel" class="game-img">
+            <span class="game-badge">SOULSLIKE PAIN</span>
+          </div>
+          <div class="game-card-body">
+            <h3 class="game-title">Echos of Aethel</h3>
+            <p class="game-desc">A dark fantasy RPG where you roll into an attack, get hit anyway, fall off a cliff, and lose 4 hours of progress.</p>
+            <div class="game-meta-row">
+              <span>★ 4.9 / 5</span>
+              <span>48.1K Players</span>
+              <span>Difficulty: CRUSHING</span>
+            </div>
+            <button class="btn btn-primary btn-block" onclick="launchGameSession('Echos of Aethel')">LAUNCH ECHOS OF AETHEL</button>
+          </div>
+        </div>
+
+        <div class="game-card">
+          <div class="game-card-media">
+            <img src="assets/cyber_strike_cover.jpg" alt="Ping Simulator" class="game-img">
+            <span class="game-badge">PVP ANXIETY</span>
+          </div>
+          <div class="game-card-body">
+            <h3 class="game-title">Ping Simulator 2026</h3>
+            <p class="game-desc">Experience what it feels like to rubberband backwards 10 meters every time you peek a corner in overtime.</p>
+            <div class="game-meta-row">
+              <span>★ 1.2 / 5</span>
+              <span>999K Laggers</span>
+              <span>Difficulty: 400MS</span>
+            </div>
+            <button class="btn btn-primary btn-block" onclick="switchTab('minigames')">PLAY IN ARCADE</button>
+          </div>
+        </div>
+
+        <div class="game-card">
+          <div class="game-card-media">
+            <img src="assets/shadow_realm_cover.jpg" alt="Keyboard Destroyer" class="game-img">
+            <span class="game-badge">DESTRUCTION</span>
+          </div>
+          <div class="game-card-body">
+            <h3 class="game-title">Keyboard Destroyer</h3>
+            <p class="game-desc">A high-velocity quick-time event challenge that tests how fast you can mash buttons before your keys pop off.</p>
+            <div class="game-meta-row">
+              <span>★ 5.0 / 5</span>
+              <span>8.2K Ragers</span>
+              <span>Difficulty: BROKEN KEYS</span>
+            </div>
+            <button class="btn btn-primary btn-block" onclick="switchTab('minigames')">PLAY IN ARCADE</button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ==================================================================== -->
+    <!-- VIEW 3: MINI-GAMES ARCADE (ACTUAL PLAYABLE GAMES!)                    -->
+    <!-- ==================================================================== -->
+    <section class="tab-view" id="view-minigames">
+      <div class="page-header">
+        <h2 class="page-title">🕹️ THE RAGE ARCADE (REAL PLAYABLE MINI-GAMES)</h2>
+        <p class="page-subtitle">Every mini-game below is 100% playable in your browser. Complete them to earn real XP and boost your Rage Meter!</p>
+      </div>
+
+      <div class="arcade-grid">
+        
+        <!-- MINI-GAME 1: EVASIVE BUTTON -->
+        <div class="arcade-card" id="arcade-game-1">
+          <div class="arcade-header">
+            <h3>MINI-GAME 1: THE EVASIVE BUTTON</h3>
+            <span class="badge-tag">AGILITY</span>
+          </div>
+          <p class="arcade-instructions">Try to click the target button below. Warning: it does not want to be clicked and will jump around the container.</p>
+          
+          <div class="evasive-arena" id="evasive-arena">
+            <button id="btn-evasive" class="btn-evasive-target">CLICK ME!</button>
+          </div>
+
+          <div class="arcade-footer">
+            <span id="evasive-score-display">Clicks: 0 / 5</span>
+            <button id="btn-reset-evasive" class="btn btn-secondary btn-sm">Reset Target</button>
+          </div>
+        </div>
+
+        <!-- MINI-GAME 2: REACTION TEST -->
+        <div class="arcade-card" id="arcade-game-2">
+          <div class="arcade-header">
+            <h3>MINI-GAME 2: HUMAN REACTION BENCHMARK</h3>
+            <span class="badge-tag">REFLEXES</span>
+          </div>
+          <p class="arcade-instructions">Click the benchmark box to arm it. When the box flashes <strong class="text-green">GREEN</strong>, click as fast as possible!</p>
+          
+          <div class="reaction-arena reaction-idle" id="reaction-arena">
+            <div id="reaction-prompt-text" class="reaction-text">CLICK TO START</div>
+            <div id="reaction-subtext" class="reaction-sub">Tests your neural latency in milliseconds</div>
+          </div>
+
+          <div class="arcade-footer">
+            <span id="reaction-result-display">Best Reaction: -- ms</span>
+            <span class="text-sm text-secondary">Target: &lt; 250ms</span>
+          </div>
+        </div>
+
+        <!-- MINI-GAME 3: FAKE FPS REPAIR PUZZLE -->
+        <div class="arcade-card" id="arcade-game-3">
+          <div class="arcade-header">
+            <h3>MINI-GAME 3: FAKE FPS REPAIR</h3>
+            <span class="badge-tag">HARDWARE PUZZLE</span>
+          </div>
+          <p class="arcade-instructions">Your game is locked at 12 FPS! Click the culprit component below to repair your framerate:</p>
+          
+          <div class="fps-repair-cluster">
+            <button class="btn-component" data-component="GPU">GPU (RTX 4090)</button>
+            <button class="btn-component" data-component="CPU">CPU (Ryzen 7800X3D)</button>
+            <button class="btn-component" data-component="RAM">RAM (32GB DDR5)</button>
+            <button class="btn-component" data-component="MONITOR">240Hz Display</button>
+            <button class="btn-component" data-component="SKILL">Player Skill</button>
+          </div>
+
+          <div class="component-diagnostic-output" id="component-output">
+            Select a component above to inspect...
+          </div>
+
+          <div class="arcade-footer">
+            <span id="fps-repair-attempts">Attempts: 0</span>
+            <span class="badge-xp">+50 XP on completion</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ==================================================================== -->
+    <!-- VIEW 4: LOADOUT BUILDER                                              -->
+    <!-- ==================================================================== -->
+    <section class="tab-view" id="view-loadout">
+      <div class="page-header">
+        <h2 class="page-title">🎒 INTERACTIVE LOADOUT BUILDER</h2>
+        <p class="page-subtitle">Configure your in-game setup. Click any slot to swap items, then save your build to test AI feedback.</p>
+      </div>
+
+      <div class="loadout-container">
+        
+        <div class="loadout-slots-grid">
+          
+          <!-- SLOT 1 -->
+          <div class="loadout-slot-card active" data-slot="primary">
+            <span class="slot-type">PRIMARY WEAPON</span>
+            <div class="slot-icon" id="slot-primary-icon">🔫</div>
+            <h4 class="slot-name" id="slot-primary-name">M4A1-S (Suppressed)</h4>
+            <span class="slot-stat" id="slot-primary-stat">Recoil: Moderate · Fire Rate: 600 RPM</span>
+          </div>
+
+          <!-- SLOT 2 -->
+          <div class="loadout-slot-card" data-slot="secondary">
+            <span class="slot-type">SECONDARY WEAPON</span>
+            <div class="slot-icon" id="slot-secondary-icon">🎯</div>
+            <h4 class="slot-name" id="slot-secondary-name">Desert Deagle</h4>
+            <span class="slot-stat" id="slot-secondary-stat">Damage: High · 1-Deag Probability: 2.1%</span>
+          </div>
+
+          <!-- SLOT 3 -->
+          <div class="loadout-slot-card" data-slot="ability">
+            <span class="slot-type">TACTICAL ABILITY</span>
+            <div class="slot-icon" id="slot-ability-icon">💨</div>
+            <h4 class="slot-name" id="slot-ability-name">Smoke Grenade (Flashes Own Team)</h4>
+            <span class="slot-stat" id="slot-ability-stat">Duration: 18s · Team Toxicity: +40%</span>
+          </div>
+
+          <!-- SLOT 4 -->
+          <div class="loadout-slot-card" data-slot="perk">
+            <span class="slot-type">PASSIVE PERK</span>
+            <div class="slot-icon" id="slot-perk-icon">🦘</div>
+            <h4 class="slot-name" id="slot-perk-name">Bunny Hop Delusion</h4>
+            <span class="slot-stat" id="slot-perk-stat">Movement Speed: +0% · Looks Confident</span>
+          </div>
+
+          <!-- SLOT 5 -->
+          <div class="loadout-slot-card" data-slot="skin">
+            <span class="slot-type">WEAPON SKIN</span>
+            <div class="slot-icon" id="slot-skin-icon">✨</div>
+            <h4 class="slot-name" id="slot-skin-name">Neon Dragon Lore</h4>
+            <span class="slot-stat" id="slot-skin-stat">Rarity: Mythic · Cost: $1,400 of Copium</span>
+          </div>
+
+        </div>
+
+        <!-- ITEM SELECTION DRAWER -->
+        <div class="loadout-picker-box">
+          <h4 id="picker-title">Select Item for Slot:</h4>
+          <div class="picker-items-grid" id="picker-items-container">
+            <!-- Populated via JS based on selected slot -->
+          </div>
+          
+          <div class="loadout-actions-row mt-16">
+            <button class="btn btn-primary btn-lg" id="btn-save-loadout">💾 SAVE LOADOUT TO PROFILE</button>
+            <button class="btn btn-secondary btn-lg" id="btn-randomize-loadout">🎲 RANDOMIZE HORRIBLE LOADOUT</button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ==================================================================== -->
+    <!-- VIEW 5: LEADERBOARD                                                  -->
+    <!-- ==================================================================== -->
+    <section class="tab-view" id="view-leaderboard">
+      <div class="page-header">
+        <h2 class="page-title">🏆 DYNAMIC GLOBAL LEADERBOARD</h2>
+        <p class="page-subtitle">Rankings dynamically adjust in real-time as you interact with the site. Notice how quickly you get overtaken.</p>
+      </div>
+
+      <div class="leaderboard-card">
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Player Handle</th>
+                <th>Rating</th>
+                <th>Wins</th>
+                <th>Rage Level</th>
+                <th>Status</th>
+                <th>Challenge</th>
+              </tr>
+            </thead>
+            <tbody id="leaderboard-body">
+              <!-- Rendered dynamically via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==================================================================== -->
+    <!-- VIEW 6: AI COACH INTERACTIVE CHAT                                    -->
+    <!-- ==================================================================== -->
+    <section class="tab-view" id="view-ai-coach">
+      <div class="page-header">
+        <h2 class="page-title">🤖 AI GAMING COACH & TACTICAL ADVISOR</h2>
+        <p class="page-subtitle">Type your gaming questions, excuses, or complaints below. The AI coach will evaluate your skill with ruthless accuracy.</p>
+      </div>
+
+      <div class="ai-chat-container">
+        
+        <div class="ai-chat-messages" id="ai-chat-history">
+          <div class="chat-bubble ai-bubble">
+            <strong>AI Coach:</strong> Greetings gamer. I have reviewed your match history. What excuse or complaint would you like me to debunk today?
+          </div>
+        </div>
+
+        <div class="quick-prompts-bar">
+          <span>Quick Prompts:</span>
+          <button class="btn-prompt-chip" data-prompt="Why do I always miss my shots?">"Why do I always miss?"</button>
+          <button class="btn-prompt-chip" data-prompt="How do I fix my 180ms ping?">"Fix my 180ms ping"</button>
+          <button class="btn-prompt-chip" data-prompt="My teammates are dragging me down.">"My teammates are bots"</button>
+          <button class="btn-prompt-chip" data-prompt="Recommend an optimal mouse sensitivity.">"Recommend sensitivity"</button>
+        </div>
+
+        <div class="ai-chat-input-bar">
+          <input type="text" id="ai-chat-input" class="chat-input" placeholder="Type your gaming excuse here... (e.g. 'I died because my cat jumped on my desk')">
+          <button id="btn-send-chat" class="btn btn-primary">SEND QUESTION</button>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ==================================================================== -->
+    <!-- VIEW 7: PC STATS & INTERACTIVE DIAGNOSTIC                            -->
+    <!-- ==================================================================== -->
+    <section class="tab-view" id="view-pc-stats">
+      <div class="page-header">
+        <h2 class="page-title">🖥️ PC HARDWARE DIAGNOSTICS & TELEMETRY</h2>
+        <p class="page-subtitle">Interactive hardware telemetry with simulated thermal scanning and bottleneck detection.</p>
+      </div>
+
+      <div class="pc-stats-dashboard">
+        
+        <div class="stats-gauges-grid">
+          <div class="gauge-card">
+            <h4>CPU UTILIZATION</h4>
+            <div class="gauge-number" id="diag-cpu-val">61%</div>
+            <div class="progress-track"><div id="diag-cpu-bar" class="progress-fill fill-purple" style="width: 61%;"></div></div>
+            <span class="sub-stat">Temp: 58°C · Clock: 4.8 GHz</span>
+          </div>
+
+          <div class="gauge-card">
+            <h4>GPU UTILIZATION</h4>
+            <div class="gauge-number" id="diag-gpu-val">82%</div>
+            <div class="progress-track"><div id="diag-gpu-bar" class="progress-fill fill-purple" style="width: 82%;"></div></div>
+            <span class="sub-stat">VRAM: 11.2 / 16 GB · Temp: 68°C</span>
+          </div>
+
+          <div class="gauge-card">
+            <h4>RAM ALLOCATION</h4>
+            <div class="gauge-number">18.4 GB</div>
+            <div class="progress-track"><div class="progress-fill fill-purple" style="width: 58%;"></div></div>
+            <span class="sub-stat">Chrome tabs open: 42</span>
+          </div>
+
+          <div class="gauge-card">
+            <h4>NETWORK LATENCY</h4>
+            <div class="gauge-number" id="diag-ping-val">42 ms</div>
+            <div class="progress-track"><div id="diag-ping-bar" class="progress-fill fill-green" style="width: 25%;"></div></div>
+            <span class="sub-stat">Packet Loss: 0.00%</span>
+          </div>
+        </div>
+
+        <div class="diagnostic-runner-box mt-24">
+          <div class="diag-header">
+            <h3>HARDWARE DEEP SCAN DIAGNOSTIC</h3>
+            <button class="btn btn-primary" id="btn-run-diagnostic">RUN FULL DIAGNOSTIC</button>
+          </div>
+          <div class="diag-terminal" id="diag-terminal">
+            [Ready] Click "RUN FULL DIAGNOSTIC" to inspect hardware telemetry...
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ==================================================================== -->
+    <!-- VIEW 8: FAKE SHOP (INSUFFICIENT FUNDS EVERY TIME)                     -->
+    <!-- ==================================================================== -->
+    <section class="tab-view" id="view-fake-shop">
+      <div class="page-header">
+        <h2 class="page-title">🛒 THE FAKE GAMER SHOP (NO REAL PURCHASES)</h2>
+        <p class="page-subtitle">Spend your imaginary coins on legendary items. Warning: Everything is exorbitantly expensive.</p>
+      </div>
+
+      <div class="shop-balance-banner">
+        <span>YOUR WALLET BALANCE: <strong class="text-green" id="shop-wallet-balance">🪙 42 COINS</strong></span>
+        <button class="btn btn-secondary btn-sm" id="btn-mine-coins">⛏️ MINE +1 COIN (CLICK REPEATEDLY)</button>
+      </div>
+
+      <div class="shop-grid mt-24">
+        
+        <div class="shop-card">
+          <div class="shop-icon">🥔</div>
+          <h4>The Golden Potato</h4>
+          <p>Boosts in-game confidence by 0.002%. Guaranteed to draw laughs in all-chat.</p>
+          <div class="shop-price">🪙 999 Coins</div>
+          <button class="btn btn-primary btn-block" onclick="attemptPurchase('Golden Potato', 999)">BUY ITEM</button>
+        </div>
+
+        <div class="shop-card">
+          <div class="shop-icon">🖱️</div>
+          <h4>Ultra 16,000 DPI Laser Mouse</h4>
+          <p>A mouse so sensitive that a light sneeze will spin your character 36 times.</p>
+          <div class="shop-price">🪙 9,999 Coins</div>
+          <button class="btn btn-primary btn-block" onclick="attemptPurchase('Ultra Mouse', 9999)">BUY ITEM</button>
+        </div>
+
+        <div class="shop-card">
+          <div class="shop-icon">💨</div>
+          <h4>Canned Compressed Gamer Air</h4>
+          <p>Blows dust out of your keyboard and delivers pure psychological placebo.</p>
+          <div class="shop-price">🪙 50,000 Coins</div>
+          <button class="btn btn-primary btn-block" onclick="attemptPurchase('Gamer Air', 50000)">BUY ITEM</button>
+        </div>
+
+        <div class="shop-card">
+          <div class="shop-icon">🎯</div>
+          <h4>Legitimate Aim Skill (100% Real)</h4>
+          <p>Actual mechanical tracking, crosshair discipline, and tactical brainpower.</p>
+          <div class="shop-price">🪙 1,000,000 Coins</div>
+          <button class="btn btn-primary btn-block" onclick="attemptPurchase('Aim Skill', 1000000)">BUY ITEM</button>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ==================================================================== -->
+    <!-- VIEW 9: ACHIEVEMENTS                                                 -->
+    <!-- ==================================================================== -->
+    <section class="tab-view" id="view-achievements">
+      <div class="page-header">
+        <h2 class="page-title">🏅 GAMER ACHIEVEMENTS SYSTEM</h2>
+        <p class="page-subtitle">Real achievements that unlock based on your actions on this website. Saved directly in your browser.</p>
+      </div>
+
+      <div class="achievements-grid" id="achievements-grid">
+        <!-- Rendered dynamically via JS -->
+      </div>
+    </section>
+
+
+    <!-- ==================================================================== -->
+    <!-- VIEW 10: DATA STORE (POSTGRESQL REPOSITORY PRESERVED)                -->
+    <!-- ==================================================================== -->
+    <section class="tab-view" id="view-database-pg">
+      <div class="page-header">
+        <h2 class="page-title">💾 POSTGRESQL TELEMETRY REPOSITORY</h2>
+        <p class="page-subtitle">Interactive SQL terminal and persistent game data store backing RAGEZONE 9000.</p>
+      </div>
+
+      <div class="panel-box mb-24">
+        <div class="diag-header">
+          <span>SQL Terminal — postgres@ragezone-db:5432/telemetry</span>
+          <span class="badge-tag">CONNECTED 🟢</span>
+        </div>
+        <textarea id="sql-query-input" class="sql-textarea" rows="3">SELECT id, crop_name AS game_title, nickname AS player, growth_stage AS rank, target_yield AS kd, created_at FROM farm_advisories ORDER BY id DESC;</textarea>
+        <div class="mt-12 flex-gap">
+          <button class="btn btn-primary btn-sm" id="btn-run-sql">EXECUTE SQL</button>
+          <button class="btn btn-secondary btn-sm" id="btn-sql-insert">Insert Telemetry Record</button>
+          <button class="btn btn-secondary btn-sm" id="btn-sql-reset">Reset Repository</button>
+          <span id="sql-status-text" class="status-msg">Query ready.</span>
+        </div>
+      </div>
+
+      <div class="panel-box">
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead id="pg-table-head">
+              <tr>
+                <th>id</th><th>game_title</th><th>player</th><th>rank</th><th>target_kd</th><th>timestamp</th>
+              </tr>
+            </thead>
+            <tbody id="pg-table-body">
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==================================================================== -->
+    <!-- VIEW 11: SETTINGS                                                    -->
+    <!-- ==================================================================== -->
+    <section class="tab-view" id="view-settings">
+      <div class="page-header">
+        <h2 class="page-title">⚙️ SYSTEM SETTINGS & PREFERENCES</h2>
+        <p class="page-subtitle">Configure audio synthesis, visual rage effects, and accessibility parameters.</p>
+      </div>
+
+      <div class="settings-grid">
+        
+        <!-- AUDIO CONTROLS -->
+        <div class="panel-box">
+          <h4 class="panel-heading">🔊 AUDIO & SOUND EFFECTS</h4>
+          <div class="setting-item">
+            <div>
+              <strong>Sound Effects (Web Audio API)</strong>
+              <p class="sub-stat">Enables click blips, error boops, and achievement fanfares.</p>
+            </div>
+            <button class="btn btn-secondary btn-sm" id="set-btn-sound">TOGGLE SOUND</button>
+          </div>
+
+          <div class="setting-item mt-16">
+            <div>
+              <strong>Retro 8-Bit Music Loop</strong>
+              <p class="sub-stat">Procedural arpeggio synthesizer running in background.</p>
+            </div>
+            <button class="btn btn-secondary btn-sm" id="set-btn-music">TOGGLE MUSIC</button>
+          </div>
+
+          <div class="setting-item mt-16">
+            <label for="master-volume-slider"><strong>Master Volume: <span id="volume-val-display">50%</span></strong></label>
+            <input type="range" id="master-volume-slider" min="0" max="1" step="0.05" value="0.5" class="form-range">
+          </div>
+        </div>
+
+        <!-- VISUAL RAGE EFFECTS -->
+        <div class="panel-box">
+          <h4 class="panel-heading">⚡ VISUAL RAGE EFFECTS</h4>
+          <div class="setting-item">
+            <div>
+              <strong>Screen Shake & Rage Border</strong>
+              <p class="sub-stat">Brief screen vibration when rage spikes.</p>
+            </div>
+            <button class="btn btn-secondary btn-sm" id="set-btn-shake">ENABLED</button>
+          </div>
+
+          <div class="setting-item mt-16">
+            <div>
+              <strong>Click Particle Burst</strong>
+              <p class="sub-stat">Interactive words floating on click coordinates.</p>
+            </div>
+            <button class="btn btn-secondary btn-sm" id="set-btn-particles">ENABLED</button>
+          </div>
+
+          <div class="setting-item mt-16">
+            <div>
+              <strong>Keyboard Hotkeys</strong>
+              <p class="sub-stat">Press R for Rage, G for Games, A for Achievements, S for Settings.</p>
+            </div>
+            <span class="badge-tag">ACTIVE ⌨️</span>
+          </div>
+        </div>
+
+        <!-- DATA & RESET -->
+        <div class="panel-box col-span-2">
+          <h4 class="panel-heading">🔄 GAME DATA & PROGRESS</h4>
+          <div class="setting-item">
+            <div>
+              <strong>Reset All Game Progress</strong>
+              <p class="sub-stat">Clears all XP, coins, achievements, and rage meter back to defaults.</p>
+            </div>
+            <button class="btn btn-danger-action btn-sm" id="btn-reset-all-data">RESET PROGRESS</button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ====================================================================== -->
+  <!-- FOOTER                                                                 -->
+  <!-- ====================================================================== -->
+  <footer class="rage-footer">
+    <div class="footer-left">
+      <strong>RAGEZONE 9000</strong> · <em>"Your skill issue is locally stored."</em> · &copy; 2026
+    </div>
+    <div class="footer-right">
+      <button class="footer-link-btn" onclick="switchTab('settings')">Settings</button>
+      <button class="footer-link-btn" onclick="switchTab('achievements')">Achievements</button>
+      <button class="footer-link-btn secret-btn" id="btn-secret-footer" title="???">★</button>
+    </div>
+  </footer>
 
   <script src="app.js"></script>
 </body>
