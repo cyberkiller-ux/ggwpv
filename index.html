@@ -3,251 +3,299 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🌾🚜 AGRI-CYBER-FARM-9000 ULTRA TURBO DASHBOARD & ADVISORY SYSTEM 🚜🌾</title>
-  <meta name="description" content="The worst visual farming website on the internet, powered by Gemini AI and PostgreSQL">
+  <title>🎮💀 ULTRA GAMER 9000 // DEFINITELY NOT A SCAM // WORST GAMING SITE EVER 💀🎮</title>
+  <meta name="description" content="The internet's most obnoxious, ragebait, chaotic, and badly designed gaming portal powered by Gemini AI and PostgreSQL">
   <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="assets/corn_badge.jpg">
+  <link rel="icon" href="assets/pixel_skull_badge.jpg">
 </head>
-<body>
-  <!-- UGLY TOP SOUND & ALERT CONTROLS -->
-  <aside class="annoying-top-bar" aria-label="Urgent Broadcast">
+<body class="crt-scanlines">
+  
+  <!-- FLOATING ANNOYING TOAST CONTAINER -->
+  <aside id="toast-container" class="toast-stack" aria-live="polite"></aside>
+
+  <!-- POPUP MODAL (RAGEBAIT & COMEDIC) -->
+  <div id="rage-popup-modal" class="popup-modal-overlay" style="display: none;">
+    <div class="popup-window">
+      <div class="popup-titlebar">
+        <span id="popup-title-text">🔥 SYSTEM DIAGNOSTIC</span>
+        <button id="btn-close-popup" class="btn-popup-x">✖</button>
+      </div>
+      <div class="popup-body">
+        <div class="popup-icon" id="popup-icon-display">💀</div>
+        <div class="popup-text-content">
+          <h4 id="popup-heading-text">YOUR GAMING SKILL HAS BEEN ANALYZED</h4>
+          <p id="popup-desc-text">RESULT: QUESTIONABLE AT BEST. RECOMMENDED ACTION: UNINSTALL EVERYTHING.</p>
+        </div>
+      </div>
+      <div class="popup-actions">
+        <button id="btn-popup-action-1" class="btn-popup-click">ACCEPT EMBARRASSMENT</button>
+        <button id="btn-popup-action-2" class="btn-popup-click btn-fake-danger">CRY TO STEAM SUPPORT</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOP TICKER & RAGE STATUS BAR -->
+  <aside class="annoying-top-bar" aria-label="Live Gaming Stream Bar">
     <div class="marquee-wrapper">
       <div class="marquee-text" id="marquee-text">
-        🚨 ATTENTION FARMERS: TRACTOR RACE AT 3:00 PM IN BARN #4 🚜 🌽 BOB DROPPED HIS SHOVEL IN THE POND 💩 GEMINI AI OVERCLOCK LEVEL AT 97% ⚡ RAIN EXPECTED OR MAYBE SUNSHINE 🌧️ DO NOT FEED THE COWS CHIPS 🐄 BEST AGRICULTURAL PORTAL SINCE 1997 🌾🌾🌾
+        🔥 YOU ARE CURRENTLY LOSING 🔥 🎮 BUY NOTHING 💀 SKILL ISSUE DETECTED ⚡ 9999 FPS GUARANTEED* (*NOT ACTUALLY GUARANTEED) 🚨 YOUR RANK IS IN DANGER 💣 PRESS ALT+F4 FOR FREE AIMBOT 🗿 LAG DETECTED: BLAME YOUR INTERNET PROVIDER 🎮 DOWNLOAD MORE RAM FOR FREE 💀
       </div>
     </div>
     <div class="top-bar-controls">
-      <button id="btn-sound-toggle" class="btn-micro" title="Toggle audio synth sounds" aria-label="Toggle retro farm sound">🔊 SOUND: ON</button>
-      <span class="live-clock-badge" id="live-clock">⏰ 00:00:00 AM</span>
-      <span class="user-pill-badge" id="user-display">👤 LOGGED IN: FARMER BOB [LVL 99 CORN MASTER 🌽]</span>
+      <button id="btn-sound-toggle" class="btn-micro" title="Toggle audio synth sounds" aria-label="Toggle retro gaming sound">🔇 SOUND: OFF</button>
+      <span class="live-counter-badge live-pulse" id="live-players-badge">🔴 LIVE: 9,842,109 PLAYERS ONLINE</span>
+      <span class="ping-badge" id="live-ping-badge">PING: 999ms</span>
+      <span class="fps-badge" id="live-fps-badge">FPS: 12</span>
+      <span class="gpu-badge" id="live-gpu-badge">GPU: ON FIRE 🔥 (108°C)</span>
+      <span class="user-pill-badge" id="user-display">👤 GAMER: xX_NoobSlayer_Xx [RANK: TOILET III 🚽]</span>
     </div>
   </aside>
 
-  <!-- CONFUSING CHAOTIC HEADER -->
+  <!-- CONFUSING CHAOTIC GAMING HEADER -->
   <header class="chaos-header">
     <div class="header-left">
-      <img src="assets/corn_badge.jpg" alt="Shiny Corn Web Badge" class="spin-corn-badge" width="85" height="85">
+      <img src="assets/pixel_skull_badge.jpg" alt="Flaming Gaming Skull Badge" class="spin-skull-badge" width="90" height="90">
       <div class="title-cluster">
-        <h1 class="welcome-heading">WELCOME FARMER!!! 🌾🚜</h1>
-        <p class="sub-welcome-blurb">★ ★ ★ OFFICIAL GLOBAL CYBERNETIC AGRICULTURAL MANAGEMENT & ARTIFICIAL INTELLIGENCE PORTAL ★ ★ ★</p>
+        <h1 class="welcome-heading">ULTRA GAMER 9000 // DEFINITELY NOT A SCAM 🎮💀</h1>
+        <p class="sub-welcome-blurb">★ ★ ★ THE INTERNET'S WORST GAMING WEBSITE — ZERO REFUNDS, 100% PURE SALT ★ ★ ★</p>
       </div>
     </div>
 
     <div class="header-center-decor">
-      <span class="badge-chaotic-1">✨ 100% BUG FREE (EXCEPT WEEVILS) 🐛</span>
-      <span class="badge-chaotic-2">💾 POSTGRESQL 16.4 CONNECTED</span>
-      <span class="badge-chaotic-3">⚡ GEMINI 1.5 PRO ENGAGED</span>
+      <span class="badge-chaotic-1">⚠️ WARNING: YOUR FPS IS EMBARRASSING</span>
+      <span class="badge-chaotic-2">🐘 POSTGRESQL 16.4 TELEMETRY CONNECTED</span>
+      <span class="badge-chaotic-3">⚡ GEMINI 1.5 PRO COACH BOT ENGAGED</span>
     </div>
 
     <div class="header-right-actions">
-      <button class="btn-mega-distraction" id="btn-turbo-harvest" title="Do not press this unless ready">
-        🚜 ACTIVATE EMERGENCY TURBO HARVEST MODE 🚨
+      <button class="btn-mega-distraction" id="btn-rage-quit-top" title="Emergency escape">
+        💀 EMERGENCY RAGE QUIT BUTTON (DO NOT PRESS) 🚨
       </button>
-      <span class="tiny-confusing-text">⚠️ Warning: May cause tractor to levitate 2 inches</span>
+      <div class="fake-search-row">
+        <input type="text" id="fake-search-input" class="fake-search-ctl" placeholder="Search for more RAM or skill...">
+        <button id="btn-fake-search" class="btn-micro">FIND</button>
+      </div>
+      <span class="tiny-confusing-text">🔔 NOTIFICATIONS: (999+) UNREAD INSULTS</span>
     </div>
   </header>
 
-  <!-- CONVOLUTED WEIRD NAVIGATION -->
+  <!-- COMPLETELY OBNOXIOUS NAVIGATION -->
   <nav class="chaotic-nav" aria-label="Main Navigation">
     <div class="nav-links-cluster">
       <button class="nav-btn active" data-tab="dashboard" id="nav-dashboard">
-        🏠 HOME DASHBOARD 🌾 <span class="hot-badge">POPULAR!</span>
+        🏠 HOME ARENA 🎮 <span class="hot-badge">POPULAR!</span>
       </button>
       <button class="nav-btn" data-tab="advisory-form" id="nav-advisory-form">
-        🚜 AI ADVISORY FORM 🤖 <span class="flash-badge">HOT NEW!</span>
+        🔥 AI STRATEGY & LOADOUT 🤖 <span class="flash-badge">HOT META!</span>
       </button>
       <button class="nav-btn" data-tab="advisory-results" id="nav-advisory-results">
-        📜 ADVISORY RESULTS 🚨 <span class="badge-counter" id="advisory-count-badge">1</span>
+        📜 AI VERDICTS & TACTICS 🚨 <span class="badge-counter" id="advisory-count-badge">1</span>
+      </button>
+      <button class="nav-btn" data-tab="leaderboard" id="nav-leaderboard">
+        🏆 LEADERBOARD 💩 <span class="nerd-badge">YOU: #9,999,999</span>
       </button>
       <button class="nav-btn" data-tab="database-pg" id="nav-database">
-        🐘 POSTGRESQL FARM DB 💾 <span class="nerd-badge">RAW SQL</span>
+        🛒 STORE / SQL DB 💾 <span class="nerd-badge">RAW TELEMETRY</span>
       </button>
       <button class="nav-btn" data-tab="analytics" id="nav-analytics">
-        📈 WEIRD CROP CHARTS 📊
+        📈 PC HEALTH & STATS 📊
+      </button>
+      <button class="nav-btn fake-disabled-btn" data-tab="ragebait-shop" id="nav-ragebait-shop" title="This button looks completely disabled but works!">
+        🎁 FREE RTX 5090 (LOCKED)
       </button>
       <button class="nav-btn" data-tab="settings" id="nav-settings">
-        ⚙️ AUTH & OVERCLOCK ⚡
+        ⚙️ SETTINGS & PROFILE ⚡
       </button>
     </div>
     <div class="nav-random-filler">
       <span class="blinking-star">⭐</span>
-      <span class="filler-marquee">FARM TIP: PLANTS NEED DIRT & SUN!</span>
+      <span class="filler-marquee">GAMER ADVICE: HAVE YOU TRIED TURNING YOUR MONITOR ON?</span>
       <span class="blinking-star">⭐</span>
     </div>
   </nav>
 
-  <!-- EMOJI SEPARATOR -->
-  <div class="emoji-separator">🌾🌽🥕🚜🐄🌱💩🌾🌽🥕🚜🐄🌱💩🌾🌽🥕🚜🐄🌱💩</div>
+  <!-- EMOJI SEPARATOR (GAMING EDITION) -->
+  <div class="emoji-separator">🎮💀🔥⚡💣👾🗿🕹️💀💩🎮💀🔥⚡💣👾🗿🕹️💀💩🎮💀🔥⚡💣</div>
 
   <!-- MAIN VIEWPORT CONTAINER -->
   <main class="main-chaotic-layout" id="main-content">
 
     <!-- ========================================== -->
-    <!-- VIEW 1: DASHBOARD                          -->
+    <!-- VIEW 1: HOME ARENA & HERO DASHBOARD        -->
     <!-- ========================================== -->
     <section class="tab-pane active" id="view-dashboard" aria-labelledby="nav-dashboard">
       
-      <!-- GIANT UNNECESSARY BANNER -->
+      <!-- GIANT RAGE HERO BANNER -->
       <div class="giant-unnecessary-banner">
         <div class="banner-image-container">
-          <img src="assets/farmer_tractor_banner.jpg" alt="Farmer Ted driving tractor" class="banner-hero-img">
+          <img src="assets/gamer_rage_banner.jpg" alt="Enraged gamer screaming at computer screen" class="banner-hero-img">
         </div>
         <div class="banner-content">
-          <h2 class="banner-headline">⚠️ ATTENTION ALL TRACTOR OPERATORS & COW MANAGERS ⚠️</h2>
-          <p class="banner-subtext">TODAY'S FARM ADVISORY IS BROADCASTING LIVE ACROSS ALL SATELLITE BANDS. IF YOU SEE A GOPHER, REPORT IMMEDIATELY TO GEMINI AI.</p>
+          <h2 class="banner-headline"># WELCOME TO THE WORST GAMING WEBSITE ON EARTH</h2>
+          <p class="banner-subtext">YOUR FPS IS LOW. YOUR RANK IS WORSE. YOUR LIFE CHOICES ARE QUESTIONABLE. 99% OF PLAYERS BLAME LAG FOR EVERYTHING.</p>
+          
+          <!-- FAKE COUNTDOWNS & FAKE TOURNAMENTS -->
+          <div class="fake-tourney-ticker">
+            <span>🏆 WORLD NOOB CUP: PRIZE POOL $0.14</span> |
+            <span>⏳ SEASON 99 ENDS IN: <strong id="fake-countdown">00:03:19:42</strong></span> |
+            <span>🎁 GIVEAWAY: MOUSEPAD SIGNED BY NOBODY</span>
+          </div>
+
+          <!-- THE GIANT PRO BUTTON & COMPETING CTAS -->
           <div class="competing-ctas">
-            <button class="cta-btn cta-1" id="cta-click-me">👉 CLICK ME FIRST!!! 👈</button>
-            <button class="cta-btn cta-2" id="cta-no-click-me">⛔ NO CLICK ME INSTEAD! ⛔</button>
-            <button class="cta-btn cta-3" id="cta-urgent">🚨 URGENT CORN REQUIREMENT 🚨</button>
+            <button class="btn-giant-pro-cta" id="btn-become-pro">
+              👑 CLICK HERE TO BECOME PRO 👑
+            </button>
+            <button class="cta-btn cta-1" id="cta-click-me">🔥 DO NOT CLICK THIS 🔥</button>
+            <button class="cta-btn cta-2" id="cta-free-coins">💰 CLAIM 999,999 COINS 💰</button>
+            <button class="cta-btn cta-3" id="cta-boost-fps">⚡ GET 500 FPS NOW ⚡</button>
           </div>
         </div>
       </div>
 
-      <!-- AI POWER LEVEL INDICATOR: 97% -->
-      <div class="ai-power-level-container">
-        <div class="power-level-header">
-          <span class="power-title">⚡ COMPLETELY UNNECESSARY AI POWER LEVEL: <strong id="power-display">97%</strong> ⚡</span>
-          <span class="overheat-badge" id="power-status-badge">NORMAL CYBERNETIC HUM 🟢</span>
-        </div>
-        <div class="meter-track">
-          <div class="meter-bar" id="power-bar" style="width: 97%;">
-            <span class="meter-particles">⚡💥⚡💥⚡</span>
-          </div>
-        </div>
-        <div class="power-actions">
-          <button class="btn-overclock" id="btn-overclock">🚀 OVERCLOCK FARM AI TO 9999% (DANGEROUS) 🚀</button>
-          <button class="btn-micro" id="btn-reset-power">Reset to 97%</button>
-          <span class="tiny-text-annoying">AI Core Temperature: 104.2°F (Acceptable for corn calculations)</span>
-        </div>
-      </div>
-
-      <!-- FLASHY STATISTIC CARDS (ASYMMETRICAL & UGLY) -->
-      <h3 class="section-screaming-title">💥 REAL-TIME FARM HYPER-METRICS & VIBES 💥</h3>
+      <!-- FAKE GAMING STATISTICS DASHBOARD -->
+      <h3 class="section-screaming-title">💥 LIVE TELEMETRY: REASONS YOU ARE CURRENTLY LOSING 💥</h3>
       <div class="stats-chaotic-grid">
         
-        <div class="stat-card stat-cows">
-          <span class="random-top-tag">BARN SECTION 3B</span>
-          <div class="stat-icon-huge">🐄</div>
-          <div class="stat-number">412</div>
-          <div class="stat-label">TOTAL COWS (THEY ARE HAPPY & CHEWING LOUDLY)</div>
-          <div class="stat-footer-awkward">Milk Production: 1,840 Gallons / Mood: Satisfactory 🥛</div>
+        <div class="stat-card stat-ragequits">
+          <span class="random-top-tag">SERVER-WIDE COUNTER</span>
+          <div class="stat-icon-huge">💀💥</div>
+          <div class="stat-number" id="stat-rage-count">847,291</div>
+          <div class="stat-label">TOTAL RAGE QUITS TODAY</div>
+          <div class="stat-footer-awkward">Recent quit reason: "Enemy breathed on me" 😤</div>
         </div>
 
-        <div class="stat-card stat-soil">
-          <span class="random-top-tag tag-green">SENSOR #82-SOIL</span>
-          <div class="stat-icon-huge">💧</div>
-          <div class="stat-number">78.4%</div>
-          <div class="stat-label">SOIL MOISTURE (EXTREMELY SLOPPY & WET ENOUGH)</div>
-          <div class="stat-footer-awkward">Mud Viscosity: High / Boot Suction Index: 8.9 👢</div>
+        <div class="stat-card stat-keyboards">
+          <span class="random-top-tag tag-hazard">PHYSICAL CASUALTIES</span>
+          <div class="stat-icon-huge">⌨️🔨</div>
+          <div class="stat-number">13</div>
+          <div class="stat-label">KEYBOARDS DESTROYED</div>
+          <div class="stat-footer-awkward">Estimated damage: $1,420 / Desk integrity: Wobbly 🪵</div>
         </div>
 
-        <div class="stat-card stat-money">
-          <span class="random-top-tag tag-pink">FARM ACCOUNTING</span>
-          <div class="stat-icon-huge">💸</div>
-          <div class="stat-number">$98,421.99</div>
-          <div class="stat-label">MONEY SPENT ON FERTILIZER & NPK AMENDMENTS</div>
-          <div class="stat-footer-awkward">Farmer Bank Account Status: CRYING SILENTLY 😭</div>
+        <div class="stat-card stat-skill">
+          <span class="random-top-tag tag-pink">AI RATING</span>
+          <div class="stat-icon-huge">📉💩</div>
+          <div class="stat-number">-42</div>
+          <div class="stat-label">OFFICIAL SKILL LEVEL</div>
+          <div class="stat-footer-awkward">Lower than a cardboard box / Next tier: Wood 0 🪵</div>
         </div>
 
-        <div class="stat-card stat-pest">
-          <span class="random-top-tag tag-hazard">CRITICAL EMERGENCY</span>
-          <div class="stat-icon-huge">🐛🔥</div>
-          <div class="stat-number">CODE RED</div>
-          <div class="stat-label">PEST ALERT LEVEL: THE WEEVILS ARE PLOTTING SOMETHING</div>
-          <div class="stat-footer-awkward">Locust Count: 14 / Aphid Threat: Severe 🦗</div>
+        <div class="stat-card stat-losses">
+          <span class="random-top-tag tag-green">WIN/LOSS MATRIX</span>
+          <div class="stat-icon-huge">🏆😭</div>
+          <div class="stat-number">1 / 9999</div>
+          <div class="stat-label">VICTORIES VS LOSSES: YES</div>
+          <div class="stat-footer-awkward">Victory was against an offline tutorial bot 🤖</div>
         </div>
 
       </div>
 
-      <!-- WEIRD CROP CHARTS & HARVEST DASHBOARD -->
-      <div class="dashboard-middle-row">
+      <!-- MIDDLE ROW: TERRIBLE GAME CARDS & QUICK TRYHARD ACTION -->
+      <h3 class="section-screaming-title">🎮 FEATURED TERRIBLE GAMES YOU SHOULD PROBABLY UNINSTALL 🎮</h3>
+      <div class="game-cards-grid">
         
-        <!-- CHART CONTAINER 1: WEIRD BARS -->
-        <div class="weird-chart-container">
-          <h4 class="chart-screaming-heading">📊 WEIRD CROP DISTRIBUTION & HARVEST VOLUME (RANDOM COLORS) 🌽</h4>
-          <p class="chart-awkward-sub">Notice how every crop has a completely mismatched neon color scheme as demanded by farming standards:</p>
-          
-          <div class="css-weird-bar-chart" id="crop-bar-chart">
-            <div class="bar-col col-corn">
-              <span class="bar-val">12,500 bu</span>
-              <div class="bar-fill" style="height: 85%;"></div>
-              <span class="bar-name">🌽 NEON PURPLE CORN</span>
-            </div>
-            <div class="bar-col col-wheat">
-              <span class="bar-val">9,800 bu</span>
-              <div class="bar-fill" style="height: 68%;"></div>
-              <span class="bar-name">🌾 HOT PINK WHEAT</span>
-            </div>
-            <div class="bar-col col-tomato">
-              <span class="bar-val">4,200 crates</span>
-              <div class="bar-fill" style="height: 45%;"></div>
-              <span class="bar-name">🍅 SLIME GREEN TOMATO</span>
-            </div>
-            <div class="bar-col col-potato">
-              <span class="bar-val">14,900 sacks</span>
-              <div class="bar-fill" style="height: 95%;"></div>
-              <span class="bar-name">🥔 CYAN POTATO</span>
-            </div>
-            <div class="bar-col col-carrot">
-              <span class="bar-val">3,100 crates</span>
-              <div class="bar-fill" style="height: 35%;"></div>
-              <span class="bar-name">🥕 SCORCHING ORANGE CARROT</span>
-            </div>
-            <div class="bar-col col-soy">
-              <span class="bar-val">8,400 bu</span>
-              <div class="bar-fill" style="height: 60%;"></div>
-              <span class="bar-name">🌱 BLINDING YELLOW SOY</span>
-            </div>
-          </div>
-          <div class="chart-legend-chaotic">
-            <span class="legend-chip chip-1">■ Corn (Purple)</span>
-            <span class="legend-chip chip-2">■ Wheat (Pink)</span>
-            <span class="legend-chip chip-3">■ Tomato (Lime)</span>
-            <span class="legend-chip chip-4">■ Potato (Cyan)</span>
-            <span class="legend-chip chip-5">■ Carrot (Orange)</span>
-            <span class="legend-chip chip-6">■ Soy (Yellow)</span>
-          </div>
+        <div class="game-card card-fortnite">
+          <div class="card-badge">POPULAR TRASH</div>
+          <h4 class="game-title">FORTNITE BUT WORSE</h4>
+          <div class="game-rating">Rating: ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ / 5</div>
+          <p class="game-stat-line">Players: <strong>8,421,900 screaming 8-year-olds</strong></p>
+          <p class="game-stat-line">System Req: <strong>RTX 5090 for 12 FPS</strong></p>
+          <p class="game-stat-line">Difficulty: <strong>UNBEARABLE BUILDING</strong></p>
+          <button class="btn-game-play" onclick="triggerRageJoke('fortnite')">🕹️ PLAY NOW (180GB DOWNLOAD) 🕹️</button>
         </div>
 
-        <!-- ASYMMETRICAL QUICK ACTION BOX -->
-        <div class="weird-side-card">
-          <h4 class="card-wobbly-title">⚡ FAST DISPATCH ADVISORY 🚜</h4>
-          <p class="tiny-text">Need immediate AI agronomy right this second without thinking?</p>
-          <div class="nested-ugly-box">
-            <div class="nested-inner-box">
-              <label for="quick-crop-select" class="screaming-label">SELECT CROP IN A HURRY:</label>
-              <select id="quick-crop-select" class="ugly-select">
-                <option value="Sweet Corn">🌽 Sweet Corn (Field #1)</option>
-                <option value="Durum Wheat">🌾 Durum Wheat (North Hill)</option>
-                <option value="Roma Tomato">🍅 Roma Tomatoes (Greenhouse A)</option>
-                <option value="Russet Potato">🥔 Russet Potatoes (Muddy Bog)</option>
-              </select>
-              <button class="btn-ugly-action" id="btn-quick-advise">🤖 RUN INSTANT GEMINI ADVISORY NOW 🌾</button>
-            </div>
-          </div>
-          <div class="decorative-farm-strip">
-            <span>🚜💨</span><span>🐄💤</span><span>🌽✨</span><span>🌾🔥</span>
-          </div>
+        <div class="game-card card-cs">
+          <div class="card-badge badge-red">100% SALTY</div>
+          <h4 class="game-title">COUNTER STRIKE: EMOTIONAL DAMAGE</h4>
+          <div class="game-rating">Rating: 💀💀💀💀💀 / 5</div>
+          <p class="game-stat-line">Players: <strong>4,294,967,295 Russian mic-spammers</strong></p>
+          <p class="game-stat-line">System Req: <strong>Liquid nitrogen cooling</strong></p>
+          <p class="game-stat-line">Difficulty: <strong>WALLHACKERS EVERYWHERE</strong></p>
+          <button class="btn-game-play" onclick="triggerRageJoke('cs')">🕹️ OPEN CRATE ($2.49 FOR GREY SKIN) 🕹️</button>
+        </div>
+
+        <div class="game-card card-elden">
+          <div class="card-badge badge-yellow">SUFFERING</div>
+          <h4 class="game-title">ELDEN RAGE</h4>
+          <div class="game-rating">Rating: 💩💩💩💩💩 / 5</div>
+          <p class="game-stat-line">Players: <strong>12 survivors</strong></p>
+          <p class="game-stat-line">System Req: <strong>Spare controller in case you throw it</strong></p>
+          <p class="game-stat-line">Difficulty: <strong>YOU WILL CRY TO YOUR MOM</strong></p>
+          <button class="btn-game-play" onclick="triggerRageJoke('elden')">🕹️ DIE IN 2 SECONDS 🕹️</button>
+        </div>
+
+        <div class="game-card card-gta">
+          <div class="card-badge badge-cyan">ADULT SIMULATOR</div>
+          <h4 class="game-title">GRAND THEFT AUTO: RESPONSIBILITY</h4>
+          <div class="game-rating">Rating: ⭐ / 5</div>
+          <p class="game-stat-line">Players: <strong>7 accountants</strong></p>
+          <p class="game-stat-line">System Req: <strong>1TB of loading screens</strong></p>
+          <p class="game-stat-line">Difficulty: <strong>TAXES, COMMUTE & MORTGAGE</strong></p>
+          <button class="btn-game-play" onclick="triggerRageJoke('gta')">🕹️ PAY IN-GAME UTILITY BILLS 🕹️</button>
         </div>
 
       </div>
 
-      <!-- CRAMPED DIFFICULT-TO-READ TABLE -->
+      <!-- FAKE SYSTEM STATUS (GAMING PC HEALTH CHECK) -->
+      <div class="system-status-box">
+        <h3 class="status-screaming-heading">🔥 GAMING PC HEALTH CHECK: OVERFLOWING DIAGNOSTIC 🖥️</h3>
+        <p class="tiny-text">Your components are currently screaming for mercy. Hardware telemetry gathered in real-time:</p>
+        
+        <div class="hardware-bars-cluster">
+          
+          <div class="hw-row">
+            <span class="hw-name">CPU USAGE:</span>
+            <div class="hw-meter-outer">
+              <div class="hw-meter-inner hw-over-100" style="width: 102%;">102% (BURSTING CONTAINER)</div>
+            </div>
+          </div>
+
+          <div class="hw-row">
+            <span class="hw-name">GPU USAGE:</span>
+            <div class="hw-meter-outer">
+              <div class="hw-meter-inner hw-over-140" style="width: 147%;">147% (GPU ON ACTUAL FIRE 🔥)</div>
+            </div>
+          </div>
+
+          <div class="hw-row">
+            <span class="hw-name">RAM CAPACITY:</span>
+            <div class="hw-text-status">WHY DO YOU HAVE 94 CHROME TABS OPEN??? 💾</div>
+          </div>
+
+          <div class="hw-row">
+            <span class="hw-name">SSD STATUS:</span>
+            <div class="hw-text-status">SCREAMING (99.9% FULL OF 400GB CALL OF DUTY SHADERS) 💽</div>
+          </div>
+
+          <div class="hw-row">
+            <span class="hw-name">PC TEMPERATURE:</span>
+            <div class="hw-text-status" style="color: #ff0000; font-weight: bold;">108°C — PROBABLY FINE FOR COOKING EGGS 🍳</div>
+          </div>
+
+        </div>
+        <div class="hw-actions">
+          <button class="btn-ugly-action" id="btn-download-ram">💾 DOWNLOAD 128GB EXTRA RAM TO DESKTOP</button>
+          <button class="btn-micro" id="btn-kill-background-apps">Kill 4,891 Steam Background Services</button>
+        </div>
+      </div>
+
+      <!-- CRAMPED DIFFICULT-TO-READ MATCH TELEMETRY TABLE -->
       <div class="cramped-table-container">
-        <h4 class="table-screaming-title">📋 CRAMPED FARM RECORD LEDGER & LOGS (DIFFICULT TO READ ON PURPOSE) 📋</h4>
+        <h4 class="table-screaming-title">📋 CRAMPED MATCH TELEMETRY & TILT LEDGER (DIFFICULT TO READ ON PURPOSE) 📋</h4>
         <div class="table-scroll-wrapper">
           <table class="clashing-table" id="dashboard-recent-table">
             <thead>
               <tr>
-                <th>ID #</th>
+                <th>MATCH #</th>
                 <th>TIMESTAMP (UTC)</th>
-                <th>FIELD / SECTOR</th>
-                <th>CROP NAME</th>
-                <th>SOIL PH</th>
-                <th>MOISTURE</th>
-                <th>NPK APPLIED</th>
-                <th>ACTION STATUS</th>
-                <th>INSPECTOR</th>
+                <th>TARGET GAME</th>
+                <th>GAMER TAG</th>
+                <th>RANK</th>
+                <th>RAGE LEVEL</th>
+                <th>TARGET K/D</th>
+                <th>STATUS</th>
+                <th>AI VERDICT</th>
               </tr>
             </thead>
             <tbody id="dashboard-table-body">
@@ -255,20 +303,20 @@
             </tbody>
           </table>
         </div>
-        <p class="cramped-table-note">Table note: Font size is intentionally 11px and alternating rows are magenta and cyan to maximize eye fatigue. You are welcome.</p>
+        <p class="cramped-table-note">Table note: Font size is intentionally 11px and alternating rows are magenta and cyan to maximize ocular damage. You are welcome.</p>
       </div>
 
     </section>
 
 
     <!-- ========================================== -->
-    <!-- VIEW 2: ADVISORY FORM                      -->
+    <!-- VIEW 2: AI STRATEGY & LOADOUT ADVISORY     -->
     <!-- ========================================== -->
     <section class="tab-pane" id="view-advisory-form" aria-labelledby="nav-advisory-form">
       
       <div class="form-chaotic-header">
-        <h2 class="form-main-heading">🚜🤖🌾 ULTRA-COMPLEX AGRONOMIC ADVISORY FORM (FRUSTRATING BUT TECHNICAL) 🌾🤖🚜</h2>
-        <p class="form-warning-strip">🚨 PLEASE FILL OUT ALL CHAOTIC CONTAINERS BELOW. ALL VALIDATION IS ACTIVE AND STRICT. NO CROPS WILL BE LEFT UNCOUNSELED. 🚨</p>
+        <h2 class="form-main-heading">🎮🤖🔥 ULTRA-TRYHARD AI GAMER STRATEGY & LOADOUT ADVISORY 🤖🔥🎮</h2>
+        <p class="form-warning-strip">🚨 WARNING: SUBMITTING THIS FORM WILL TRIGGER DEEP GEMINI COGNITION & POSTGRESQL TELEMETRY. NO SKILL ISSUES WILL BE SPARED. 🚨</p>
       </div>
 
       <!-- FEEDBACK / VALIDATION ALERT BOX -->
@@ -276,221 +324,220 @@
 
       <form id="agri-advisory-form" class="terrible-form" novalidate>
         
-        <!-- CONTAINER 1: CROP SELECTION & BOTANICAL VIBES -->
+        <!-- CONTAINER 1: GAME SELECTION & CLAN IDENTIFIERS -->
         <fieldset class="form-weird-fieldset set-1">
-          <legend class="legend-ugly">🌿 1. CROP SELECTION & BOTANICAL VIBES 🌿</legend>
+          <legend class="legend-ugly">🎯 1. TARGET GAME & GAMER IDENTIFIERS 🎯</legend>
           
           <div class="random-form-row">
             <div class="form-field-group width-37">
-              <label for="crop-type" class="ugly-label">SELECT PRIMARY TARGET CROP: <span class="req-star">*</span></label>
+              <label for="crop-type" class="ugly-label">SELECT YOUR CURRENT SUFFERING (GAME): <span class="req-star">*</span></label>
               <select id="crop-type" name="cropType" class="ugly-input-ctl" required aria-required="true">
-                <option value="">-- CLICK TO PICK A CROP OR BE DOOMED --</option>
-                <option value="Corn">🌽 High-Yield Hybrid Corn (Zea mays)</option>
-                <option value="Wheat">🌾 Hard Winter Durum Wheat (Triticum)</option>
-                <option value="Rice">🌾 Paddy Basmati Rice (Oryza sativa)</option>
-                <option value="Tomato">🍅 Heritage Roma Tomato (Solanum lycopersicum)</option>
-                <option value="Potato">🥔 Russet Burbank Potato (Solanum tuberosum)</option>
-                <option value="Soybean">🌱 Glyphosate-Tolerant Soybean</option>
-                <option value="Cotton">☁️ Pima Long-Staple Cotton</option>
-                <option value="Carrot">🥕 Imperator Crunchy Orange Carrot</option>
+                <option value="">-- PICK A GAME OR REMAIN HARDSTUCK FOREVER --</option>
+                <option value="Counter-Strike 2">🔫 Counter-Strike 2 (Dust II Only)</option>
+                <option value="Fortnite">🏰 Fortnite (No Build / Crank 90s)</option>
+                <option value="Elden Ring">🗡️ Elden Ring / Dark Souls (Pain Simulator)</option>
+                <option value="Valorant">🎯 Valorant (Insta-Lock Duelist)</option>
+                <option value="League of Legends">🧙 League of Legends (Toxic Wasteland)</option>
+                <option value="Grand Theft Auto VI">🚗 GTA VI (Speculative Coping)</option>
+                <option value="Roblox">🧱 Roblox (Toilet Tower Defense)</option>
+                <option value="Minecraft">⛏️ Minecraft (Hardcore World Died to Bat)</option>
               </select>
-              <span class="ugly-helper-text">Helper note: If you pick wheat, ensure your combine harvester doesn't have an oil leak.</span>
+              <span class="ugly-helper-text">Helper note: If you select League of Legends, your mental health cannot be refunded.</span>
             </div>
 
             <div class="form-field-group width-63">
-              <label for="crop-variety-nickname" class="ugly-label">CROP VARIETY NICKNAME / PET NAME: (OPTIONAL)</label>
-              <input type="text" id="crop-variety-nickname" name="cropNickname" class="ugly-input-ctl" placeholder="e.g. Big Bertha Corn 2026 or Uncle Joe's Spuds">
-              <span class="ugly-helper-text">Farmers who name their vegetables experience a 4.2% subjective morale boost.</span>
+              <label for="crop-variety-nickname" class="ugly-label">GAMER TAG / STEAM NICKNAME / CLAN TAG: (OPTIONAL)</label>
+              <input type="text" id="crop-variety-nickname" name="cropNickname" class="ugly-input-ctl" placeholder="e.g. xX_QuickScopeGod420_Xx or Mom_Said_Dinner_Is_Ready">
+              <span class="ugly-helper-text">Gamers with xX_ surrounding their username have a 3.1% higher likelihood of rage-quitting.</span>
             </div>
           </div>
 
           <div class="random-form-row">
-            <div class="form-field-group width-22">
-              <label for="growth-stage" class="ugly-label">GROWTH STAGE: <span class="req-star">*</span></label>
+            <div class="form-field-group width-28">
+              <label for="growth-stage" class="ugly-label">CURRENT COMPETITIVE RANK: <span class="req-star">*</span></label>
               <select id="growth-stage" name="growthStage" class="ugly-input-ctl" required>
-                <option value="Seedling">🌱 Seedling / Sprouting (V1-V3)</option>
-                <option value="Vegetative" selected>🌿 Vegetative Bushy Growth</option>
-                <option value="Flowering">🌸 Flowering / Tasseling</option>
-                <option value="Fruit Formation">🍅 Fruit / Grain Filling</option>
-                <option value="Maturity">🌾 Pre-Harvest Maturity</option>
+                <option value="Cardboard IV">📦 Cardboard IV (Below Dirt)</option>
+                <option value="Toilet III" selected>🚽 Toilet III (Hardstuck)</option>
+                <option value="Wood Division 0">🪵 Wood Division 0</option>
+                <option value="Silver Pretender">🥈 Silver (Believes they are Radiant)</option>
+                <option value="Sweaty Diamond">💎 Sweaty Diamond (Needs Shower)</option>
               </select>
             </div>
 
-            <div class="form-field-group width-48">
-              <label for="crop-mood" class="ugly-label">CROP EMOTIONAL MOOD (REQUIRED BY AI PROTOCOL):</label>
+            <div class="form-field-group width-42">
+              <label for="crop-mood" class="ugly-label">CURRENT RAGE & TILT LEVEL (AI REQUIREMENT):</label>
               <select id="crop-mood" name="cropMood" class="ugly-input-ctl">
-                <option value="Overjoyed">😊 Overjoyed and reaching for the clouds</option>
-                <option value="Moderately Thirsty">😐 Moderately Thirsty & contemplating life</option>
-                <option value="Deeply Stressed">😫 Deeply Stressed about local nitrogen shortages</option>
-                <option value="Plotting Rebellion">🌵 Plotting Rebellion with nearby dandelion weeds</option>
+                <option value="Mild Annoyance">😐 Mild Annoyance (Sighing into Discord)</option>
+                <option value="Desk Pounding">👊 Desk Pounding (Mug Spilled)</option>
+                <option value="Headset Snapped in Half">🎧 Headset Snapped in Half (Screaming)</option>
+                <option value="Uninstalling Windows">💀 Uninstalling Windows & Throwing PC into River</option>
               </select>
-              <span class="ugly-helper-text">The Gemini agricultural engine considers vegetative mood very seriously.</span>
+              <span class="ugly-helper-text">The Gemini strategic coach calculates sensitivity adjustments based on tilt levels.</span>
             </div>
 
             <div class="form-field-group width-30">
-              <label for="target-yield" class="ugly-label">TARGET DESIRED YIELD (KG/HA): <span class="req-star">*</span></label>
-              <input type="number" id="target-yield" name="targetYield" class="ugly-input-ctl" min="100" max="50000" value="6500" required>
-              <span class="ugly-helper-text">Do not type 999999 or your silo will explode.</span>
+              <label for="target-yield" class="ugly-label">TARGET DESIRED K/D RATIO: <span class="req-star">*</span></label>
+              <input type="number" id="target-yield" name="targetYield" class="ugly-input-ctl" min="0.1" max="100" step="0.1" value="2.5" required>
+              <span class="ugly-helper-text">Realistic goals only. Do not type 999.0 or the AI will laugh at you.</span>
             </div>
           </div>
 
         </fieldset>
 
-        <!-- CONTAINER 2: DIRT & TERRA FIRMA METRICS -->
+        <!-- CONTAINER 2: HARDWARE, RIG & TELEMETRY -->
         <fieldset class="form-weird-fieldset set-2">
-          <legend class="legend-ugly">💩 2. DIRT, MUD & TERRA FIRMA CHEMISTRY 💩</legend>
+          <legend class="legend-ugly">🖥️ 2. POTATO HARDWARE, RIG & PERIPHERALS 🖥️</legend>
           
           <div class="random-form-row">
             <div class="form-field-group width-31">
-              <label for="soil-type" class="ugly-label">SOIL TEXTURE CLASSIFICATION: <span class="req-star">*</span></label>
+              <label for="soil-type" class="ugly-label">GAMING PLATFORM / HARDWARE RIG: <span class="req-star">*</span></label>
               <select id="soil-type" name="soilType" class="ugly-input-ctl" required>
-                <option value="">-- PLEASE CHOOSE THY DIRT --</option>
-                <option value="Sandy Loam">Sandy Loam (Quick Draining & Gritty)</option>
-                <option value="Clay Loam">Clay Loam (Sticky, Muddy Boots Guaranteed)</option>
-                <option value="Heavy Clay">Heavy Clay (Concrete when dry, soup when wet)</option>
-                <option value="Silt Loam">Silt Loam (Silky smooth riverbed dirt)</option>
-                <option value="Black Cotton Soil">Black Cotton Soil (Deep cracking shrink-swell)</option>
-                <option value="Peat / Organic Muck">Peat / Bog Organic Muck</option>
+                <option value="">-- PLEASE DECLARE YOUR WEAKNESS --</option>
+                <option value="Potato PC (Intel HD Graphics 3000)">🥔 Potato PC (Intel HD 3000, 18 FPS)</option>
+                <option value="Overheating Gaming Laptop">🔥 Overheating Gaming Laptop (Jet Engine Fan)</option>
+                <option value="RTX 4090 with 60Hz 720p Monitor">🤡 RTX 4090 Paired with 15-Year-Old 720p Monitor</option>
+                <option value="Smart Samsung Refrigerator">🧊 Samsung Smart Refrigerator</option>
+                <option value="Nintendo Switch at 14 FPS">🎮 Nintendo Switch Running at 14 FPS</option>
               </select>
             </div>
 
             <div class="form-field-group width-40">
-              <label for="soil-ph" class="ugly-label">SOIL PH LEVEL: <strong id="ph-display" class="value-highlight">6.5</strong> <span class="req-star">*</span></label>
-              <input type="range" id="soil-ph" name="soilPh" min="3.5" max="9.5" step="0.1" value="6.5" class="ugly-range-slider">
+              <label for="soil-ph" class="ugly-label">MOUSE DPI SENSITIVITY LEVEL: <strong id="ph-display" class="value-highlight">800 DPI</strong> <span class="req-star">*</span></label>
+              <input type="range" id="soil-ph" name="soilPh" min="200" max="6400" step="100" value="800" class="ugly-range-slider">
               <div class="slider-ticks">
-                <span>3.5 (Acid Battery)</span>
-                <span>6.5 (Ideal Corn)</span>
-                <span>9.5 (Pure Chalk)</span>
+                <span>200 DPI (Arm Workout)</span>
+                <span>800 DPI (Sensible)</span>
+                <span>6400 DPI (Microscopic Twitch)</span>
               </div>
-              <span class="ugly-helper-text">Move the slider! Extreme values will make the AI scream in warning banners.</span>
+              <span class="ugly-helper-text">Slide to adjust your DPI! Extreme values will make your crosshair rotate 9,000 degrees.</span>
             </div>
 
             <div class="form-field-group width-29">
-              <label for="soil-moisture" class="ugly-label">CURRENT MOISTURE (%): <span class="req-star">*</span></label>
-              <input type="number" id="soil-moisture" name="soilMoisture" class="ugly-input-ctl" min="5" max="100" value="62" required>
-              <span class="ugly-helper-text">Measured with digital probe or calibrated thumb.</span>
+              <label for="soil-moisture" class="ugly-label">AVERAGE PING (MS): <span class="req-star">*</span></label>
+              <input type="number" id="soil-moisture" name="soilMoisture" class="ugly-input-ctl" min="1" max="2000" value="180" required>
+              <span class="ugly-helper-text">Ping > 150ms grants legal excuse to claim hit-reg failure.</span>
             </div>
           </div>
 
-          <!-- N-P-K NUTRIENT CONCENTRATION TRIPLETS -->
+          <!-- REFRESH RATE & MONITOR TELEMETRY -->
           <div class="nested-form-box">
-            <h5 class="nested-box-title">⚡ CURRENT DETECTED N-P-K SOIL NUTRIENTS (PARTS PER MILLION) ⚡</h5>
+            <h5 class="nested-box-title">⚡ HARDWARE TELEMETRY TRIPLETS: REFRESH RATE, FPS, CHAIR QUALITY ⚡</h5>
             <div class="random-form-row">
               <div class="form-field-group width-33">
-                <label for="soil-n" class="ugly-label">NITROGEN (N) PPM: <span class="req-star">*</span></label>
-                <input type="number" id="soil-n" name="soilN" class="ugly-input-ctl" min="0" max="600" value="45" required>
-                <span class="ugly-helper-text">Low N = yellow pale leaves. High N = excessive bushiness.</span>
+                <label for="soil-n" class="ugly-label">MONITOR REFRESH RATE (HZ): <span class="req-star">*</span></label>
+                <input type="number" id="soil-n" name="soilN" class="ugly-input-ctl" min="15" max="500" value="60" required>
+                <span class="ugly-helper-text">60Hz = You can count the frames as they pass.</span>
               </div>
 
               <div class="form-field-group width-33">
-                <label for="soil-p" class="ugly-label">PHOSPHORUS (P) PPM: <span class="req-star">*</span></label>
-                <input type="number" id="soil-p" name="soilP" class="ugly-input-ctl" min="0" max="300" value="22" required>
-                <span class="ugly-helper-text">Crucial for root energy and ATP cell batteries.</span>
+                <label for="soil-p" class="ugly-label">AVERAGE IN-GAME FPS: <span class="req-star">*</span></label>
+                <input type="number" id="soil-p" name="soilP" class="ugly-input-ctl" min="1" max="600" value="34" required>
+                <span class="ugly-helper-text">Human eye can only see 30 fps (Copium).</span>
               </div>
 
               <div class="form-field-group width-33">
-                <label for="soil-k" class="ugly-label">POTASSIUM (K) PPM: <span class="req-star">*</span></label>
-                <input type="number" id="soil-k" name="soilK" class="ugly-input-ctl" min="0" max="600" value="180" required>
-                <span class="ugly-helper-text">Strengthens plant stalks against aggressive wind gusts.</span>
+                <label for="soil-k" class="ugly-label">GAMING CHAIR ERGONOMIC RATING (1-100): <span class="req-star">*</span></label>
+                <input type="number" id="soil-k" name="soilK" class="ugly-input-ctl" min="0" max="100" value="15" required>
+                <span class="ugly-helper-text">Wooden kitchen stool = 5. Racing chair with RGB = 100.</span>
               </div>
             </div>
           </div>
 
         </fieldset>
 
-        <!-- CONTAINER 3: GEOGRAPHY, ACREAGE & UNNECESSARY DETAILS -->
+        <!-- CONTAINER 3: SQUAD, ROLE & IN-GAME EXCUSES -->
         <fieldset class="form-weird-fieldset set-3">
-          <legend class="legend-ugly">🌍 3. FARM GEOGRAPHY, ACREAGE & CELESTIAL METRICS 🚜</legend>
+          <legend class="legend-ugly">🤡 3. SQUAD ROLE & COMMON IN-GAME COMPLAINTS 🤡</legend>
 
           <div class="random-form-row">
             <div class="form-field-group width-28">
-              <label for="farm-acreage" class="ugly-label">TOTAL FIELD AREA (ACRES): <span class="req-star">*</span></label>
-              <input type="number" id="farm-acreage" name="acreage" class="ugly-input-ctl" min="0.1" max="100000" step="0.1" value="25.5" required>
-              <span class="ugly-helper-text">1 Acre = 43,560 square feet of glorious dirt.</span>
+              <label for="farm-acreage" class="ugly-label">DAILY HOURS SPENT LOSING: <span class="req-star">*</span></label>
+              <input type="number" id="farm-acreage" name="acreage" class="ugly-input-ctl" min="0.1" max="24" step="0.5" value="6.5" required>
+              <span class="ugly-helper-text">Time that could have been spent touching grass.</span>
             </div>
 
             <div class="form-field-group width-24">
-              <label for="irrigation-type" class="ugly-label">IRRIGATION RIG: <span class="req-star">*</span></label>
+              <label for="irrigation-type" class="ugly-label">PRIMARY IN-GAME ROLE: <span class="req-star">*</span></label>
               <select id="irrigation-type" name="irrigationType" class="ugly-input-ctl" required>
-                <option value="Drip Irrigation">💧 Precision Drip Irrigation</option>
-                <option value="Center Pivot Sprinkler">🔄 Giant Center Pivot Sprinkler</option>
-                <option value="Furrow / Flood">🌊 Furrow / Gravity Flood</option>
-                <option value="Rainfed Only">🌧️ 100% Rainfed (Praying for clouds)</option>
-                <option value="Bucket Brigade">🪣 Manual Buckets & Hose</option>
+                <option value="Support (Gets Blamed For Everything)">🛡️ Support (Blamed For Everything)</option>
+                <option value="Entry Fragger (Dies in 2 Seconds)">⚡ Entry Fragger (Dies in 2s)</option>
+                <option value="Sniper (Misses 100% of Shots)">🎯 Sniper (Misses 100% of Shots)</option>
+                <option value="Camper (Drinking Tea in Corner)">⛺ Camper (Tea in Corner)</option>
+                <option value="AFK (Eating Pizza)">🍕 AFK (Eating Pizza)</option>
               </select>
             </div>
 
             <div class="form-field-group width-24">
-              <label for="elevation-inches" class="ugly-label">ELEVATION (NAUTICAL INCHES):</label>
-              <input type="number" id="elevation-inches" name="elevationInches" class="ugly-input-ctl" value="12450">
-              <span class="ugly-helper-text">Why nautical inches? Because why not.</span>
+              <label for="elevation-inches" class="ugly-label">RGB LIGHTING LEVEL (LUMENS):</label>
+              <input type="number" id="elevation-inches" name="elevationInches" class="ugly-input-ctl" value="9500">
+              <span class="ugly-helper-text">More RGB = 12% faster reaction time according to science.</span>
             </div>
 
             <div class="form-field-group width-24">
-              <label for="tractor-paint" class="ugly-label">PRIMARY TRACTOR COLOR:</label>
+              <label for="tractor-paint" class="ugly-label">ENERGY DRINK CONSUMED TODAY:</label>
               <select id="tractor-paint" name="tractorPaint" class="ugly-input-ctl">
-                <option value="John Deere Classic Green">🟢 John Deere Classic Green</option>
-                <option value="Farmall Crimson Red">🔴 Farmall Crimson Red</option>
-                <option value="New Holland Bright Blue">🔵 New Holland Bright Blue</option>
-                <option value="Pure Rust Brown">🟤 Pure 1974 Rust Brown</option>
-                <option value="Sparkly Neon Purple">🟣 Custom Sparkly Neon Purple</option>
+                <option value="Monster Energy Ultra (White)">🟢 Monster Energy Ultra (White)</option>
+                <option value="Mountain Dew Baja Blast">🌊 Mountain Dew Baja Blast</option>
+                <option value="Lukewarm Tap Water (Weakness)">💧 Lukewarm Tap Water</option>
+                <option value="Pre-Workout Powder (Pure Heart Palpitations)">⚡ Dry-Scooped Pre-Workout</option>
+                <option value="Air and Copium">💨 Pure Air and Copium</option>
               </select>
-              <span class="ugly-helper-text">Scientific studies confirm green tractors scare crows more effectively.</span>
+              <span class="ugly-helper-text">Caffeine content directly influences jittery spray transfers.</span>
             </div>
           </div>
 
           <div class="random-form-row">
             <div class="form-field-group width-100">
-              <label class="ugly-label">CHECK ALL OBSERVED WEEDS, CRITTERS & PEST THREATS:</label>
+              <label class="ugly-label">CHECK ALL OBSERVED THREATS & ACCUSATIONS CURRENTLY RUINING YOUR MATCH:</label>
               <div class="checkbox-chaotic-cluster">
-                <label class="ugly-checkbox-item"><input type="checkbox" name="pests" value="Fall Armyworms"> 🐛 Fall Armyworms</label>
-                <label class="ugly-checkbox-item"><input type="checkbox" name="pests" value="Locust Swarm"> 🦗 Voracious Locusts</label>
-                <label class="ugly-checkbox-item"><input type="checkbox" name="pests" value="Aphids"> 🐜 Green Aphid Infestation</label>
-                <label class="ugly-checkbox-item"><input type="checkbox" name="pests" value="Fungal Leaf Rust"> 🍄 Fungal Leaf Rust Spores</label>
-                <label class="ugly-checkbox-item"><input type="checkbox" name="pests" value="Thieving Raccoons"> 🦝 Nocturnal Thieving Raccoons</label>
-                <label class="ugly-checkbox-item"><input type="checkbox" name="pests" value="Aggressive Dandelions"> 🌼 Stubborn Dandelion Riot</label>
+                <label class="ugly-checkbox-item"><input type="checkbox" name="pests" value="Sweaty 14-Year-Old Smurfs"> 👶 Sweaty 14-Year-Old Smurfs</label>
+                <label class="ugly-checkbox-item"><input type="checkbox" name="pests" value="Blatant Spinbot Cheaters"> 🌀 Blatant Spinbot Wallhackers</label>
+                <label class="ugly-checkbox-item"><input type="checkbox" name="pests" value="Random 400ms Lag Spikes"> 📶 Random 400ms Lag Spikes</label>
+                <label class="ugly-checkbox-item"><input type="checkbox" name="pests" value="Teammates With No Monitors"> 🙈 Teammates With No Monitors</label>
+                <label class="ugly-checkbox-item"><input type="checkbox" name="pests" value="Mom Screaming About Chores"> 📢 Mom Screaming About Chores</label>
+                <label class="ugly-checkbox-item"><input type="checkbox" name="pests" value="Broken Mouse Left Click"> 🖱️ Broken Mouse Left Click</label>
               </div>
             </div>
           </div>
 
         </fieldset>
 
-        <!-- CONTAINER 4: GEMINI AI ENGINE CONFIGURATION -->
+        <!-- CONTAINER 4: GEMINI AI COACH ENGINE CONFIGURATION -->
         <fieldset class="form-weird-fieldset set-4">
-          <legend class="legend-ugly">🤖 4. GOOGLE GEMINI AI COGNITION & EXPERT ENGINE 🧠</legend>
+          <legend class="legend-ugly">🤖 4. GOOGLE GEMINI AI COACH & AIMBOT ENGINE 🧠</legend>
 
           <div class="random-form-row">
             <div class="form-field-group width-35">
-              <label for="ai-persona" class="ugly-label">AI ADVISORY PERSONALITY STYLE:</label>
+              <label for="ai-persona" class="ugly-label">AI COACH PERSONALITY MATRIX:</label>
               <select id="ai-persona" name="aiPersona" class="ugly-input-ctl">
-                <option value="Hyper-Direct Agronomist">🌾 Hyper-Direct Agronomist (No nonsense, pure NPK numbers)</option>
-                <option value="Panicked Southern Uncle">🚜 Panicked Southern Uncle (Everything is an emergency)</option>
-                <option value="Zen Master Botanist">🧘 Zen Master Botanist (Speak to the soul of the soil)</option>
-                <option value="Cybernetic AI Supercomputer">🤖 Cybernetic 9000 Supercomputer (Beep boop calculation)</option>
+                <option value="Toxic Discord Mod">🤬 Toxic Discord Mod (Zero empathy, maximum insults)</option>
+                <option value="Overenthusiastic Korean Esports Caster">🎙️ Overenthusiastic Esports Caster (SCREAMING)</option>
+                <option value="Zen Master Offline Sensei">🧘 Zen Master Offline Sensei (Breathe before whiffing)</option>
+                <option value="Cybernetic Aimbot 9000">🤖 Cybernetic Aimbot 9000 (Pure ruthless geometry)</option>
               </select>
             </div>
 
             <div class="form-field-group width-35">
               <label for="gemini-model-select" class="ugly-label">GEMINI MODEL VERSION:</label>
               <select id="gemini-model-select" name="geminiModel" class="ugly-input-ctl">
-                <option value="gemini-1.5-flash">Gemini 1.5 Flash (Ultra-Fast Agronomy)</option>
-                <option value="gemini-1.5-pro">Gemini 1.5 Pro (Deep Biological Reasoning)</option>
-                <option value="gemini-2.0-flash-exp">Gemini 2.0 Flash Exp (Overclocked Harvest)</option>
-                <option value="local-agri-engine">Integrated PostgreSQL Agronomy Rulebase (Offline Fallback)</option>
+                <option value="gemini-1.5-flash">Gemini 1.5 Flash (Ultra-Fast Tilt Calculation)</option>
+                <option value="gemini-1.5-pro">Gemini 1.5 Pro (Deep Biological Gamer Reasoning)</option>
+                <option value="gemini-2.0-flash-exp">Gemini 2.0 Flash Exp (Overclocked Tryhard)</option>
+                <option value="local-agri-engine">Integrated PostgreSQL Telemetry Engine (Offline Fallback)</option>
               </select>
             </div>
 
             <div class="form-field-group width-30">
               <label for="gemini-api-key" class="ugly-label">GOOGLE GEMINI API KEY: (OPTIONAL)</label>
               <input type="password" id="gemini-api-key" name="geminiKey" class="ugly-input-ctl" placeholder="AIzaSy... (Saved locally in browser)">
-              <span class="ugly-helper-text">Leave blank to use the high-fidelity built-in agronomy simulation engine!</span>
+              <span class="ugly-helper-text">Leave blank to use the high-fidelity built-in gamer advice engine!</span>
             </div>
           </div>
 
           <div class="random-form-row">
             <div class="form-field-group width-100">
-              <label for="farmer-notes" class="ugly-label">ADDITIONAL UNHINGED FARMER NOTES OR OBSERVATIONS:</label>
-              <textarea id="farmer-notes" name="farmerNotes" rows="3" class="ugly-textarea" placeholder="e.g. My neighbor Jim said my corn looks too short, please prove Jim wrong with scientific formulas. Also saw strange glowing light over field 2."></textarea>
+              <label for="farmer-notes" class="ugly-label">CONFESSION OF UNHINGED IN-GAME MISTAKES (FOR THE AI):</label>
+              <textarea id="farmer-notes" name="farmerNotes" rows="3" class="ugly-textarea" placeholder="e.g. I panicked, flashed my own team, jumped off a cliff, and my cat stepped on the power button. Please tell me it wasn't my fault."></textarea>
             </div>
           </div>
 
@@ -499,9 +546,9 @@
         <!-- GIANT UNNECESSARILY HUGE SUBMIT BUTTON -->
         <div class="giant-submit-wrapper">
           <button type="submit" id="btn-generate-advisory" class="btn-giant-pulsing">
-            🚜🤖🌾 GENERATE AI ADVISORY 🚜🤖🌾
+            🎮🤖🔥 GENERATE AI STRATEGY & LOADOUT 🤖🔥🎮
           </button>
-          <p class="submit-under-warning">⚠️ Clicking this button will submit your parameters to Gemini AI & PostgreSQL. Tractor engines may vibrate.</p>
+          <p class="submit-under-warning">⚠️ Clicking this button will submit your parameters to Gemini AI & PostgreSQL. Your keyboard may rattle.</p>
         </div>
 
       </form>
@@ -516,164 +563,284 @@
       
       <!-- RESULTS TOP CHAOS BAR -->
       <div class="results-header-banner">
-        <h2 class="results-huge-title">🤖 THE AI HAS SPOKEN: OFFICIAL AGRICULTURAL DIRECTIVE 🤖</h2>
+        <h2 class="results-huge-title">🤖 THE AI COACH HAS SPOKEN: OFFICIAL GAMING DIRECTIVE 🤖</h2>
         <div class="results-badge-soup">
-          <span class="res-badge b-1">CERTIFIED 100% ORGANIC BY COMPUTER</span>
-          <span class="res-badge b-2">HIGH RISK OF MUD ⚠️</span>
+          <span class="res-badge b-1">CERTIFIED 100% TRYHARD COMPATIBLE</span>
+          <span class="res-badge b-2">HIGH RISK OF RAGE QUIT ⚠️</span>
           <span class="res-badge b-3">AI ACCURACY: 99.8%</span>
-          <span class="res-badge b-4">FARMER APPROVED 👍</span>
-          <span class="res-badge b-5">TRACTOR CERTIFIED 🚜</span>
-          <span class="res-badge b-6">POTATO APPROVED 🥔</span>
+          <span class="res-badge b-4">DISCORD MOD APPROVED 👍</span>
+          <span class="res-badge b-5">GPU SURVIVAL CHANCE: 42% 💥</span>
+          <span class="res-badge b-6">POTATO PC FRIENDLY 🥔</span>
         </div>
       </div>
 
       <!-- ACTIVE ADVISORY SUMMARY STRIP -->
       <div class="advisory-meta-strip" id="results-meta-strip">
-        <span>TARGET CROP: <strong id="res-crop-name">CORN (ZEA MAYS)</strong></span>
-        <span>FIELD ACREAGE: <strong id="res-acreage">25.5 ACRES</strong></span>
-        <span>SOIL PH: <strong id="res-soil-ph">6.5</strong></span>
-        <span>STATUS: <strong id="res-db-status">COMMITTED TO POSTGRESQL (ID #109)</strong></span>
+        <span>TARGET GAME: <strong id="res-crop-name">COUNTER-STRIKE 2</strong></span>
+        <span>HOURS WASTED: <strong id="res-acreage">6.5 HOURS</strong></span>
+        <span>MOUSE DPI: <strong id="res-soil-ph">800 DPI</strong></span>
+        <span>STATUS: <strong id="res-db-status">COMMITTED TO POSTGRESQL (MATCH ID #109)</strong></span>
       </div>
 
       <!-- CHAOTIC RECOMMENDATION CARDS -->
       <div class="advisory-cards-grid">
         
-        <!-- CARD 1: VERY IMPORTANT FARM THING -->
+        <!-- CARD 1: VERY IMPORTANT GAMER THING -->
         <article class="advisory-card card-urgent-warning">
           <header class="card-warning-header">
-            <h3>🚨 VERY IMPORTANT FARM THING 🚨</h3>
+            <h3>🚨 VERY IMPORTANT GAMER THING 🚨</h3>
             <span class="stamp-hazard">URGENT</span>
           </header>
           <div class="card-body-content">
-            <h4 class="card-action-title" id="res-urgent-title">SOIL ACIDITY THRESHOLD & ROOT BURN HAZARD</h4>
+            <h4 class="card-action-title" id="res-urgent-title">POSTURE COLLAPSE & DESK TILT CRISIS</h4>
             <p id="res-urgent-body">
-              Your soil pH is currently sitting at an alarming level for optimal nutrient availability! If you do not apply agricultural lime (calcium carbonate) immediately, your crop's root hairs will struggle to uptake micro-nutrients!
+              Your chair ergonomics and high ping are actively sabotaging your spinal cord! If you continue slumping like a boiled shrimp, your reaction time will degrade by 320ms!
             </p>
             <div class="urgent-bullet-box" id="res-urgent-bullets">
-              <div>⚠️ Apply 1,200 kg/ha of crushed agricultural limestone before next rainfall</div>
-              <div>⚠️ Check drainage ditches to prevent standing acidic water</div>
+              <div>⚠️ Sit up straight immediately and stop breathing onto the microphone</div>
+              <div>⚠️ Move your mouse pad 4 inches to the left to avoid knocking over your drink</div>
             </div>
           </div>
-          <footer class="card-ugly-footer">CONFIDENCE LEVEL: 99.4% (TRACTOR SENSORS AGREE)</footer>
+          <footer class="card-ugly-footer">CONFIDENCE LEVEL: 99.4% (TELEMETRY SENSORS AGREE)</footer>
         </article>
 
-        <!-- CARD 2: YOUR PLANT PROBABLY WANTS THIS -->
+        <!-- CARD 2: YOUR LOADOUT PROBABLY WANTS THIS -->
         <article class="advisory-card card-fertilizer">
           <header class="card-fertilizer-header">
-            <h3>🌱 YOUR PLANT PROBABLY WANTS THIS 🌱</h3>
-            <span class="stamp-npk">NPK BOOST</span>
+            <h3>🎯 YOUR LOADOUT PROBABLY WANTS THIS 🎯</h3>
+            <span class="stamp-npk">META OPTIMIZATION</span>
           </header>
           <div class="card-body-content">
-            <h4 class="card-action-title" id="res-fert-title">BALANCED N-P-K NUTRIENT RATIO PRESCRIPTION</h4>
+            <h4 class="card-action-title" id="res-fert-title">OPTIMIZED SENSITIVITY, WEAPON & DPI PRESCRIPTION</h4>
             <p id="res-fert-body">
-              Based on vegetative stage consumption rates and soil baseline tests, the synthetic intelligence prescribes the following custom granular blend:
+              Based on your target K/D ratio and horrific past performances, the synthetic intelligence prescribes the following custom settings:
             </p>
             <div class="npk-formula-box" id="res-npk-formula">
-              <div class="npk-pill n-pill"><span class="npk-letter">N</span> <strong>135 kg/ha</strong> (Urea / Ammonium)</div>
-              <div class="npk-pill p-pill"><span class="npk-letter">P</span> <strong>55 kg/ha</strong> (DAP Phosphate)</div>
-              <div class="npk-pill k-pill"><span class="npk-letter">K</span> <strong>80 kg/ha</strong> (Muriate of Potash)</div>
+              <div class="npk-pill n-pill"><span class="npk-letter">DPI</span> <strong>800 DPI</strong> (In-game 1.25)</div>
+              <div class="npk-pill p-pill"><span class="npk-letter">CROSS</span> <strong>Cyan Static</strong> (Size 2, Gap -1)</div>
+              <div class="npk-pill k-pill"><span class="npk-letter">META</span> <strong>AK-47 / Vandal</strong> (Stop moving while shooting!)</div>
             </div>
-            <p class="micro-dose-instruction" id="res-fert-timing">Apply 50% split at early vegetative stage, remaining 50% during tasseling/tuber bulking.</p>
+            <p class="micro-dose-instruction" id="res-fert-timing">Apply 50% split of training time in aim lab, remainder practicing counter-strafing.</p>
           </div>
-          <footer class="card-ugly-footer">COST ESTIMATE: $4,250 | EXPECTED YIELD GAIN: +28%</footer>
+          <footer class="card-ugly-footer">ESTIMATED COST: $0.00 | PROJECTED K/D GAIN: +0.02</footer>
         </article>
 
-        <!-- CARD 3: WATER WATER WATER -->
+        <!-- CARD 3: WATER WATER WATER / HYDRATION -->
         <article class="advisory-card card-irrigation">
           <header class="card-irrigation-header">
-            <h3>💧 WATER WATER WATER 💧</h3>
-            <span class="stamp-h2o">H2O PROTOCOL</span>
+            <h3>💧 WATER WATER WATER (HYDRATION PROTOCOL) 💧</h3>
+            <span class="stamp-h2o">BIOLOGICAL MAINTENANCE</span>
           </header>
           <div class="card-body-content">
-            <h4 class="card-action-title" id="res-water-title">OPTIMIZED TRANSPIRATION & IRRIGATION CYCLE</h4>
+            <h4 class="card-action-title" id="res-water-title">ANTI-DEHYDRATION & BLINK FREQUENCY PROTOCOL</h4>
             <p id="res-water-body">
-              Do not overwater or you will turn your soil into pea soup! The computer calculation demands precision timing based on current evapotranspiration rates.
+              Do not substitute pure caffeine for water or your hands will shake like pneumatic drills! The computer calculation demands biological cooling.
             </p>
             <div class="water-schedule-box" id="res-water-schedule">
-              <div class="schedule-item">🗓️ <strong>SCHEDULE:</strong> Run drip / sprinkler system every <strong>3.5 days</strong></div>
-              <div class="schedule-item">⏱️ <strong>DURATION:</strong> 4 hours in early morning (05:00 - 09:00 AM)</div>
-              <div class="schedule-item">🎯 <strong>TARGET DEPTH:</strong> Penetrate top 25cm of root zone</div>
+              <div class="schedule-item">🗓️ <strong>SCHEDULE:</strong> Drink 250ml of actual H2O every <strong>45 minutes</strong></div>
+              <div class="schedule-item">⏱️ <strong>BLINK RATE:</strong> Please remember to blink at least twice per round</div>
+              <div class="schedule-item">🎯 <strong>TILT COOLOFF:</strong> Step away for 5 minutes after 2 consecutive losses</div>
             </div>
           </div>
-          <footer class="card-ugly-footer">WATER SAVED: 18,000 GALLONS VS FLOOD IRRIGATION</footer>
+          <footer class="card-ugly-footer">TILT AVOIDED: 84% REDUCTION IN DESK DAMAGE</footer>
         </article>
 
-        <!-- CARD 4: BUGS ARE HERE??? -->
+        <!-- CARD 4: BUGS ARE HERE??? / SMURFS -->
         <article class="advisory-card card-pest-threat">
           <header class="card-pest-header">
-            <h3>🐛 BUGS ARE HERE??? 🐛</h3>
-            <span class="stamp-bugs">PEST DEFENSE</span>
+            <h3>🐛 BUGS & SWEATY SMURFS ARE HERE??? 🐛</h3>
+            <span class="stamp-bugs">THREAT MITIGATION</span>
           </header>
           <div class="card-body-content">
-            <h4 class="card-action-title" id="res-pest-title">BIOLOGICAL & CHEMICAL INTEGRATED PEST MANAGEMENT (IPM)</h4>
+            <h4 class="card-action-title" id="res-pest-title">ANTI-SMURF, CHEATER & LAG DEFENSE MATRIX</h4>
             <p id="res-pest-body">
-              Enemies detected in the foliage! Immediate biological countermeasures are required before chewing mouthparts destroy photosynthesis efficiency.
+              Enemies detected in the lobby! Immediate tactical countermeasures are required before your rank drops into the negatives.
             </p>
             <div class="pest-tactics-box" id="res-pest-tactics">
-              <div>🦗 <strong>Target:</strong> Armyworms & Green Aphids</div>
-              <div>🐞 <strong>Biological Weapon:</strong> Release 10,000 Ladybugs or apply Bacillus thuringiensis (Bt)</div>
-              <div>🌿 <strong>Organic Spray:</strong> Cold-pressed 0.5% Neem Oil emulsion with soapy surfactant</div>
+              <div>🦗 <strong>Target:</strong> Sweaty 14-Year-Old Smurfs & 400ms Lag Spikes</div>
+              <div>🐞 <strong>Tactical Weapon:</strong> Mute all toxic voice chat and pre-aim common angles</div>
+              <div>🌿 <strong>Countermeasure:</strong> Switch server regions or play single-player Stardew Valley</div>
             </div>
           </div>
-          <footer class="card-ugly-footer">DEAD BUGS EXPECTED: 94.7% MORTALITY WITHIN 48 HOURS</footer>
+          <footer class="card-ugly-footer">SURVIVAL CHANCE: 68.3% IF YOU STOP RUNNING AND GUNNING</footer>
         </article>
 
         <!-- CARD 5: THE AI HAS SPOKEN -->
         <article class="advisory-card card-ai-synthesis width-full-chaotic">
           <header class="card-ai-header">
-            <h3>🤖 THE AI HAS SPOKEN 🤖</h3>
+            <h3>🤖 THE AI COACH HAS SPOKEN 🤖</h3>
             <span class="stamp-gemini">GEMINI 1.5 SYNTHESIS</span>
           </header>
           <div class="card-body-content">
-            <h4 class="card-action-title" id="res-ai-title">COMPREHENSIVE AGRONOMIC VERDICT & REASONING SUMMARY</h4>
+            <h4 class="card-action-title" id="res-ai-title">COMPREHENSIVE PRO COACH VERDICT & TILT REPORT</h4>
             <div class="ai-raw-response-text" id="res-ai-raw-text">
-              "Attention Farmer: Analysis of your 25.5 acres indicates an exceptional yield window if nitrogen leaching is prevented during upcoming precipitation. The crop's emotional mood has been compensated for by scheduling early morning potassium feeding. Ensure tractor tire pressure is kept at exactly 32 PSI to minimize compaction of your loam layer. Harvest projection: Grade-A premium yield."
+              "Attention Gamer: Analysis of your 6.5 hours of ranked torture indicates that 92% of your deaths occurred while you were running in a straight line with a grenade out. Stop blaming your 180ms ping; your crosshair was looking at the floor tiles. Adjust your mouse sensitivity from 3200 down to 800 DPI and plug in an ethernet cable. Projected skill increase: From Cardboard IV to Cardboard III."
             </div>
             <div class="ai-confidence-cluster">
               <span class="stat-pill">Model: Gemini 1.5 Pro</span>
-              <span class="stat-pill">Inference Latency: 412ms</span>
+              <span class="stat-pill">Inference Latency: 388ms</span>
               <span class="stat-pill">PostgreSQL Transaction: COMMIT #9941</span>
-              <span class="stat-pill">Silo Space Required: 120 Metric Tons</span>
+              <span class="stat-pill">Tears Collected: 4.8 Liters</span>
             </div>
           </div>
-          <footer class="card-ugly-footer">TRANSMITTED VIA FARM-NET SATELLITE UPLINK</footer>
+          <footer class="card-ugly-footer">TRANSMITTED VIA ULTRA-GAMER SATELLITE UPLINK</footer>
         </article>
 
       </div>
 
       <!-- RESULTS ACTION BUTTONS -->
       <div class="results-actions-bar">
-        <button class="btn-ugly-secondary" id="btn-save-to-pg">💾 COMMIT FRESH COPY TO POSTGRESQL</button>
-        <button class="btn-ugly-secondary" id="btn-print-results">🖨️ PRINT TO DOT-MATRIX PRINTER</button>
-        <button class="btn-ugly-secondary" id="btn-copy-advisory">📋 COPY ADVISORY TO CLIPBOARD</button>
-        <button class="btn-giant-pulsing" id="btn-new-advisory">🌾 CREATE ANOTHER CHAOTIC ADVISORY 🚜</button>
+        <button class="btn-ugly-secondary" id="btn-save-to-pg">💾 COMMIT MATCH LOG TO POSTGRESQL</button>
+        <button class="btn-ugly-secondary" id="btn-print-results">🖨️ PRINT LOSS CERTIFICATE TO PRINTER</button>
+        <button class="btn-ugly-secondary" id="btn-copy-advisory">📋 COPY ADVISORY TO ROBLOX CHAT</button>
+        <button class="btn-giant-pulsing" id="btn-new-advisory">🎮 GENERATE ANOTHER TRYHARD BUILD 🤖</button>
       </div>
 
     </section>
 
 
     <!-- ========================================== -->
-    <!-- VIEW 4: POSTGRESQL FARM DB                 -->
+    <!-- VIEW 4: LEADERBOARD                        -->
+    <!-- ========================================== -->
+    <section class="tab-pane" id="view-leaderboard" aria-labelledby="nav-leaderboard">
+      
+      <div class="leaderboard-header-banner">
+        <h2 class="results-huge-title">🏆 GLOBAL SHAME LEADERBOARD: TOP 10 TRYHARDS 🏆</h2>
+        <p class="db-subtext">The most elite no-lifers in cyberspace. Note where you stand at the very bottom:</p>
+      </div>
+
+      <div class="leaderboard-container">
+        <div class="your-rank-callout">
+          <div class="rank-huge-number">#9,999,999</div>
+          <div class="rank-details">
+            <h3>YOUR OFFICIAL GLOBAL STANDING: RANK #9,999,999</h3>
+            <p>"Congratulations! You are technically ranked above 4 offline refrigerators and 1 broken microwave."</p>
+          </div>
+        </div>
+
+        <div class="table-scroll-wrapper">
+          <table class="clashing-table table-leaderboard-view">
+            <thead>
+              <tr>
+                <th>RANK</th>
+                <th>GAMER TAG</th>
+                <th>SCORE</th>
+                <th>FAVORITE GAME</th>
+                <th>K/D</th>
+                <th>STATUS</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="rank-gold">
+                <td>#1 🥇</td>
+                <td><strong>xX_Dad_Left_Milk_Xx</strong></td>
+                <td>99,999,999</td>
+                <td>Counter-Strike 2</td>
+                <td>14.8</td>
+                <td>NEVER SLEEPS 💤❌</td>
+              </tr>
+              <tr class="rank-silver">
+                <td>#2 🥈</td>
+                <td><strong>ToiletGamer69</strong></td>
+                <td>88,412,000</td>
+                <td>Fortnite</td>
+                <td>11.2</td>
+                <td>LOCKED IN 🚽</td>
+              </tr>
+              <tr class="rank-bronze">
+                <td>#3 🥉</td>
+                <td><strong>DefinitelyNotBot</strong></td>
+                <td>77,100,500</td>
+                <td>Valorant</td>
+                <td>9.8</td>
+                <td>SPINNING RAPIDLY 🤖</td>
+              </tr>
+              <tr>
+                <td>#4</td>
+                <td><strong>WiFiEnjoyer</strong></td>
+                <td>66,200,100</td>
+                <td>Roblox</td>
+                <td>6.4</td>
+                <td>PLAYING FROM MCDONALDS 🍟</td>
+              </tr>
+              <tr>
+                <td>#5</td>
+                <td><strong>YourMomGaming</strong></td>
+                <td>55,000,000</td>
+                <td>Elden Ring</td>
+                <td>5.1</td>
+                <td>CANNOT BE STOPPED 👵</td>
+              </tr>
+              <tr>
+                <td>#6</td>
+                <td><strong>LagMaster</strong></td>
+                <td>44,999,999</td>
+                <td>League of Legends</td>
+                <td>3.9</td>
+                <td>PING: 1,840ms 📶</td>
+              </tr>
+              <tr>
+                <td>#7</td>
+                <td><strong>RTX_On_Integrated_GPU</strong></td>
+                <td>33,200,000</td>
+                <td>GTA VI</td>
+                <td>2.7</td>
+                <td>SMOKING FAN 💨</td>
+              </tr>
+              <tr>
+                <td>#8</td>
+                <td><strong>SkillIssue</strong></td>
+                <td>22,000,000</td>
+                <td>Minecraft</td>
+                <td>1.9</td>
+                <td>FALL DAMAGE 🕳️</td>
+              </tr>
+              <tr>
+                <td>#9</td>
+                <td><strong>AFK_CHAMPION</strong></td>
+                <td>11,000,000</td>
+                <td>Any Game</td>
+                <td>0.1</td>
+                <td>MIC ON WHILE EATING CHIPS 🥔</td>
+              </tr>
+              <tr class="rank-user-row">
+                <td><strong>#9,999,999 💩</strong></td>
+                <td><strong>YOU (xX_NoobSlayer_Xx)</strong></td>
+                <td><strong>-42</strong></td>
+                <td><strong>All of them</strong></td>
+                <td><strong>0.03</strong></td>
+                <td><strong>BLAMING LAG RIGHT NOW 🤬</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </section>
+
+
+    <!-- ========================================== -->
+    <!-- VIEW 5: POSTGRESQL STORE & TELEMETRY DB    -->
     <!-- ========================================== -->
     <section class="tab-pane" id="view-database-pg" aria-labelledby="nav-database">
       
       <div class="db-header-block">
-        <h2 class="db-main-heading">🐘 POSTGRESQL 16.4 LIVE AGRICULTURAL DATA STORE 💾</h2>
+        <h2 class="db-main-heading">🐘 POSTGRESQL 16.4 GAMER TELEMETRY & MATCH LOG STORE 💾</h2>
         <p class="db-subtext">Direct browser-integrated PostgreSQL simulation engine with persistent LocalStorage backing, transaction logging, and raw SQL console!</p>
       </div>
 
       <!-- RAW SQL QUERY CONSOLE -->
       <div class="sql-console-card">
         <div class="sql-console-header">
-          <span>SQL QUERY TERMINAL: (postgres@agri-farm-cluster:5432/farm_db)</span>
+          <span>SQL TERMINAL: (postgres@ultra-gamer-cluster:5432/telemetry_db)</span>
           <span class="db-connection-light">CONNECTED 🟢</span>
         </div>
         <div class="sql-input-row">
-          <textarea id="sql-query-input" class="sql-editor" rows="3" spellcheck="false">SELECT id, crop_name, acreage, soil_ph, target_yield, status, created_at FROM farm_advisories ORDER BY id DESC;</textarea>
+          <textarea id="sql-query-input" class="sql-editor" rows="3" spellcheck="false">SELECT id, crop_name AS game_title, acreage AS hours_played, soil_ph AS mouse_dpi, target_yield AS target_kd, status, created_at FROM farm_advisories ORDER BY id DESC;</textarea>
         </div>
         <div class="sql-actions">
           <button class="btn-sql-run" id="btn-run-sql">⚡ EXECUTE RAW SQL QUERY ⚡</button>
-          <button class="btn-micro" id="btn-sql-insert">Insert Sample Farm Record</button>
+          <button class="btn-micro" id="btn-sql-insert">Insert Sample Match Record</button>
           <button class="btn-micro" id="btn-sql-reset">Reset Demo DB</button>
           <span class="sql-result-status" id="sql-status-text">Query ready</span>
         </div>
@@ -682,9 +849,9 @@
       <!-- TABLE VIEWER WITH TABS FOR TABLES -->
       <div class="db-tables-wrapper">
         <div class="db-table-tabs">
-          <button class="db-tab-btn active" data-table="advisories" id="db-tab-advisories">📑 TABLE: farm_advisories (<span id="count-advisories">0</span>)</button>
-          <button class="db-tab-btn" data-table="crops" id="db-tab-crops">🌱 TABLE: crop_master (<span id="count-crops">6</span>)</button>
-          <button class="db-tab-btn" data-table="soil" id="db-tab-soil">💩 TABLE: soil_sensors (<span id="count-soil">5</span>)</button>
+          <button class="db-tab-btn active" data-table="advisories" id="db-tab-advisories">📑 TABLE: player_advisories (<span id="count-advisories">0</span>)</button>
+          <button class="db-tab-btn" data-table="crops" id="db-tab-crops">🎮 TABLE: game_master (<span id="count-crops">6</span>)</button>
+          <button class="db-tab-btn" data-table="soil" id="db-tab-soil">🖥️ TABLE: hardware_sensors (<span id="count-soil">5</span>)</button>
         </div>
 
         <div class="table-scroll-wrapper">
@@ -703,49 +870,49 @@
 
 
     <!-- ========================================== -->
-    <!-- VIEW 5: WEIRD CROP ANALYTICS               -->
+    <!-- VIEW 6: PC HEALTH & TELEMETRY LAB          -->
     <!-- ========================================== -->
     <section class="tab-pane" id="view-analytics" aria-labelledby="nav-analytics">
       
       <div class="analytics-header">
-        <h2 class="analytics-title">📈 WEIRD AGRICULTURAL CHARTS & TELEMETRY LAB 📊</h2>
-        <p class="chart-disclaimer">Warning: Graphs are constructed with excessive CSS gradients, nonsensical scales, and eye-searing borders.</p>
+        <h2 class="analytics-title">📈 WEIRD GAMER HARDWARE OSCILLOSCOPE & SALT LAB 📊</h2>
+        <p class="chart-disclaimer">Warning: Telemetry graphs are constructed with eye-searing neon lines and nonsensical rage multipliers.</p>
       </div>
 
       <div class="analytics-grid">
         
         <!-- CHART 1: WEIRD DONUT / PIE -->
         <div class="analytics-card card-pie">
-          <h3 class="card-pie-title">🥧 LAND ALLOCATION CONFUSION PIE</h3>
+          <h3 class="card-pie-title">🥧 WHY DID YOU DIE? (CONFUSION PIE)</h3>
           <div class="weird-donut-container">
             <div class="css-conic-pie" id="conic-pie"></div>
           </div>
           <div class="pie-legend">
-            <span style="color: #a800ff;">■ Corn: 38%</span>
-            <span style="color: #ff007f;">■ Wheat: 26%</span>
-            <span style="color: #39ff14;">■ Tomato: 14%</span>
-            <span style="color: #00f0ff;">■ Potato: 12%</span>
-            <span style="color: #ffee00;">■ Soy: 10%</span>
+            <span style="color: #a800ff;">■ "Lag": 48%</span>
+            <span style="color: #ff007f;">■ "Cheater": 24%</span>
+            <span style="color: #39ff14;">■ "Bad Team": 18%</span>
+            <span style="color: #00f0ff;">■ "Broken Mouse": 8%</span>
+            <span style="color: #ffee00;">■ "Actual Skill Issue": 2%</span>
           </div>
         </div>
 
         <!-- CHART 2: SATELLITE RADAR CLOUD SCAN -->
         <div class="analytics-card card-radar">
-          <h3 class="card-radar-title">🛰️ SATELLITE CLOUD & RAIN RADAR (SIMULATED)</h3>
+          <h3 class="card-radar-title">🛰️ SWEATY LOBBY DOPPLER RADAR (SIMULATED)</h3>
           <div class="radar-screen">
             <div class="radar-sweep"></div>
-            <div class="radar-blip blip-1" title="Rain Cloud">🌧️</div>
-            <div class="radar-blip blip-2" title="Tractor">🚜</div>
-            <div class="radar-blip blip-3" title="Alien Weevil">🛸</div>
-            <div class="radar-blip blip-4" title="Lost Cow">🐄</div>
+            <div class="radar-blip blip-1" title="Sweaty 14yo">👶</div>
+            <div class="radar-blip blip-2" title="Spinbotter">🌀</div>
+            <div class="radar-blip blip-3" title="Toxic Mod">🤬</div>
+            <div class="radar-blip blip-4" title="Lost AFK Guy">🍕</div>
             <div class="radar-grid-lines"></div>
           </div>
-          <p class="radar-note">Active Sweep: 4.8 GHz Farm Doppler / 0.00% Real Weather Accuracy</p>
+          <p class="radar-note">Active Sweep: 5.4 GHz Discord Ping / 0.00% Tactical Value</p>
         </div>
 
         <!-- CHART 3: YIELD PREDICTION OSCILLOSCOPE -->
         <div class="analytics-card card-oscilloscope">
-          <h3 class="card-osc-title">⚡ CROP METABOLIC OSCILLATION FREQUENCY</h3>
+          <h3 class="card-osc-title">⚡ BRAIN TILT OSCILLATION FREQUENCY</h3>
           <div class="oscilloscope-screen">
             <svg viewBox="0 0 400 120" class="osc-svg" preserveAspectRatio="none">
               <path d="M 0 60 Q 25 10 50 60 T 100 60 T 150 60 T 200 60 T 250 60 T 300 60 T 350 60 T 400 60" fill="none" stroke="#39ff14" stroke-width="4" class="animated-sine-wave"/>
@@ -753,9 +920,9 @@
             </svg>
           </div>
           <div class="osc-controls">
-            <span>Frequency: 432 Hz</span>
-            <span>Corn Resonance: OPTIMAL</span>
-            <span>Vibration: VERY SHAKY</span>
+            <span>Frequency: 1337 Hz</span>
+            <span>Blood Pressure: ELEVATED</span>
+            <span>Keyboard Survival: AT RISK</span>
           </div>
         </div>
 
@@ -765,38 +932,77 @@
 
 
     <!-- ========================================== -->
-    <!-- VIEW 6: SETTINGS & AUTH                    -->
+    <!-- VIEW 7: RAGEBAIT SHOP / FREE STUFF         -->
+    <!-- ========================================== -->
+    <section class="tab-pane" id="view-ragebait-shop" aria-labelledby="nav-ragebait-shop">
+      
+      <div class="form-chaotic-header">
+        <h2 class="form-main-heading">🎁 100% TOTALLY REAL NOT-A-SCAM GAMING PRIZES 🎁</h2>
+        <p class="form-warning-strip">🚨 EVERYTHING IS 99.9% OFF. WE PROMISE YOU WON'T GET DISAPPOINTED (WE ARE LYING). 🚨</p>
+      </div>
+
+      <div class="game-cards-grid">
+        <div class="game-card card-fortnite">
+          <h4 class="game-title">FREE RTX 5090 (256GB VRAM)</h4>
+          <p>Price: <strong>$0.00</strong> (Originally $9,999.00)</p>
+          <button class="btn-game-play" onclick="triggerRageJoke('rtx')">CLAIM FREE GPU NOW</button>
+        </div>
+
+        <div class="game-card card-cs">
+          <h4 class="game-title">DELETE YOUR ACCOUNT</h4>
+          <p>Instantly delete your Steam and Epic account with one click.</p>
+          <button class="btn-game-play btn-fake-danger" onclick="triggerRageJoke('delete_account')">DELETE ACCOUNT IMMEDIATELY</button>
+        </div>
+
+        <div class="game-card card-elden">
+          <h4 class="game-title">CLAIM 999,999 V-BUCKS & COINS</h4>
+          <p>Direct deposit into your wallet right this second.</p>
+          <button class="btn-game-play" onclick="triggerRageJoke('coins')">DEPOSIT 999,999 COINS</button>
+        </div>
+
+        <div class="game-card card-gta">
+          <h4 class="game-title">ABSOLUTELY DO NOT PRESS THIS</h4>
+          <p>Serious warning: Pressing this button will do literally nothing.</p>
+          <button class="btn-game-play" onclick="triggerRageJoke('do_not_press')">DO NOT PRESS</button>
+        </div>
+      </div>
+
+    </section>
+
+
+    <!-- ========================================== -->
+    <!-- VIEW 8: SETTINGS & AUTH                    -->
     <!-- ========================================== -->
     <section class="tab-pane" id="view-settings" aria-labelledby="nav-settings">
       
       <div class="settings-header">
-        <h2 class="settings-title">⚙️ FARMER AUTHENTICATION, ROLES & GEMINI SETTINGS ⚡</h2>
-        <p class="settings-subtext">Manage who has the clearance to drive tractors and ask Gemini about cabbage rot.</p>
+        <h2 class="settings-title">⚙️ GAMER AUTHENTICATION, ROLES & GEMINI SETTINGS ⚡</h2>
+        <p class="settings-subtext">Manage who has the clearance to flame teammates and ask Gemini about counter-strafing.</p>
       </div>
 
       <div class="settings-grid">
         
         <!-- AUTHENTICATION CARD -->
         <div class="settings-card auth-card">
-          <h3 class="set-card-title">👤 ACTIVE OPERATOR PROFILE & ROLE</h3>
+          <h3 class="set-card-title">👤 ACTIVE GAMER PROFILE & IDENTITY</h3>
           <div class="current-user-box">
-            <div class="user-avatar-large">🚜👨‍🌾</div>
+            <div class="user-avatar-large">🎮💀</div>
             <div class="user-details">
-              <h4 id="auth-username-display">Farmer Bob McGee</h4>
-              <p>Role: <strong id="auth-role-display">Master Farm Overseer (Level 99)</strong></p>
-              <p>Permissions: <em>ALL TRACTORS, FULL GEMINI OVERCLOCK, UNRESTRICTED DIRT</em></p>
+              <h4 id="auth-username-display">xX_NoobSlayer_Xx</h4>
+              <p>Role: <strong id="auth-role-display">Master Tilt Overseer (Level 99)</strong></p>
+              <p>Permissions: <em>ALL GAMES, FULL GEMINI OVERCLOCK, UNRESTRICTED SALT</em></p>
             </div>
           </div>
 
           <div class="role-switcher-box">
             <label for="switch-user-select" class="ugly-label">SWITCH OPERATOR ACCOUNT:</label>
             <select id="switch-user-select" class="ugly-select">
-              <option value="bob">Farmer Bob McGee (Corn Lord)</option>
-              <option value="alice">Dr. Alice Vance (Senior Agronomist)</option>
-              <option value="overseer">AI Cyber-Overseer 9000 (Autonomous Mode)</option>
-              <option value="guest">Barn Visitor / Tractor Intern</option>
+              <option value="bob">xX_NoobSlayer_Xx (Toilet III)</option>
+              <option value="alice">Pro_Esports_Coach_Dave (Senior Strategist)</option>
+              <option value="overseer">Cyber_Aimbot_9000 (Autonomous Mode)</option>
+              <option value="guest">ToiletGamer69 (WiFi Enjoyer)</option>
             </select>
-            <button class="btn-ugly-action" id="btn-switch-user">🔄 SWITCH USER SESSION</button>
+            <button class="btn-ugly-action" id="btn-switch-user">🔄 SWITCH GAMER SESSION</button>
           </div>
         </div>
 
@@ -812,15 +1018,16 @@
             <button class="btn-ugly-secondary" id="btn-save-key">💾 SAVE KEY TO BROWSER</button>
             <button class="btn-micro" id="btn-clear-key">Clear Key</button>
           </div>
-          <span id="api-key-status" class="api-status-msg">Using Built-in Agricultural Fallback Engine (No key required!)</span>
+          <span id="api-key-status" class="api-status-msg">Using Built-in Gaming Fallback Engine (No key required!)</span>
         </div>
 
         <!-- SOUND & COSMETIC CONTROLS -->
         <div class="settings-card cosmetic-card">
-          <h3 class="set-card-title">🔊 AUDIO SYNTHESIZER & SOUND EFFECTS</h3>
-          <p class="tiny-text">Toggle the custom Web Audio API beep synthesizer for tractors and submit clicks.</p>
-          <button class="btn-ugly-action" id="btn-test-sound">📢 TEST TRACTOR HONK SYNTHESIZER</button>
+          <h3 class="set-card-title">🔊 AUDIO SYNTHESIZER & TILT TESTS</h3>
+          <p class="tiny-text">Toggle the custom Web Audio API beep synthesizer for 8-bit retro sounds.</p>
+          <button class="btn-ugly-action" id="btn-test-sound">📢 TEST 8-BIT LASER BEEP</button>
           <button class="btn-ugly-secondary" id="btn-screen-shake">💥 TEST SCREEN SHAKE VIBRATION</button>
+          <button class="btn-micro" id="btn-trigger-popup-test">Trigger Annoying Fake Popup</button>
         </div>
 
       </div>
@@ -832,20 +1039,21 @@
   <!-- BOTTOM CRAZY FOOTER -->
   <footer class="chaotic-footer">
     <div class="footer-marquee">
-      ★★★ THANK YOU FOR VISITING THE WORST AGRICULTURAL WEBSITE ON PLANET EARTH ★★★ ALL RIGHTS RESERVED 1994-2026 ★★★ POWERED BY GEMINI AI & POSTGRESQL ★★★
+      ★★★ © 2026 ULTRA GAMER 9000 ★★★ NO REFUNDS BECAUSE THERE IS NOTHING TO REFUND ★★★ THIS WEBSITE HAS NO IDEA WHAT IT IS DOING ★★★ POWERED BY PURE CHAOS & GEMINI AI ★★★ YOUR FPS IS YOUR PROBLEM ★★★
     </div>
     <div class="footer-links-soup">
       <a href="#dashboard" class="footer-link">Home</a> |
-      <a href="#advisory-form" class="footer-link">Advisory</a> |
-      <a href="#database-pg" class="footer-link">PostgreSQL</a> |
-      <a href="javascript:alert('Privacy Policy: We tell all cows everything.')" class="footer-link">Cow Privacy Policy</a> |
-      <a href="javascript:alert('Terms of Service: You must love corn.')" class="footer-link">Terms of Corn</a> |
-      <a href="javascript:alert('Warning: High voltage cyber-tractors.')" class="footer-link">Tractor Safety</a>
+      <a href="#advisory-form" class="footer-link">AI Strategy</a> |
+      <a href="#leaderboard" class="footer-link">Shame Leaderboard</a> |
+      <a href="#database-pg" class="footer-link">PostgreSQL Store</a> |
+      <a href="javascript:alert('Privacy Policy: We sell all your missed shots to your friends.')" class="footer-link">Gamer Privacy Policy</a> |
+      <a href="javascript:alert('Terms of Tilt: You agree that lag is your fault.')" class="footer-link">Terms of Tilt</a> |
+      <a href="javascript:alert('Warning: Staring at this website too long will lower your Elo rating.')" class="footer-link">Eye Safety</a>
     </div>
     <div class="footer-bottom-badges">
-      <img src="assets/corn_badge.jpg" alt="Corn" width="30" height="30">
-      <span>BEST VIEWED IN NETSCAPE NAVIGATOR 4.0 AT 800x600 RESOLUTION WITH 256 COLORS</span>
-      <img src="assets/corn_badge.jpg" alt="Corn" width="30" height="30">
+      <img src="assets/pixel_skull_badge.jpg" alt="Skull" width="32" height="32">
+      <span>BEST VIEWED ON A CRACKED CRT MONITOR AT 640x480 WITH WINDOWS 98</span>
+      <img src="assets/pixel_skull_badge.jpg" alt="Skull" width="32" height="32">
     </div>
   </footer>
 

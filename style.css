@@ -1,27 +1,24 @@
 /* ==========================================================================
-   🌾🚜 AGRI-CYBER-FARM-9000: WORST WEB APPLICATION STYLESHEET EVER 🚜🌾
-   Deliberately designed with clashing neon colors, inconsistent borders,
-   bizarre typography, and chaotic layout, while retaining 100% functionality!
+   🎮💀 ULTRA GAMER 9000 // DEFINITELY NOT A SCAM 💀🎮
+   The internet's most obnoxious, rage-inducing, chaotic, and badly designed
+   gaming portal stylesheet. Fully functional, hostile by design!
    ========================================================================== */
 
-/* GOOGLE FONTS FOR MAXIMUM CHAOTIC TYPOGRAPHY */
-@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,400;0,700;1,700&family=Press+Start+2P&family=Permanent+Marker&family=Creepster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Comic+Neue:ital,wght@0,400;0,700;1,700&family=Permanent+Marker&family=Creepster&display=swap');
 
 :root {
   --neon-green: #39ff14;
   --hot-pink: #ff007f;
   --screaming-yellow: #ffff00;
   --electric-cyan: #00ffff;
-  --blood-red: #ff0022;
-  --alien-purple: #9d00ff;
+  --electric-blue: #0055ff;
+  --pure-red: #ff0000;
+  --toxic-purple: #9d00ff;
   --blaze-orange: #ff6600;
-  --slime-lime: #a6ff00;
-  --gross-brown: #5c3a00;
-  --cows-white: #ffffff;
   --pitch-black: #000000;
+  --pure-white: #ffffff;
 }
 
-/* GLOBAL RESETS & TERRIBLE BACKGROUND */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -29,13 +26,14 @@
 }
 
 body {
-  background-color: #0d001a;
+  background-color: #07000f;
   background-image: 
-    radial-gradient(#ff007f 15%, transparent 16%),
-    radial-gradient(#00ffff 15%, transparent 16%),
-    linear-gradient(45deg, #15002a 25%, #050010 25%, #050010 50%, #15002a 50%, #15002a 75%, #050010 75%, #050010 100%);
-  background-size: 60px 60px, 60px 60px, 40px 40px;
-  background-position: 0 0, 30px 30px, 0 0;
+    linear-gradient(rgba(255, 0, 127, 0.2) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 255, 0.2) 1px, transparent 1px),
+    radial-gradient(#39ff14 10%, transparent 11%),
+    radial-gradient(#ffff00 10%, transparent 11%);
+  background-size: 30px 30px, 30px 30px, 80px 80px, 80px 80px;
+  background-position: 0 0, 0 0, 40px 40px, 0 0;
   color: #ffff00;
   font-family: "Comic Neue", "Comic Sans MS", cursive, sans-serif;
   line-height: 1.35;
@@ -43,13 +41,160 @@ body {
   cursor: crosshair;
 }
 
+/* CRT SCANLINE OVERLAY */
+.crt-scanlines::after {
+  content: " ";
+  display: block;
+  position: fixed;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.35) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+  z-index: 99998;
+  background-size: 100% 3px, 6px 100%;
+  pointer-events: none;
+}
+
 /* ==========================================================================
-   ANNOYING MARQUEE & TOP BROADCAST BAR
+   POPUP MODAL (RAGEBAIT & COMEDIC)
+   ========================================================================== */
+.popup-modal-overlay {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100000;
+}
+
+.popup-window {
+  background: #c0c0c0;
+  border: 4px outset #ffffff;
+  box-shadow: 15px 15px 0px #000000;
+  width: 90%;
+  max-width: 480px;
+  animation: popup-drop 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+@keyframes popup-drop {
+  0% { transform: scale(0.6) rotate(-8deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+.popup-titlebar {
+  background: linear-gradient(90deg, #000080, #1084d0);
+  color: #ffffff;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 11px;
+  padding: 6px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-popup-x {
+  background: #c0c0c0;
+  color: #000;
+  border: 2px outset #fff;
+  font-weight: bold;
+  font-size: 12px;
+  padding: 1px 6px;
+  cursor: pointer;
+}
+
+.popup-body {
+  padding: 16px;
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  background: #ffffcc;
+  border-bottom: 2px solid #808080;
+}
+
+.popup-icon {
+  font-size: 48px;
+  animation: blink-soft 0.5s infinite;
+}
+
+.popup-text-content h4 {
+  font-family: 'Impact', sans-serif;
+  font-size: 18px;
+  color: #ff0000;
+  margin-bottom: 4px;
+}
+
+.popup-text-content p {
+  font-size: 13px;
+  color: #000000;
+  font-weight: bold;
+}
+
+.popup-actions {
+  padding: 12px;
+  background: #c0c0c0;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.btn-popup-click {
+  background: #d4d0c8;
+  color: #000;
+  font-family: 'Comic Neue', cursive;
+  font-weight: 900;
+  font-size: 13px;
+  padding: 6px 14px;
+  border: 3px outset #ffffff;
+  cursor: pointer;
+}
+
+.btn-popup-click:active {
+  border-style: inset;
+}
+
+.btn-fake-danger {
+  background: #ff0000 !important;
+  color: #ffff00 !important;
+}
+
+/* ==========================================================================
+   FLOATING TOAST STACK
+   ========================================================================== */
+.toast-stack {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  pointer-events: none;
+}
+
+.rage-toast {
+  background: #ff007f;
+  color: #ffff00;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  padding: 10px 14px;
+  border: 4px dashed #39ff14;
+  box-shadow: 6px 6px 0px #000000;
+  animation: toast-slide 0.3s ease-out;
+  pointer-events: auto;
+  max-width: 320px;
+}
+
+@keyframes toast-slide {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+/* ==========================================================================
+   TOP MARQUEE TICKER & RAGE STATUS BAR
    ========================================================================== */
 .annoying-top-bar {
   background: linear-gradient(90deg, #ff0000, #ff8800, #ffff00, #00ff00, #00ffff, #ff00ff, #ff0000);
   background-size: 400% 400%;
-  animation: rainbow-shift 3s ease infinite;
+  animation: rainbow-shift 2.5s ease infinite;
   border-bottom: 5px dashed #000;
   padding: 6px 12px;
   display: flex;
@@ -82,7 +227,7 @@ body {
 .marquee-text {
   display: inline-block;
   padding-left: 100%;
-  animation: marquee-run 22s linear infinite;
+  animation: marquee-run 24s linear infinite;
   font-family: 'Press Start 2P', monospace;
   font-size: 11px;
   color: #39ff14;
@@ -108,7 +253,7 @@ body {
   background: #ffff00;
   color: #000;
   border: 2px solid #000;
-  padding: 2px 6px;
+  padding: 3px 6px;
   cursor: pointer;
   border-radius: 0;
   text-transform: uppercase;
@@ -119,14 +264,47 @@ body {
   color: #fff;
 }
 
-.live-clock-badge {
+.live-counter-badge {
   background: #000;
-  color: #00ffff;
-  font-family: 'Courier New', monospace;
+  color: #39ff14;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 9px;
+  padding: 3px 6px;
+  border: 2px solid #ff0000;
+}
+
+.live-pulse {
+  animation: blink-soft 0.8s infinite;
+}
+
+.ping-badge {
+  background: #ff0000;
+  color: #ffff00;
+  font-family: monospace;
   font-size: 11px;
   font-weight: bold;
   padding: 2px 6px;
-  border: 2px inset #00ffff;
+  border: 2px inset #fff;
+}
+
+.fps-badge {
+  background: #0000aa;
+  color: #00ffff;
+  font-family: monospace;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 2px 6px;
+  border: 2px outset #00ffff;
+}
+
+.gpu-badge {
+  background: #ff6600;
+  color: #000;
+  font-family: monospace;
+  font-size: 11px;
+  font-weight: 900;
+  padding: 2px 6px;
+  animation: blink-soft 0.4s infinite;
 }
 
 .user-pill-badge {
@@ -144,7 +322,7 @@ body {
    CHAOTIC HEADER & TITLES
    ========================================================================== */
 .chaos-header {
-  background: linear-gradient(137deg, #4b0082, #ff007f 40%, #00ffff 80%, #39ff14);
+  background: linear-gradient(137deg, #ff0055, #8800ff 40%, #00ffff 80%, #39ff14);
   border: 8px ridge #ffff00;
   outline: 6px dashed #ff0000;
   outline-offset: -3px;
@@ -165,14 +343,14 @@ body {
   flex: 1 1 450px;
 }
 
-.spin-corn-badge {
+.spin-skull-badge {
   border: 4px solid #39ff14;
   border-radius: 50%;
-  animation: corn-spin 8s linear infinite;
+  animation: skull-spin 6s linear infinite;
   box-shadow: 0 0 15px #ffff00;
 }
 
-@keyframes corn-spin {
+@keyframes skull-spin {
   0% { transform: rotate(0deg) scale(1); }
   50% { transform: rotate(180deg) scale(1.15); }
   100% { transform: rotate(360deg) scale(1); }
@@ -180,7 +358,7 @@ body {
 
 .welcome-heading {
   font-family: 'Impact', 'Arial Black', sans-serif;
-  font-size: 46px;
+  font-size: 42px;
   letter-spacing: 2px;
   color: #ffff00;
   text-shadow: 
@@ -188,7 +366,7 @@ body {
     -3px -3px 0 #00ffff,
     6px 6px 10px #000;
   animation: heading-wobble 2s ease-in-out infinite alternate;
-  line-height: 1;
+  line-height: 1.05;
 }
 
 @keyframes heading-wobble {
@@ -260,18 +438,17 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
 }
 
-/* AT LEAST ONE BUTTON THAT LOOKS MUCH MORE IMPORTANT THAN EVERYTHING ELSE */
 .btn-mega-distraction {
   background: linear-gradient(45deg, #ff0000, #ffff00, #ff00ff, #00ffff);
   background-size: 300% 300%;
   animation: rainbow-shift 1.5s infinite, pulse-mega 0.8s ease-in-out infinite alternate;
   color: #000000;
   font-family: 'Impact', sans-serif;
-  font-size: 18px;
-  padding: 14px 22px;
+  font-size: 17px;
+  padding: 12px 18px;
   border: 6px outset #ffffff;
   border-radius: 35px 5px 35px 5px;
   cursor: pointer;
@@ -291,11 +468,28 @@ body {
   filter: invert(1);
 }
 
+.fake-search-row {
+  display: flex;
+  width: 100%;
+  max-width: 380px;
+  gap: 4px;
+}
+
+.fake-search-ctl {
+  flex: 1;
+  background: #000;
+  color: #00ffff;
+  font-family: monospace;
+  font-size: 11px;
+  padding: 4px 8px;
+  border: 2px solid #ffff00;
+}
+
 .tiny-confusing-text {
-  font-size: 8px;
+  font-size: 9px;
   color: #000;
   background: #ffff00;
-  padding: 1px 4px;
+  padding: 1px 6px;
   font-style: italic;
   font-weight: bold;
 }
@@ -328,8 +522,8 @@ body {
   color: #000;
   font-family: 'Comic Neue', cursive;
   font-weight: 900;
-  font-size: 15px;
-  padding: 8px 14px;
+  font-size: 14px;
+  padding: 8px 12px;
   border: 4px ridge #ff00ff;
   border-radius: 18px 2px 22px 0px;
   cursor: pointer;
@@ -340,10 +534,11 @@ body {
   gap: 6px;
 }
 
+/* Hover jump: 3-5px */
 .nav-btn:hover {
   background: #00ffff;
-  transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0 #000;
+  transform: translate(-3px, -3px) rotate(-1deg);
+  box-shadow: 7px 7px 0 #000;
 }
 
 .nav-btn.active {
@@ -352,6 +547,19 @@ body {
   border: 4px solid #ff0000;
   box-shadow: inset 3px 3px 0 #000, 4px 4px 0 #fff;
   transform: rotate(-1deg);
+}
+
+.fake-disabled-btn {
+  opacity: 0.55;
+  filter: grayscale(0.8);
+  background: #888888 !important;
+  color: #222222 !important;
+  cursor: pointer !important;
+}
+
+.fake-disabled-btn:hover {
+  filter: none;
+  opacity: 1;
 }
 
 .hot-badge {
@@ -394,7 +602,7 @@ body {
   align-items: center;
   gap: 4px;
   font-family: 'Press Start 2P', monospace;
-  font-size: 9px;
+  font-size: 8px;
   color: #00ffff;
   background: #000;
   padding: 4px 8px;
@@ -411,7 +619,6 @@ body {
   100% { transform: rotate(360deg); }
 }
 
-/* EMOJI REPEATING SEPARATOR */
 .emoji-separator {
   text-align: center;
   font-size: 22px;
@@ -442,7 +649,7 @@ body {
 }
 
 /* ==========================================================================
-   VIEW 1: DASHBOARD CHAOS
+   VIEW 1: HERO SECTION & ARENA
    ========================================================================== */
 .giant-unnecessary-banner {
   background: linear-gradient(90deg, #ffff00 0%, #ff007f 50%, #00ffff 100%);
@@ -459,13 +666,13 @@ body {
 }
 
 .banner-image-container {
-  flex: 0 0 180px;
+  flex: 0 0 200px;
   text-align: center;
 }
 
 .banner-hero-img {
   width: 100%;
-  max-width: 180px;
+  max-width: 200px;
   height: auto;
   border: 5px solid #000;
   box-shadow: 5px 5px 0 #ffff00;
@@ -478,7 +685,7 @@ body {
 
 .banner-headline {
   font-family: 'Impact', sans-serif;
-  font-size: 26px;
+  font-size: 28px;
   color: #000000;
   background: #ffff00;
   padding: 4px 8px;
@@ -495,20 +702,58 @@ body {
   margin-bottom: 12px;
 }
 
+.fake-tourney-ticker {
+  background: #000;
+  color: #39ff14;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 9px;
+  padding: 6px 10px;
+  border: 2px solid #ff007f;
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
 .competing-ctas {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  align-items: center;
+}
+
+/* GIANT PRO BUTTON */
+.btn-giant-pro-cta {
+  background: linear-gradient(135deg, #ff0000, #ffff00, #39ff14);
+  background-size: 200% 200%;
+  animation: rainbow-shift 1s infinite, pulse-mega 0.7s alternate infinite;
+  color: #000000;
+  font-family: 'Impact', sans-serif;
+  font-size: 20px;
+  padding: 14px 24px;
+  border: 5px outset #ffffff;
+  border-radius: 40px 5px 40px 5px;
+  cursor: pointer;
+  box-shadow: 8px 8px 0px #000;
+  text-transform: uppercase;
+}
+
+.btn-giant-pro-cta:hover {
+  transform: scale(1.08) rotate(1deg);
+  background: #ffff00;
 }
 
 .cta-btn {
   font-family: 'Impact', sans-serif;
-  font-size: 16px;
-  padding: 10px 18px;
+  font-size: 15px;
+  padding: 10px 16px;
   cursor: pointer;
   border-width: 4px;
   border-style: outset;
   text-transform: uppercase;
+  transition: transform 0.1s;
+}
+
+.cta-btn:hover {
+  transform: translate(-3px, -3px);
 }
 
 .cta-1 {
@@ -539,110 +784,9 @@ body {
   50% { transform: translateY(-4px) scale(1.03); }
 }
 
-/* AI POWER LEVEL INDICATOR: 97% */
-.ai-power-level-container {
-  background: #110022;
-  border: 5px groove #39ff14;
-  border-radius: 40px 4px 40px 4px;
-  padding: 14px 18px;
-  margin-bottom: 20px;
-  box-shadow: 0 0 20px #39ff14, inset 0 0 15px #ff007f;
-}
-
-.power-level-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 8px;
-}
-
-.power-title {
-  font-family: 'Press Start 2P', monospace;
-  font-size: 13px;
-  color: #39ff14;
-  text-shadow: 0 0 8px #39ff14;
-}
-
-.power-title strong {
-  font-size: 20px;
-  color: #ffff00;
-  text-shadow: 0 0 10px #ff0000;
-}
-
-.overheat-badge {
-  background: #003300;
-  color: #39ff14;
-  border: 2px solid #39ff14;
-  padding: 2px 8px;
-  font-size: 12px;
-  font-weight: bold;
-}
-
-.meter-track {
-  background: #000;
-  border: 4px solid #ffff00;
-  height: 34px;
-  border-radius: 17px;
-  overflow: hidden;
-  position: relative;
-  box-shadow: inset 0 0 10px #000;
-  margin-bottom: 10px;
-}
-
-.meter-bar {
-  background: linear-gradient(90deg, #39ff14, #ffff00, #ff6600, #ff0022);
-  background-size: 200% 100%;
-  animation: meter-pulse 1s linear infinite;
-  height: 100%;
-  transition: width 0.4s ease;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  padding-right: 10px;
-}
-
-@keyframes meter-pulse {
-  0% { background-position: 0% 0%; }
-  100% { background-position: 100% 0%; }
-}
-
-.meter-particles {
-  font-size: 14px;
-  animation: blink-soft 0.3s infinite;
-}
-
-.power-actions {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.btn-overclock {
-  background: #ff0022;
-  color: #ffff00;
-  font-family: 'Impact', sans-serif;
-  font-size: 15px;
-  padding: 8px 16px;
-  border: 3px outset #ffff00;
-  cursor: pointer;
-  box-shadow: 3px 3px 0 #000;
-}
-
-.btn-overclock:hover {
-  background: #ffff00;
-  color: #ff0022;
-}
-
-.tiny-text-annoying {
-  font-size: 10px;
-  color: #00ffff;
-  font-family: monospace;
-}
-
-/* FLASHY STATISTIC CARDS (ASYMMETRICAL & UGLY) */
+/* ==========================================================================
+   STATISTIC CARDS (ASYMMETRICAL & RAGE-FOCUSED)
+   ========================================================================== */
 .section-screaming-title {
   font-family: 'Impact', sans-serif;
   font-size: 28px;
@@ -713,240 +857,111 @@ body {
   font-style: italic;
 }
 
-/* Card 1: Cows (Hot Pink + Yellow Dashes) */
-.stat-cows {
+.stat-ragequits {
   background: #ff007f;
   color: #ffff00;
   border: 6px dashed #ffff00;
   border-radius: 45px 3px 40px 10px;
   transform: rotate(-1deg);
 }
-.stat-cows .stat-number {
+.stat-ragequits .stat-number {
   color: #ffffff;
   text-shadow: 3px 3px 0 #000;
 }
 
-/* Card 2: Soil (Radioactive Green + Double Purple) */
-.stat-soil {
-  background: #39ff14;
-  color: #000000;
-  border: 6px double #8b00ff;
-  border-radius: 0px 30px 5px 35px;
-  transform: rotate(1.5deg);
-}
-.stat-soil .stat-number {
-  color: #0000aa;
-  text-shadow: 2px 2px 0 #fff;
-}
-
-/* Card 3: Money (Electric Cyan + Red Groove) */
-.stat-money {
-  background: #00ffff;
-  color: #ff0000;
-  border: 7px groove #ff0000;
-  border-radius: 20px 20px 0 0;
-  transform: rotate(-0.5deg);
-}
-.stat-money .stat-number {
-  color: #ff0000;
-  text-shadow: 2px 2px 0 #ffff00;
-}
-
-/* Card 4: Pest Alert (Hazard Stripes + Harsh Black) */
-.stat-pest {
-  background: repeating-linear-gradient(
-    45deg,
-    #ffff00,
-    #ffff00 15px,
-    #000000 15px,
-    #000000 30px
-  );
+.stat-keyboards {
+  background: repeating-linear-gradient(45deg, #ffff00, #ffff00 15px, #000 15px, #000 30px);
   color: #ffff00;
   border: 6px solid #ff0000;
-  border-radius: 0px;
-  text-shadow: 2px 2px 0 #000;
+  border-radius: 0;
 }
-.stat-pest .stat-number {
+.stat-keyboards .stat-number {
   background: #000;
   color: #ff0022;
   display: inline-block;
   padding: 2px 8px;
   border: 2px solid #fff;
 }
-.stat-pest .stat-label {
-  background: #000;
-  padding: 2px 4px;
+.stat-keyboards .stat-label { background: #000; padding: 2px; }
+.stat-keyboards .stat-footer-awkward { background: #000; color: #39ff14; }
+
+.stat-skill {
+  background: #00ffff;
+  color: #ff0000;
+  border: 7px groove #ff0000;
+  border-radius: 20px 20px 0 0;
+  transform: rotate(-0.5deg);
 }
-.stat-pest .stat-footer-awkward {
-  background: #000;
-  color: #39ff14;
+.stat-skill .stat-number {
+  color: #ff0000;
+  text-shadow: 2px 2px 0 #ffff00;
 }
 
-/* DASHBOARD MIDDLE ROW: CHARTS & ACTIONS */
-.dashboard-middle-row {
+.stat-losses {
+  background: #39ff14;
+  color: #000000;
+  border: 6px double #8b00ff;
+  border-radius: 0px 30px 5px 35px;
+  transform: rotate(1.5deg);
+}
+.stat-losses .stat-number {
+  color: #0000aa;
+  text-shadow: 2px 2px 0 #fff;
+}
+
+/* ==========================================================================
+   TERRIBLE GAME CARDS
+   ========================================================================== */
+.game-cards-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 16px;
   margin-bottom: 24px;
 }
 
-@media (max-width: 900px) {
-  .dashboard-middle-row {
-    grid-template-columns: 1fr;
-  }
-}
-
-.weird-chart-container {
-  background: #2a0044;
-  border: 6px ridge #00ffff;
-  border-radius: 25px 0 25px 0;
-  padding: 16px;
-  box-shadow: 8px 8px 0 #ff007f;
-}
-
-.chart-screaming-heading {
-  font-family: 'Impact', sans-serif;
-  font-size: 20px;
-  color: #39ff14;
-  margin-bottom: 4px;
-}
-
-.chart-awkward-sub {
-  font-size: 12px;
-  color: #ffff00;
-  margin-bottom: 16px;
-}
-
-.css-weird-bar-chart {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-around;
-  height: 220px;
-  background: #000000;
-  border: 3px solid #ffff00;
-  padding: 10px;
-  gap: 8px;
+.game-card {
   position: relative;
-  background-image: linear-gradient(to top, rgba(255,255,255,0.05) 1px, transparent 1px);
-  background-size: 100% 25px;
-}
-
-.bar-col {
-  flex: 1;
+  padding: 18px 14px;
+  box-shadow: 8px 8px 0px #000;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  height: 100%;
-  justify-content: flex-end;
+  justify-content: space-between;
 }
 
-.bar-val {
-  font-size: 10px;
-  font-family: monospace;
-  font-weight: bold;
-  margin-bottom: 4px;
-  color: #ffffff;
+.card-badge {
+  position: absolute;
+  top: -10px;
+  right: 12px;
+  background: #ff0000;
+  color: #fff;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  padding: 3px 6px;
+  border: 2px solid #fff;
 }
+.badge-red { background: #ff0000; }
+.badge-yellow { background: #ffff00; color: #000; }
+.badge-cyan { background: #00ffff; color: #000; }
 
-.bar-fill {
-  width: 100%;
-  border: 2px solid #000;
-  box-shadow: 3px -3px 0 rgba(255,255,255,0.5);
-  transition: height 0.5s ease;
-}
-
-.col-corn .bar-fill { background: #a800ff; }
-.col-wheat .bar-fill { background: #ff007f; }
-.col-tomato .bar-fill { background: #39ff14; }
-.col-potato .bar-fill { background: #00f0ff; }
-.col-carrot .bar-fill { background: #ff6600; }
-.col-soy .bar-fill { background: #ffee00; }
-
-.bar-name {
-  font-size: 9px;
-  font-weight: bold;
-  margin-top: 6px;
-  text-align: center;
-  color: #ffff00;
-  writing-mode: horizontal-tb;
-}
-
-.chart-legend-chaotic {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 12px;
-  font-size: 11px;
-}
-
-.legend-chip {
-  padding: 2px 6px;
-  background: #000;
-  border: 1px solid #fff;
-}
-.chip-1 { color: #a800ff; }
-.chip-2 { color: #ff007f; }
-.chip-3 { color: #39ff14; }
-.chip-4 { color: #00f0ff; }
-.chip-5 { color: #ff6600; }
-.chip-6 { color: #ffee00; }
-
-.weird-side-card {
-  background: #ffff00;
-  color: #000000;
-  border: 6px dashed #ff0022;
-  padding: 16px;
-  box-shadow: 8px 8px 0 #00ffff;
-  transform: rotate(1deg);
-}
-
-.card-wobbly-title {
+.game-title {
   font-family: 'Impact', sans-serif;
-  font-size: 20px;
-  color: #ff0022;
-  margin-bottom: 4px;
+  font-size: 22px;
+  margin-bottom: 6px;
 }
 
-.tiny-text {
-  font-size: 11px;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.nested-ugly-box {
-  background: #00ffff;
-  border: 4px inset #000;
-  padding: 10px;
-  margin-bottom: 10px;
-}
-
-.nested-inner-box {
-  background: #ff00ff;
-  border: 3px dotted #ffff00;
-  padding: 8px;
-}
-
-.screaming-label {
+.game-rating {
+  font-size: 13px;
   font-weight: 900;
-  font-size: 12px;
-  color: #ffff00;
-  display: block;
-  margin-bottom: 4px;
-  text-shadow: 1px 1px 0 #000;
-}
-
-.ugly-select {
-  width: 100%;
-  padding: 6px;
-  font-family: 'Comic Neue', cursive;
-  font-weight: bold;
-  background: #fff;
-  border: 3px solid #000;
   margin-bottom: 8px;
 }
 
-.btn-ugly-action {
-  width: 100%;
+.game-stat-line {
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+.btn-game-play {
+  margin-top: 14px;
   background: #39ff14;
   color: #000;
   font-family: 'Impact', sans-serif;
@@ -958,19 +973,157 @@ body {
   text-transform: uppercase;
 }
 
+.btn-game-play:hover {
+  background: #ff0022;
+  color: #fff;
+  transform: scale(1.03);
+}
+
+.card-fortnite {
+  background: #2b0044;
+  border: 6px ridge #00ffff;
+  color: #ffff00;
+}
+.card-fortnite .game-title { color: #00ffff; }
+
+.card-cs {
+  background: #3f0015;
+  border: 6px dashed #ff0000;
+  color: #ffffff;
+}
+.card-cs .game-title { color: #ff007f; }
+
+.card-elden {
+  background: #222200;
+  border: 6px groove #ffff00;
+  color: #ffff00;
+}
+.card-elden .game-title { color: #39ff14; }
+
+.card-gta {
+  background: #002b3b;
+  border: 6px double #39ff14;
+  color: #ffffff;
+}
+.card-gta .game-title { color: #ffff00; }
+
+/* ==========================================================================
+   FAKE SYSTEM STATUS (OVERFLOWING PC HEALTH)
+   ========================================================================== */
+.system-status-box {
+  background: #110022;
+  border: 6px double #39ff14;
+  padding: 18px;
+  margin-bottom: 24px;
+  box-shadow: 8px 8px 0 #ff007f;
+}
+
+.status-screaming-heading {
+  font-family: 'Impact', sans-serif;
+  font-size: 24px;
+  color: #ff007f;
+  margin-bottom: 6px;
+}
+
+.hardware-bars-cluster {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 14px 0;
+}
+
+.hw-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.hw-name {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  color: #ffff00;
+  flex: 0 0 160px;
+}
+
+.hw-meter-outer {
+  flex: 1;
+  min-width: 200px;
+  height: 28px;
+  background: #000;
+  border: 3px solid #fff;
+  position: relative;
+  overflow: visible; /* Intentionally visible to let bars overflow! */
+}
+
+.hw-meter-inner {
+  height: 100%;
+  font-family: 'Impact', sans-serif;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  padding-left: 8px;
+  white-space: nowrap;
+}
+
+.hw-over-100 {
+  background: linear-gradient(90deg, #39ff14, #ff8800, #ff0000);
+  color: #fff;
+  border-right: 5px solid #ffff00;
+  box-shadow: 0 0 10px #ff0000;
+}
+
+.hw-over-140 {
+  background: linear-gradient(90deg, #ff0000, #ff00ff, #ffff00);
+  color: #000;
+  border-right: 6px solid #fff;
+  box-shadow: 0 0 15px #ff00ff;
+  animation: meter-pulse 0.8s infinite;
+}
+
+@keyframes meter-pulse {
+  0% { filter: brightness(1); }
+  50% { filter: brightness(1.4); }
+  100% { filter: brightness(1); }
+}
+
+.hw-text-status {
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  font-weight: 900;
+  color: #00ffff;
+  background: #000;
+  padding: 4px 8px;
+  border: 2px dashed #ffff00;
+}
+
+.hw-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.btn-ugly-action {
+  background: #39ff14;
+  color: #000;
+  font-family: 'Impact', sans-serif;
+  font-size: 15px;
+  padding: 10px 16px;
+  border: 4px outset #ffff00;
+  cursor: pointer;
+  box-shadow: 4px 4px 0 #000;
+  text-transform: uppercase;
+}
+
 .btn-ugly-action:hover {
   background: #ff0022;
   color: #fff;
 }
 
-.decorative-farm-strip {
-  display: flex;
-  justify-content: space-around;
-  font-size: 24px;
-  margin-top: 10px;
-}
-
-/* CRAMPED DIFFICULT-TO-READ TABLE */
+/* ==========================================================================
+   CRAMPED DIFFICULT-TO-READ TABLE
+   ========================================================================== */
 .cramped-table-container {
   background: #000000;
   border: 6px double #39ff14;
@@ -1015,7 +1168,6 @@ body {
   font-weight: bold;
 }
 
-/* Alternating magenta and bright cyan rows for maximum eye fatigue */
 .clashing-table tbody tr:nth-child(odd) {
   background: #ff00aa;
   color: #ffff00;
@@ -1039,7 +1191,65 @@ body {
 }
 
 /* ==========================================================================
-   VIEW 2: ADVISORY FORM CHAOS & TECHNICAL INTEGRITY
+   LEADERBOARD VIEW
+   ========================================================================== */
+.leaderboard-header-banner {
+  background: #ff007f;
+  border: 6px dashed #39ff14;
+  padding: 16px;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.leaderboard-container {
+  background: #110022;
+  border: 6px groove #ffff00;
+  padding: 16px;
+}
+
+.your-rank-callout {
+  background: #000000;
+  border: 5px solid #ff0000;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px;
+  margin-bottom: 16px;
+  animation: wobble-btn 1.5s infinite;
+}
+
+.rank-huge-number {
+  font-family: 'Impact', sans-serif;
+  font-size: 46px;
+  color: #ff0022;
+  text-shadow: 2px 2px 0 #ffff00;
+}
+
+.rank-details h3 {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 13px;
+  color: #ffff00;
+  margin-bottom: 4px;
+}
+
+.rank-details p {
+  font-size: 12px;
+  color: #39ff14;
+  font-style: italic;
+}
+
+.rank-gold td { background: #ffd700 !important; color: #000 !important; font-weight: 900; }
+.rank-silver td { background: #c0c0c0 !important; color: #000 !important; }
+.rank-bronze td { background: #cd7f32 !important; color: #fff !important; }
+.rank-user-row td {
+  background: #ff0000 !important;
+  color: #ffff00 !important;
+  animation: blink-soft 0.5s infinite;
+  font-size: 13px !important;
+}
+
+/* ==========================================================================
+   VIEW 2: AI FORM CHAOS & TECHNICAL INTEGRITY
    ========================================================================== */
 .form-chaotic-header {
   background: linear-gradient(90deg, #ff007f, #8b00ff);
@@ -1134,7 +1344,6 @@ body {
 }
 
 /* Intentional chaotic field widths */
-.width-22 { flex: 1 1 200px; max-width: 22%; }
 .width-24 { flex: 1 1 200px; max-width: 24%; }
 .width-28 { flex: 1 1 240px; max-width: 28%; }
 .width-29 { flex: 1 1 240px; max-width: 29%; }
@@ -1144,14 +1353,14 @@ body {
 .width-35 { flex: 1 1 280px; max-width: 35%; }
 .width-37 { flex: 1 1 280px; max-width: 37%; }
 .width-40 { flex: 1 1 300px; max-width: 40%; }
-.width-48 { flex: 1 1 350px; max-width: 48%; }
+.width-42 { flex: 1 1 320px; max-width: 42%; }
 .width-63 { flex: 1 1 450px; max-width: 61%; }
 .width-100 { flex: 1 1 100%; width: 100%; }
 
 @media (max-width: 768px) {
-  .width-22, .width-24, .width-28, .width-29, .width-30,
+  .width-24, .width-28, .width-29, .width-30,
   .width-31, .width-33, .width-35, .width-37, .width-40,
-  .width-48, .width-63 {
+  .width-42, .width-63 {
     max-width: 100% !important;
     flex: 1 1 100% !important;
   }
@@ -1309,7 +1518,7 @@ body {
 }
 
 /* ==========================================================================
-   VIEW 3: ADVISORY RESULTS CHAOS & TECHNICAL ACCURACY
+   VIEW 3: ADVISORY RESULTS
    ========================================================================== */
 .results-header-banner {
   background: #ffff00;
@@ -1386,7 +1595,6 @@ body {
   justify-content: space-between;
 }
 
-/* Card 1: Urgent Warning (Screaming Red & Yellow) */
 .card-urgent-warning {
   background: #ffe600;
   color: #000000;
@@ -1424,7 +1632,6 @@ body {
   border-left: 5px solid #ff0000;
 }
 
-/* Card 2: Fertilizer (Neon Green & Purple) */
 .card-fertilizer {
   background: #39ff14;
   color: #000000;
@@ -1481,7 +1688,6 @@ body {
   font-weight: bold;
 }
 
-/* Card 3: Water (Cyan & Navy Blue) */
 .card-irrigation {
   background: #00ffff;
   color: #000066;
@@ -1520,7 +1726,6 @@ body {
   margin-bottom: 4px;
 }
 
-/* Card 4: Bugs (Hot Pink & Slime Lime) */
 .card-pest-threat {
   background: #ff007f;
   color: #ffffff;
@@ -1557,7 +1762,6 @@ body {
   font-family: monospace;
 }
 
-/* Card 5: Full Width AI Synthesis */
 .card-ai-synthesis {
   background: linear-gradient(135deg, #1f003b, #001f3f);
   color: #ffff00;
@@ -1659,7 +1863,7 @@ body {
 }
 
 /* ==========================================================================
-   VIEW 4: POSTGRESQL CONSOLE & DATA STORE
+   VIEW 5: POSTGRESQL STORE & TELEMETRY DB
    ========================================================================== */
 .db-header-block {
   background: linear-gradient(90deg, #001144, #004466);
@@ -1785,7 +1989,7 @@ body {
 }
 
 /* ==========================================================================
-   VIEW 5: WEIRD CROP ANALYTICS
+   VIEW 6: PC HEALTH & TELEMETRY LAB
    ========================================================================== */
 .analytics-header {
   background: #330033;
@@ -1839,15 +2043,15 @@ body {
   height: 170px;
   border-radius: 50%;
   background: conic-gradient(
-    #a800ff 0% 38%,
-    #ff007f 38% 64%,
-    #39ff14 64% 78%,
-    #00f0ff 78% 90%,
-    #ffee00 90% 100%
+    #a800ff 0% 48%,
+    #ff007f 48% 72%,
+    #39ff14 72% 90%,
+    #00f0ff 90% 98%,
+    #ffee00 98% 100%
   );
   border: 6px solid #fff;
   box-shadow: 0 0 15px #39ff14;
-  animation: pie-spin 20s linear infinite;
+  animation: pie-spin 18s linear infinite;
 }
 
 @keyframes pie-spin {
@@ -1952,7 +2156,7 @@ body {
 }
 
 /* ==========================================================================
-   VIEW 6: SETTINGS & AUTH
+   VIEW 8: SETTINGS & AUTH
    ========================================================================== */
 .settings-header {
   background: #2a003f;
@@ -2021,6 +2225,16 @@ body {
   margin-top: 10px;
 }
 
+.ugly-select {
+  width: 100%;
+  padding: 6px;
+  font-family: 'Comic Neue', cursive;
+  font-weight: bold;
+  background: #fff;
+  border: 3px solid #000;
+  margin-bottom: 8px;
+}
+
 .api-btn-row {
   display: flex;
   gap: 8px;
@@ -2080,7 +2294,7 @@ body {
   color: #00ffff;
 }
 
-/* SCREEN SHAKE CLASS TRIGGERED ON OVERCLOCK / SOUND */
+/* SCREEN SHAKE TRIGGER */
 .screen-vibrate {
   animation: screen-shake-anim 0.4s ease-in-out;
 }
