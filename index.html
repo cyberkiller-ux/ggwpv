@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🌾🚜 AGRI-CYBER-FARM-9000 ULTRA TURBO DASHBOARD & ADVISORY SYSTEM 🚜🌾</title>
+  <meta name="description" content="The worst visual farming website on the internet, powered by Gemini AI and PostgreSQL">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="assets/corn_badge.jpg">
+</head>
+<body>
+  <!-- UGLY TOP SOUND & ALERT CONTROLS -->
+  <aside class="annoying-top-bar" aria-label="Urgent Broadcast">
+    <div class="marquee-wrapper">
+      <div class="marquee-text" id="marquee-text">
+        🚨 ATTENTION FARMERS: TRACTOR RACE AT 3:00 PM IN BARN #4 🚜 🌽 BOB DROPPED HIS SHOVEL IN THE POND 💩 GEMINI AI OVERCLOCK LEVEL AT 97% ⚡ RAIN EXPECTED OR MAYBE SUNSHINE 🌧️ DO NOT FEED THE COWS CHIPS 🐄 BEST AGRICULTURAL PORTAL SINCE 1997 🌾🌾🌾
+      </div>
+    </div>
+    <div class="top-bar-controls">
+      <button id="btn-sound-toggle" class="btn-micro" title="Toggle audio synth sounds" aria-label="Toggle retro farm sound">🔊 SOUND: ON</button>
+      <span class="live-clock-badge" id="live-clock">⏰ 00:00:00 AM</span>
+      <span class="user-pill-badge" id="user-display">👤 LOGGED IN: FARMER BOB [LVL 99 CORN MASTER 🌽]</span>
+    </div>
+  </aside>
+
+  <!-- CONFUSING CHAOTIC HEADER -->
+  <header class="chaos-header">
+    <div class="header-left">
+      <img src="assets/corn_badge.jpg" alt="Shiny Corn Web Badge" class="spin-corn-badge" width="85" height="85">
+      <div class="title-cluster">
+        <h1 class="welcome-heading">WELCOME FARMER!!! 🌾🚜</h1>
+        <p class="sub-welcome-blurb">★ ★ ★ OFFICIAL GLOBAL CYBERNETIC AGRICULTURAL MANAGEMENT & ARTIFICIAL INTELLIGENCE PORTAL ★ ★ ★</p>
+      </div>
+    </div>
+
+    <div class="header-center-decor">
+      <span class="badge-chaotic-1">✨ 100% BUG FREE (EXCEPT WEEVILS) 🐛</span>
+      <span class="badge-chaotic-2">💾 POSTGRESQL 16.4 CONNECTED</span>
+      <span class="badge-chaotic-3">⚡ GEMINI 1.5 PRO ENGAGED</span>
+    </div>
+
+    <div class="header-right-actions">
+      <button class="btn-mega-distraction" id="btn-turbo-harvest" title="Do not press this unless ready">
+        🚜 ACTIVATE EMERGENCY TURBO HARVEST MODE 🚨
+      </button>
+      <span class="tiny-confusing-text">⚠️ Warning: May cause tractor to levitate 2 inches</span>
+    </div>
+  </header>
+
+  <!-- CONVOLUTED WEIRD NAVIGATION -->
+  <nav class="chaotic-nav" aria-label="Main Navigation">
+    <div class="nav-links-cluster">
+      <button class="nav-btn active" data-tab="dashboard" id="nav-dashboard">
+        🏠 HOME DASHBOARD 🌾 <span class="hot-badge">POPULAR!</span>
+      </button>
+      <button class="nav-btn" data-tab="advisory-form" id="nav-advisory-form">
+        🚜 AI ADVISORY FORM 🤖 <span class="flash-badge">HOT NEW!</span>
+      </button>
+      <button class="nav-btn" data-tab="advisory-results" id="nav-advisory-results">
+        📜 ADVISORY RESULTS 🚨 <span class="badge-counter" id="advisory-count-badge">1</span>
+      </button>
+      <button class="nav-btn" data-tab="database-pg" id="nav-database">
+        🐘 POSTGRESQL FARM DB 💾 <span class="nerd-badge">RAW SQL</span>
+      </button>
+      <button class="nav-btn" data-tab="analytics" id="nav-analytics">
+        📈 WEIRD CROP CHARTS 📊
+      </button>
+      <button class="nav-btn" data-tab="settings" id="nav-settings">
+        ⚙️ AUTH & OVERCLOCK ⚡
+      </button>
+    </div>
+    <div class="nav-random-filler">
+      <span class="blinking-star">⭐</span>
+      <span class="filler-marquee">FARM TIP: PLANTS NEED DIRT & SUN!</span>
+      <span class="blinking-star">⭐</span>
+    </div>
+  </nav>
+
+  <!-- EMOJI SEPARATOR -->
+  <div class="emoji-separator">🌾🌽🥕🚜🐄🌱💩🌾🌽🥕🚜🐄🌱💩🌾🌽🥕🚜🐄🌱💩</div>
+
+  <!-- MAIN VIEWPORT CONTAINER -->
+  <main class="main-chaotic-layout" id="main-content">
+
+    <!-- ========================================== -->
+    <!-- VIEW 1: DASHBOARD                          -->
+    <!-- ========================================== -->
+    <section class="tab-pane active" id="view-dashboard" aria-labelledby="nav-dashboard">
+      
+      <!-- GIANT UNNECESSARY BANNER -->
+      <div class="giant-unnecessary-banner">
+        <div class="banner-image-container">
+          <img src="assets/farmer_tractor_banner.jpg" alt="Farmer Ted driving tractor" class="banner-hero-img">
+        </div>
+        <div class="banner-content">
+          <h2 class="banner-headline">⚠️ ATTENTION ALL TRACTOR OPERATORS & COW MANAGERS ⚠️</h2>
+          <p class="banner-subtext">TODAY'S FARM ADVISORY IS BROADCASTING LIVE ACROSS ALL SATELLITE BANDS. IF YOU SEE A GOPHER, REPORT IMMEDIATELY TO GEMINI AI.</p>
+          <div class="competing-ctas">
+            <button class="cta-btn cta-1" id="cta-click-me">👉 CLICK ME FIRST!!! 👈</button>
+            <button class="cta-btn cta-2" id="cta-no-click-me">⛔ NO CLICK ME INSTEAD! ⛔</button>
+            <button class="cta-btn cta-3" id="cta-urgent">🚨 URGENT CORN REQUIREMENT 🚨</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI POWER LEVEL INDICATOR: 97% -->
+      <div class="ai-power-level-container">
+        <div class="power-level-header">
+          <span class="power-title">⚡ COMPLETELY UNNECESSARY AI POWER LEVEL: <strong id="power-display">97%</strong> ⚡</span>
+          <span class="overheat-badge" id="power-status-badge">NORMAL CYBERNETIC HUM 🟢</span>
+        </div>
+        <div class="meter-track">
+          <div class="meter-bar" id="power-bar" style="width: 97%;">
+            <span class="meter-particles">⚡💥⚡💥⚡</span>
+          </div>
+        </div>
+        <div class="power-actions">
+          <button class="btn-overclock" id="btn-overclock">🚀 OVERCLOCK FARM AI TO 9999% (DANGEROUS) 🚀</button>
+          <button class="btn-micro" id="btn-reset-power">Reset to 97%</button>
+          <span class="tiny-text-annoying">AI Core Temperature: 104.2°F (Acceptable for corn calculations)</span>
+        </div>
+      </div>
+
+      <!-- FLASHY STATISTIC CARDS (ASYMMETRICAL & UGLY) -->
+      <h3 class="section-screaming-title">💥 REAL-TIME FARM HYPER-METRICS & VIBES 💥</h3>
+      <div class="stats-chaotic-grid">
+        
+        <div class="stat-card stat-cows">
+          <span class="random-top-tag">BARN SECTION 3B</span>
+          <div class="stat-icon-huge">🐄</div>
+          <div class="stat-number">412</div>
+          <div class="stat-label">TOTAL COWS (THEY ARE HAPPY & CHEWING LOUDLY)</div>
+          <div class="stat-footer-awkward">Milk Production: 1,840 Gallons / Mood: Satisfactory 🥛</div>
+        </div>
+
+        <div class="stat-card stat-soil">
+          <span class="random-top-tag tag-green">SENSOR #82-SOIL</span>
+          <div class="stat-icon-huge">💧</div>
+          <div class="stat-number">78.4%</div>
+          <div class="stat-label">SOIL MOISTURE (EXTREMELY SLOPPY & WET ENOUGH)</div>
+          <div class="stat-footer-awkward">Mud Viscosity: High / Boot Suction Index: 8.9 👢</div>
+        </div>
+
+        <div class="stat-card stat-money">
+          <span class="random-top-tag tag-pink">FARM ACCOUNTING</span>
+          <div class="stat-icon-huge">💸</div>
+          <div class="stat-number">$98,421.99</div>
+          <div class="stat-label">MONEY SPENT ON FERTILIZER & NPK AMENDMENTS</div>
+          <div class="stat-footer-awkward">Farmer Bank Account Status: CRYING SILENTLY 😭</div>
+        </div>
+
+        <div class="stat-card stat-pest">
+          <span class="random-top-tag tag-hazard">CRITICAL EMERGENCY</span>
+          <div class="stat-icon-huge">🐛🔥</div>
+          <div class="stat-number">CODE RED</div>
+          <div class="stat-label">PEST ALERT LEVEL: THE WEEVILS ARE PLOTTING SOMETHING</div>
+          <div class="stat-footer-awkward">Locust Count: 14 / Aphid Threat: Severe 🦗</div>
+        </div>
+
+      </div>
+
+      <!-- WEIRD CROP CHARTS & HARVEST DASHBOARD -->
+      <div class="dashboard-middle-row">
+        
+        <!-- CHART CONTAINER 1: WEIRD BARS -->
+        <div class="weird-chart-container">
+          <h4 class="chart-screaming-heading">📊 WEIRD CROP DISTRIBUTION & HARVEST VOLUME (RANDOM COLORS) 🌽</h4>
+          <p class="chart-awkward-sub">Notice how every crop has a completely mismatched neon color scheme as demanded by farming standards:</p>
+          
+          <div class="css-weird-bar-chart" id="crop-bar-chart">
+            <div class="bar-col col-corn">
+              <span class="bar-val">12,500 bu</span>
+              <div class="bar-fill" style="height: 85%;"></div>
+              <span class="bar-name">🌽 NEON PURPLE CORN</span>
+            </div>
+            <div class="bar-col col-wheat">
+              <span class="bar-val">9,800 bu</span>
+              <div class="bar-fill" style="height: 68%;"></div>
+              <span class="bar-name">🌾 HOT PINK WHEAT</span>
+            </div>
+            <div class="bar-col col-tomato">
+              <span class="bar-val">4,200 crates</span>
+              <div class="bar-fill" style="height: 45%;"></div>
+              <span class="bar-name">🍅 SLIME GREEN TOMATO</span>
+            </div>
+            <div class="bar-col col-potato">
+              <span class="bar-val">14,900 sacks</span>
+              <div class="bar-fill" style="height: 95%;"></div>
+              <span class="bar-name">🥔 CYAN POTATO</span>
+            </div>
+            <div class="bar-col col-carrot">
+              <span class="bar-val">3,100 crates</span>
+              <div class="bar-fill" style="height: 35%;"></div>
+              <span class="bar-name">🥕 SCORCHING ORANGE CARROT</span>
+            </div>
+            <div class="bar-col col-soy">
+              <span class="bar-val">8,400 bu</span>
+              <div class="bar-fill" style="height: 60%;"></div>
+              <span class="bar-name">🌱 BLINDING YELLOW SOY</span>
+            </div>
+          </div>
+          <div class="chart-legend-chaotic">
+            <span class="legend-chip chip-1">■ Corn (Purple)</span>
+            <span class="legend-chip chip-2">■ Wheat (Pink)</span>
+            <span class="legend-chip chip-3">■ Tomato (Lime)</span>
+            <span class="legend-chip chip-4">■ Potato (Cyan)</span>
+            <span class="legend-chip chip-5">■ Carrot (Orange)</span>
+            <span class="legend-chip chip-6">■ Soy (Yellow)</span>
+          </div>
+        </div>
+
+        <!-- ASYMMETRICAL QUICK ACTION BOX -->
+        <div class="weird-side-card">
+          <h4 class="card-wobbly-title">⚡ FAST DISPATCH ADVISORY 🚜</h4>
+          <p class="tiny-text">Need immediate AI agronomy right this second without thinking?</p>
+          <div class="nested-ugly-box">
+            <div class="nested-inner-box">
+              <label for="quick-crop-select" class="screaming-label">SELECT CROP IN A HURRY:</label>
+              <select id="quick-crop-select" class="ugly-select">
+                <option value="Sweet Corn">🌽 Sweet Corn (Field #1)</option>
+                <option value="Durum Wheat">🌾 Durum Wheat (North Hill)</option>
+                <option value="Roma Tomato">🍅 Roma Tomatoes (Greenhouse A)</option>
+                <option value="Russet Potato">🥔 Russet Potatoes (Muddy Bog)</option>
+              </select>
+              <button class="btn-ugly-action" id="btn-quick-advise">🤖 RUN INSTANT GEMINI ADVISORY NOW 🌾</button>
+            </div>
+          </div>
+          <div class="decorative-farm-strip">
+            <span>🚜💨</span><span>🐄💤</span><span>🌽✨</span><span>🌾🔥</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- CRAMPED DIFFICULT-TO-READ TABLE -->
+      <div class="cramped-table-container">
+        <h4 class="table-screaming-title">📋 CRAMPED FARM RECORD LEDGER & LOGS (DIFFICULT TO READ ON PURPOSE) 📋</h4>
+        <div class="table-scroll-wrapper">
+          <table class="clashing-table" id="dashboard-recent-table">
+            <thead>
+              <tr>
+                <th>ID #</th>
+                <th>TIMESTAMP (UTC)</th>
+                <th>FIELD / SECTOR</th>
+                <th>CROP NAME</th>
+                <th>SOIL PH</th>
+                <th>MOISTURE</th>
+                <th>NPK APPLIED</th>
+                <th>ACTION STATUS</th>
+                <th>INSPECTOR</th>
+              </tr>
+            </thead>
+            <tbody id="dashboard-table-body">
+              <!-- Populated dynamically via JS -->
+            </tbody>
+          </table>
+        </div>
+        <p class="cramped-table-note">Table note: Font size is intentionally 11px and alternating rows are magenta and cyan to maximize eye fatigue. You are welcome.</p>
+      </div>
+
+    </section>
+
+
+    <!-- ========================================== -->
+    <!-- VIEW 2: ADVISORY FORM                      -->
+    <!-- ========================================== -->
+    <section class="tab-pane" id="view-advisory-form" aria-labelledby="nav-advisory-form">
+      
+      <div class="form-chaotic-header">
+        <h2 class="form-main-heading">🚜🤖🌾 ULTRA-COMPLEX AGRONOMIC ADVISORY FORM (FRUSTRATING BUT TECHNICAL) 🌾🤖🚜</h2>
+        <p class="form-warning-strip">🚨 PLEASE FILL OUT ALL CHAOTIC CONTAINERS BELOW. ALL VALIDATION IS ACTIVE AND STRICT. NO CROPS WILL BE LEFT UNCOUNSELED. 🚨</p>
+      </div>
+
+      <!-- FEEDBACK / VALIDATION ALERT BOX -->
+      <div id="form-validation-box" class="validation-announcement-box" style="display: none;" role="alert"></div>
+
+      <form id="agri-advisory-form" class="terrible-form" novalidate>
+        
+        <!-- CONTAINER 1: CROP SELECTION & BOTANICAL VIBES -->
+        <fieldset class="form-weird-fieldset set-1">
+          <legend class="legend-ugly">🌿 1. CROP SELECTION & BOTANICAL VIBES 🌿</legend>
+          
+          <div class="random-form-row">
+            <div class="form-field-group width-37">
+              <label for="crop-type" class="ugly-label">SELECT PRIMARY TARGET CROP: <span class="req-star">*</span></label>
+              <select id="crop-type" name="cropType" class="ugly-input-ctl" required aria-required="true">
+                <option value="">-- CLICK TO PICK A CROP OR BE DOOMED --</option>
+                <option value="Corn">🌽 High-Yield Hybrid Corn (Zea mays)</option>
+                <option value="Wheat">🌾 Hard Winter Durum Wheat (Triticum)</option>
+                <option value="Rice">🌾 Paddy Basmati Rice (Oryza sativa)</option>
+                <option value="Tomato">🍅 Heritage Roma Tomato (Solanum lycopersicum)</option>
+                <option value="Potato">🥔 Russet Burbank Potato (Solanum tuberosum)</option>
+                <option value="Soybean">🌱 Glyphosate-Tolerant Soybean</option>
+                <option value="Cotton">☁️ Pima Long-Staple Cotton</option>
+                <option value="Carrot">🥕 Imperator Crunchy Orange Carrot</option>
+              </select>
+              <span class="ugly-helper-text">Helper note: If you pick wheat, ensure your combine harvester doesn't have an oil leak.</span>
+            </div>
+
+            <div class="form-field-group width-63">
+              <label for="crop-variety-nickname" class="ugly-label">CROP VARIETY NICKNAME / PET NAME: (OPTIONAL)</label>
+              <input type="text" id="crop-variety-nickname" name="cropNickname" class="ugly-input-ctl" placeholder="e.g. Big Bertha Corn 2026 or Uncle Joe's Spuds">
+              <span class="ugly-helper-text">Farmers who name their vegetables experience a 4.2% subjective morale boost.</span>
+            </div>
+          </div>
+
+          <div class="random-form-row">
+            <div class="form-field-group width-22">
+              <label for="growth-stage" class="ugly-label">GROWTH STAGE: <span class="req-star">*</span></label>
+              <select id="growth-stage" name="growthStage" class="ugly-input-ctl" required>
+                <option value="Seedling">🌱 Seedling / Sprouting (V1-V3)</option>
+                <option value="Vegetative" selected>🌿 Vegetative Bushy Growth</option>
+                <option value="Flowering">🌸 Flowering / Tasseling</option>
+                <option value="Fruit Formation">🍅 Fruit / Grain Filling</option>
+                <option value="Maturity">🌾 Pre-Harvest Maturity</option>
+              </select>
+            </div>
+
+            <div class="form-field-group width-48">
+              <label for="crop-mood" class="ugly-label">CROP EMOTIONAL MOOD (REQUIRED BY AI PROTOCOL):</label>
+              <select id="crop-mood" name="cropMood" class="ugly-input-ctl">
+                <option value="Overjoyed">😊 Overjoyed and reaching for the clouds</option>
+                <option value="Moderately Thirsty">😐 Moderately Thirsty & contemplating life</option>
+                <option value="Deeply Stressed">😫 Deeply Stressed about local nitrogen shortages</option>
+                <option value="Plotting Rebellion">🌵 Plotting Rebellion with nearby dandelion weeds</option>
+              </select>
+              <span class="ugly-helper-text">The Gemini agricultural engine considers vegetative mood very seriously.</span>
+            </div>
+
+            <div class="form-field-group width-30">
+              <label for="target-yield" class="ugly-label">TARGET DESIRED YIELD (KG/HA): <span class="req-star">*</span></label>
+              <input type="number" id="target-yield" name="targetYield" class="ugly-input-ctl" min="100" max="50000" value="6500" required>
+              <span class="ugly-helper-text">Do not type 999999 or your silo will explode.</span>
+            </div>
+          </div>
+
+        </fieldset>
+
+        <!-- CONTAINER 2: DIRT & TERRA FIRMA METRICS -->
+        <fieldset class="form-weird-fieldset set-2">
+          <legend class="legend-ugly">💩 2. DIRT, MUD & TERRA FIRMA CHEMISTRY 💩</legend>
+          
+          <div class="random-form-row">
+            <div class="form-field-group width-31">
+              <label for="soil-type" class="ugly-label">SOIL TEXTURE CLASSIFICATION: <span class="req-star">*</span></label>
+              <select id="soil-type" name="soilType" class="ugly-input-ctl" required>
+                <option value="">-- PLEASE CHOOSE THY DIRT --</option>
+                <option value="Sandy Loam">Sandy Loam (Quick Draining & Gritty)</option>
+                <option value="Clay Loam">Clay Loam (Sticky, Muddy Boots Guaranteed)</option>
+                <option value="Heavy Clay">Heavy Clay (Concrete when dry, soup when wet)</option>
+                <option value="Silt Loam">Silt Loam (Silky smooth riverbed dirt)</option>
+                <option value="Black Cotton Soil">Black Cotton Soil (Deep cracking shrink-swell)</option>
+                <option value="Peat / Organic Muck">Peat / Bog Organic Muck</option>
+              </select>
+            </div>
+
+            <div class="form-field-group width-40">
+              <label for="soil-ph" class="ugly-label">SOIL PH LEVEL: <strong id="ph-display" class="value-highlight">6.5</strong> <span class="req-star">*</span></label>
+              <input type="range" id="soil-ph" name="soilPh" min="3.5" max="9.5" step="0.1" value="6.5" class="ugly-range-slider">
+              <div class="slider-ticks">
+                <span>3.5 (Acid Battery)</span>
+                <span>6.5 (Ideal Corn)</span>
+                <span>9.5 (Pure Chalk)</span>
+              </div>
+              <span class="ugly-helper-text">Move the slider! Extreme values will make the AI scream in warning banners.</span>
+            </div>
+
+            <div class="form-field-group width-29">
+              <label for="soil-moisture" class="ugly-label">CURRENT MOISTURE (%): <span class="req-star">*</span></label>
+              <input type="number" id="soil-moisture" name="soilMoisture" class="ugly-input-ctl" min="5" max="100" value="62" required>
+              <span class="ugly-helper-text">Measured with digital probe or calibrated thumb.</span>
+            </div>
+          </div>
+
+          <!-- N-P-K NUTRIENT CONCENTRATION TRIPLETS -->
+          <div class="nested-form-box">
+            <h5 class="nested-box-title">⚡ CURRENT DETECTED N-P-K SOIL NUTRIENTS (PARTS PER MILLION) ⚡</h5>
+            <div class="random-form-row">
+              <div class="form-field-group width-33">
+                <label for="soil-n" class="ugly-label">NITROGEN (N) PPM: <span class="req-star">*</span></label>
+                <input type="number" id="soil-n" name="soilN" class="ugly-input-ctl" min="0" max="600" value="45" required>
+                <span class="ugly-helper-text">Low N = yellow pale leaves. High N = excessive bushiness.</span>
+              </div>
+
+              <div class="form-field-group width-33">
+                <label for="soil-p" class="ugly-label">PHOSPHORUS (P) PPM: <span class="req-star">*</span></label>
+                <input type="number" id="soil-p" name="soilP" class="ugly-input-ctl" min="0" max="300" value="22" required>
+                <span class="ugly-helper-text">Crucial for root energy and ATP cell batteries.</span>
+              </div>
+
+              <div class="form-field-group width-33">
+                <label for="soil-k" class="ugly-label">POTASSIUM (K) PPM: <span class="req-star">*</span></label>
+                <input type="number" id="soil-k" name="soilK" class="ugly-input-ctl" min="0" max="600" value="180" required>
+                <span class="ugly-helper-text">Strengthens plant stalks against aggressive wind gusts.</span>
+              </div>
+            </div>
+          </div>
+
+        </fieldset>
+
+        <!-- CONTAINER 3: GEOGRAPHY, ACREAGE & UNNECESSARY DETAILS -->
+        <fieldset class="form-weird-fieldset set-3">
+          <legend class="legend-ugly">🌍 3. FARM GEOGRAPHY, ACREAGE & CELESTIAL METRICS 🚜</legend>
+
+          <div class="random-form-row">
+            <div class="form-field-group width-28">
+              <label for="farm-acreage" class="ugly-label">TOTAL FIELD AREA (ACRES): <span class="req-star">*</span></label>
+              <input type="number" id="farm-acreage" name="acreage" class="ugly-input-ctl" min="0.1" max="100000" step="0.1" value="25.5" required>
+              <span class="ugly-helper-text">1 Acre = 43,560 square feet of glorious dirt.</span>
+            </div>
+
+            <div class="form-field-group width-24">
+              <label for="irrigation-type" class="ugly-label">IRRIGATION RIG: <span class="req-star">*</span></label>
+              <select id="irrigation-type" name="irrigationType" class="ugly-input-ctl" required>
+                <option value="Drip Irrigation">💧 Precision Drip Irrigation</option>
+                <option value="Center Pivot Sprinkler">🔄 Giant Center Pivot Sprinkler</option>
+                <option value="Furrow / Flood">🌊 Furrow / Gravity Flood</option>
+                <option value="Rainfed Only">🌧️ 100% Rainfed (Praying for clouds)</option>
+                <option value="Bucket Brigade">🪣 Manual Buckets & Hose</option>
+              </select>
+            </div>
+
+            <div class="form-field-group width-24">
+              <label for="elevation-inches" class="ugly-label">ELEVATION (NAUTICAL INCHES):</label>
+              <input type="number" id="elevation-inches" name="elevationInches" class="ugly-input-ctl" value="12450">
+              <span class="ugly-helper-text">Why nautical inches? Because why not.</span>
+            </div>
+
+            <div class="form-field-group width-24">
+              <label for="tractor-paint" class="ugly-label">PRIMARY TRACTOR COLOR:</label>
+              <select id="tractor-paint" name="tractorPaint" class="ugly-input-ctl">
+                <option value="John Deere Classic Green">🟢 John Deere Classic Green</option>
+                <option value="Farmall Crimson Red">🔴 Farmall Crimson Red</option>
+                <option value="New Holland Bright Blue">🔵 New Holland Bright Blue</option>
+                <option value="Pure Rust Brown">🟤 Pure 1974 Rust Brown</option>
+                <option value="Sparkly Neon Purple">🟣 Custom Sparkly Neon Purple</option>
+              </select>
+              <span class="ugly-helper-text">Scientific studies confirm green tractors scare crows more effectively.</span>
+            </div>
+          </div>
+
+          <div class="random-form-row">
+            <div class="form-field-group width-100">
+              <label class="ugly-label">CHECK ALL OBSERVED WEEDS, CRITTERS & PEST THREATS:</label>
+              <div class="checkbox-chaotic-cluster">
+                <label class="ugly-checkbox-item"><input type="checkbox" name="pests" value="Fall Armyworms"> 🐛 Fall Armyworms</label>
+                <label class="ugly-checkbox-item"><input type="checkbox" name="pests" value="Locust Swarm"> 🦗 Voracious Locusts</label>
+                <label class="ugly-checkbox-item"><input type="checkbox" name="pests" value="Aphids"> 🐜 Green Aphid Infestation</label>
+                <label class="ugly-checkbox-item"><input type="checkbox" name="pests" value="Fungal Leaf Rust"> 🍄 Fungal Leaf Rust Spores</label>
+                <label class="ugly-checkbox-item"><input type="checkbox" name="pests" value="Thieving Raccoons"> 🦝 Nocturnal Thieving Raccoons</label>
+                <label class="ugly-checkbox-item"><input type="checkbox" name="pests" value="Aggressive Dandelions"> 🌼 Stubborn Dandelion Riot</label>
+              </div>
+            </div>
+          </div>
+
+        </fieldset>
+
+        <!-- CONTAINER 4: GEMINI AI ENGINE CONFIGURATION -->
+        <fieldset class="form-weird-fieldset set-4">
+          <legend class="legend-ugly">🤖 4. GOOGLE GEMINI AI COGNITION & EXPERT ENGINE 🧠</legend>
+
+          <div class="random-form-row">
+            <div class="form-field-group width-35">
+              <label for="ai-persona" class="ugly-label">AI ADVISORY PERSONALITY STYLE:</label>
+              <select id="ai-persona" name="aiPersona" class="ugly-input-ctl">
+                <option value="Hyper-Direct Agronomist">🌾 Hyper-Direct Agronomist (No nonsense, pure NPK numbers)</option>
+                <option value="Panicked Southern Uncle">🚜 Panicked Southern Uncle (Everything is an emergency)</option>
+                <option value="Zen Master Botanist">🧘 Zen Master Botanist (Speak to the soul of the soil)</option>
+                <option value="Cybernetic AI Supercomputer">🤖 Cybernetic 9000 Supercomputer (Beep boop calculation)</option>
+              </select>
+            </div>
+
+            <div class="form-field-group width-35">
+              <label for="gemini-model-select" class="ugly-label">GEMINI MODEL VERSION:</label>
+              <select id="gemini-model-select" name="geminiModel" class="ugly-input-ctl">
+                <option value="gemini-1.5-flash">Gemini 1.5 Flash (Ultra-Fast Agronomy)</option>
+                <option value="gemini-1.5-pro">Gemini 1.5 Pro (Deep Biological Reasoning)</option>
+                <option value="gemini-2.0-flash-exp">Gemini 2.0 Flash Exp (Overclocked Harvest)</option>
+                <option value="local-agri-engine">Integrated PostgreSQL Agronomy Rulebase (Offline Fallback)</option>
+              </select>
+            </div>
+
+            <div class="form-field-group width-30">
+              <label for="gemini-api-key" class="ugly-label">GOOGLE GEMINI API KEY: (OPTIONAL)</label>
+              <input type="password" id="gemini-api-key" name="geminiKey" class="ugly-input-ctl" placeholder="AIzaSy... (Saved locally in browser)">
+              <span class="ugly-helper-text">Leave blank to use the high-fidelity built-in agronomy simulation engine!</span>
+            </div>
+          </div>
+
+          <div class="random-form-row">
+            <div class="form-field-group width-100">
+              <label for="farmer-notes" class="ugly-label">ADDITIONAL UNHINGED FARMER NOTES OR OBSERVATIONS:</label>
+              <textarea id="farmer-notes" name="farmerNotes" rows="3" class="ugly-textarea" placeholder="e.g. My neighbor Jim said my corn looks too short, please prove Jim wrong with scientific formulas. Also saw strange glowing light over field 2."></textarea>
+            </div>
+          </div>
+
+        </fieldset>
+
+        <!-- GIANT UNNECESSARILY HUGE SUBMIT BUTTON -->
+        <div class="giant-submit-wrapper">
+          <button type="submit" id="btn-generate-advisory" class="btn-giant-pulsing">
+            🚜🤖🌾 GENERATE AI ADVISORY 🚜🤖🌾
+          </button>
+          <p class="submit-under-warning">⚠️ Clicking this button will submit your parameters to Gemini AI & PostgreSQL. Tractor engines may vibrate.</p>
+        </div>
+
+      </form>
+
+    </section>
+
+
+    <!-- ========================================== -->
+    <!-- VIEW 3: ADVISORY RESULTS                   -->
+    <!-- ========================================== -->
+    <section class="tab-pane" id="view-advisory-results" aria-labelledby="nav-advisory-results">
+      
+      <!-- RESULTS TOP CHAOS BAR -->
+      <div class="results-header-banner">
+        <h2 class="results-huge-title">🤖 THE AI HAS SPOKEN: OFFICIAL AGRICULTURAL DIRECTIVE 🤖</h2>
+        <div class="results-badge-soup">
+          <span class="res-badge b-1">CERTIFIED 100% ORGANIC BY COMPUTER</span>
+          <span class="res-badge b-2">HIGH RISK OF MUD ⚠️</span>
+          <span class="res-badge b-3">AI ACCURACY: 99.8%</span>
+          <span class="res-badge b-4">FARMER APPROVED 👍</span>
+          <span class="res-badge b-5">TRACTOR CERTIFIED 🚜</span>
+          <span class="res-badge b-6">POTATO APPROVED 🥔</span>
+        </div>
+      </div>
+
+      <!-- ACTIVE ADVISORY SUMMARY STRIP -->
+      <div class="advisory-meta-strip" id="results-meta-strip">
+        <span>TARGET CROP: <strong id="res-crop-name">CORN (ZEA MAYS)</strong></span>
+        <span>FIELD ACREAGE: <strong id="res-acreage">25.5 ACRES</strong></span>
+        <span>SOIL PH: <strong id="res-soil-ph">6.5</strong></span>
+        <span>STATUS: <strong id="res-db-status">COMMITTED TO POSTGRESQL (ID #109)</strong></span>
+      </div>
+
+      <!-- CHAOTIC RECOMMENDATION CARDS -->
+      <div class="advisory-cards-grid">
+        
+        <!-- CARD 1: VERY IMPORTANT FARM THING -->
+        <article class="advisory-card card-urgent-warning">
+          <header class="card-warning-header">
+            <h3>🚨 VERY IMPORTANT FARM THING 🚨</h3>
+            <span class="stamp-hazard">URGENT</span>
+          </header>
+          <div class="card-body-content">
+            <h4 class="card-action-title" id="res-urgent-title">SOIL ACIDITY THRESHOLD & ROOT BURN HAZARD</h4>
+            <p id="res-urgent-body">
+              Your soil pH is currently sitting at an alarming level for optimal nutrient availability! If you do not apply agricultural lime (calcium carbonate) immediately, your crop's root hairs will struggle to uptake micro-nutrients!
+            </p>
+            <div class="urgent-bullet-box" id="res-urgent-bullets">
+              <div>⚠️ Apply 1,200 kg/ha of crushed agricultural limestone before next rainfall</div>
+              <div>⚠️ Check drainage ditches to prevent standing acidic water</div>
+            </div>
+          </div>
+          <footer class="card-ugly-footer">CONFIDENCE LEVEL: 99.4% (TRACTOR SENSORS AGREE)</footer>
+        </article>
+
+        <!-- CARD 2: YOUR PLANT PROBABLY WANTS THIS -->
+        <article class="advisory-card card-fertilizer">
+          <header class="card-fertilizer-header">
+            <h3>🌱 YOUR PLANT PROBABLY WANTS THIS 🌱</h3>
+            <span class="stamp-npk">NPK BOOST</span>
+          </header>
+          <div class="card-body-content">
+            <h4 class="card-action-title" id="res-fert-title">BALANCED N-P-K NUTRIENT RATIO PRESCRIPTION</h4>
+            <p id="res-fert-body">
+              Based on vegetative stage consumption rates and soil baseline tests, the synthetic intelligence prescribes the following custom granular blend:
+            </p>
+            <div class="npk-formula-box" id="res-npk-formula">
+              <div class="npk-pill n-pill"><span class="npk-letter">N</span> <strong>135 kg/ha</strong> (Urea / Ammonium)</div>
+              <div class="npk-pill p-pill"><span class="npk-letter">P</span> <strong>55 kg/ha</strong> (DAP Phosphate)</div>
+              <div class="npk-pill k-pill"><span class="npk-letter">K</span> <strong>80 kg/ha</strong> (Muriate of Potash)</div>
+            </div>
+            <p class="micro-dose-instruction" id="res-fert-timing">Apply 50% split at early vegetative stage, remaining 50% during tasseling/tuber bulking.</p>
+          </div>
+          <footer class="card-ugly-footer">COST ESTIMATE: $4,250 | EXPECTED YIELD GAIN: +28%</footer>
+        </article>
+
+        <!-- CARD 3: WATER WATER WATER -->
+        <article class="advisory-card card-irrigation">
+          <header class="card-irrigation-header">
+            <h3>💧 WATER WATER WATER 💧</h3>
+            <span class="stamp-h2o">H2O PROTOCOL</span>
+          </header>
+          <div class="card-body-content">
+            <h4 class="card-action-title" id="res-water-title">OPTIMIZED TRANSPIRATION & IRRIGATION CYCLE</h4>
+            <p id="res-water-body">
+              Do not overwater or you will turn your soil into pea soup! The computer calculation demands precision timing based on current evapotranspiration rates.
+            </p>
+            <div class="water-schedule-box" id="res-water-schedule">
+              <div class="schedule-item">🗓️ <strong>SCHEDULE:</strong> Run drip / sprinkler system every <strong>3.5 days</strong></div>
+              <div class="schedule-item">⏱️ <strong>DURATION:</strong> 4 hours in early morning (05:00 - 09:00 AM)</div>
+              <div class="schedule-item">🎯 <strong>TARGET DEPTH:</strong> Penetrate top 25cm of root zone</div>
+            </div>
+          </div>
+          <footer class="card-ugly-footer">WATER SAVED: 18,000 GALLONS VS FLOOD IRRIGATION</footer>
+        </article>
+
+        <!-- CARD 4: BUGS ARE HERE??? -->
+        <article class="advisory-card card-pest-threat">
+          <header class="card-pest-header">
+            <h3>🐛 BUGS ARE HERE??? 🐛</h3>
+            <span class="stamp-bugs">PEST DEFENSE</span>
+          </header>
+          <div class="card-body-content">
+            <h4 class="card-action-title" id="res-pest-title">BIOLOGICAL & CHEMICAL INTEGRATED PEST MANAGEMENT (IPM)</h4>
+            <p id="res-pest-body">
+              Enemies detected in the foliage! Immediate biological countermeasures are required before chewing mouthparts destroy photosynthesis efficiency.
+            </p>
+            <div class="pest-tactics-box" id="res-pest-tactics">
+              <div>🦗 <strong>Target:</strong> Armyworms & Green Aphids</div>
+              <div>🐞 <strong>Biological Weapon:</strong> Release 10,000 Ladybugs or apply Bacillus thuringiensis (Bt)</div>
+              <div>🌿 <strong>Organic Spray:</strong> Cold-pressed 0.5% Neem Oil emulsion with soapy surfactant</div>
+            </div>
+          </div>
+          <footer class="card-ugly-footer">DEAD BUGS EXPECTED: 94.7% MORTALITY WITHIN 48 HOURS</footer>
+        </article>
+
+        <!-- CARD 5: THE AI HAS SPOKEN -->
+        <article class="advisory-card card-ai-synthesis width-full-chaotic">
+          <header class="card-ai-header">
+            <h3>🤖 THE AI HAS SPOKEN 🤖</h3>
+            <span class="stamp-gemini">GEMINI 1.5 SYNTHESIS</span>
+          </header>
+          <div class="card-body-content">
+            <h4 class="card-action-title" id="res-ai-title">COMPREHENSIVE AGRONOMIC VERDICT & REASONING SUMMARY</h4>
+            <div class="ai-raw-response-text" id="res-ai-raw-text">
+              "Attention Farmer: Analysis of your 25.5 acres indicates an exceptional yield window if nitrogen leaching is prevented during upcoming precipitation. The crop's emotional mood has been compensated for by scheduling early morning potassium feeding. Ensure tractor tire pressure is kept at exactly 32 PSI to minimize compaction of your loam layer. Harvest projection: Grade-A premium yield."
+            </div>
+            <div class="ai-confidence-cluster">
+              <span class="stat-pill">Model: Gemini 1.5 Pro</span>
+              <span class="stat-pill">Inference Latency: 412ms</span>
+              <span class="stat-pill">PostgreSQL Transaction: COMMIT #9941</span>
+              <span class="stat-pill">Silo Space Required: 120 Metric Tons</span>
+            </div>
+          </div>
+          <footer class="card-ugly-footer">TRANSMITTED VIA FARM-NET SATELLITE UPLINK</footer>
+        </article>
+
+      </div>
+
+      <!-- RESULTS ACTION BUTTONS -->
+      <div class="results-actions-bar">
+        <button class="btn-ugly-secondary" id="btn-save-to-pg">💾 COMMIT FRESH COPY TO POSTGRESQL</button>
+        <button class="btn-ugly-secondary" id="btn-print-results">🖨️ PRINT TO DOT-MATRIX PRINTER</button>
+        <button class="btn-ugly-secondary" id="btn-copy-advisory">📋 COPY ADVISORY TO CLIPBOARD</button>
+        <button class="btn-giant-pulsing" id="btn-new-advisory">🌾 CREATE ANOTHER CHAOTIC ADVISORY 🚜</button>
+      </div>
+
+    </section>
+
+
+    <!-- ========================================== -->
+    <!-- VIEW 4: POSTGRESQL FARM DB                 -->
+    <!-- ========================================== -->
+    <section class="tab-pane" id="view-database-pg" aria-labelledby="nav-database">
+      
+      <div class="db-header-block">
+        <h2 class="db-main-heading">🐘 POSTGRESQL 16.4 LIVE AGRICULTURAL DATA STORE 💾</h2>
+        <p class="db-subtext">Direct browser-integrated PostgreSQL simulation engine with persistent LocalStorage backing, transaction logging, and raw SQL console!</p>
+      </div>
+
+      <!-- RAW SQL QUERY CONSOLE -->
+      <div class="sql-console-card">
+        <div class="sql-console-header">
+          <span>SQL QUERY TERMINAL: (postgres@agri-farm-cluster:5432/farm_db)</span>
+          <span class="db-connection-light">CONNECTED 🟢</span>
+        </div>
+        <div class="sql-input-row">
+          <textarea id="sql-query-input" class="sql-editor" rows="3" spellcheck="false">SELECT id, crop_name, acreage, soil_ph, target_yield, status, created_at FROM farm_advisories ORDER BY id DESC;</textarea>
+        </div>
+        <div class="sql-actions">
+          <button class="btn-sql-run" id="btn-run-sql">⚡ EXECUTE RAW SQL QUERY ⚡</button>
+          <button class="btn-micro" id="btn-sql-insert">Insert Sample Farm Record</button>
+          <button class="btn-micro" id="btn-sql-reset">Reset Demo DB</button>
+          <span class="sql-result-status" id="sql-status-text">Query ready</span>
+        </div>
+      </div>
+
+      <!-- TABLE VIEWER WITH TABS FOR TABLES -->
+      <div class="db-tables-wrapper">
+        <div class="db-table-tabs">
+          <button class="db-tab-btn active" data-table="advisories" id="db-tab-advisories">📑 TABLE: farm_advisories (<span id="count-advisories">0</span>)</button>
+          <button class="db-tab-btn" data-table="crops" id="db-tab-crops">🌱 TABLE: crop_master (<span id="count-crops">6</span>)</button>
+          <button class="db-tab-btn" data-table="soil" id="db-tab-soil">💩 TABLE: soil_sensors (<span id="count-soil">5</span>)</button>
+        </div>
+
+        <div class="table-scroll-wrapper">
+          <table class="clashing-table table-pg-view" id="pg-data-table">
+            <thead id="pg-table-head">
+              <!-- Populated by JS -->
+            </thead>
+            <tbody id="pg-table-body">
+              <!-- Populated by JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </section>
+
+
+    <!-- ========================================== -->
+    <!-- VIEW 5: WEIRD CROP ANALYTICS               -->
+    <!-- ========================================== -->
+    <section class="tab-pane" id="view-analytics" aria-labelledby="nav-analytics">
+      
+      <div class="analytics-header">
+        <h2 class="analytics-title">📈 WEIRD AGRICULTURAL CHARTS & TELEMETRY LAB 📊</h2>
+        <p class="chart-disclaimer">Warning: Graphs are constructed with excessive CSS gradients, nonsensical scales, and eye-searing borders.</p>
+      </div>
+
+      <div class="analytics-grid">
+        
+        <!-- CHART 1: WEIRD DONUT / PIE -->
+        <div class="analytics-card card-pie">
+          <h3 class="card-pie-title">🥧 LAND ALLOCATION CONFUSION PIE</h3>
+          <div class="weird-donut-container">
+            <div class="css-conic-pie" id="conic-pie"></div>
+          </div>
+          <div class="pie-legend">
+            <span style="color: #a800ff;">■ Corn: 38%</span>
+            <span style="color: #ff007f;">■ Wheat: 26%</span>
+            <span style="color: #39ff14;">■ Tomato: 14%</span>
+            <span style="color: #00f0ff;">■ Potato: 12%</span>
+            <span style="color: #ffee00;">■ Soy: 10%</span>
+          </div>
+        </div>
+
+        <!-- CHART 2: SATELLITE RADAR CLOUD SCAN -->
+        <div class="analytics-card card-radar">
+          <h3 class="card-radar-title">🛰️ SATELLITE CLOUD & RAIN RADAR (SIMULATED)</h3>
+          <div class="radar-screen">
+            <div class="radar-sweep"></div>
+            <div class="radar-blip blip-1" title="Rain Cloud">🌧️</div>
+            <div class="radar-blip blip-2" title="Tractor">🚜</div>
+            <div class="radar-blip blip-3" title="Alien Weevil">🛸</div>
+            <div class="radar-blip blip-4" title="Lost Cow">🐄</div>
+            <div class="radar-grid-lines"></div>
+          </div>
+          <p class="radar-note">Active Sweep: 4.8 GHz Farm Doppler / 0.00% Real Weather Accuracy</p>
+        </div>
+
+        <!-- CHART 3: YIELD PREDICTION OSCILLOSCOPE -->
+        <div class="analytics-card card-oscilloscope">
+          <h3 class="card-osc-title">⚡ CROP METABOLIC OSCILLATION FREQUENCY</h3>
+          <div class="oscilloscope-screen">
+            <svg viewBox="0 0 400 120" class="osc-svg" preserveAspectRatio="none">
+              <path d="M 0 60 Q 25 10 50 60 T 100 60 T 150 60 T 200 60 T 250 60 T 300 60 T 350 60 T 400 60" fill="none" stroke="#39ff14" stroke-width="4" class="animated-sine-wave"/>
+              <path d="M 0 60 Q 30 110 60 60 T 120 60 T 180 60 T 240 60 T 300 60 T 360 60 T 400 60" fill="none" stroke="#ff007f" stroke-width="3" stroke-dasharray="5,5" class="animated-sine-wave-2"/>
+            </svg>
+          </div>
+          <div class="osc-controls">
+            <span>Frequency: 432 Hz</span>
+            <span>Corn Resonance: OPTIMAL</span>
+            <span>Vibration: VERY SHAKY</span>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ========================================== -->
+    <!-- VIEW 6: SETTINGS & AUTH                    -->
+    <!-- ========================================== -->
+    <section class="tab-pane" id="view-settings" aria-labelledby="nav-settings">
+      
+      <div class="settings-header">
+        <h2 class="settings-title">⚙️ FARMER AUTHENTICATION, ROLES & GEMINI SETTINGS ⚡</h2>
+        <p class="settings-subtext">Manage who has the clearance to drive tractors and ask Gemini about cabbage rot.</p>
+      </div>
+
+      <div class="settings-grid">
+        
+        <!-- AUTHENTICATION CARD -->
+        <div class="settings-card auth-card">
+          <h3 class="set-card-title">👤 ACTIVE OPERATOR PROFILE & ROLE</h3>
+          <div class="current-user-box">
+            <div class="user-avatar-large">🚜👨‍🌾</div>
+            <div class="user-details">
+              <h4 id="auth-username-display">Farmer Bob McGee</h4>
+              <p>Role: <strong id="auth-role-display">Master Farm Overseer (Level 99)</strong></p>
+              <p>Permissions: <em>ALL TRACTORS, FULL GEMINI OVERCLOCK, UNRESTRICTED DIRT</em></p>
+            </div>
+          </div>
+
+          <div class="role-switcher-box">
+            <label for="switch-user-select" class="ugly-label">SWITCH OPERATOR ACCOUNT:</label>
+            <select id="switch-user-select" class="ugly-select">
+              <option value="bob">Farmer Bob McGee (Corn Lord)</option>
+              <option value="alice">Dr. Alice Vance (Senior Agronomist)</option>
+              <option value="overseer">AI Cyber-Overseer 9000 (Autonomous Mode)</option>
+              <option value="guest">Barn Visitor / Tractor Intern</option>
+            </select>
+            <button class="btn-ugly-action" id="btn-switch-user">🔄 SWITCH USER SESSION</button>
+          </div>
+        </div>
+
+        <!-- GEMINI API SETTINGS -->
+        <div class="settings-card api-card">
+          <h3 class="set-card-title">🔑 GOOGLE GEMINI API CONFIGURATION</h3>
+          <p class="tiny-text">Save your Google Gemini API Key here to enable live calls to Google Generative AI servers directly from this client!</p>
+          
+          <label for="cfg-gemini-key" class="ugly-label">API KEY:</label>
+          <input type="password" id="cfg-gemini-key" class="ugly-input-ctl" placeholder="Paste AIzaSy... here">
+          
+          <div class="api-btn-row">
+            <button class="btn-ugly-secondary" id="btn-save-key">💾 SAVE KEY TO BROWSER</button>
+            <button class="btn-micro" id="btn-clear-key">Clear Key</button>
+          </div>
+          <span id="api-key-status" class="api-status-msg">Using Built-in Agricultural Fallback Engine (No key required!)</span>
+        </div>
+
+        <!-- SOUND & COSMETIC CONTROLS -->
+        <div class="settings-card cosmetic-card">
+          <h3 class="set-card-title">🔊 AUDIO SYNTHESIZER & SOUND EFFECTS</h3>
+          <p class="tiny-text">Toggle the custom Web Audio API beep synthesizer for tractors and submit clicks.</p>
+          <button class="btn-ugly-action" id="btn-test-sound">📢 TEST TRACTOR HONK SYNTHESIZER</button>
+          <button class="btn-ugly-secondary" id="btn-screen-shake">💥 TEST SCREEN SHAKE VIBRATION</button>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- BOTTOM CRAZY FOOTER -->
+  <footer class="chaotic-footer">
+    <div class="footer-marquee">
+      ★★★ THANK YOU FOR VISITING THE WORST AGRICULTURAL WEBSITE ON PLANET EARTH ★★★ ALL RIGHTS RESERVED 1994-2026 ★★★ POWERED BY GEMINI AI & POSTGRESQL ★★★
+    </div>
+    <div class="footer-links-soup">
+      <a href="#dashboard" class="footer-link">Home</a> |
+      <a href="#advisory-form" class="footer-link">Advisory</a> |
+      <a href="#database-pg" class="footer-link">PostgreSQL</a> |
+      <a href="javascript:alert('Privacy Policy: We tell all cows everything.')" class="footer-link">Cow Privacy Policy</a> |
+      <a href="javascript:alert('Terms of Service: You must love corn.')" class="footer-link">Terms of Corn</a> |
+      <a href="javascript:alert('Warning: High voltage cyber-tractors.')" class="footer-link">Tractor Safety</a>
+    </div>
+    <div class="footer-bottom-badges">
+      <img src="assets/corn_badge.jpg" alt="Corn" width="30" height="30">
+      <span>BEST VIEWED IN NETSCAPE NAVIGATOR 4.0 AT 800x600 RESOLUTION WITH 256 COLORS</span>
+      <img src="assets/corn_badge.jpg" alt="Corn" width="30" height="30">
+    </div>
+  </footer>
+
+  <!-- SCRIPT INCLUSION -->
+  <script src="app.js"></script>
+</body>
+</html>
