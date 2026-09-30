@@ -1,877 +1,179 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RAGEZONE 9000 — The Gaming Website That Wants You to Lose</title>
-  <meta name="description" content="The most absurdly interactive, intentionally annoying, ragebait gaming website ever created.">
-  <link rel="stylesheet" href="style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RAGE LAB — Behavioral Interface Experiment</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#0a0b0d;color:#f4f4f5;font-family:Inter,system-ui,Arial,sans-serif}
+body{overflow-x:hidden}button,input{font:inherit}button{cursor:pointer}
+#app{min-height:100vh;background:radial-gradient(circle at 50% -10%,#1d2028,#0a0b0d 45%)}
+header{height:62px;display:flex;align-items:center;justify-content:space-between;padding:0 22px;border-bottom:1px solid #24262d;background:#0b0c0f;position:sticky;top:0;z-index:30}
+.brand{font-weight:900;letter-spacing:.5px}.brand span{color:#ff385d}.headerRight{display:flex;align-items:center;gap:12px;color:#858a96;font-size:12px}
+.pill{border:1px solid #30333b;border-radius:999px;padding:6px 10px}.live{color:#55e69a}
+main{max-width:1180px;margin:auto;padding:32px 18px 80px}
+.hero{border:1px solid #292c34;background:#111318;border-radius:14px;padding:42px;position:relative;overflow:hidden}
+.hero:after{content:"";position:absolute;width:260px;height:260px;right:-130px;top:-160px;background:#ff385d20;border-radius:50%;filter:blur(20px)}
+.eyebrow{font-size:11px;letter-spacing:2px;color:#8c93a0;font-weight:800}
+h1{font-size:clamp(42px,7vw,82px);line-height:.9;letter-spacing:-5px;margin:12px 0}
+.sub{max-width:680px;color:#969ca8;line-height:1.6}
+.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:22px}
+.btn{background:#181a20;border:1px solid #353944;color:#fff;border-radius:8px;padding:11px 15px;font-weight:800;transition:.14s}
+.btn:hover{background:#242730;border-color:#555b69}.primary{background:#fff;color:#08090b;border-color:#fff}.danger{background:#ff385d;border-color:#ff385d}.success{background:#39d997;color:#07120d;border-color:#39d997}
+.grid{display:grid;gap:14px}.stats{grid-template-columns:repeat(4,1fr);margin-top:15px}.two{grid-template-columns:1.15fr .85fr;margin-top:15px}.three{grid-template-columns:repeat(3,1fr);margin-top:15px}
+.card{background:#111318;border:1px solid #292c34;border-radius:12px;padding:17px}.label{font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:#7e8490}.value{font-size:29px;font-weight:900;margin-top:7px}.muted{font-size:12px;color:#858b98;line-height:1.5}
+.bar{height:7px;background:#090a0c;border-radius:99px;overflow:hidden;margin-top:10px}.bar i{display:block;height:100%;width:0;background:#ff385d;transition:.3s}
+.feed{display:grid;gap:8px;margin-top:12px}.log{font:12px ui-monospace,SFMono-Regular,monospace;color:#a5aab4;background:#0b0c0f;border-left:3px solid #333;padding:9px}.log.bad{border-left-color:#ff385d}
+.targetArea{height:205px;border:1px dashed #3a3e48;border-radius:9px;background:#0a0b0e;position:relative;overflow:hidden;margin-top:12px}
+#target{position:absolute;padding:10px 13px;transition:left .12s,top .12s}
+.setting{display:flex;justify-content:space-between;align-items:center;border:1px solid #292c34;background:#0c0e11;padding:12px;border-radius:8px;margin-top:8px}
+input[type=range]{accent-color:#ff385d}
+#toastBox{position:fixed;right:16px;bottom:16px;width:min(360px,calc(100vw - 32px));z-index:90;display:grid;gap:8px}.toast{background:#16181e;border:1px solid #3b3f49;border-left:4px solid #ff385d;padding:12px;border-radius:8px;box-shadow:0 15px 45px #000b;font-size:13px}
+#popup{position:fixed;z-index:80;display:none;width:330px;background:#15171c;border:2px solid #ff385d;padding:17px;border-radius:9px;box-shadow:12px 12px 0 #000}
+#popup h3{margin:0 0 8px;color:#ff385d}.close{float:right;background:none;border:0;color:#aaa;font-size:20px;padding:0}
+#floating{position:fixed;z-index:75;pointer-events:none;font-weight:1000;font-size:21px;animation:float 1.1s forwards}@keyframes float{to{opacity:0;transform:translate(var(--x),var(--y)) rotate(15deg)}}
+.shake{animation:shake .18s 3}@keyframes shake{25%{transform:translate(5px,-2px)}50%{transform:translate(-5px,2px)}75%{transform:translate(3px,1px)}}
+.modalBg{position:fixed;inset:0;background:#000b;z-index:100;display:none;place-items:center;padding:18px}.modal{width:min(500px,100%);background:#13151a;border:1px solid #454a56;border-radius:12px;padding:23px;box-shadow:0 30px 100px #000}
+#loadingOverlay{position:fixed;inset:0;background:#090a0c;z-index:200;display:grid;place-items:center}.loader{width:min(480px,85vw)}.loaderTitle{font-size:12px;color:#8b929e;letter-spacing:2px}.loadbar{height:8px;background:#1d2026;border-radius:99px;overflow:hidden;margin-top:12px}.loadbar i{display:block;height:100%;background:#ff385d;width:0}.loadText{font-size:12px;color:#8b929e;margin-top:9px}
+@media(max-width:800px){.stats,.three,.two{grid-template-columns:1fr 1fr}.two{grid-template-columns:1fr}.hero{padding:28px}h1{letter-spacing:-3px}}
+@media(max-width:500px){.stats,.three{grid-template-columns:1fr}.headerRight .pill{display:none}}
+</style>
 </head>
 <body>
-
-  <!-- PARTICLE CANVAS FOR CLICK & HOVER EFFECTS -->
-  <canvas id="particle-canvas" class="particle-overlay"></canvas>
-
-  <!-- SCREEN EFFECT OVERLAYS (RAGE BORDER & CRITICAL EVENTS) -->
-  <div id="rage-screen-border" class="rage-overlay-border"></div>
-  <div id="max-rage-modal" class="max-rage-banner" style="display: none;">
-    <div class="max-rage-box">
-      <h2>🔥 MAXIMUM RAGE ACHIEVED (100%) 🔥</h2>
-      <p>YOUR BLOOD PRESSURE HAS EXCEEDED SYSTEM LIMITS. PLEASE STEP AWAY FROM THE KEYBOARD.</p>
-      <button id="btn-cooldown-rage" class="btn-rage-dismiss">VENT STEAM (-30 RAGE)</button>
-    </div>
-  </div>
-
-  <!-- ANNOYING POPUP MODAL ENGINE -->
-  <div id="annoying-popup-modal" class="popup-overlay" style="display: none;" role="dialog" aria-modal="true">
-    <div class="popup-box">
-      <div class="popup-header">
-        <span id="popup-title" class="popup-title-text">🚨 SYSTEM NOTIFICATION</span>
-        <button id="btn-popup-close" class="btn-popup-x" title="Close popup">✖</button>
-      </div>
-      <div class="popup-content">
-        <div class="popup-emoji" id="popup-emoji">🎁</div>
-        <div class="popup-message">
-          <h3 id="popup-heading">YOU WON A PRIZE!</h3>
-          <p id="popup-desc">Prize: Absolutely nothing. Your account balance remains 0 coins.</p>
-        </div>
-      </div>
-      <div class="popup-footer">
-        <button id="btn-popup-primary" class="btn btn-primary btn-sm">ACCEPT DEFEAT</button>
-        <button id="btn-popup-secondary" class="btn btn-secondary btn-sm">WHY DID I CLICK</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- FAKE PROGRESS / LOADING MODAL -->
-  <div id="loading-dialog-modal" class="popup-overlay" style="display: none;">
-    <div class="popup-box loading-box">
-      <h3 id="loading-dialog-title">DOWNLOADING FREE LEGENDARY SKIN...</h3>
-      <div class="loading-track">
-        <div id="loading-dialog-bar" class="loading-bar-fill" style="width: 0%;"></div>
-      </div>
-      <p id="loading-dialog-status" class="loading-status-text">Connecting to skin server (0%)...</p>
-      <button id="btn-loading-cancel" class="btn btn-secondary btn-sm mt-12">Cancel Download</button>
-    </div>
-  </div>
-
-  <!-- NOTIFICATION CENTER DRAWER -->
-  <aside id="notification-drawer" class="notification-drawer" style="display: none;">
-    <div class="drawer-header">
-      <h3>🔔 Notifications <span id="drawer-unread-count" class="badge-tag">3</span></h3>
-      <div class="drawer-actions">
-        <button id="btn-mark-all-read" class="btn-text-sm">Mark Read</button>
-        <button id="btn-close-drawer" class="btn-popup-x">✖</button>
-      </div>
-    </div>
-    <div class="drawer-list" id="notification-list">
-      <!-- Injected dynamically via JS -->
-    </div>
-  </aside>
-
-  <!-- ACHIEVEMENT UNLOCK TOAST STACK -->
-  <div id="achievement-toast-container" class="toast-stack" aria-live="polite"></div>
-
-  <!-- ====================================================================== -->
-  <!-- TOP TELEMETRY HUD BAR                                                 -->
-  <!-- ====================================================================== -->
-  <header class="hud-top-bar">
-    <div class="hud-left">
-      <div class="brand-cluster" id="brand-logo-trigger" title="Click me 5 times for a secret!">
-        <div class="brand-glitch-icon">⚡</div>
-        <div>
-          <h1 class="brand-title">RAGEZONE 9000</h1>
-          <span class="brand-subtitle">THE GAMING WEBSITE THAT WANTS YOU TO LOSE</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- DYNAMIC LIVE FLUCTUATING TELEMETRY METRICS -->
-    <div class="hud-metrics">
-      <div class="metric-chip" title="Hardware Framerate (fluctuates wildly)">
-        <span class="chip-label">FPS:</span>
-        <span class="chip-val text-green" id="hud-fps-val">144</span>
-      </div>
-      <div class="metric-chip" title="Network Latency">
-        <span class="chip-label">PING:</span>
-        <span class="chip-val text-orange" id="hud-ping-val">42ms</span>
-      </div>
-      <div class="metric-chip" title="Live CPU Load">
-        <span class="chip-label">CPU:</span>
-        <span class="chip-val" id="hud-cpu-val">61%</span>
-      </div>
-      <div class="metric-chip" title="Live GPU Load">
-        <span class="chip-label">GPU:</span>
-        <span class="chip-val" id="hud-gpu-val">82%</span>
-      </div>
-      <div class="metric-chip metric-skill" title="Skill Evaluation Matrix">
-        <span class="chip-label">SKILL:</span>
-        <span class="chip-val text-purple" id="hud-skill-val">QUESTIONABLE</span>
-      </div>
-      <div class="metric-chip metric-rage-chip" id="hud-rage-chip" title="Click to view rage options">
-        <span class="chip-label">RAGE:</span>
-        <span class="chip-val text-red" id="hud-rage-val">45%</span>
-      </div>
-    </div>
-
-    <!-- USER LEVEL, COINS, AUDIO & NOTIFICATIONS -->
-    <div class="hud-right">
-      <div class="user-xp-widget" id="user-xp-widget" title="Click to view level perks">
-        <div class="xp-level-badge" id="hud-user-level">LVL 1</div>
-        <div class="xp-info">
-          <div class="xp-text"><span id="hud-user-xp">0</span> / <span id="hud-next-xp">100</span> XP</div>
-          <div class="xp-mini-track">
-            <div class="xp-mini-fill" id="hud-xp-fill" style="width: 0%;"></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="coins-badge" id="hud-coins-display" title="Your imaginary currency">
-        🪙 <span id="hud-coins-count">42</span>
-      </div>
-
-      <button id="btn-sound-toggle" class="hud-btn" title="Toggle Sound (Web Audio API)">
-        <span id="sound-icon">🔇</span> <span id="sound-label" class="desktop-only">SOUND: OFF</span>
-      </button>
-
-      <button id="btn-open-notifications" class="hud-btn notification-bell-btn" title="Notification Drawer">
-        🔔 <span id="hud-notif-badge" class="bell-badge">3</span>
-      </button>
-
-      <button id="btn-mobile-nav" class="hud-btn mobile-only" title="Open Menu">☰</button>
-    </div>
-  </header>
-
-  <!-- ====================================================================== -->
-  <!-- MAIN NAVIGATION BAR                                                    -->
-  <!-- ====================================================================== -->
-  <nav class="main-nav-bar" id="main-nav" aria-label="Game Navigation">
-    <div class="nav-scroll-track">
-      <button class="nav-tab active" data-tab="home" id="nav-home">🏠 HOME</button>
-      <button class="nav-tab" data-tab="games" id="nav-games">🎮 GAMES & LAUNCHER</button>
-      <button class="nav-tab" data-tab="minigames" id="nav-minigames">🕹️ MINI-GAMES <span class="hot-pill">PLAYABLE</span></button>
-      <button class="nav-tab" data-tab="loadout" id="nav-loadout">🎒 LOADOUT BUILDER</button>
-      <button class="nav-tab" data-tab="leaderboard" id="nav-leaderboard">🏆 LEADERBOARD</button>
-      <button class="nav-tab" data-tab="ai-coach" id="nav-ai-coach">🤖 AI COACH CHAT</button>
-      <button class="nav-tab" data-tab="pc-stats" id="nav-pc-stats">🖥️ PC DIAGNOSTIC</button>
-      <button class="nav-tab" data-tab="fake-shop" id="nav-fake-shop">🛒 FAKE SHOP</button>
-      <button class="nav-tab" data-tab="achievements" id="nav-achievements">🏅 ACHIEVEMENTS (<span id="unlocked-achieve-count">0</span>/10)</button>
-      <button class="nav-tab" data-tab="database-pg" id="nav-database">💾 DATA STORE</button>
-      <button class="nav-tab" data-tab="settings" id="nav-settings">⚙️ SETTINGS</button>
-    </div>
-  </nav>
-
-  <!-- ====================================================================== -->
-  <!-- MAIN CONTENT CONTAINER                                                 -->
-  <!-- ====================================================================== -->
-  <main class="main-stage" id="main-stage">
-
-    <!-- ==================================================================== -->
-    <!-- VIEW 1: HOME (RAGE METER & CLICKABLE CHAOS)                          -->
-    <!-- ==================================================================== -->
-    <section class="tab-view active" id="view-home">
-      
-      <!-- HERO GREETING -->
-      <div class="hero-rage-banner">
-        <div class="hero-banner-content">
-          <div class="hero-status-pill">● LIVE CHALLENGE ACTIVE</div>
-          <h2 class="hero-main-title">WELCOME BACK, PROBABLY</h2>
-          <p class="hero-subtext">Your gaming career has been thoroughly evaluated by our neural algorithms and determined to be 84% luck, 16% button mashing, and 0% actual aim.</p>
-        </div>
-        <div class="hero-banner-art">
-          <img src="assets/cyber_strike_cover.jpg" alt="Ragezone art" class="hero-art-img">
-        </div>
-      </div>
-
-      <!-- THE CORE RAGE METER COMPONENT -->
-      <div class="rage-meter-panel">
-        <div class="rage-meter-header">
-          <div class="rage-title-group">
-            <span class="rage-flame-icon">🔥</span>
-            <div>
-              <h3 class="rage-heading">RAGE METER</h3>
-              <span class="rage-status-quote" id="rage-status-quote">"Current Status: Mildly irritated by enemy hitboxes."</span>
-            </div>
-          </div>
-          <div class="rage-number-display" id="rage-percent-display">45%</div>
-        </div>
-
-        <div class="rage-bar-track">
-          <div class="rage-bar-fill" id="rage-bar-fill" style="width: 45%;">
-            <div class="rage-bar-sparks"></div>
-          </div>
-        </div>
-
-        <div class="rage-triggers-bar">
-          <span>Manual Rage Stimulators:</span>
-          <button class="btn btn-rage-add" id="btn-add-rage-5">+5 RAGE</button>
-          <button class="btn btn-rage-add" id="btn-add-rage-15">+15 RAGE (DESK SLAP)</button>
-          <button class="btn btn-rage-sub" id="btn-sub-rage-10">-10 RAGE (COPING)</button>
-          <button class="btn btn-secondary btn-sm" id="btn-trigger-low-fps-event">Simulate Low FPS Drop</button>
-        </div>
-      </div>
-
-      <!-- PRIMARY ACTION BUTTONS (EVERY BUTTON DOES SOMETHING ANNOYING!) -->
-      <h3 class="section-title">⚡ HIGH-VOLTAGE GAMER BUTTONS (CLICK AT YOUR OWN RISK)</h3>
-      <div class="interactive-buttons-grid">
-        
-        <div class="action-card">
-          <h4>👑 BECOME PRO INSTANTLY</h4>
-          <p>Instantly upload Shroud and Simple's muscle memory directly into your mouse hand.</p>
-          <button class="btn btn-action-glow btn-block" id="btn-become-pro">ACTIVATE PRO STATUS</button>
-        </div>
-
-        <div class="action-card">
-          <h4>🎁 CLAIM FREE LEGENDARY SKIN</h4>
-          <p>Guaranteed Dragon Lore AWP or Neon Valkyrie Scythe direct to your inventory.</p>
-          <button class="btn btn-action-glow btn-block" id="btn-claim-skin">CLAIM FREE SKIN</button>
-        </div>
-
-        <div class="action-card">
-          <h4>⚡ AUTOMATIC FPS REPAIR</h4>
-          <p>Deep hardware AI scan to eliminate frame drops and boost your refresh rate to 500Hz.</p>
-          <button class="btn btn-action-glow btn-block" id="btn-fix-fps">FIX MY FPS NOW</button>
-        </div>
-
-        <div class="action-card">
-          <h4>🗑️ PURGE ALL RAGE</h4>
-          <p>Delete your rage meter entirely and return to a state of inner peace and serenity.</p>
-          <button class="btn btn-action-glow btn-block" id="btn-delete-rage">DELETE RAGE</button>
-        </div>
-
-        <div class="action-card">
-          <h4>💰 CLAIM 1,000,000 FREE COINS</h4>
-          <p>Bank transfer from a wealthy esports investor who believes in your potential.</p>
-          <button class="btn btn-action-glow btn-block" id="btn-claim-coins">CLAIM 1,000,000 COINS</button>
-        </div>
-
-        <div class="action-card card-danger-action">
-          <h4>🚨 EMERGENCY RAGE QUIT BUTTON</h4>
-          <p>Simulates throwing your headset across the room and kicking your router into the yard.</p>
-          <button class="btn btn-danger-action btn-block" id="btn-emergency-rage-quit">EXECUTE RAGE QUIT</button>
-        </div>
-
-      </div>
-
-      <!-- LIVE EVENT TICKER & DAILY CHALLENGE -->
-      <div class="home-lower-grid mt-24">
-        
-        <div class="panel-box">
-          <h4 class="panel-heading">🏆 TODAY'S DAILY RAGE CHALLENGES</h4>
-          <ul class="challenge-list">
-            <li class="challenge-item">
-              <span class="ch-check">✓</span>
-              <div class="ch-info">
-                <strong>Click 10 interactive buttons</strong>
-                <span class="ch-progress" id="ch-buttons-progress">Progress: 0/10</span>
-              </div>
-              <span class="badge-xp">+50 XP</span>
-            </li>
-            <li class="challenge-item">
-              <span class="ch-check">○</span>
-              <div class="ch-info">
-                <strong>Catch the Evasive Button in Mini-Games</strong>
-                <span>Score 5 successful clicks on the jumping target.</span>
-              </div>
-              <span class="badge-xp">+100 XP</span>
-            </li>
-            <li class="challenge-item">
-              <span class="ch-check">○</span>
-              <div class="ch-info">
-                <strong>Complete Human Reaction Benchmark under 250ms</strong>
-                <span>Prove you are not playing on a dial-up smart fridge.</span>
-              </div>
-              <span class="badge-xp">+75 XP</span>
-            </li>
-          </ul>
-        </div>
-
-        <div class="panel-box">
-          <h4 class="panel-heading">📊 CAREER DISASTER TELEMETRY</h4>
-          <div class="stats-counter-cluster">
-            <div class="stat-counter-item">
-              <span class="sc-label">Total Button Clicks</span>
-              <span class="sc-value" id="stat-total-clicks">0</span>
-            </div>
-            <div class="stat-counter-item">
-              <span class="sc-label">Popups Survived</span>
-              <span class="sc-value" id="stat-popups-closed">0</span>
-            </div>
-            <div class="stat-counter-item">
-              <span class="sc-label">Keyboards Smashed</span>
-              <span class="sc-value">17</span>
-            </div>
-            <div class="stat-counter-item">
-              <span class="sc-label">Excuses Created</span>
-              <span class="sc-value">4,912</span>
-            </div>
-          </div>
-          <div class="mt-16 text-center">
-            <button class="btn btn-secondary btn-sm" onclick="switchTab('minigames')">Launch Arcade Mini-Games ➔</button>
-          </div>
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ==================================================================== -->
-    <!-- VIEW 2: GAMES & LAUNCHER                                            -->
-    <!-- ==================================================================== -->
-    <section class="tab-view" id="view-games">
-      <div class="page-header">
-        <h2 class="page-title">GAMES & LAUNCHER</h2>
-        <p class="page-subtitle">Every game in our catalog has been carefully optimized to maximize packet loss and induce desk-pounding frustration.</p>
-      </div>
-
-      <div class="games-grid">
-        
-        <div class="game-card">
-          <div class="game-card-media">
-            <img src="assets/cyber_strike_cover.jpg" alt="Cyber Strike" class="game-img">
-            <span class="game-badge">TACTICAL SUFFERING</span>
-          </div>
-          <div class="game-card-body">
-            <h3 class="game-title">Cyber Strike</h3>
-            <p class="game-desc">A tactical 5v5 FPS where enemies always hit running headshots while your bullets pass through them like holograms.</p>
-            <div class="game-meta-row">
-              <span>★ 4.8 / 5</span>
-              <span>12.4K Players</span>
-              <span>Difficulty: UNFAIR</span>
-            </div>
-            <button class="btn btn-primary btn-block" onclick="launchGameSession('Cyber Strike')">LAUNCH CYBER STRIKE</button>
-          </div>
-        </div>
-
-        <div class="game-card">
-          <div class="game-card-media">
-            <img src="assets/shadow_realm_cover.jpg" alt="Echos of Aethel" class="game-img">
-            <span class="game-badge">SOULSLIKE PAIN</span>
-          </div>
-          <div class="game-card-body">
-            <h3 class="game-title">Echos of Aethel</h3>
-            <p class="game-desc">A dark fantasy RPG where you roll into an attack, get hit anyway, fall off a cliff, and lose 4 hours of progress.</p>
-            <div class="game-meta-row">
-              <span>★ 4.9 / 5</span>
-              <span>48.1K Players</span>
-              <span>Difficulty: CRUSHING</span>
-            </div>
-            <button class="btn btn-primary btn-block" onclick="launchGameSession('Echos of Aethel')">LAUNCH ECHOS OF AETHEL</button>
-          </div>
-        </div>
-
-        <div class="game-card">
-          <div class="game-card-media">
-            <img src="assets/cyber_strike_cover.jpg" alt="Ping Simulator" class="game-img">
-            <span class="game-badge">PVP ANXIETY</span>
-          </div>
-          <div class="game-card-body">
-            <h3 class="game-title">Ping Simulator 2026</h3>
-            <p class="game-desc">Experience what it feels like to rubberband backwards 10 meters every time you peek a corner in overtime.</p>
-            <div class="game-meta-row">
-              <span>★ 1.2 / 5</span>
-              <span>999K Laggers</span>
-              <span>Difficulty: 400MS</span>
-            </div>
-            <button class="btn btn-primary btn-block" onclick="switchTab('minigames')">PLAY IN ARCADE</button>
-          </div>
-        </div>
-
-        <div class="game-card">
-          <div class="game-card-media">
-            <img src="assets/shadow_realm_cover.jpg" alt="Keyboard Destroyer" class="game-img">
-            <span class="game-badge">DESTRUCTION</span>
-          </div>
-          <div class="game-card-body">
-            <h3 class="game-title">Keyboard Destroyer</h3>
-            <p class="game-desc">A high-velocity quick-time event challenge that tests how fast you can mash buttons before your keys pop off.</p>
-            <div class="game-meta-row">
-              <span>★ 5.0 / 5</span>
-              <span>8.2K Ragers</span>
-              <span>Difficulty: BROKEN KEYS</span>
-            </div>
-            <button class="btn btn-primary btn-block" onclick="switchTab('minigames')">PLAY IN ARCADE</button>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-
-    <!-- ==================================================================== -->
-    <!-- VIEW 3: MINI-GAMES ARCADE (ACTUAL PLAYABLE GAMES!)                    -->
-    <!-- ==================================================================== -->
-    <section class="tab-view" id="view-minigames">
-      <div class="page-header">
-        <h2 class="page-title">🕹️ THE RAGE ARCADE (REAL PLAYABLE MINI-GAMES)</h2>
-        <p class="page-subtitle">Every mini-game below is 100% playable in your browser. Complete them to earn real XP and boost your Rage Meter!</p>
-      </div>
-
-      <div class="arcade-grid">
-        
-        <!-- MINI-GAME 1: EVASIVE BUTTON -->
-        <div class="arcade-card" id="arcade-game-1">
-          <div class="arcade-header">
-            <h3>MINI-GAME 1: THE EVASIVE BUTTON</h3>
-            <span class="badge-tag">AGILITY</span>
-          </div>
-          <p class="arcade-instructions">Try to click the target button below. Warning: it does not want to be clicked and will jump around the container.</p>
-          
-          <div class="evasive-arena" id="evasive-arena">
-            <button id="btn-evasive" class="btn-evasive-target">CLICK ME!</button>
-          </div>
-
-          <div class="arcade-footer">
-            <span id="evasive-score-display">Clicks: 0 / 5</span>
-            <button id="btn-reset-evasive" class="btn btn-secondary btn-sm">Reset Target</button>
-          </div>
-        </div>
-
-        <!-- MINI-GAME 2: REACTION TEST -->
-        <div class="arcade-card" id="arcade-game-2">
-          <div class="arcade-header">
-            <h3>MINI-GAME 2: HUMAN REACTION BENCHMARK</h3>
-            <span class="badge-tag">REFLEXES</span>
-          </div>
-          <p class="arcade-instructions">Click the benchmark box to arm it. When the box flashes <strong class="text-green">GREEN</strong>, click as fast as possible!</p>
-          
-          <div class="reaction-arena reaction-idle" id="reaction-arena">
-            <div id="reaction-prompt-text" class="reaction-text">CLICK TO START</div>
-            <div id="reaction-subtext" class="reaction-sub">Tests your neural latency in milliseconds</div>
-          </div>
-
-          <div class="arcade-footer">
-            <span id="reaction-result-display">Best Reaction: -- ms</span>
-            <span class="text-sm text-secondary">Target: &lt; 250ms</span>
-          </div>
-        </div>
-
-        <!-- MINI-GAME 3: FAKE FPS REPAIR PUZZLE -->
-        <div class="arcade-card" id="arcade-game-3">
-          <div class="arcade-header">
-            <h3>MINI-GAME 3: FAKE FPS REPAIR</h3>
-            <span class="badge-tag">HARDWARE PUZZLE</span>
-          </div>
-          <p class="arcade-instructions">Your game is locked at 12 FPS! Click the culprit component below to repair your framerate:</p>
-          
-          <div class="fps-repair-cluster">
-            <button class="btn-component" data-component="GPU">GPU (RTX 4090)</button>
-            <button class="btn-component" data-component="CPU">CPU (Ryzen 7800X3D)</button>
-            <button class="btn-component" data-component="RAM">RAM (32GB DDR5)</button>
-            <button class="btn-component" data-component="MONITOR">240Hz Display</button>
-            <button class="btn-component" data-component="SKILL">Player Skill</button>
-          </div>
-
-          <div class="component-diagnostic-output" id="component-output">
-            Select a component above to inspect...
-          </div>
-
-          <div class="arcade-footer">
-            <span id="fps-repair-attempts">Attempts: 0</span>
-            <span class="badge-xp">+50 XP on completion</span>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-
-    <!-- ==================================================================== -->
-    <!-- VIEW 4: LOADOUT BUILDER                                              -->
-    <!-- ==================================================================== -->
-    <section class="tab-view" id="view-loadout">
-      <div class="page-header">
-        <h2 class="page-title">🎒 INTERACTIVE LOADOUT BUILDER</h2>
-        <p class="page-subtitle">Configure your in-game setup. Click any slot to swap items, then save your build to test AI feedback.</p>
-      </div>
-
-      <div class="loadout-container">
-        
-        <div class="loadout-slots-grid">
-          
-          <!-- SLOT 1 -->
-          <div class="loadout-slot-card active" data-slot="primary">
-            <span class="slot-type">PRIMARY WEAPON</span>
-            <div class="slot-icon" id="slot-primary-icon">🔫</div>
-            <h4 class="slot-name" id="slot-primary-name">M4A1-S (Suppressed)</h4>
-            <span class="slot-stat" id="slot-primary-stat">Recoil: Moderate · Fire Rate: 600 RPM</span>
-          </div>
-
-          <!-- SLOT 2 -->
-          <div class="loadout-slot-card" data-slot="secondary">
-            <span class="slot-type">SECONDARY WEAPON</span>
-            <div class="slot-icon" id="slot-secondary-icon">🎯</div>
-            <h4 class="slot-name" id="slot-secondary-name">Desert Deagle</h4>
-            <span class="slot-stat" id="slot-secondary-stat">Damage: High · 1-Deag Probability: 2.1%</span>
-          </div>
-
-          <!-- SLOT 3 -->
-          <div class="loadout-slot-card" data-slot="ability">
-            <span class="slot-type">TACTICAL ABILITY</span>
-            <div class="slot-icon" id="slot-ability-icon">💨</div>
-            <h4 class="slot-name" id="slot-ability-name">Smoke Grenade (Flashes Own Team)</h4>
-            <span class="slot-stat" id="slot-ability-stat">Duration: 18s · Team Toxicity: +40%</span>
-          </div>
-
-          <!-- SLOT 4 -->
-          <div class="loadout-slot-card" data-slot="perk">
-            <span class="slot-type">PASSIVE PERK</span>
-            <div class="slot-icon" id="slot-perk-icon">🦘</div>
-            <h4 class="slot-name" id="slot-perk-name">Bunny Hop Delusion</h4>
-            <span class="slot-stat" id="slot-perk-stat">Movement Speed: +0% · Looks Confident</span>
-          </div>
-
-          <!-- SLOT 5 -->
-          <div class="loadout-slot-card" data-slot="skin">
-            <span class="slot-type">WEAPON SKIN</span>
-            <div class="slot-icon" id="slot-skin-icon">✨</div>
-            <h4 class="slot-name" id="slot-skin-name">Neon Dragon Lore</h4>
-            <span class="slot-stat" id="slot-skin-stat">Rarity: Mythic · Cost: $1,400 of Copium</span>
-          </div>
-
-        </div>
-
-        <!-- ITEM SELECTION DRAWER -->
-        <div class="loadout-picker-box">
-          <h4 id="picker-title">Select Item for Slot:</h4>
-          <div class="picker-items-grid" id="picker-items-container">
-            <!-- Populated via JS based on selected slot -->
-          </div>
-          
-          <div class="loadout-actions-row mt-16">
-            <button class="btn btn-primary btn-lg" id="btn-save-loadout">💾 SAVE LOADOUT TO PROFILE</button>
-            <button class="btn btn-secondary btn-lg" id="btn-randomize-loadout">🎲 RANDOMIZE HORRIBLE LOADOUT</button>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-
-    <!-- ==================================================================== -->
-    <!-- VIEW 5: LEADERBOARD                                                  -->
-    <!-- ==================================================================== -->
-    <section class="tab-view" id="view-leaderboard">
-      <div class="page-header">
-        <h2 class="page-title">🏆 DYNAMIC GLOBAL LEADERBOARD</h2>
-        <p class="page-subtitle">Rankings dynamically adjust in real-time as you interact with the site. Notice how quickly you get overtaken.</p>
-      </div>
-
-      <div class="leaderboard-card">
-        <div class="table-responsive">
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th>Rank</th>
-                <th>Player Handle</th>
-                <th>Rating</th>
-                <th>Wins</th>
-                <th>Rage Level</th>
-                <th>Status</th>
-                <th>Challenge</th>
-              </tr>
-            </thead>
-            <tbody id="leaderboard-body">
-              <!-- Rendered dynamically via JS -->
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ==================================================================== -->
-    <!-- VIEW 6: AI COACH INTERACTIVE CHAT                                    -->
-    <!-- ==================================================================== -->
-    <section class="tab-view" id="view-ai-coach">
-      <div class="page-header">
-        <h2 class="page-title">🤖 AI GAMING COACH & TACTICAL ADVISOR</h2>
-        <p class="page-subtitle">Type your gaming questions, excuses, or complaints below. The AI coach will evaluate your skill with ruthless accuracy.</p>
-      </div>
-
-      <div class="ai-chat-container">
-        
-        <div class="ai-chat-messages" id="ai-chat-history">
-          <div class="chat-bubble ai-bubble">
-            <strong>AI Coach:</strong> Greetings gamer. I have reviewed your match history. What excuse or complaint would you like me to debunk today?
-          </div>
-        </div>
-
-        <div class="quick-prompts-bar">
-          <span>Quick Prompts:</span>
-          <button class="btn-prompt-chip" data-prompt="Why do I always miss my shots?">"Why do I always miss?"</button>
-          <button class="btn-prompt-chip" data-prompt="How do I fix my 180ms ping?">"Fix my 180ms ping"</button>
-          <button class="btn-prompt-chip" data-prompt="My teammates are dragging me down.">"My teammates are bots"</button>
-          <button class="btn-prompt-chip" data-prompt="Recommend an optimal mouse sensitivity.">"Recommend sensitivity"</button>
-        </div>
-
-        <div class="ai-chat-input-bar">
-          <input type="text" id="ai-chat-input" class="chat-input" placeholder="Type your gaming excuse here... (e.g. 'I died because my cat jumped on my desk')">
-          <button id="btn-send-chat" class="btn btn-primary">SEND QUESTION</button>
-        </div>
-
-      </div>
-    </section>
-
-
-    <!-- ==================================================================== -->
-    <!-- VIEW 7: PC STATS & INTERACTIVE DIAGNOSTIC                            -->
-    <!-- ==================================================================== -->
-    <section class="tab-view" id="view-pc-stats">
-      <div class="page-header">
-        <h2 class="page-title">🖥️ PC HARDWARE DIAGNOSTICS & TELEMETRY</h2>
-        <p class="page-subtitle">Interactive hardware telemetry with simulated thermal scanning and bottleneck detection.</p>
-      </div>
-
-      <div class="pc-stats-dashboard">
-        
-        <div class="stats-gauges-grid">
-          <div class="gauge-card">
-            <h4>CPU UTILIZATION</h4>
-            <div class="gauge-number" id="diag-cpu-val">61%</div>
-            <div class="progress-track"><div id="diag-cpu-bar" class="progress-fill fill-purple" style="width: 61%;"></div></div>
-            <span class="sub-stat">Temp: 58°C · Clock: 4.8 GHz</span>
-          </div>
-
-          <div class="gauge-card">
-            <h4>GPU UTILIZATION</h4>
-            <div class="gauge-number" id="diag-gpu-val">82%</div>
-            <div class="progress-track"><div id="diag-gpu-bar" class="progress-fill fill-purple" style="width: 82%;"></div></div>
-            <span class="sub-stat">VRAM: 11.2 / 16 GB · Temp: 68°C</span>
-          </div>
-
-          <div class="gauge-card">
-            <h4>RAM ALLOCATION</h4>
-            <div class="gauge-number">18.4 GB</div>
-            <div class="progress-track"><div class="progress-fill fill-purple" style="width: 58%;"></div></div>
-            <span class="sub-stat">Chrome tabs open: 42</span>
-          </div>
-
-          <div class="gauge-card">
-            <h4>NETWORK LATENCY</h4>
-            <div class="gauge-number" id="diag-ping-val">42 ms</div>
-            <div class="progress-track"><div id="diag-ping-bar" class="progress-fill fill-green" style="width: 25%;"></div></div>
-            <span class="sub-stat">Packet Loss: 0.00%</span>
-          </div>
-        </div>
-
-        <div class="diagnostic-runner-box mt-24">
-          <div class="diag-header">
-            <h3>HARDWARE DEEP SCAN DIAGNOSTIC</h3>
-            <button class="btn btn-primary" id="btn-run-diagnostic">RUN FULL DIAGNOSTIC</button>
-          </div>
-          <div class="diag-terminal" id="diag-terminal">
-            [Ready] Click "RUN FULL DIAGNOSTIC" to inspect hardware telemetry...
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-
-    <!-- ==================================================================== -->
-    <!-- VIEW 8: FAKE SHOP (INSUFFICIENT FUNDS EVERY TIME)                     -->
-    <!-- ==================================================================== -->
-    <section class="tab-view" id="view-fake-shop">
-      <div class="page-header">
-        <h2 class="page-title">🛒 THE FAKE GAMER SHOP (NO REAL PURCHASES)</h2>
-        <p class="page-subtitle">Spend your imaginary coins on legendary items. Warning: Everything is exorbitantly expensive.</p>
-      </div>
-
-      <div class="shop-balance-banner">
-        <span>YOUR WALLET BALANCE: <strong class="text-green" id="shop-wallet-balance">🪙 42 COINS</strong></span>
-        <button class="btn btn-secondary btn-sm" id="btn-mine-coins">⛏️ MINE +1 COIN (CLICK REPEATEDLY)</button>
-      </div>
-
-      <div class="shop-grid mt-24">
-        
-        <div class="shop-card">
-          <div class="shop-icon">🥔</div>
-          <h4>The Golden Potato</h4>
-          <p>Boosts in-game confidence by 0.002%. Guaranteed to draw laughs in all-chat.</p>
-          <div class="shop-price">🪙 999 Coins</div>
-          <button class="btn btn-primary btn-block" onclick="attemptPurchase('Golden Potato', 999)">BUY ITEM</button>
-        </div>
-
-        <div class="shop-card">
-          <div class="shop-icon">🖱️</div>
-          <h4>Ultra 16,000 DPI Laser Mouse</h4>
-          <p>A mouse so sensitive that a light sneeze will spin your character 36 times.</p>
-          <div class="shop-price">🪙 9,999 Coins</div>
-          <button class="btn btn-primary btn-block" onclick="attemptPurchase('Ultra Mouse', 9999)">BUY ITEM</button>
-        </div>
-
-        <div class="shop-card">
-          <div class="shop-icon">💨</div>
-          <h4>Canned Compressed Gamer Air</h4>
-          <p>Blows dust out of your keyboard and delivers pure psychological placebo.</p>
-          <div class="shop-price">🪙 50,000 Coins</div>
-          <button class="btn btn-primary btn-block" onclick="attemptPurchase('Gamer Air', 50000)">BUY ITEM</button>
-        </div>
-
-        <div class="shop-card">
-          <div class="shop-icon">🎯</div>
-          <h4>Legitimate Aim Skill (100% Real)</h4>
-          <p>Actual mechanical tracking, crosshair discipline, and tactical brainpower.</p>
-          <div class="shop-price">🪙 1,000,000 Coins</div>
-          <button class="btn btn-primary btn-block" onclick="attemptPurchase('Aim Skill', 1000000)">BUY ITEM</button>
-        </div>
-
-      </div>
-    </section>
-
-
-    <!-- ==================================================================== -->
-    <!-- VIEW 9: ACHIEVEMENTS                                                 -->
-    <!-- ==================================================================== -->
-    <section class="tab-view" id="view-achievements">
-      <div class="page-header">
-        <h2 class="page-title">🏅 GAMER ACHIEVEMENTS SYSTEM</h2>
-        <p class="page-subtitle">Real achievements that unlock based on your actions on this website. Saved directly in your browser.</p>
-      </div>
-
-      <div class="achievements-grid" id="achievements-grid">
-        <!-- Rendered dynamically via JS -->
-      </div>
-    </section>
-
-
-    <!-- ==================================================================== -->
-    <!-- VIEW 10: DATA STORE (POSTGRESQL REPOSITORY PRESERVED)                -->
-    <!-- ==================================================================== -->
-    <section class="tab-view" id="view-database-pg">
-      <div class="page-header">
-        <h2 class="page-title">💾 POSTGRESQL TELEMETRY REPOSITORY</h2>
-        <p class="page-subtitle">Interactive SQL terminal and persistent game data store backing RAGEZONE 9000.</p>
-      </div>
-
-      <div class="panel-box mb-24">
-        <div class="diag-header">
-          <span>SQL Terminal — postgres@ragezone-db:5432/telemetry</span>
-          <span class="badge-tag">CONNECTED 🟢</span>
-        </div>
-        <textarea id="sql-query-input" class="sql-textarea" rows="3">SELECT id, crop_name AS game_title, nickname AS player, growth_stage AS rank, target_yield AS kd, created_at FROM farm_advisories ORDER BY id DESC;</textarea>
-        <div class="mt-12 flex-gap">
-          <button class="btn btn-primary btn-sm" id="btn-run-sql">EXECUTE SQL</button>
-          <button class="btn btn-secondary btn-sm" id="btn-sql-insert">Insert Telemetry Record</button>
-          <button class="btn btn-secondary btn-sm" id="btn-sql-reset">Reset Repository</button>
-          <span id="sql-status-text" class="status-msg">Query ready.</span>
-        </div>
-      </div>
-
-      <div class="panel-box">
-        <div class="table-responsive">
-          <table class="data-table">
-            <thead id="pg-table-head">
-              <tr>
-                <th>id</th><th>game_title</th><th>player</th><th>rank</th><th>target_kd</th><th>timestamp</th>
-              </tr>
-            </thead>
-            <tbody id="pg-table-body">
-              <!-- Rendered via JS -->
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ==================================================================== -->
-    <!-- VIEW 11: SETTINGS                                                    -->
-    <!-- ==================================================================== -->
-    <section class="tab-view" id="view-settings">
-      <div class="page-header">
-        <h2 class="page-title">⚙️ SYSTEM SETTINGS & PREFERENCES</h2>
-        <p class="page-subtitle">Configure audio synthesis, visual rage effects, and accessibility parameters.</p>
-      </div>
-
-      <div class="settings-grid">
-        
-        <!-- AUDIO CONTROLS -->
-        <div class="panel-box">
-          <h4 class="panel-heading">🔊 AUDIO & SOUND EFFECTS</h4>
-          <div class="setting-item">
-            <div>
-              <strong>Sound Effects (Web Audio API)</strong>
-              <p class="sub-stat">Enables click blips, error boops, and achievement fanfares.</p>
-            </div>
-            <button class="btn btn-secondary btn-sm" id="set-btn-sound">TOGGLE SOUND</button>
-          </div>
-
-          <div class="setting-item mt-16">
-            <div>
-              <strong>Retro 8-Bit Music Loop</strong>
-              <p class="sub-stat">Procedural arpeggio synthesizer running in background.</p>
-            </div>
-            <button class="btn btn-secondary btn-sm" id="set-btn-music">TOGGLE MUSIC</button>
-          </div>
-
-          <div class="setting-item mt-16">
-            <label for="master-volume-slider"><strong>Master Volume: <span id="volume-val-display">50%</span></strong></label>
-            <input type="range" id="master-volume-slider" min="0" max="1" step="0.05" value="0.5" class="form-range">
-          </div>
-        </div>
-
-        <!-- VISUAL RAGE EFFECTS -->
-        <div class="panel-box">
-          <h4 class="panel-heading">⚡ VISUAL RAGE EFFECTS</h4>
-          <div class="setting-item">
-            <div>
-              <strong>Screen Shake & Rage Border</strong>
-              <p class="sub-stat">Brief screen vibration when rage spikes.</p>
-            </div>
-            <button class="btn btn-secondary btn-sm" id="set-btn-shake">ENABLED</button>
-          </div>
-
-          <div class="setting-item mt-16">
-            <div>
-              <strong>Click Particle Burst</strong>
-              <p class="sub-stat">Interactive words floating on click coordinates.</p>
-            </div>
-            <button class="btn btn-secondary btn-sm" id="set-btn-particles">ENABLED</button>
-          </div>
-
-          <div class="setting-item mt-16">
-            <div>
-              <strong>Keyboard Hotkeys</strong>
-              <p class="sub-stat">Press R for Rage, G for Games, A for Achievements, S for Settings.</p>
-            </div>
-            <span class="badge-tag">ACTIVE ⌨️</span>
-          </div>
-        </div>
-
-        <!-- DATA & RESET -->
-        <div class="panel-box col-span-2">
-          <h4 class="panel-heading">🔄 GAME DATA & PROGRESS</h4>
-          <div class="setting-item">
-            <div>
-              <strong>Reset All Game Progress</strong>
-              <p class="sub-stat">Clears all XP, coins, achievements, and rage meter back to defaults.</p>
-            </div>
-            <button class="btn btn-danger-action btn-sm" id="btn-reset-all-data">RESET PROGRESS</button>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-  </main>
-
-  <!-- ====================================================================== -->
-  <!-- FOOTER                                                                 -->
-  <!-- ====================================================================== -->
-  <footer class="rage-footer">
-    <div class="footer-left">
-      <strong>RAGEZONE 9000</strong> · <em>"Your skill issue is locally stored."</em> · &copy; 2026
-    </div>
-    <div class="footer-right">
-      <button class="footer-link-btn" onclick="switchTab('settings')">Settings</button>
-      <button class="footer-link-btn" onclick="switchTab('achievements')">Achievements</button>
-      <button class="footer-link-btn secret-btn" id="btn-secret-footer" title="???">★</button>
-    </div>
-  </footer>
-
-  <script src="app.js"></script>
+<div id="loadingOverlay"><div class="loader"><div class="loaderTitle">CALIBRATING YOUR CALM ENVIRONMENT</div><div class="loadbar"><i id="load"></i></div><div class="loadText" id="loadText">0%</div></div></div>
+
+<div id="app">
+<header>
+ <div class="brand">RAGE<span>LAB</span> <small style="font-weight:400;color:#666">/ behavioral interface</small></div>
+ <div class="headerRight"><span class="pill live">● SYSTEM NORMAL</span><span id="session">00:00</span><button class="btn" id="sound">🔊</button></div>
+</header>
+
+<main>
+<section class="hero" id="hero">
+ <div class="eyebrow">A COMPLETELY NORMAL WEBSITE</div>
+ <h1>PLEASE REMAIN<br>CALM.</h1>
+ <p class="sub">This interface has one objective: help you accomplish absolutely nothing. It will respond to your behavior, occasionally misunderstand you, and remember things you wish it wouldn't.</p>
+ <div class="actions">
+  <button class="btn primary" id="save">Save changes</button>
+  <button class="btn" id="reset">Reset experience</button>
+  <button class="btn" id="help">Need help?</button>
+ </div>
+</section>
+
+<section class="grid stats">
+ <div class="card"><div class="label">Patience</div><div class="value" id="patience">100%</div><div class="bar"><i id="patBar"></i></div></div>
+ <div class="card"><div class="label">Rage</div><div class="value" id="rage">0%</div><div class="bar"><i id="rageBar"></i></div></div>
+ <div class="card"><div class="label">Clicks</div><div class="value" id="clicks">0</div><div class="muted">none were necessary</div></div>
+ <div class="card"><div class="label">Trust score</div><div class="value" id="trust">100</div><div class="muted">declining naturally</div></div>
+</section>
+
+<section class="grid two">
+ <div class="card">
+  <div class="label">Internal diagnostics</div>
+  <div class="feed" id="logs"></div>
+ </div>
+ <div class="card">
+  <div class="label">Reaction calibration</div>
+  <h3>Click the target.</h3>
+  <div class="muted">It is not difficult. Probably.</div>
+  <div class="targetArea" id="targetArea"><button class="btn danger" id="target">CLICK</button></div>
+ </div>
+</section>
+
+<section class="grid three">
+ <div class="card">
+  <div class="label">Focus task</div><h3 id="taskTitle">Preparing task...</h3>
+  <p class="muted" id="taskDesc">Please wait for the task to finish preparing.</p>
+  <button class="btn" id="taskBtn">Start</button>
+ </div>
+ <div class="card">
+  <div class="label">Preferences</div>
+  <div class="setting"><span>Reduce animations</span><button class="btn" id="anim">OFF</button></div>
+  <div class="setting"><span>Helpful mode</span><button class="btn" id="helpful">ON</button></div>
+  <div class="setting"><span>Volume</span><input id="volume" type="range" min="0" max=".22" step=".01" value=".12"></div>
+ </div>
+ <div class="card">
+  <div class="label">Achievements</div>
+  <div id="achievements" class="muted" style="margin-top:10px">No achievements. Yet.</div>
+ </div>
+</section>
+</main>
+</div>
+
+<div id="popup"><button class="close" id="popClose">×</button><h3 id="popTitle">IMPORTANT</h3><div id="popBody" class="muted"></div><div class="actions"><button class="btn danger" id="popAction">RESOLVE</button></div></div>
+<div id="toastBox"></div>
+<div class="modalBg" id="modal"><div class="modal"><h2 id="modalTitle"></h2><p class="muted" id="modalText"></p><button class="btn danger" id="modalClose">Okay</button></div></div>
+
+<script>
+const $=s=>document.querySelector(s);
+let rage=+localStorage.rlRage||0,patience=+localStorage.rlPatience||100,clicks=+localStorage.rlClicks||0,trust=+localStorage.rlTrust||100;
+let soundOn=localStorage.rlSound!=="0", volume=+.12, ctx=null,start=Date.now(),targetHits=0,attempts=0,ach=[];
+const unlocked=new Set(JSON.parse(localStorage.rlAch||"[]"));
+function saveState(){localStorage.rlRage=rage;localStorage.rlPatience=patience;localStorage.rlClicks=clicks;localStorage.rlTrust=trust;localStorage.rlSound=soundOn?"1":"0";localStorage.rlAch=JSON.stringify([...unlocked])}
+function audio(type="click"){
+ if(!soundOn||volume<=0)return;
+ try{ctx ||= new (window.AudioContext||window.webkitAudioContext)();let o=ctx.createOscillator(),g=ctx.createGain(),t=ctx.currentTime;
+ let f=type==="bad"?130:type==="good"?650:type==="alarm"?90:390;o.type=type==="alarm"?"sawtooth":"square";o.frequency.setValueAtTime(f,t);o.frequency.exponentialRampToValueAtTime(type==="good"?1100:45,t+.18);g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(volume,t+.01);g.gain.exponentialRampToValueAtTime(.0001,t+.2);o.connect(g).connect(ctx.destination);o.start();o.stop(t+.22)}catch(e){}
+}
+function persist(){saveState();render()}
+function render(){
+ $("#rage").textContent=rage+"%";$("#patience").textContent=patience+"%";$("#clicks").textContent=clicks;$("#trust").textContent=trust;
+ $("#rageBar").style.width=rage+"%";$("#patBar").style.width=patience+"%";$("#sound").textContent=soundOn?"🔊":"🔇";
+ const names=[...unlocked];$("#achievements").innerHTML=names.length?names.map(x=>"★ "+x).join("<br>"):"No achievements. Yet.";
+}
+function log(text,bad=false){const d=document.createElement("div");d.className="log"+(bad?" bad":"");d.textContent=new Date().toLocaleTimeString()+"  "+text;$("#logs").prepend(d);if($("#logs").children.length>8)$("#logs").lastElementChild.remove()}
+function toast(text,bad=true){const d=document.createElement("div");d.className="toast";d.textContent=text;$("#toastBox").append(d);audio(bad?"bad":"good");setTimeout(()=>d.remove(),2600)}
+function unlock(x){if(!unlocked.has(x)){unlocked.add(x);toast("Achievement unlocked: "+x,false);audio("good");render()}}
+function frustrate(n,msg){rage=Math.min(100,rage+n);patience=Math.max(0,patience-n);trust=Math.max(0,trust-Math.ceil(n/2));clicks++;log(msg,true);audio(rage>65?"alarm":"bad");$("#hero").classList.add("shake");setTimeout(()=>$("#hero").classList.remove("shake"),500);if(rage>35&&Math.random()<.4)popup();if(rage>80)unlock("ABSOLUTE DETERMINATION");if(patience<50)unlock("STILL HERE");persist()}
+function popup(){
+ const p=$("#popup");p.style.display="block";p.style.left=Math.max(8,Math.random()*(innerWidth-340))+"px";p.style.top=Math.max(75,Math.random()*(innerHeight-280))+"px";
+ const x=[["SYSTEM NOTICE","Your previous action was reviewed."],["IMPORTANT","You are doing that thing again."],["CALM DOWN","This is a calm website."],["QUALITY CONTROL","We found a problem. It is probably you."],["SESSION UPDATE","Your trust score has been adjusted."]][Math.floor(Math.random()*5)];
+ $("#popTitle").textContent=x[0];$("#popBody").textContent=x[1];audio("alarm")
+}
+$("#popClose").onclick=()=>{ $("#popup").style.display="none";frustrate(3,"POPUP_CLOSED // THAT WAS NOT THE SOLUTION")};
+$("#popAction").onclick=()=>{ $("#popup").style.display="none";frustrate(5,"POPUP_RESOLVED // NEW PROBLEM CREATED")};
+$("#sound").onclick=()=>{soundOn=!soundOn;persist();if(soundOn)audio("good")};
+$("#volume").oninput=e=>{volume=+e.target.value};
+$("#save").onclick=()=>{
+ unlock("YOU TRUSTED IT");log("SAVE_REQUESTED");
+ const b=$("#save");b.textContent="Saving…";b.disabled=true;
+ setTimeout(()=>{b.textContent="Saved";audio("good")},700);
+ setTimeout(()=>{b.textContent="Actually…";audio("bad")},1250);
+ setTimeout(()=>{b.textContent="Saved somewhere.";b.disabled=false;frustrate(3,"SAVE_RESULT // UNCERTAIN")},1800);
+};
+$("#reset").onclick=()=>{
+ unlock("YOU PRESSED RESET");log("RESET_REQUESTED",true);
+ const old=rage;rage=0;patience=100;trust=100;render();
+ setTimeout(()=>{rage=old;patience=Math.max(0,100-old);trust=Math.max(0,100-old);log("RESET_COMPLETE // EXCEPT IT WASN'T",true);toast("Everything was reset. Except the rage.");persist()},900);
+};
+$("#help").onclick=()=>{frustrate(4,"HELP_REQUESTED // HELP_IS_CURRENTLY_BUSY");showModal("Helpful mode","Helpful mode is currently helping someone else. Please try again after becoming less frustrated.")};
+$("#target").onclick=()=>{
+ targetHits++;attempts++;unlock("TARGET ACQUIRED");frustrate(targetHits>2?2:1,targetHits>2?"TARGET_HIT // USER IS LEARNING":"TARGET_HIT");
+ const t=$("#targetArea"),b=$("#target");b.style.left=Math.random()*75+"%";b.style.top=Math.random()*70+"%";b.textContent=targetHits>=3?"AGAIN":"CLICK";
+};
+$("#target").addEventListener("mouseenter",()=>{if(attempts>1){$("#target").style.left=Math.random()*78+"%";$("#target").style.top=Math.random()*72+"%";log("TARGET_AVOIDED")}});
+
+let taskStep=0;
+$("#taskBtn").onclick=()=>{
+ taskStep++;frustrate(4,"TASK_STARTED");
+ const b=$("#taskBtn");
+ if(taskStep%3===1){b.textContent="Working…";setTimeout(()=>b.textContent="Still working…",500);setTimeout(()=>b.textContent="Done",1300);setTimeout(()=>{b.textContent="Undo";toast("Task completed. Then immediately regretted it.")},1700)}
+ else if(taskStep%3===2){b.textContent="Checking…";setTimeout(()=>{b.textContent="Retry";toast("Task failed for an unspecified reason.")},1100)}
+ else{b.textContent="Start";toast("Task was successfully not started.")}
+};
+$("#anim").onclick=e=>{e.currentTarget.textContent=e.currentTarget.textContent==="OFF"?"ON":"OFF";frustrate(2,"SETTING_CHANGED // ANIMATION_BEHAVIOR_UNCHANGED")};
+$("#helpful").onclick=e=>{e.currentTarget.textContent=e.currentTarget.textContent==="ON"?"OFF":"ON";frustrate(2,"HELPFUL_MODE // NOTHING_CHANGED")};
+function showModal(a,b){$("#modalTitle").textContent=a;$("#modalText").textContent=b;$("#modal").style.display="grid";audio("alarm")}
+$("#modalClose").onclick=()=>{$("#modal").style.display="none";frustrate(1,"MODAL_CLOSED")};
+
+let load=0;const loader=setInterval(()=>{load+=Math.random()*22;if(load>99)load=99;$("#load").style.width=load+"%";$("#loadText").textContent=load.toFixed(load>95?2:0)+"%";if(load>98){clearInterval(loader);setTimeout(()=>{$("#loadText").textContent="CALIBRATION FAILED";audio("alarm");setTimeout(()=>$("#loadingOverlay").style.display="none",700)},1400)}},500);
+
+setTimeout(()=>{log("SYSTEM_INITIALIZED");popup()},1800);
+setTimeout(()=>{log("USER_PATIENCE_ESTIMATION_STARTED")},2800);
+setInterval(()=>{$("#session").textContent=new Date(Date.now()-start).toISOString().slice(14,19)},1000);
+setInterval(()=>{if(Math.random()<.25){const d=document.createElement("div");d.id="floating";d.textContent=["NOPE","REALLY?","ALMOST","WAIT","WHY"][Math.floor(Math.random()*5)];d.style.left=Math.random()*85+"vw";d.style.top=20+Math.random()*65+"vh";d.style.setProperty("--x",(Math.random()*220-110)+"px");d.style.setProperty("--y",(Math.random()*180-90)+"px");document.body.append(d);setTimeout(()=>d.remove(),1200)}},4500);
+document.addEventListener("click",e=>{if(!e.target.closest("button")){log("USER_CLICKED_EMPTY_SPACE");if(Math.random()<.12)frustrate(1,"EMPTY_SPACE_CLICK // INTERESTING")}},true);
+render();
+</script>
 </body>
 </html>
