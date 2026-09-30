@@ -3,1061 +3,1207 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🎮💀 ULTRA GAMER 9000 // DEFINITELY NOT A SCAM // WORST GAMING SITE EVER 💀🎮</title>
-  <meta name="description" content="The internet's most obnoxious, ragebait, chaotic, and badly designed gaming portal powered by Gemini AI and PostgreSQL">
+  <title>GameHub — Modern Professional Gaming & Telemetry Dashboard</title>
+  <meta name="description" content="A minimalist, modern, and professional gaming analytics and AI strategy dashboard.">
   <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="assets/pixel_skull_badge.jpg">
+  <link rel="icon" href="assets/cyber_strike_cover.jpg">
 </head>
-<body class="crt-scanlines">
-  
-  <!-- FLOATING ANNOYING TOAST CONTAINER -->
-  <aside id="toast-container" class="toast-stack" aria-live="polite"></aside>
+<body>
+  <!-- TOAST NOTIFICATION CONTAINER -->
+  <div id="toast-container" class="toast-stack" aria-live="polite"></div>
 
-  <!-- POPUP MODAL (RAGEBAIT & COMEDIC) -->
-  <div id="rage-popup-modal" class="popup-modal-overlay" style="display: none;">
-    <div class="popup-window">
-      <div class="popup-titlebar">
-        <span id="popup-title-text">🔥 SYSTEM DIAGNOSTIC</span>
-        <button id="btn-close-popup" class="btn-popup-x">✖</button>
+  <!-- APPLICATION SHELL WRAPPER -->
+  <div class="app-layout">
+    
+    <!-- LEFT SIDEBAR -->
+    <aside class="app-sidebar" aria-label="Main Navigation">
+      <div class="sidebar-brand">
+        <div class="brand-logo">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="6" width="20" height="12" rx="2"/>
+            <path d="M6 12h4m-2-2v4m10-2h.01m-3 0h.01"/>
+          </svg>
+        </div>
+        <span class="brand-name">GameHub</span>
       </div>
-      <div class="popup-body">
-        <div class="popup-icon" id="popup-icon-display">💀</div>
-        <div class="popup-text-content">
-          <h4 id="popup-heading-text">YOUR GAMING SKILL HAS BEEN ANALYZED</h4>
-          <p id="popup-desc-text">RESULT: QUESTIONABLE AT BEST. RECOMMENDED ACTION: UNINSTALL EVERYTHING.</p>
+
+      <nav class="sidebar-nav">
+        <button class="nav-item active" data-tab="dashboard" id="nav-dashboard">
+          <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="7" height="7"/>
+            <rect x="14" y="3" width="7" height="7"/>
+            <rect x="14" y="14" width="7" height="7"/>
+            <rect x="3" y="14" width="7" height="7"/>
+          </svg>
+          <span>Dashboard</span>
+        </button>
+
+        <button class="nav-item" data-tab="games" id="nav-games">
+          <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+            <polyline points="2 17 12 22 22 17"/>
+            <polyline points="2 12 12 17 22 12"/>
+          </svg>
+          <span>Games</span>
+        </button>
+
+        <button class="nav-item" data-tab="advisory-form" id="nav-advisory-form">
+          <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2a8 8 0 0 0-8 8c0 3.37 2.1 6.26 5.09 7.42V19a2 2 0 0 0 2 2h1.82a2 2 0 0 0 2-2v-1.58A8.001 8.001 0 0 0 12 2z"/>
+            <path d="M9 21h6"/>
+          </svg>
+          <span>AI Strategy</span>
+        </button>
+
+        <button class="nav-item" data-tab="advisory-results" id="nav-advisory-results">
+          <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="16" y1="13" x2="8" y2="13"/>
+            <line x1="16" y1="17" x2="8" y2="17"/>
+            <polyline points="10 9 9 9 8 9"/>
+          </svg>
+          <span>Analysis Results</span>
+          <span class="nav-badge" id="advisory-count-badge">1</span>
+        </button>
+
+        <button class="nav-item" data-tab="leaderboard" id="nav-leaderboard">
+          <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/>
+            <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/>
+            <path d="M4 22h16"/>
+            <path d="M10 14.66V17c0 .55-.45 1-1 1H7c-.55 0-1-.45-1-1v-2.34"/>
+            <path d="M18 14.66V17c0 .55-.45 1-1 1h-2c-.55 0-1-.45-1-1v-2.34"/>
+            <path d="M12 2v8"/>
+            <path d="M6 4h12v7a6 6 0 0 1-12 0V4z"/>
+          </svg>
+          <span>Leaderboard</span>
+        </button>
+
+        <button class="nav-item" data-tab="analytics" id="nav-analytics">
+          <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="20" x2="18" y2="10"/>
+            <line x1="12" y1="20" x2="12" y2="4"/>
+            <line x1="6" y1="20" x2="6" y2="14"/>
+          </svg>
+          <span>Statistics</span>
+        </button>
+
+        <button class="nav-item" data-tab="database-pg" id="nav-database">
+          <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <ellipse cx="12" cy="5" rx="9" ry="3"/>
+            <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
+            <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+          </svg>
+          <span>Data Store</span>
+        </button>
+
+        <button class="nav-item" data-tab="settings" id="nav-settings">
+          <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+          </svg>
+          <span>Settings</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="system-status-indicator">
+          <span class="status-dot"></span>
+          <span class="status-label">All Systems Normal</span>
         </div>
       </div>
-      <div class="popup-actions">
-        <button id="btn-popup-action-1" class="btn-popup-click">ACCEPT EMBARRASSMENT</button>
-        <button id="btn-popup-action-2" class="btn-popup-click btn-fake-danger">CRY TO STEAM SUPPORT</button>
-      </div>
+    </aside>
+
+    <!-- MAIN VIEW AREA -->
+    <div class="app-main-wrapper">
+      
+      <!-- TOP NAVIGATION BAR -->
+      <header class="app-topbar">
+        <div class="topbar-left">
+          <button id="btn-sidebar-toggle" class="btn-icon mobile-only" aria-label="Toggle menu">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="3" y1="12" x2="21" y2="12"/>
+              <line x1="3" y1="6" x2="21" y2="6"/>
+              <line x1="3" y1="18" x2="21" y2="18"/>
+            </svg>
+          </button>
+          <div class="breadcrumb-container">
+            <span class="breadcrumb-root">GameHub</span>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-active" id="breadcrumb-current">Dashboard</span>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <div class="search-input-group">
+            <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"/>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+            <input type="text" id="global-search" class="search-input" placeholder="Search games, telemetry, guides...">
+          </div>
+
+          <button id="btn-sound-toggle" class="btn-icon" title="Toggle audio feedback" aria-label="Toggle audio feedback">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+              <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
+            </svg>
+          </button>
+
+          <button class="btn-icon" title="Notifications" aria-label="Notifications" onclick="triggerNotification('No new system alerts.')">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+              <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+            </svg>
+          </button>
+
+          <div class="user-profile-badge" id="top-user-profile" onclick="switchTab('settings')">
+            <div class="user-avatar" id="avatar-initials">AM</div>
+            <div class="user-meta desktop-only">
+              <span class="user-name" id="user-display-name">Alex Morgan</span>
+              <span class="user-role" id="user-display-role">Diamond Tier</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- CONTENT CONTAINER -->
+      <main class="content-container">
+
+        <!-- ========================================== -->
+        <!-- VIEW 1: DASHBOARD                          -->
+        <!-- ========================================== -->
+        <section class="tab-pane active" id="view-dashboard">
+          
+          <div class="page-header">
+            <h1 class="page-title">Good morning, Gamer</h1>
+            <p class="page-subtitle">Here's what's happening with your gaming activity and telemetry.</p>
+          </div>
+
+          <!-- 4 STATS CARDS -->
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-header">
+                <span class="stat-label">Total Games</span>
+                <div class="stat-icon-wrapper">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="6" width="20" height="12" rx="2"/>
+                    <path d="M6 12h4m-2-2v4m10-2h.01m-3 0h.01"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="stat-value">42</div>
+              <div class="stat-change positive">
+                <span>+3 added this month</span>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-header">
+                <span class="stat-label">Hours Played</span>
+                <div class="stat-icon-wrapper">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <polyline points="12 6 12 12 16 14"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="stat-value">128h</div>
+              <div class="stat-change neutral">
+                <span>14.2h this week</span>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-header">
+                <span class="stat-label">Win Rate</span>
+                <div class="stat-icon-wrapper">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="stat-value">68%</div>
+              <div class="stat-change positive">
+                <span>+4.2% vs last season</span>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-header">
+                <span class="stat-label">Current Rank</span>
+                <div class="stat-icon-wrapper">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/>
+                    <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/>
+                    <path d="M6 4h12v7a6 6 0 0 1-12 0V4z"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="stat-value">Diamond III</div>
+              <div class="stat-change positive">
+                <span>Top 4.8% of players</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- HERO FEATURE CARD -->
+          <div class="hero-feature-card">
+            <div class="hero-content">
+              <span class="hero-badge">AI Assistant</span>
+              <h2 class="hero-title">Improve your gameplay</h2>
+              <p class="hero-description">
+                Analyze your telemetry, input latency, and match dynamics with the Google Gemini AI integration to receive tailored loadouts and tactical adjustments.
+              </p>
+              <div class="hero-actions">
+                <button class="btn btn-primary" onclick="switchTab('advisory-form')">
+                  Start Analysis
+                </button>
+                <button class="btn btn-secondary" onclick="switchTab('games')">
+                  Explore Library
+                </button>
+              </div>
+            </div>
+            <div class="hero-visual">
+              <img src="assets/cyber_strike_cover.jpg" alt="Featured game illustration" class="hero-image">
+            </div>
+          </div>
+
+          <!-- TWO-COLUMN DASHBOARD ROW: FEATURED GAMES & PERFORMANCE -->
+          <div class="dashboard-grid">
+            
+            <!-- FEATURED GAMES -->
+            <div class="section-card">
+              <div class="section-card-header">
+                <div>
+                  <h3 class="card-heading">Featured Titles</h3>
+                  <p class="card-subheading">Recently updated and recommended for your profile.</p>
+                </div>
+                <button class="btn btn-text" onclick="switchTab('games')">View all</button>
+              </div>
+
+              <div class="game-items-list">
+                <div class="game-row-item">
+                  <img src="assets/cyber_strike_cover.jpg" alt="Cyber Strike" class="game-row-thumb">
+                  <div class="game-row-info">
+                    <h4 class="game-row-title">Cyber Strike</h4>
+                    <span class="game-row-genre">FPS · Multiplayer Competitive</span>
+                  </div>
+                  <div class="game-row-rating">
+                    <span class="star-rating">★ 4.8</span>
+                    <span class="player-count">12.4K online</span>
+                  </div>
+                  <button class="btn btn-secondary btn-sm" onclick="switchTab('advisory-form')">Analyze</button>
+                </div>
+
+                <div class="game-row-item">
+                  <img src="assets/shadow_realm_cover.jpg" alt="Echos of Aethel" class="game-row-thumb">
+                  <div class="game-row-info">
+                    <h4 class="game-row-title">Echos of Aethel</h4>
+                    <span class="game-row-genre">Action RPG · Open World</span>
+                  </div>
+                  <div class="game-row-rating">
+                    <span class="star-rating">★ 4.9</span>
+                    <span class="player-count">48.1K online</span>
+                  </div>
+                  <button class="btn btn-secondary btn-sm" onclick="switchTab('advisory-form')">Analyze</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- PERFORMANCE HARDWARE CARD -->
+            <div class="section-card">
+              <div class="section-card-header">
+                <div>
+                  <h3 class="card-heading">Hardware & Telemetry</h3>
+                  <p class="card-subheading">Live system diagnostics for competitive stability.</p>
+                </div>
+                <span class="badge-success">Optimal</span>
+              </div>
+
+              <div class="performance-metrics">
+                <div class="metric-row">
+                  <div class="metric-info">
+                    <span class="metric-label">Framerate</span>
+                    <span class="metric-value">144 FPS</span>
+                  </div>
+                  <div class="progress-track">
+                    <div class="progress-fill fill-purple" style="width: 96%;"></div>
+                  </div>
+                </div>
+
+                <div class="metric-row">
+                  <div class="metric-info">
+                    <span class="metric-label">Network Latency</span>
+                    <span class="metric-value">24 ms</span>
+                  </div>
+                  <div class="progress-track">
+                    <div class="progress-fill fill-green" style="width: 20%;"></div>
+                  </div>
+                </div>
+
+                <div class="metric-row">
+                  <div class="metric-info">
+                    <span class="metric-label">CPU Utilization</span>
+                    <span class="metric-value">62%</span>
+                  </div>
+                  <div class="progress-track">
+                    <div class="progress-fill fill-purple" style="width: 62%;"></div>
+                  </div>
+                </div>
+
+                <div class="metric-row">
+                  <div class="metric-info">
+                    <span class="metric-label">GPU Utilization</span>
+                    <span class="metric-value">71%</span>
+                  </div>
+                  <div class="progress-track">
+                    <div class="progress-fill fill-purple" style="width: 71%;"></div>
+                  </div>
+                </div>
+
+                <div class="metric-row">
+                  <div class="metric-info">
+                    <span class="metric-label">Memory Allocation</span>
+                    <span class="metric-value">12.4 / 32 GB</span>
+                  </div>
+                  <div class="progress-track">
+                    <div class="progress-fill fill-purple" style="width: 38%;"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card-footer-note">
+                <span>DirectX 12 Ultimate · NVIDIA Reflex Low Latency Enabled</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- RECENT MATCH ACTIVITY TABLE -->
+          <div class="section-card mt-24">
+            <div class="section-card-header">
+              <div>
+                <h3 class="card-heading">Recent Telemetry Sessions</h3>
+                <p class="card-subheading">Latest match profiles stored in PostgreSQL data repository.</p>
+              </div>
+              <button class="btn btn-secondary btn-sm" onclick="switchTab('database-pg')">Open Data Store</button>
+            </div>
+
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Session ID</th>
+                    <th>Timestamp</th>
+                    <th>Game Title</th>
+                    <th>Player Handle</th>
+                    <th>Rank Tier</th>
+                    <th>Target K/D</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="dashboard-table-body">
+                  <!-- Injected via JavaScript -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </section>
+
+
+        <!-- ========================================== -->
+        <!-- VIEW 2: GAMES CATALOG                      -->
+        <!-- ========================================== -->
+        <section class="tab-pane" id="view-games">
+          
+          <div class="page-header">
+            <h1 class="page-title">Games Library</h1>
+            <p class="page-subtitle">Select a title to analyze performance metrics or calibrate custom settings.</p>
+          </div>
+
+          <div class="games-cards-grid">
+            <div class="game-card">
+              <div class="game-card-media">
+                <img src="assets/cyber_strike_cover.jpg" alt="Cyber Strike" class="game-card-img">
+                <span class="card-tag">Competitive</span>
+              </div>
+              <div class="game-card-body">
+                <h3 class="game-card-title">Cyber Strike</h3>
+                <p class="game-card-meta">Tactical FPS · Multiplayer</p>
+                <div class="game-card-stats">
+                  <span class="star-rating">★ 4.8</span>
+                  <span class="player-count">12.4K active</span>
+                </div>
+                <button class="btn btn-primary btn-block" onclick="startAnalysisFor('Cyber Strike')">
+                  Analyze Gameplay
+                </button>
+              </div>
+            </div>
+
+            <div class="game-card">
+              <div class="game-card-media">
+                <img src="assets/shadow_realm_cover.jpg" alt="Echos of Aethel" class="game-card-img">
+                <span class="card-tag">Action RPG</span>
+              </div>
+              <div class="game-card-body">
+                <h3 class="game-card-title">Echos of Aethel</h3>
+                <p class="game-card-meta">Dark Fantasy · Open World</p>
+                <div class="game-card-stats">
+                  <span class="star-rating">★ 4.9</span>
+                  <span class="player-count">48.1K active</span>
+                </div>
+                <button class="btn btn-primary btn-block" onclick="startAnalysisFor('Echos of Aethel')">
+                  Analyze Gameplay
+                </button>
+              </div>
+            </div>
+
+            <div class="game-card">
+              <div class="game-card-media">
+                <img src="assets/cyber_strike_cover.jpg" alt="Apex Legends" class="game-card-img">
+                <span class="card-tag">Battle Royale</span>
+              </div>
+              <div class="game-card-body">
+                <h3 class="game-card-title">Apex Legends</h3>
+                <p class="game-card-meta">Movement Shooter · Squads</p>
+                <div class="game-card-stats">
+                  <span class="star-rating">★ 4.7</span>
+                  <span class="player-count">94.5K active</span>
+                </div>
+                <button class="btn btn-primary btn-block" onclick="startAnalysisFor('Apex Legends')">
+                  Analyze Gameplay
+                </button>
+              </div>
+            </div>
+
+            <div class="game-card">
+              <div class="game-card-media">
+                <img src="assets/shadow_realm_cover.jpg" alt="Valorant" class="game-card-img">
+                <span class="card-tag">Tactical</span>
+              </div>
+              <div class="game-card-body">
+                <h3 class="game-card-title">Valorant</h3>
+                <p class="game-card-meta">Hero Shooter · 5v5 Ranked</p>
+                <div class="game-card-stats">
+                  <span class="star-rating">★ 4.6</span>
+                  <span class="player-count">132K active</span>
+                </div>
+                <button class="btn btn-primary btn-block" onclick="startAnalysisFor('Valorant')">
+                  Analyze Gameplay
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </section>
+
+
+        <!-- ========================================== -->
+        <!-- VIEW 3: AI STRATEGY & LOADOUT FORM         -->
+        <!-- ========================================== -->
+        <section class="tab-pane" id="view-advisory-form">
+          
+          <div class="page-header">
+            <h1 class="page-title">AI Gaming Assistant</h1>
+            <p class="page-subtitle">Configure your player telemetry parameters to receive tailored strategic recommendations.</p>
+          </div>
+
+          <!-- ASSISTANT CAPABILITY CARDS -->
+          <div class="assistant-pillars-grid">
+            <div class="pillar-card">
+              <div class="pillar-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="18" y1="20" x2="18" y2="10"/>
+                  <line x1="12" y1="20" x2="12" y2="4"/>
+                  <line x1="6" y1="20" x2="6" y2="14"/>
+                </svg>
+              </div>
+              <h4 class="pillar-title">Performance Analysis</h4>
+              <p class="pillar-desc">Evaluates your latency, framerate, and input sensitivity for hardware optimization.</p>
+            </div>
+
+            <div class="pillar-card">
+              <div class="pillar-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <line x1="12" y1="8" x2="12" y2="12"/>
+                  <line x1="12" y1="16" x2="12.01" y2="16"/>
+                </svg>
+              </div>
+              <h4 class="pillar-title">Loadout Recommendations</h4>
+              <p class="pillar-desc">Generates meta weapon combinations, crosshairs, and optimal sensitivity calibrations.</p>
+            </div>
+
+            <div class="pillar-card">
+              <div class="pillar-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2a8 8 0 0 0-8 8c0 3.37 2.1 6.26 5.09 7.42V19a2 2 0 0 0 2 2h1.82a2 2 0 0 0 2-2v-1.58A8.001 8.001 0 0 0 12 2z"/>
+                </svg>
+              </div>
+              <h4 class="pillar-title">Strategy Suggestions</h4>
+              <p class="pillar-desc">Provides actionable positioning, rotation, and counter-tactics against opponents.</p>
+            </div>
+
+            <div class="pillar-card">
+              <div class="pillar-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                  <polyline points="22 4 12 14.01 9 11.01"/>
+                </svg>
+              </div>
+              <h4 class="pillar-title">Game Improvement</h4>
+              <p class="pillar-desc">Establishes mental focus routines, break cadences, and projected K/D progression.</p>
+            </div>
+          </div>
+
+          <!-- FORM CARD -->
+          <div class="form-container-card">
+            <div id="form-validation-box" class="form-error-banner" style="display: none;" role="alert"></div>
+
+            <form id="agri-advisory-form" class="clean-form" novalidate>
+              
+              <!-- SECTION 1 -->
+              <div class="form-fieldset">
+                <h3 class="form-section-heading">1. Game & Player Profile</h3>
+                <div class="form-row">
+                  <div class="form-group col-6">
+                    <label for="crop-type" class="form-label">Target Title <span class="required">*</span></label>
+                    <select id="crop-type" name="cropType" class="form-select" required>
+                      <option value="">Select a game title...</option>
+                      <option value="Cyber Strike" selected>Cyber Strike (Tactical FPS)</option>
+                      <option value="Echos of Aethel">Echos of Aethel (Action RPG)</option>
+                      <option value="Apex Legends">Apex Legends (Battle Royale)</option>
+                      <option value="Valorant">Valorant (Tactical Shooter)</option>
+                      <option value="Counter-Strike 2">Counter-Strike 2 (Competitive)</option>
+                      <option value="Overwatch 2">Overwatch 2 (Hero Shooter)</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group col-6">
+                    <label for="crop-variety-nickname" class="form-label">Player Tag / Clan Handle</label>
+                    <input type="text" id="crop-variety-nickname" name="cropNickname" class="form-input" placeholder="e.g. Apex_Morgan">
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group col-4">
+                    <label for="growth-stage" class="form-label">Current Rank Tier <span class="required">*</span></label>
+                    <select id="growth-stage" name="growthStage" class="form-select" required>
+                      <option value="Bronze / Silver">Bronze / Silver Tier</option>
+                      <option value="Gold / Platinum">Gold / Platinum Tier</option>
+                      <option value="Diamond III" selected>Diamond III (Advanced)</option>
+                      <option value="Master / Grandmaster">Master / Grandmaster Tier</option>
+                      <option value="Top 500 / Challenger">Top 500 / Challenger Elite</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group col-4">
+                    <label for="crop-mood" class="form-label">Session Focus Challenge</label>
+                    <select id="crop-mood" name="cropMood" class="form-select">
+                      <option value="Optimal Focus">Optimal Focus & High Energy</option>
+                      <option value="Minor Tilt / Fatigue" selected>Minor Fatigue / Latency Drops</option>
+                      <option value="Plateauing K/D">Plateauing Skill Ceiling</option>
+                      <option value="Warmup Phase">Pre-Tournament Warmup</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group col-4">
+                    <label for="target-yield" class="form-label">Target K/D Ratio <span class="required">*</span></label>
+                    <input type="number" id="target-yield" name="targetYield" class="form-input" min="0.1" max="20" step="0.1" value="2.4" required>
+                  </div>
+                </div>
+              </div>
+
+              <!-- SECTION 2 -->
+              <div class="form-fieldset">
+                <h3 class="form-section-heading">2. Hardware & Input Telemetry</h3>
+                <div class="form-row">
+                  <div class="form-group col-4">
+                    <label for="soil-type" class="form-label">Hardware Platform <span class="required">*</span></label>
+                    <select id="soil-type" name="soilType" class="form-select" required>
+                      <option value="High-End Desktop (RTX 4080/4090)" selected>High-End Desktop (RTX 4080/4090)</option>
+                      <option value="Mid-Range Desktop (RTX 3060/4060)">Mid-Range Desktop (RTX 3060/4060)</option>
+                      <option value="Performance Gaming Laptop">Performance Gaming Laptop</option>
+                      <option value="Next-Gen Console (PS5 / Xbox Series X)">Next-Gen Console (PS5 / Series X)</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group col-4">
+                    <label for="soil-ph" class="form-label">Mouse Sensitivity (DPI): <span id="ph-display" class="font-medium text-purple">800 DPI</span></label>
+                    <input type="range" id="soil-ph" name="soilPh" min="400" max="3200" step="50" value="800" class="form-range">
+                  </div>
+
+                  <div class="form-group col-4">
+                    <label for="soil-moisture" class="form-label">Average Latency (ms) <span class="required">*</span></label>
+                    <input type="number" id="soil-moisture" name="soilMoisture" class="form-input" min="1" max="500" value="24" required>
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group col-4">
+                    <label for="soil-n" class="form-label">Display Refresh Rate (Hz) <span class="required">*</span></label>
+                    <input type="number" id="soil-n" name="soilN" class="form-input" min="60" max="360" value="144" required>
+                  </div>
+
+                  <div class="form-group col-4">
+                    <label for="soil-p" class="form-label">Average Framerate (FPS) <span class="required">*</span></label>
+                    <input type="number" id="soil-p" name="soilP" class="form-input" min="30" max="500" value="144" required>
+                  </div>
+
+                  <div class="form-group col-4">
+                    <label for="soil-k" class="form-label">Ergonomics Rating (1-100) <span class="required">*</span></label>
+                    <input type="number" id="soil-k" name="soilK" class="form-input" min="1" max="100" value="85" required>
+                  </div>
+                </div>
+              </div>
+
+              <!-- SECTION 3 -->
+              <div class="form-fieldset">
+                <h3 class="form-section-heading">3. Dynamics & Role Parameters</h3>
+                <div class="form-row">
+                  <div class="form-group col-4">
+                    <label for="farm-acreage" class="form-label">Weekly Training Hours <span class="required">*</span></label>
+                    <input type="number" id="farm-acreage" name="acreage" class="form-input" min="0.5" max="80" step="0.5" value="14.5" required>
+                  </div>
+
+                  <div class="form-group col-4">
+                    <label for="irrigation-type" class="form-label">Primary In-Game Role <span class="required">*</span></label>
+                    <select id="irrigation-type" name="irrigationType" class="form-select" required>
+                      <option value="Entry Fragger / Duelist" selected>Entry Fragger / Duelist</option>
+                      <option value="Tactical IGL / Anchor">Tactical IGL / Anchor</option>
+                      <option value="Recon / Support">Recon / Support</option>
+                      <option value="Flex / Sniper">Flex / Sniper</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group col-4">
+                    <label for="tractor-paint" class="form-label">Energy & Nutrition Protocol</label>
+                    <select id="tractor-paint" name="tractorPaint" class="form-select">
+                      <option value="Hydrated (Electrolytes & Water)" selected>Hydrated (Electrolytes & Water)</option>
+                      <option value="Moderate Caffeine (Coffee/Tea)">Moderate Caffeine (Coffee/Tea)</option>
+                      <option value="Pre-Workout Supplement">Pre-Workout Supplement</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Identify Primary In-Game Friction Factors:</label>
+                  <div class="checkbox-grid">
+                    <label class="checkbox-label"><input type="checkbox" name="pests" value="Sub-Optimal Crosshair Placement"> Crosshair Placement</label>
+                    <label class="checkbox-label"><input type="checkbox" name="pests" value="Over-Aggressive Peeking"> Over-Aggressive Peeking</label>
+                    <label class="checkbox-label"><input type="checkbox" name="pests" value="Packet Loss / Ping Spikes"> Ping Spikes / Packet Loss</label>
+                    <label class="checkbox-label"><input type="checkbox" name="pests" value="Fatigue After Hour 3"> Fatigue After Hour 3</label>
+                    <label class="checkbox-label"><input type="checkbox" name="pests" value="Communication Misalignments"> Team Communication</label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- SECTION 4 -->
+              <div class="form-fieldset">
+                <h3 class="form-section-heading">4. AI Engine Configuration</h3>
+                <div class="form-row">
+                  <div class="form-group col-4">
+                    <label for="ai-persona" class="form-label">Analysis Persona</label>
+                    <select id="ai-persona" name="aiPersona" class="form-select">
+                      <option value="Technical Performance Analyst" selected>Technical Performance Analyst</option>
+                      <option value="Professional Esports Coach">Professional Esports Coach</option>
+                      <option value="Tactical Strategist">Tactical Strategist</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group col-4">
+                    <label for="gemini-model-select" class="form-label">Gemini Model</label>
+                    <select id="gemini-model-select" name="geminiModel" class="form-select">
+                      <option value="gemini-1.5-flash" selected>Gemini 1.5 Flash (Recommended)</option>
+                      <option value="gemini-1.5-pro">Gemini 1.5 Pro (Deep Analytics)</option>
+                      <option value="local-agri-engine">Local Offline Telemetry Model</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group col-4">
+                    <label for="gemini-api-key" class="form-label">Google Gemini API Key (Optional)</label>
+                    <input type="password" id="gemini-api-key" name="geminiKey" class="form-input" placeholder="AIzaSy... (Saved locally)">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="farmer-notes" class="form-label">Specific Areas for Improvement</label>
+                  <textarea id="farmer-notes" name="farmerNotes" rows="2" class="form-textarea" placeholder="e.g. Inconsistent mid-range spray control during overtime rounds."></textarea>
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" id="btn-generate-advisory" class="btn btn-primary btn-lg">
+                  Run Performance Analysis
+                </button>
+                <button type="button" class="btn btn-secondary btn-lg" onclick="switchTab('dashboard')">
+                  Cancel
+                </button>
+              </div>
+
+            </form>
+          </div>
+
+        </section>
+
+
+        <!-- ========================================== -->
+        <!-- VIEW 4: ANALYSIS RESULTS VIEW              -->
+        <!-- ========================================== -->
+        <section class="tab-pane" id="view-advisory-results">
+          
+          <div class="page-header flex-header">
+            <div>
+              <h1 class="page-title">Analysis Results</h1>
+              <p class="page-subtitle">Telemetry-driven diagnostic and tactical strategy summary.</p>
+            </div>
+            <div class="header-action-group">
+              <button class="btn btn-secondary" id="btn-print-results">Print Summary</button>
+              <button class="btn btn-secondary" id="btn-save-to-pg">Commit to DB</button>
+              <button class="btn btn-primary" id="btn-new-advisory">New Analysis</button>
+            </div>
+          </div>
+
+          <!-- SESSION META STRIP -->
+          <div class="meta-strip-card">
+            <div class="meta-item">
+              <span class="meta-label">Target Title</span>
+              <span class="meta-value" id="res-crop-name">Cyber Strike</span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">Training Hours</span>
+              <span class="meta-value" id="res-acreage">14.5 hrs/week</span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">Input DPI</span>
+              <span class="meta-value" id="res-soil-ph">800 DPI</span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">Database Record</span>
+              <span class="meta-value text-purple" id="res-db-status">Session ID #101 Verified</span>
+            </div>
+          </div>
+
+          <!-- CARDS GRID -->
+          <div class="results-cards-grid">
+            
+            <!-- CARD 1 -->
+            <div class="result-card">
+              <div class="result-card-header">
+                <span class="result-icon-badge icon-purple">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <line x1="12" y1="8" x2="12" y2="12"/>
+                    <line x1="12" y1="16" x2="12.01" y2="16"/>
+                  </svg>
+                </span>
+                <h3 class="result-card-title">Priority Focus Area</h3>
+              </div>
+              <div class="result-card-body">
+                <h4 class="recommendation-headline" id="res-urgent-title">Latency Stability & Input Timing</h4>
+                <p class="recommendation-text" id="res-urgent-body">
+                  Network jitter is within nominal tolerance (24ms). Primary performance variance stems from micro-adjustments during high-velocity peeks.
+                </p>
+                <div class="bullet-list-box" id="res-urgent-bullets">
+                  <!-- Injected via JS -->
+                </div>
+              </div>
+            </div>
+
+            <!-- CARD 2 -->
+            <div class="result-card">
+              <div class="result-card-header">
+                <span class="result-icon-badge icon-green">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+                    <polyline points="2 17 12 22 22 17"/>
+                    <polyline points="2 12 12 17 22 12"/>
+                  </svg>
+                </span>
+                <h3 class="result-card-title">Loadout & Calibration</h3>
+              </div>
+              <div class="result-card-body">
+                <h4 class="recommendation-headline" id="res-fert-title">Sensitivity & Weapon Meta</h4>
+                <div class="loadout-pills" id="res-npk-formula">
+                  <!-- Injected via JS -->
+                </div>
+                <p class="recommendation-text mt-12" id="res-fert-timing">
+                  Allocate 20 minutes to static crosshair placement drills prior to entering competitive lobbies.
+                </p>
+              </div>
+            </div>
+
+            <!-- CARD 3 -->
+            <div class="result-card">
+              <div class="result-card-header">
+                <span class="result-icon-badge icon-blue">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <polyline points="12 6 12 12 16 14"/>
+                  </svg>
+                </span>
+                <h3 class="result-card-title">Session & Focus Management</h3>
+              </div>
+              <div class="result-card-body">
+                <h4 class="recommendation-headline" id="res-water-title">Recovery & Endurance Cadence</h4>
+                <div class="routine-box" id="res-water-schedule">
+                  <!-- Injected via JS -->
+                </div>
+              </div>
+            </div>
+
+            <!-- CARD 4 -->
+            <div class="result-card">
+              <div class="result-card-header">
+                <span class="result-icon-badge icon-purple">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                  </svg>
+                </span>
+                <h3 class="result-card-title">Tactical Defense Protocol</h3>
+              </div>
+              <div class="result-card-body">
+                <h4 class="recommendation-headline" id="res-pest-title">Positioning & Counter-Tactics</h4>
+                <div class="routine-box" id="res-pest-tactics">
+                  <!-- Injected via JS -->
+                </div>
+              </div>
+            </div>
+
+            <!-- EXECUTIVE VERDICT CARD -->
+            <div class="result-card col-span-2">
+              <div class="result-card-header">
+                <span class="result-icon-badge icon-purple">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                    <polyline points="14 2 14 8 20 8"/>
+                    <line x1="16" y1="13" x2="8" y2="13"/>
+                    <line x1="16" y1="17" x2="8" y2="17"/>
+                  </svg>
+                </span>
+                <h3 class="result-card-title">Executive Coach Synthesis</h3>
+              </div>
+              <div class="result-card-body">
+                <div class="executive-quote-box" id="res-ai-raw-text">
+                  "Analysis of your recent telemetry indicates solid mechanical foundation with 144Hz synchronization. Aligning crosshair height during site transitions will yield an estimated +18% duel conversion rate. Maintain the 800 DPI calibration for consistent muscle memory across all competitive matches."
+                </div>
+                <div class="meta-tags-row">
+                  <span class="badge-neutral">Model: Gemini 1.5 Flash</span>
+                  <span class="badge-neutral">Inference Latency: 218ms</span>
+                  <span class="badge-neutral">Projected K/D Trajectory: +0.28</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- ========================================== -->
+        <!-- VIEW 5: LEADERBOARD                        -->
+        <!-- ========================================== -->
+        <section class="tab-pane" id="view-leaderboard">
+          
+          <div class="page-header">
+            <h1 class="page-title">Competitive Leaderboard</h1>
+            <p class="page-subtitle">Global standings for the current competitive season.</p>
+          </div>
+
+          <div class="section-card">
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Rank</th>
+                    <th>Player</th>
+                    <th>Rating</th>
+                    <th>Wins</th>
+                    <th>Win Rate</th>
+                    <th>Division</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="rank-badge rank-1">01</span></td>
+                    <td class="font-medium text-white">ShadowX</td>
+                    <td>2,840</td>
+                    <td>142</td>
+                    <td><span class="text-green">78%</span></td>
+                    <td>Grandmaster</td>
+                  </tr>
+                  <tr>
+                    <td><span class="rank-badge rank-2">02</span></td>
+                    <td class="font-medium text-white">Nova</td>
+                    <td>2,710</td>
+                    <td>137</td>
+                    <td><span class="text-green">74%</span></td>
+                    <td>Master</td>
+                  </tr>
+                  <tr>
+                    <td><span class="rank-badge rank-3">03</span></td>
+                    <td class="font-medium text-white">Apex</td>
+                    <td>2,640</td>
+                    <td>129</td>
+                    <td><span class="text-green">71%</span></td>
+                    <td>Master</td>
+                  </tr>
+                  <tr>
+                    <td><span class="rank-badge">04</span></td>
+                    <td class="font-medium text-white">Valkyrie</td>
+                    <td>2,580</td>
+                    <td>121</td>
+                    <td><span class="text-green">69%</span></td>
+                    <td>Diamond I</td>
+                  </tr>
+                  <tr>
+                    <td><span class="rank-badge">05</span></td>
+                    <td class="font-medium text-white">Cipher</td>
+                    <td>2,510</td>
+                    <td>118</td>
+                    <td><span class="text-green">68%</span></td>
+                    <td>Diamond I</td>
+                  </tr>
+                  <!-- CURRENT USER ROW -->
+                  <tr class="table-row-highlight">
+                    <td><span class="rank-badge rank-highlight">48</span></td>
+                    <td class="font-medium text-purple">Alex Morgan (You)</td>
+                    <td>2,180</td>
+                    <td>88</td>
+                    <td><span class="text-green">68%</span></td>
+                    <td>Diamond III</td>
+                  </tr>
+                  <tr>
+                    <td><span class="rank-badge">49</span></td>
+                    <td class="font-medium text-white">Kestrel</td>
+                    <td>2,165</td>
+                    <td>85</td>
+                    <td><span class="text-green">66%</span></td>
+                    <td>Diamond III</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </section>
+
+
+        <!-- ========================================== -->
+        <!-- VIEW 6: HARDWARE & STATISTICS              -->
+        <!-- ========================================== -->
+        <section class="tab-pane" id="view-analytics">
+          
+          <div class="page-header">
+            <h1 class="page-title">Performance Analytics</h1>
+            <p class="page-subtitle">Telemetry trends, input responsiveness, and hardware resource distribution.</p>
+          </div>
+
+          <div class="analytics-cards-grid">
+            <div class="section-card">
+              <h3 class="card-heading">Input Accuracy Distribution</h3>
+              <p class="card-subheading">Breakdown of hit placement across competitive matches.</p>
+              
+              <div class="distribution-bars mt-16">
+                <div class="dist-row">
+                  <span class="dist-label">Headshot Ratio</span>
+                  <div class="progress-track"><div class="progress-fill fill-purple" style="width: 38%;"></div></div>
+                  <span class="dist-val">38%</span>
+                </div>
+                <div class="dist-row">
+                  <span class="dist-label">Upper Torso</span>
+                  <div class="progress-track"><div class="progress-fill fill-purple" style="width: 46%;"></div></div>
+                  <span class="dist-val">46%</span>
+                </div>
+                <div class="dist-row">
+                  <span class="dist-label">Lower Torso & Limbs</span>
+                  <div class="progress-track"><div class="progress-fill fill-purple" style="width: 16%;"></div></div>
+                  <span class="dist-val">16%</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="section-card">
+              <h3 class="card-heading">Latency Stability</h3>
+              <p class="card-subheading">Network ping consistency over last 24 hours.</p>
+
+              <div class="distribution-bars mt-16">
+                <div class="dist-row">
+                  <span class="dist-label">Lowest Latency</span>
+                  <span class="dist-val text-green">14 ms</span>
+                </div>
+                <div class="dist-row">
+                  <span class="dist-label">Average Latency</span>
+                  <span class="dist-val">24 ms</span>
+                </div>
+                <div class="dist-row">
+                  <span class="dist-label">Packet Loss</span>
+                  <span class="dist-val text-green">0.00%</span>
+                </div>
+                <div class="dist-row">
+                  <span class="dist-label">Jitter</span>
+                  <span class="dist-val text-green">&plusmn;1.2 ms</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </section>
+
+
+        <!-- ========================================== -->
+        <!-- VIEW 7: DATA STORE (POSTGRESQL)            -->
+        <!-- ========================================== -->
+        <section class="tab-pane" id="view-database-pg">
+          
+          <div class="page-header">
+            <h1 class="page-title">PostgreSQL Data Store</h1>
+            <p class="page-subtitle">Interactive SQL console and persistent telemetry database store.</p>
+          </div>
+
+          <div class="section-card mb-24">
+            <div class="terminal-header">
+              <span class="terminal-title">Query Terminal — postgres@gamehub-db:5432/telemetry</span>
+              <span class="badge-success">Connected</span>
+            </div>
+
+            <div class="terminal-body">
+              <textarea id="sql-query-input" class="sql-textarea" rows="3" spellcheck="false">SELECT id, crop_name AS game_title, acreage AS hours_played, soil_ph AS mouse_dpi, target_yield AS target_kd, status, created_at FROM farm_advisories ORDER BY id DESC;</textarea>
+            </div>
+
+            <div class="terminal-actions">
+              <button class="btn btn-primary btn-sm" id="btn-run-sql">Execute Query</button>
+              <button class="btn btn-secondary btn-sm" id="btn-sql-insert">Insert Sample Session</button>
+              <button class="btn btn-secondary btn-sm" id="btn-sql-reset">Reset Repository</button>
+              <span class="status-msg" id="sql-status-text">Ready</span>
+            </div>
+          </div>
+
+          <div class="section-card">
+            <div class="table-tabs-header">
+              <div class="tab-pill-group">
+                <button class="tab-pill active" data-table="advisories">Player Telemetry (<span id="count-advisories">0</span>)</button>
+                <button class="tab-pill" data-table="crops">Games Catalog (<span id="count-crops">6</span>)</button>
+                <button class="tab-pill" data-table="soil">Hardware Sensors (<span id="count-soil">5</span>)</button>
+              </div>
+            </div>
+
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead id="pg-table-head"></thead>
+                <tbody id="pg-table-body"></tbody>
+              </table>
+            </div>
+          </div>
+
+        </section>
+
+
+        <!-- ========================================== -->
+        <!-- VIEW 8: SETTINGS                           -->
+        <!-- ========================================== -->
+        <section class="tab-pane" id="view-settings">
+          
+          <div class="page-header">
+            <h1 class="page-title">Settings & Preferences</h1>
+            <p class="page-subtitle">Manage your profile, API keys, and application preferences.</p>
+          </div>
+
+          <div class="settings-cards-grid">
+            
+            <div class="section-card">
+              <h3 class="card-heading">Active Profile</h3>
+              <p class="card-subheading">Change operator session or simulated rank tier.</p>
+
+              <div class="profile-summary-box">
+                <div class="user-avatar-lg" id="profile-avatar-large">AM</div>
+                <div class="profile-summary-info">
+                  <h4 class="profile-name" id="auth-username-display">Alex Morgan</h4>
+                  <p class="profile-title" id="auth-role-display">Diamond III (Competitive Tier)</p>
+                </div>
+              </div>
+
+              <div class="form-group mt-16">
+                <label for="switch-user-select" class="form-label">Switch Profile Session:</label>
+                <select id="switch-user-select" class="form-select">
+                  <option value="bob">Alex Morgan (Diamond III)</option>
+                  <option value="alice">Coach Dave (Esports Strategist)</option>
+                  <option value="overseer">System AI Analyst</option>
+                  <option value="guest">Guest Profile</option>
+                </select>
+              </div>
+
+              <button class="btn btn-secondary mt-12" id="btn-switch-user">Switch Session</button>
+            </div>
+
+            <div class="section-card">
+              <h3 class="card-heading">Google Gemini API</h3>
+              <p class="card-subheading">Provide your own key to route analysis through live Gemini models.</p>
+
+              <div class="form-group mt-16">
+                <label for="cfg-gemini-key" class="form-label">API Key:</label>
+                <input type="password" id="cfg-gemini-key" class="form-input" placeholder="AIzaSy... (Stored in browser localStorage)">
+              </div>
+
+              <div class="flex-row-gap mt-12">
+                <button class="btn btn-primary btn-sm" id="btn-save-key">Save Key</button>
+                <button class="btn btn-secondary btn-sm" id="btn-clear-key">Clear Key</button>
+              </div>
+
+              <span class="status-msg mt-12 display-block" id="api-key-status">
+                Using built-in gaming performance model (No key required).
+              </span>
+            </div>
+
+            <div class="section-card">
+              <h3 class="card-heading">Audio & Feedback</h3>
+              <p class="card-subheading">Interface audio feedback and notification settings.</p>
+
+              <div class="flex-row-between mt-16">
+                <div>
+                  <h4 class="font-medium text-white">Audio Feedback</h4>
+                  <p class="text-sm text-secondary">Play subtle acoustic click on actions.</p>
+                </div>
+                <button class="btn btn-secondary btn-sm" id="btn-test-sound">Test Sound</button>
+              </div>
+
+              <div class="flex-row-between mt-16 pt-16 border-t">
+                <div>
+                  <h4 class="font-medium text-white">Toast Alerts</h4>
+                  <p class="text-sm text-secondary">Display feedback confirmations.</p>
+                </div>
+                <button class="btn btn-secondary btn-sm" onclick="triggerNotification('Test notification verified.')">Send Test Alert</button>
+              </div>
+            </div>
+
+          </div>
+
+        </section>
+
+      </main>
+
+      <!-- APPLICATION FOOTER -->
+      <footer class="app-footer">
+        <div class="footer-left">
+          <span>&copy; 2026 GameHub. Built for Competitive Telemetry & Performance Analysis.</span>
+        </div>
+        <div class="footer-right">
+          <a href="#dashboard" class="footer-link">Dashboard</a>
+          <a href="#games" class="footer-link">Library</a>
+          <a href="#advisory-form" class="footer-link">AI Assistant</a>
+          <a href="#leaderboard" class="footer-link">Leaderboard</a>
+          <a href="#database-pg" class="footer-link">PostgreSQL Data</a>
+        </div>
+      </footer>
+
     </div>
+
   </div>
 
-  <!-- TOP TICKER & RAGE STATUS BAR -->
-  <aside class="annoying-top-bar" aria-label="Live Gaming Stream Bar">
-    <div class="marquee-wrapper">
-      <div class="marquee-text" id="marquee-text">
-        🔥 YOU ARE CURRENTLY LOSING 🔥 🎮 BUY NOTHING 💀 SKILL ISSUE DETECTED ⚡ 9999 FPS GUARANTEED* (*NOT ACTUALLY GUARANTEED) 🚨 YOUR RANK IS IN DANGER 💣 PRESS ALT+F4 FOR FREE AIMBOT 🗿 LAG DETECTED: BLAME YOUR INTERNET PROVIDER 🎮 DOWNLOAD MORE RAM FOR FREE 💀
-      </div>
-    </div>
-    <div class="top-bar-controls">
-      <button id="btn-sound-toggle" class="btn-micro" title="Toggle audio synth sounds" aria-label="Toggle retro gaming sound">🔇 SOUND: OFF</button>
-      <span class="live-counter-badge live-pulse" id="live-players-badge">🔴 LIVE: 9,842,109 PLAYERS ONLINE</span>
-      <span class="ping-badge" id="live-ping-badge">PING: 999ms</span>
-      <span class="fps-badge" id="live-fps-badge">FPS: 12</span>
-      <span class="gpu-badge" id="live-gpu-badge">GPU: ON FIRE 🔥 (108°C)</span>
-      <span class="user-pill-badge" id="user-display">👤 GAMER: xX_NoobSlayer_Xx [RANK: TOILET III 🚽]</span>
-    </div>
-  </aside>
-
-  <!-- CONFUSING CHAOTIC GAMING HEADER -->
-  <header class="chaos-header">
-    <div class="header-left">
-      <img src="assets/pixel_skull_badge.jpg" alt="Flaming Gaming Skull Badge" class="spin-skull-badge" width="90" height="90">
-      <div class="title-cluster">
-        <h1 class="welcome-heading">ULTRA GAMER 9000 // DEFINITELY NOT A SCAM 🎮💀</h1>
-        <p class="sub-welcome-blurb">★ ★ ★ THE INTERNET'S WORST GAMING WEBSITE — ZERO REFUNDS, 100% PURE SALT ★ ★ ★</p>
-      </div>
-    </div>
-
-    <div class="header-center-decor">
-      <span class="badge-chaotic-1">⚠️ WARNING: YOUR FPS IS EMBARRASSING</span>
-      <span class="badge-chaotic-2">🐘 POSTGRESQL 16.4 TELEMETRY CONNECTED</span>
-      <span class="badge-chaotic-3">⚡ GEMINI 1.5 PRO COACH BOT ENGAGED</span>
-    </div>
-
-    <div class="header-right-actions">
-      <button class="btn-mega-distraction" id="btn-rage-quit-top" title="Emergency escape">
-        💀 EMERGENCY RAGE QUIT BUTTON (DO NOT PRESS) 🚨
-      </button>
-      <div class="fake-search-row">
-        <input type="text" id="fake-search-input" class="fake-search-ctl" placeholder="Search for more RAM or skill...">
-        <button id="btn-fake-search" class="btn-micro">FIND</button>
-      </div>
-      <span class="tiny-confusing-text">🔔 NOTIFICATIONS: (999+) UNREAD INSULTS</span>
-    </div>
-  </header>
-
-  <!-- COMPLETELY OBNOXIOUS NAVIGATION -->
-  <nav class="chaotic-nav" aria-label="Main Navigation">
-    <div class="nav-links-cluster">
-      <button class="nav-btn active" data-tab="dashboard" id="nav-dashboard">
-        🏠 HOME ARENA 🎮 <span class="hot-badge">POPULAR!</span>
-      </button>
-      <button class="nav-btn" data-tab="advisory-form" id="nav-advisory-form">
-        🔥 AI STRATEGY & LOADOUT 🤖 <span class="flash-badge">HOT META!</span>
-      </button>
-      <button class="nav-btn" data-tab="advisory-results" id="nav-advisory-results">
-        📜 AI VERDICTS & TACTICS 🚨 <span class="badge-counter" id="advisory-count-badge">1</span>
-      </button>
-      <button class="nav-btn" data-tab="leaderboard" id="nav-leaderboard">
-        🏆 LEADERBOARD 💩 <span class="nerd-badge">YOU: #9,999,999</span>
-      </button>
-      <button class="nav-btn" data-tab="database-pg" id="nav-database">
-        🛒 STORE / SQL DB 💾 <span class="nerd-badge">RAW TELEMETRY</span>
-      </button>
-      <button class="nav-btn" data-tab="analytics" id="nav-analytics">
-        📈 PC HEALTH & STATS 📊
-      </button>
-      <button class="nav-btn fake-disabled-btn" data-tab="ragebait-shop" id="nav-ragebait-shop" title="This button looks completely disabled but works!">
-        🎁 FREE RTX 5090 (LOCKED)
-      </button>
-      <button class="nav-btn" data-tab="settings" id="nav-settings">
-        ⚙️ SETTINGS & PROFILE ⚡
-      </button>
-    </div>
-    <div class="nav-random-filler">
-      <span class="blinking-star">⭐</span>
-      <span class="filler-marquee">GAMER ADVICE: HAVE YOU TRIED TURNING YOUR MONITOR ON?</span>
-      <span class="blinking-star">⭐</span>
-    </div>
-  </nav>
-
-  <!-- EMOJI SEPARATOR (GAMING EDITION) -->
-  <div class="emoji-separator">🎮💀🔥⚡💣👾🗿🕹️💀💩🎮💀🔥⚡💣👾🗿🕹️💀💩🎮💀🔥⚡💣</div>
-
-  <!-- MAIN VIEWPORT CONTAINER -->
-  <main class="main-chaotic-layout" id="main-content">
-
-    <!-- ========================================== -->
-    <!-- VIEW 1: HOME ARENA & HERO DASHBOARD        -->
-    <!-- ========================================== -->
-    <section class="tab-pane active" id="view-dashboard" aria-labelledby="nav-dashboard">
-      
-      <!-- GIANT RAGE HERO BANNER -->
-      <div class="giant-unnecessary-banner">
-        <div class="banner-image-container">
-          <img src="assets/gamer_rage_banner.jpg" alt="Enraged gamer screaming at computer screen" class="banner-hero-img">
-        </div>
-        <div class="banner-content">
-          <h2 class="banner-headline"># WELCOME TO THE WORST GAMING WEBSITE ON EARTH</h2>
-          <p class="banner-subtext">YOUR FPS IS LOW. YOUR RANK IS WORSE. YOUR LIFE CHOICES ARE QUESTIONABLE. 99% OF PLAYERS BLAME LAG FOR EVERYTHING.</p>
-          
-          <!-- FAKE COUNTDOWNS & FAKE TOURNAMENTS -->
-          <div class="fake-tourney-ticker">
-            <span>🏆 WORLD NOOB CUP: PRIZE POOL $0.14</span> |
-            <span>⏳ SEASON 99 ENDS IN: <strong id="fake-countdown">00:03:19:42</strong></span> |
-            <span>🎁 GIVEAWAY: MOUSEPAD SIGNED BY NOBODY</span>
-          </div>
-
-          <!-- THE GIANT PRO BUTTON & COMPETING CTAS -->
-          <div class="competing-ctas">
-            <button class="btn-giant-pro-cta" id="btn-become-pro">
-              👑 CLICK HERE TO BECOME PRO 👑
-            </button>
-            <button class="cta-btn cta-1" id="cta-click-me">🔥 DO NOT CLICK THIS 🔥</button>
-            <button class="cta-btn cta-2" id="cta-free-coins">💰 CLAIM 999,999 COINS 💰</button>
-            <button class="cta-btn cta-3" id="cta-boost-fps">⚡ GET 500 FPS NOW ⚡</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- FAKE GAMING STATISTICS DASHBOARD -->
-      <h3 class="section-screaming-title">💥 LIVE TELEMETRY: REASONS YOU ARE CURRENTLY LOSING 💥</h3>
-      <div class="stats-chaotic-grid">
-        
-        <div class="stat-card stat-ragequits">
-          <span class="random-top-tag">SERVER-WIDE COUNTER</span>
-          <div class="stat-icon-huge">💀💥</div>
-          <div class="stat-number" id="stat-rage-count">847,291</div>
-          <div class="stat-label">TOTAL RAGE QUITS TODAY</div>
-          <div class="stat-footer-awkward">Recent quit reason: "Enemy breathed on me" 😤</div>
-        </div>
-
-        <div class="stat-card stat-keyboards">
-          <span class="random-top-tag tag-hazard">PHYSICAL CASUALTIES</span>
-          <div class="stat-icon-huge">⌨️🔨</div>
-          <div class="stat-number">13</div>
-          <div class="stat-label">KEYBOARDS DESTROYED</div>
-          <div class="stat-footer-awkward">Estimated damage: $1,420 / Desk integrity: Wobbly 🪵</div>
-        </div>
-
-        <div class="stat-card stat-skill">
-          <span class="random-top-tag tag-pink">AI RATING</span>
-          <div class="stat-icon-huge">📉💩</div>
-          <div class="stat-number">-42</div>
-          <div class="stat-label">OFFICIAL SKILL LEVEL</div>
-          <div class="stat-footer-awkward">Lower than a cardboard box / Next tier: Wood 0 🪵</div>
-        </div>
-
-        <div class="stat-card stat-losses">
-          <span class="random-top-tag tag-green">WIN/LOSS MATRIX</span>
-          <div class="stat-icon-huge">🏆😭</div>
-          <div class="stat-number">1 / 9999</div>
-          <div class="stat-label">VICTORIES VS LOSSES: YES</div>
-          <div class="stat-footer-awkward">Victory was against an offline tutorial bot 🤖</div>
-        </div>
-
-      </div>
-
-      <!-- MIDDLE ROW: TERRIBLE GAME CARDS & QUICK TRYHARD ACTION -->
-      <h3 class="section-screaming-title">🎮 FEATURED TERRIBLE GAMES YOU SHOULD PROBABLY UNINSTALL 🎮</h3>
-      <div class="game-cards-grid">
-        
-        <div class="game-card card-fortnite">
-          <div class="card-badge">POPULAR TRASH</div>
-          <h4 class="game-title">FORTNITE BUT WORSE</h4>
-          <div class="game-rating">Rating: ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ / 5</div>
-          <p class="game-stat-line">Players: <strong>8,421,900 screaming 8-year-olds</strong></p>
-          <p class="game-stat-line">System Req: <strong>RTX 5090 for 12 FPS</strong></p>
-          <p class="game-stat-line">Difficulty: <strong>UNBEARABLE BUILDING</strong></p>
-          <button class="btn-game-play" onclick="triggerRageJoke('fortnite')">🕹️ PLAY NOW (180GB DOWNLOAD) 🕹️</button>
-        </div>
-
-        <div class="game-card card-cs">
-          <div class="card-badge badge-red">100% SALTY</div>
-          <h4 class="game-title">COUNTER STRIKE: EMOTIONAL DAMAGE</h4>
-          <div class="game-rating">Rating: 💀💀💀💀💀 / 5</div>
-          <p class="game-stat-line">Players: <strong>4,294,967,295 Russian mic-spammers</strong></p>
-          <p class="game-stat-line">System Req: <strong>Liquid nitrogen cooling</strong></p>
-          <p class="game-stat-line">Difficulty: <strong>WALLHACKERS EVERYWHERE</strong></p>
-          <button class="btn-game-play" onclick="triggerRageJoke('cs')">🕹️ OPEN CRATE ($2.49 FOR GREY SKIN) 🕹️</button>
-        </div>
-
-        <div class="game-card card-elden">
-          <div class="card-badge badge-yellow">SUFFERING</div>
-          <h4 class="game-title">ELDEN RAGE</h4>
-          <div class="game-rating">Rating: 💩💩💩💩💩 / 5</div>
-          <p class="game-stat-line">Players: <strong>12 survivors</strong></p>
-          <p class="game-stat-line">System Req: <strong>Spare controller in case you throw it</strong></p>
-          <p class="game-stat-line">Difficulty: <strong>YOU WILL CRY TO YOUR MOM</strong></p>
-          <button class="btn-game-play" onclick="triggerRageJoke('elden')">🕹️ DIE IN 2 SECONDS 🕹️</button>
-        </div>
-
-        <div class="game-card card-gta">
-          <div class="card-badge badge-cyan">ADULT SIMULATOR</div>
-          <h4 class="game-title">GRAND THEFT AUTO: RESPONSIBILITY</h4>
-          <div class="game-rating">Rating: ⭐ / 5</div>
-          <p class="game-stat-line">Players: <strong>7 accountants</strong></p>
-          <p class="game-stat-line">System Req: <strong>1TB of loading screens</strong></p>
-          <p class="game-stat-line">Difficulty: <strong>TAXES, COMMUTE & MORTGAGE</strong></p>
-          <button class="btn-game-play" onclick="triggerRageJoke('gta')">🕹️ PAY IN-GAME UTILITY BILLS 🕹️</button>
-        </div>
-
-      </div>
-
-      <!-- FAKE SYSTEM STATUS (GAMING PC HEALTH CHECK) -->
-      <div class="system-status-box">
-        <h3 class="status-screaming-heading">🔥 GAMING PC HEALTH CHECK: OVERFLOWING DIAGNOSTIC 🖥️</h3>
-        <p class="tiny-text">Your components are currently screaming for mercy. Hardware telemetry gathered in real-time:</p>
-        
-        <div class="hardware-bars-cluster">
-          
-          <div class="hw-row">
-            <span class="hw-name">CPU USAGE:</span>
-            <div class="hw-meter-outer">
-              <div class="hw-meter-inner hw-over-100" style="width: 102%;">102% (BURSTING CONTAINER)</div>
-            </div>
-          </div>
-
-          <div class="hw-row">
-            <span class="hw-name">GPU USAGE:</span>
-            <div class="hw-meter-outer">
-              <div class="hw-meter-inner hw-over-140" style="width: 147%;">147% (GPU ON ACTUAL FIRE 🔥)</div>
-            </div>
-          </div>
-
-          <div class="hw-row">
-            <span class="hw-name">RAM CAPACITY:</span>
-            <div class="hw-text-status">WHY DO YOU HAVE 94 CHROME TABS OPEN??? 💾</div>
-          </div>
-
-          <div class="hw-row">
-            <span class="hw-name">SSD STATUS:</span>
-            <div class="hw-text-status">SCREAMING (99.9% FULL OF 400GB CALL OF DUTY SHADERS) 💽</div>
-          </div>
-
-          <div class="hw-row">
-            <span class="hw-name">PC TEMPERATURE:</span>
-            <div class="hw-text-status" style="color: #ff0000; font-weight: bold;">108°C — PROBABLY FINE FOR COOKING EGGS 🍳</div>
-          </div>
-
-        </div>
-        <div class="hw-actions">
-          <button class="btn-ugly-action" id="btn-download-ram">💾 DOWNLOAD 128GB EXTRA RAM TO DESKTOP</button>
-          <button class="btn-micro" id="btn-kill-background-apps">Kill 4,891 Steam Background Services</button>
-        </div>
-      </div>
-
-      <!-- CRAMPED DIFFICULT-TO-READ MATCH TELEMETRY TABLE -->
-      <div class="cramped-table-container">
-        <h4 class="table-screaming-title">📋 CRAMPED MATCH TELEMETRY & TILT LEDGER (DIFFICULT TO READ ON PURPOSE) 📋</h4>
-        <div class="table-scroll-wrapper">
-          <table class="clashing-table" id="dashboard-recent-table">
-            <thead>
-              <tr>
-                <th>MATCH #</th>
-                <th>TIMESTAMP (UTC)</th>
-                <th>TARGET GAME</th>
-                <th>GAMER TAG</th>
-                <th>RANK</th>
-                <th>RAGE LEVEL</th>
-                <th>TARGET K/D</th>
-                <th>STATUS</th>
-                <th>AI VERDICT</th>
-              </tr>
-            </thead>
-            <tbody id="dashboard-table-body">
-              <!-- Populated dynamically via JS -->
-            </tbody>
-          </table>
-        </div>
-        <p class="cramped-table-note">Table note: Font size is intentionally 11px and alternating rows are magenta and cyan to maximize ocular damage. You are welcome.</p>
-      </div>
-
-    </section>
-
-
-    <!-- ========================================== -->
-    <!-- VIEW 2: AI STRATEGY & LOADOUT ADVISORY     -->
-    <!-- ========================================== -->
-    <section class="tab-pane" id="view-advisory-form" aria-labelledby="nav-advisory-form">
-      
-      <div class="form-chaotic-header">
-        <h2 class="form-main-heading">🎮🤖🔥 ULTRA-TRYHARD AI GAMER STRATEGY & LOADOUT ADVISORY 🤖🔥🎮</h2>
-        <p class="form-warning-strip">🚨 WARNING: SUBMITTING THIS FORM WILL TRIGGER DEEP GEMINI COGNITION & POSTGRESQL TELEMETRY. NO SKILL ISSUES WILL BE SPARED. 🚨</p>
-      </div>
-
-      <!-- FEEDBACK / VALIDATION ALERT BOX -->
-      <div id="form-validation-box" class="validation-announcement-box" style="display: none;" role="alert"></div>
-
-      <form id="agri-advisory-form" class="terrible-form" novalidate>
-        
-        <!-- CONTAINER 1: GAME SELECTION & CLAN IDENTIFIERS -->
-        <fieldset class="form-weird-fieldset set-1">
-          <legend class="legend-ugly">🎯 1. TARGET GAME & GAMER IDENTIFIERS 🎯</legend>
-          
-          <div class="random-form-row">
-            <div class="form-field-group width-37">
-              <label for="crop-type" class="ugly-label">SELECT YOUR CURRENT SUFFERING (GAME): <span class="req-star">*</span></label>
-              <select id="crop-type" name="cropType" class="ugly-input-ctl" required aria-required="true">
-                <option value="">-- PICK A GAME OR REMAIN HARDSTUCK FOREVER --</option>
-                <option value="Counter-Strike 2">🔫 Counter-Strike 2 (Dust II Only)</option>
-                <option value="Fortnite">🏰 Fortnite (No Build / Crank 90s)</option>
-                <option value="Elden Ring">🗡️ Elden Ring / Dark Souls (Pain Simulator)</option>
-                <option value="Valorant">🎯 Valorant (Insta-Lock Duelist)</option>
-                <option value="League of Legends">🧙 League of Legends (Toxic Wasteland)</option>
-                <option value="Grand Theft Auto VI">🚗 GTA VI (Speculative Coping)</option>
-                <option value="Roblox">🧱 Roblox (Toilet Tower Defense)</option>
-                <option value="Minecraft">⛏️ Minecraft (Hardcore World Died to Bat)</option>
-              </select>
-              <span class="ugly-helper-text">Helper note: If you select League of Legends, your mental health cannot be refunded.</span>
-            </div>
-
-            <div class="form-field-group width-63">
-              <label for="crop-variety-nickname" class="ugly-label">GAMER TAG / STEAM NICKNAME / CLAN TAG: (OPTIONAL)</label>
-              <input type="text" id="crop-variety-nickname" name="cropNickname" class="ugly-input-ctl" placeholder="e.g. xX_QuickScopeGod420_Xx or Mom_Said_Dinner_Is_Ready">
-              <span class="ugly-helper-text">Gamers with xX_ surrounding their username have a 3.1% higher likelihood of rage-quitting.</span>
-            </div>
-          </div>
-
-          <div class="random-form-row">
-            <div class="form-field-group width-28">
-              <label for="growth-stage" class="ugly-label">CURRENT COMPETITIVE RANK: <span class="req-star">*</span></label>
-              <select id="growth-stage" name="growthStage" class="ugly-input-ctl" required>
-                <option value="Cardboard IV">📦 Cardboard IV (Below Dirt)</option>
-                <option value="Toilet III" selected>🚽 Toilet III (Hardstuck)</option>
-                <option value="Wood Division 0">🪵 Wood Division 0</option>
-                <option value="Silver Pretender">🥈 Silver (Believes they are Radiant)</option>
-                <option value="Sweaty Diamond">💎 Sweaty Diamond (Needs Shower)</option>
-              </select>
-            </div>
-
-            <div class="form-field-group width-42">
-              <label for="crop-mood" class="ugly-label">CURRENT RAGE & TILT LEVEL (AI REQUIREMENT):</label>
-              <select id="crop-mood" name="cropMood" class="ugly-input-ctl">
-                <option value="Mild Annoyance">😐 Mild Annoyance (Sighing into Discord)</option>
-                <option value="Desk Pounding">👊 Desk Pounding (Mug Spilled)</option>
-                <option value="Headset Snapped in Half">🎧 Headset Snapped in Half (Screaming)</option>
-                <option value="Uninstalling Windows">💀 Uninstalling Windows & Throwing PC into River</option>
-              </select>
-              <span class="ugly-helper-text">The Gemini strategic coach calculates sensitivity adjustments based on tilt levels.</span>
-            </div>
-
-            <div class="form-field-group width-30">
-              <label for="target-yield" class="ugly-label">TARGET DESIRED K/D RATIO: <span class="req-star">*</span></label>
-              <input type="number" id="target-yield" name="targetYield" class="ugly-input-ctl" min="0.1" max="100" step="0.1" value="2.5" required>
-              <span class="ugly-helper-text">Realistic goals only. Do not type 999.0 or the AI will laugh at you.</span>
-            </div>
-          </div>
-
-        </fieldset>
-
-        <!-- CONTAINER 2: HARDWARE, RIG & TELEMETRY -->
-        <fieldset class="form-weird-fieldset set-2">
-          <legend class="legend-ugly">🖥️ 2. POTATO HARDWARE, RIG & PERIPHERALS 🖥️</legend>
-          
-          <div class="random-form-row">
-            <div class="form-field-group width-31">
-              <label for="soil-type" class="ugly-label">GAMING PLATFORM / HARDWARE RIG: <span class="req-star">*</span></label>
-              <select id="soil-type" name="soilType" class="ugly-input-ctl" required>
-                <option value="">-- PLEASE DECLARE YOUR WEAKNESS --</option>
-                <option value="Potato PC (Intel HD Graphics 3000)">🥔 Potato PC (Intel HD 3000, 18 FPS)</option>
-                <option value="Overheating Gaming Laptop">🔥 Overheating Gaming Laptop (Jet Engine Fan)</option>
-                <option value="RTX 4090 with 60Hz 720p Monitor">🤡 RTX 4090 Paired with 15-Year-Old 720p Monitor</option>
-                <option value="Smart Samsung Refrigerator">🧊 Samsung Smart Refrigerator</option>
-                <option value="Nintendo Switch at 14 FPS">🎮 Nintendo Switch Running at 14 FPS</option>
-              </select>
-            </div>
-
-            <div class="form-field-group width-40">
-              <label for="soil-ph" class="ugly-label">MOUSE DPI SENSITIVITY LEVEL: <strong id="ph-display" class="value-highlight">800 DPI</strong> <span class="req-star">*</span></label>
-              <input type="range" id="soil-ph" name="soilPh" min="200" max="6400" step="100" value="800" class="ugly-range-slider">
-              <div class="slider-ticks">
-                <span>200 DPI (Arm Workout)</span>
-                <span>800 DPI (Sensible)</span>
-                <span>6400 DPI (Microscopic Twitch)</span>
-              </div>
-              <span class="ugly-helper-text">Slide to adjust your DPI! Extreme values will make your crosshair rotate 9,000 degrees.</span>
-            </div>
-
-            <div class="form-field-group width-29">
-              <label for="soil-moisture" class="ugly-label">AVERAGE PING (MS): <span class="req-star">*</span></label>
-              <input type="number" id="soil-moisture" name="soilMoisture" class="ugly-input-ctl" min="1" max="2000" value="180" required>
-              <span class="ugly-helper-text">Ping > 150ms grants legal excuse to claim hit-reg failure.</span>
-            </div>
-          </div>
-
-          <!-- REFRESH RATE & MONITOR TELEMETRY -->
-          <div class="nested-form-box">
-            <h5 class="nested-box-title">⚡ HARDWARE TELEMETRY TRIPLETS: REFRESH RATE, FPS, CHAIR QUALITY ⚡</h5>
-            <div class="random-form-row">
-              <div class="form-field-group width-33">
-                <label for="soil-n" class="ugly-label">MONITOR REFRESH RATE (HZ): <span class="req-star">*</span></label>
-                <input type="number" id="soil-n" name="soilN" class="ugly-input-ctl" min="15" max="500" value="60" required>
-                <span class="ugly-helper-text">60Hz = You can count the frames as they pass.</span>
-              </div>
-
-              <div class="form-field-group width-33">
-                <label for="soil-p" class="ugly-label">AVERAGE IN-GAME FPS: <span class="req-star">*</span></label>
-                <input type="number" id="soil-p" name="soilP" class="ugly-input-ctl" min="1" max="600" value="34" required>
-                <span class="ugly-helper-text">Human eye can only see 30 fps (Copium).</span>
-              </div>
-
-              <div class="form-field-group width-33">
-                <label for="soil-k" class="ugly-label">GAMING CHAIR ERGONOMIC RATING (1-100): <span class="req-star">*</span></label>
-                <input type="number" id="soil-k" name="soilK" class="ugly-input-ctl" min="0" max="100" value="15" required>
-                <span class="ugly-helper-text">Wooden kitchen stool = 5. Racing chair with RGB = 100.</span>
-              </div>
-            </div>
-          </div>
-
-        </fieldset>
-
-        <!-- CONTAINER 3: SQUAD, ROLE & IN-GAME EXCUSES -->
-        <fieldset class="form-weird-fieldset set-3">
-          <legend class="legend-ugly">🤡 3. SQUAD ROLE & COMMON IN-GAME COMPLAINTS 🤡</legend>
-
-          <div class="random-form-row">
-            <div class="form-field-group width-28">
-              <label for="farm-acreage" class="ugly-label">DAILY HOURS SPENT LOSING: <span class="req-star">*</span></label>
-              <input type="number" id="farm-acreage" name="acreage" class="ugly-input-ctl" min="0.1" max="24" step="0.5" value="6.5" required>
-              <span class="ugly-helper-text">Time that could have been spent touching grass.</span>
-            </div>
-
-            <div class="form-field-group width-24">
-              <label for="irrigation-type" class="ugly-label">PRIMARY IN-GAME ROLE: <span class="req-star">*</span></label>
-              <select id="irrigation-type" name="irrigationType" class="ugly-input-ctl" required>
-                <option value="Support (Gets Blamed For Everything)">🛡️ Support (Blamed For Everything)</option>
-                <option value="Entry Fragger (Dies in 2 Seconds)">⚡ Entry Fragger (Dies in 2s)</option>
-                <option value="Sniper (Misses 100% of Shots)">🎯 Sniper (Misses 100% of Shots)</option>
-                <option value="Camper (Drinking Tea in Corner)">⛺ Camper (Tea in Corner)</option>
-                <option value="AFK (Eating Pizza)">🍕 AFK (Eating Pizza)</option>
-              </select>
-            </div>
-
-            <div class="form-field-group width-24">
-              <label for="elevation-inches" class="ugly-label">RGB LIGHTING LEVEL (LUMENS):</label>
-              <input type="number" id="elevation-inches" name="elevationInches" class="ugly-input-ctl" value="9500">
-              <span class="ugly-helper-text">More RGB = 12% faster reaction time according to science.</span>
-            </div>
-
-            <div class="form-field-group width-24">
-              <label for="tractor-paint" class="ugly-label">ENERGY DRINK CONSUMED TODAY:</label>
-              <select id="tractor-paint" name="tractorPaint" class="ugly-input-ctl">
-                <option value="Monster Energy Ultra (White)">🟢 Monster Energy Ultra (White)</option>
-                <option value="Mountain Dew Baja Blast">🌊 Mountain Dew Baja Blast</option>
-                <option value="Lukewarm Tap Water (Weakness)">💧 Lukewarm Tap Water</option>
-                <option value="Pre-Workout Powder (Pure Heart Palpitations)">⚡ Dry-Scooped Pre-Workout</option>
-                <option value="Air and Copium">💨 Pure Air and Copium</option>
-              </select>
-              <span class="ugly-helper-text">Caffeine content directly influences jittery spray transfers.</span>
-            </div>
-          </div>
-
-          <div class="random-form-row">
-            <div class="form-field-group width-100">
-              <label class="ugly-label">CHECK ALL OBSERVED THREATS & ACCUSATIONS CURRENTLY RUINING YOUR MATCH:</label>
-              <div class="checkbox-chaotic-cluster">
-                <label class="ugly-checkbox-item"><input type="checkbox" name="pests" value="Sweaty 14-Year-Old Smurfs"> 👶 Sweaty 14-Year-Old Smurfs</label>
-                <label class="ugly-checkbox-item"><input type="checkbox" name="pests" value="Blatant Spinbot Cheaters"> 🌀 Blatant Spinbot Wallhackers</label>
-                <label class="ugly-checkbox-item"><input type="checkbox" name="pests" value="Random 400ms Lag Spikes"> 📶 Random 400ms Lag Spikes</label>
-                <label class="ugly-checkbox-item"><input type="checkbox" name="pests" value="Teammates With No Monitors"> 🙈 Teammates With No Monitors</label>
-                <label class="ugly-checkbox-item"><input type="checkbox" name="pests" value="Mom Screaming About Chores"> 📢 Mom Screaming About Chores</label>
-                <label class="ugly-checkbox-item"><input type="checkbox" name="pests" value="Broken Mouse Left Click"> 🖱️ Broken Mouse Left Click</label>
-              </div>
-            </div>
-          </div>
-
-        </fieldset>
-
-        <!-- CONTAINER 4: GEMINI AI COACH ENGINE CONFIGURATION -->
-        <fieldset class="form-weird-fieldset set-4">
-          <legend class="legend-ugly">🤖 4. GOOGLE GEMINI AI COACH & AIMBOT ENGINE 🧠</legend>
-
-          <div class="random-form-row">
-            <div class="form-field-group width-35">
-              <label for="ai-persona" class="ugly-label">AI COACH PERSONALITY MATRIX:</label>
-              <select id="ai-persona" name="aiPersona" class="ugly-input-ctl">
-                <option value="Toxic Discord Mod">🤬 Toxic Discord Mod (Zero empathy, maximum insults)</option>
-                <option value="Overenthusiastic Korean Esports Caster">🎙️ Overenthusiastic Esports Caster (SCREAMING)</option>
-                <option value="Zen Master Offline Sensei">🧘 Zen Master Offline Sensei (Breathe before whiffing)</option>
-                <option value="Cybernetic Aimbot 9000">🤖 Cybernetic Aimbot 9000 (Pure ruthless geometry)</option>
-              </select>
-            </div>
-
-            <div class="form-field-group width-35">
-              <label for="gemini-model-select" class="ugly-label">GEMINI MODEL VERSION:</label>
-              <select id="gemini-model-select" name="geminiModel" class="ugly-input-ctl">
-                <option value="gemini-1.5-flash">Gemini 1.5 Flash (Ultra-Fast Tilt Calculation)</option>
-                <option value="gemini-1.5-pro">Gemini 1.5 Pro (Deep Biological Gamer Reasoning)</option>
-                <option value="gemini-2.0-flash-exp">Gemini 2.0 Flash Exp (Overclocked Tryhard)</option>
-                <option value="local-agri-engine">Integrated PostgreSQL Telemetry Engine (Offline Fallback)</option>
-              </select>
-            </div>
-
-            <div class="form-field-group width-30">
-              <label for="gemini-api-key" class="ugly-label">GOOGLE GEMINI API KEY: (OPTIONAL)</label>
-              <input type="password" id="gemini-api-key" name="geminiKey" class="ugly-input-ctl" placeholder="AIzaSy... (Saved locally in browser)">
-              <span class="ugly-helper-text">Leave blank to use the high-fidelity built-in gamer advice engine!</span>
-            </div>
-          </div>
-
-          <div class="random-form-row">
-            <div class="form-field-group width-100">
-              <label for="farmer-notes" class="ugly-label">CONFESSION OF UNHINGED IN-GAME MISTAKES (FOR THE AI):</label>
-              <textarea id="farmer-notes" name="farmerNotes" rows="3" class="ugly-textarea" placeholder="e.g. I panicked, flashed my own team, jumped off a cliff, and my cat stepped on the power button. Please tell me it wasn't my fault."></textarea>
-            </div>
-          </div>
-
-        </fieldset>
-
-        <!-- GIANT UNNECESSARILY HUGE SUBMIT BUTTON -->
-        <div class="giant-submit-wrapper">
-          <button type="submit" id="btn-generate-advisory" class="btn-giant-pulsing">
-            🎮🤖🔥 GENERATE AI STRATEGY & LOADOUT 🤖🔥🎮
-          </button>
-          <p class="submit-under-warning">⚠️ Clicking this button will submit your parameters to Gemini AI & PostgreSQL. Your keyboard may rattle.</p>
-        </div>
-
-      </form>
-
-    </section>
-
-
-    <!-- ========================================== -->
-    <!-- VIEW 3: ADVISORY RESULTS                   -->
-    <!-- ========================================== -->
-    <section class="tab-pane" id="view-advisory-results" aria-labelledby="nav-advisory-results">
-      
-      <!-- RESULTS TOP CHAOS BAR -->
-      <div class="results-header-banner">
-        <h2 class="results-huge-title">🤖 THE AI COACH HAS SPOKEN: OFFICIAL GAMING DIRECTIVE 🤖</h2>
-        <div class="results-badge-soup">
-          <span class="res-badge b-1">CERTIFIED 100% TRYHARD COMPATIBLE</span>
-          <span class="res-badge b-2">HIGH RISK OF RAGE QUIT ⚠️</span>
-          <span class="res-badge b-3">AI ACCURACY: 99.8%</span>
-          <span class="res-badge b-4">DISCORD MOD APPROVED 👍</span>
-          <span class="res-badge b-5">GPU SURVIVAL CHANCE: 42% 💥</span>
-          <span class="res-badge b-6">POTATO PC FRIENDLY 🥔</span>
-        </div>
-      </div>
-
-      <!-- ACTIVE ADVISORY SUMMARY STRIP -->
-      <div class="advisory-meta-strip" id="results-meta-strip">
-        <span>TARGET GAME: <strong id="res-crop-name">COUNTER-STRIKE 2</strong></span>
-        <span>HOURS WASTED: <strong id="res-acreage">6.5 HOURS</strong></span>
-        <span>MOUSE DPI: <strong id="res-soil-ph">800 DPI</strong></span>
-        <span>STATUS: <strong id="res-db-status">COMMITTED TO POSTGRESQL (MATCH ID #109)</strong></span>
-      </div>
-
-      <!-- CHAOTIC RECOMMENDATION CARDS -->
-      <div class="advisory-cards-grid">
-        
-        <!-- CARD 1: VERY IMPORTANT GAMER THING -->
-        <article class="advisory-card card-urgent-warning">
-          <header class="card-warning-header">
-            <h3>🚨 VERY IMPORTANT GAMER THING 🚨</h3>
-            <span class="stamp-hazard">URGENT</span>
-          </header>
-          <div class="card-body-content">
-            <h4 class="card-action-title" id="res-urgent-title">POSTURE COLLAPSE & DESK TILT CRISIS</h4>
-            <p id="res-urgent-body">
-              Your chair ergonomics and high ping are actively sabotaging your spinal cord! If you continue slumping like a boiled shrimp, your reaction time will degrade by 320ms!
-            </p>
-            <div class="urgent-bullet-box" id="res-urgent-bullets">
-              <div>⚠️ Sit up straight immediately and stop breathing onto the microphone</div>
-              <div>⚠️ Move your mouse pad 4 inches to the left to avoid knocking over your drink</div>
-            </div>
-          </div>
-          <footer class="card-ugly-footer">CONFIDENCE LEVEL: 99.4% (TELEMETRY SENSORS AGREE)</footer>
-        </article>
-
-        <!-- CARD 2: YOUR LOADOUT PROBABLY WANTS THIS -->
-        <article class="advisory-card card-fertilizer">
-          <header class="card-fertilizer-header">
-            <h3>🎯 YOUR LOADOUT PROBABLY WANTS THIS 🎯</h3>
-            <span class="stamp-npk">META OPTIMIZATION</span>
-          </header>
-          <div class="card-body-content">
-            <h4 class="card-action-title" id="res-fert-title">OPTIMIZED SENSITIVITY, WEAPON & DPI PRESCRIPTION</h4>
-            <p id="res-fert-body">
-              Based on your target K/D ratio and horrific past performances, the synthetic intelligence prescribes the following custom settings:
-            </p>
-            <div class="npk-formula-box" id="res-npk-formula">
-              <div class="npk-pill n-pill"><span class="npk-letter">DPI</span> <strong>800 DPI</strong> (In-game 1.25)</div>
-              <div class="npk-pill p-pill"><span class="npk-letter">CROSS</span> <strong>Cyan Static</strong> (Size 2, Gap -1)</div>
-              <div class="npk-pill k-pill"><span class="npk-letter">META</span> <strong>AK-47 / Vandal</strong> (Stop moving while shooting!)</div>
-            </div>
-            <p class="micro-dose-instruction" id="res-fert-timing">Apply 50% split of training time in aim lab, remainder practicing counter-strafing.</p>
-          </div>
-          <footer class="card-ugly-footer">ESTIMATED COST: $0.00 | PROJECTED K/D GAIN: +0.02</footer>
-        </article>
-
-        <!-- CARD 3: WATER WATER WATER / HYDRATION -->
-        <article class="advisory-card card-irrigation">
-          <header class="card-irrigation-header">
-            <h3>💧 WATER WATER WATER (HYDRATION PROTOCOL) 💧</h3>
-            <span class="stamp-h2o">BIOLOGICAL MAINTENANCE</span>
-          </header>
-          <div class="card-body-content">
-            <h4 class="card-action-title" id="res-water-title">ANTI-DEHYDRATION & BLINK FREQUENCY PROTOCOL</h4>
-            <p id="res-water-body">
-              Do not substitute pure caffeine for water or your hands will shake like pneumatic drills! The computer calculation demands biological cooling.
-            </p>
-            <div class="water-schedule-box" id="res-water-schedule">
-              <div class="schedule-item">🗓️ <strong>SCHEDULE:</strong> Drink 250ml of actual H2O every <strong>45 minutes</strong></div>
-              <div class="schedule-item">⏱️ <strong>BLINK RATE:</strong> Please remember to blink at least twice per round</div>
-              <div class="schedule-item">🎯 <strong>TILT COOLOFF:</strong> Step away for 5 minutes after 2 consecutive losses</div>
-            </div>
-          </div>
-          <footer class="card-ugly-footer">TILT AVOIDED: 84% REDUCTION IN DESK DAMAGE</footer>
-        </article>
-
-        <!-- CARD 4: BUGS ARE HERE??? / SMURFS -->
-        <article class="advisory-card card-pest-threat">
-          <header class="card-pest-header">
-            <h3>🐛 BUGS & SWEATY SMURFS ARE HERE??? 🐛</h3>
-            <span class="stamp-bugs">THREAT MITIGATION</span>
-          </header>
-          <div class="card-body-content">
-            <h4 class="card-action-title" id="res-pest-title">ANTI-SMURF, CHEATER & LAG DEFENSE MATRIX</h4>
-            <p id="res-pest-body">
-              Enemies detected in the lobby! Immediate tactical countermeasures are required before your rank drops into the negatives.
-            </p>
-            <div class="pest-tactics-box" id="res-pest-tactics">
-              <div>🦗 <strong>Target:</strong> Sweaty 14-Year-Old Smurfs & 400ms Lag Spikes</div>
-              <div>🐞 <strong>Tactical Weapon:</strong> Mute all toxic voice chat and pre-aim common angles</div>
-              <div>🌿 <strong>Countermeasure:</strong> Switch server regions or play single-player Stardew Valley</div>
-            </div>
-          </div>
-          <footer class="card-ugly-footer">SURVIVAL CHANCE: 68.3% IF YOU STOP RUNNING AND GUNNING</footer>
-        </article>
-
-        <!-- CARD 5: THE AI HAS SPOKEN -->
-        <article class="advisory-card card-ai-synthesis width-full-chaotic">
-          <header class="card-ai-header">
-            <h3>🤖 THE AI COACH HAS SPOKEN 🤖</h3>
-            <span class="stamp-gemini">GEMINI 1.5 SYNTHESIS</span>
-          </header>
-          <div class="card-body-content">
-            <h4 class="card-action-title" id="res-ai-title">COMPREHENSIVE PRO COACH VERDICT & TILT REPORT</h4>
-            <div class="ai-raw-response-text" id="res-ai-raw-text">
-              "Attention Gamer: Analysis of your 6.5 hours of ranked torture indicates that 92% of your deaths occurred while you were running in a straight line with a grenade out. Stop blaming your 180ms ping; your crosshair was looking at the floor tiles. Adjust your mouse sensitivity from 3200 down to 800 DPI and plug in an ethernet cable. Projected skill increase: From Cardboard IV to Cardboard III."
-            </div>
-            <div class="ai-confidence-cluster">
-              <span class="stat-pill">Model: Gemini 1.5 Pro</span>
-              <span class="stat-pill">Inference Latency: 388ms</span>
-              <span class="stat-pill">PostgreSQL Transaction: COMMIT #9941</span>
-              <span class="stat-pill">Tears Collected: 4.8 Liters</span>
-            </div>
-          </div>
-          <footer class="card-ugly-footer">TRANSMITTED VIA ULTRA-GAMER SATELLITE UPLINK</footer>
-        </article>
-
-      </div>
-
-      <!-- RESULTS ACTION BUTTONS -->
-      <div class="results-actions-bar">
-        <button class="btn-ugly-secondary" id="btn-save-to-pg">💾 COMMIT MATCH LOG TO POSTGRESQL</button>
-        <button class="btn-ugly-secondary" id="btn-print-results">🖨️ PRINT LOSS CERTIFICATE TO PRINTER</button>
-        <button class="btn-ugly-secondary" id="btn-copy-advisory">📋 COPY ADVISORY TO ROBLOX CHAT</button>
-        <button class="btn-giant-pulsing" id="btn-new-advisory">🎮 GENERATE ANOTHER TRYHARD BUILD 🤖</button>
-      </div>
-
-    </section>
-
-
-    <!-- ========================================== -->
-    <!-- VIEW 4: LEADERBOARD                        -->
-    <!-- ========================================== -->
-    <section class="tab-pane" id="view-leaderboard" aria-labelledby="nav-leaderboard">
-      
-      <div class="leaderboard-header-banner">
-        <h2 class="results-huge-title">🏆 GLOBAL SHAME LEADERBOARD: TOP 10 TRYHARDS 🏆</h2>
-        <p class="db-subtext">The most elite no-lifers in cyberspace. Note where you stand at the very bottom:</p>
-      </div>
-
-      <div class="leaderboard-container">
-        <div class="your-rank-callout">
-          <div class="rank-huge-number">#9,999,999</div>
-          <div class="rank-details">
-            <h3>YOUR OFFICIAL GLOBAL STANDING: RANK #9,999,999</h3>
-            <p>"Congratulations! You are technically ranked above 4 offline refrigerators and 1 broken microwave."</p>
-          </div>
-        </div>
-
-        <div class="table-scroll-wrapper">
-          <table class="clashing-table table-leaderboard-view">
-            <thead>
-              <tr>
-                <th>RANK</th>
-                <th>GAMER TAG</th>
-                <th>SCORE</th>
-                <th>FAVORITE GAME</th>
-                <th>K/D</th>
-                <th>STATUS</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="rank-gold">
-                <td>#1 🥇</td>
-                <td><strong>xX_Dad_Left_Milk_Xx</strong></td>
-                <td>99,999,999</td>
-                <td>Counter-Strike 2</td>
-                <td>14.8</td>
-                <td>NEVER SLEEPS 💤❌</td>
-              </tr>
-              <tr class="rank-silver">
-                <td>#2 🥈</td>
-                <td><strong>ToiletGamer69</strong></td>
-                <td>88,412,000</td>
-                <td>Fortnite</td>
-                <td>11.2</td>
-                <td>LOCKED IN 🚽</td>
-              </tr>
-              <tr class="rank-bronze">
-                <td>#3 🥉</td>
-                <td><strong>DefinitelyNotBot</strong></td>
-                <td>77,100,500</td>
-                <td>Valorant</td>
-                <td>9.8</td>
-                <td>SPINNING RAPIDLY 🤖</td>
-              </tr>
-              <tr>
-                <td>#4</td>
-                <td><strong>WiFiEnjoyer</strong></td>
-                <td>66,200,100</td>
-                <td>Roblox</td>
-                <td>6.4</td>
-                <td>PLAYING FROM MCDONALDS 🍟</td>
-              </tr>
-              <tr>
-                <td>#5</td>
-                <td><strong>YourMomGaming</strong></td>
-                <td>55,000,000</td>
-                <td>Elden Ring</td>
-                <td>5.1</td>
-                <td>CANNOT BE STOPPED 👵</td>
-              </tr>
-              <tr>
-                <td>#6</td>
-                <td><strong>LagMaster</strong></td>
-                <td>44,999,999</td>
-                <td>League of Legends</td>
-                <td>3.9</td>
-                <td>PING: 1,840ms 📶</td>
-              </tr>
-              <tr>
-                <td>#7</td>
-                <td><strong>RTX_On_Integrated_GPU</strong></td>
-                <td>33,200,000</td>
-                <td>GTA VI</td>
-                <td>2.7</td>
-                <td>SMOKING FAN 💨</td>
-              </tr>
-              <tr>
-                <td>#8</td>
-                <td><strong>SkillIssue</strong></td>
-                <td>22,000,000</td>
-                <td>Minecraft</td>
-                <td>1.9</td>
-                <td>FALL DAMAGE 🕳️</td>
-              </tr>
-              <tr>
-                <td>#9</td>
-                <td><strong>AFK_CHAMPION</strong></td>
-                <td>11,000,000</td>
-                <td>Any Game</td>
-                <td>0.1</td>
-                <td>MIC ON WHILE EATING CHIPS 🥔</td>
-              </tr>
-              <tr class="rank-user-row">
-                <td><strong>#9,999,999 💩</strong></td>
-                <td><strong>YOU (xX_NoobSlayer_Xx)</strong></td>
-                <td><strong>-42</strong></td>
-                <td><strong>All of them</strong></td>
-                <td><strong>0.03</strong></td>
-                <td><strong>BLAMING LAG RIGHT NOW 🤬</strong></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-    </section>
-
-
-    <!-- ========================================== -->
-    <!-- VIEW 5: POSTGRESQL STORE & TELEMETRY DB    -->
-    <!-- ========================================== -->
-    <section class="tab-pane" id="view-database-pg" aria-labelledby="nav-database">
-      
-      <div class="db-header-block">
-        <h2 class="db-main-heading">🐘 POSTGRESQL 16.4 GAMER TELEMETRY & MATCH LOG STORE 💾</h2>
-        <p class="db-subtext">Direct browser-integrated PostgreSQL simulation engine with persistent LocalStorage backing, transaction logging, and raw SQL console!</p>
-      </div>
-
-      <!-- RAW SQL QUERY CONSOLE -->
-      <div class="sql-console-card">
-        <div class="sql-console-header">
-          <span>SQL TERMINAL: (postgres@ultra-gamer-cluster:5432/telemetry_db)</span>
-          <span class="db-connection-light">CONNECTED 🟢</span>
-        </div>
-        <div class="sql-input-row">
-          <textarea id="sql-query-input" class="sql-editor" rows="3" spellcheck="false">SELECT id, crop_name AS game_title, acreage AS hours_played, soil_ph AS mouse_dpi, target_yield AS target_kd, status, created_at FROM farm_advisories ORDER BY id DESC;</textarea>
-        </div>
-        <div class="sql-actions">
-          <button class="btn-sql-run" id="btn-run-sql">⚡ EXECUTE RAW SQL QUERY ⚡</button>
-          <button class="btn-micro" id="btn-sql-insert">Insert Sample Match Record</button>
-          <button class="btn-micro" id="btn-sql-reset">Reset Demo DB</button>
-          <span class="sql-result-status" id="sql-status-text">Query ready</span>
-        </div>
-      </div>
-
-      <!-- TABLE VIEWER WITH TABS FOR TABLES -->
-      <div class="db-tables-wrapper">
-        <div class="db-table-tabs">
-          <button class="db-tab-btn active" data-table="advisories" id="db-tab-advisories">📑 TABLE: player_advisories (<span id="count-advisories">0</span>)</button>
-          <button class="db-tab-btn" data-table="crops" id="db-tab-crops">🎮 TABLE: game_master (<span id="count-crops">6</span>)</button>
-          <button class="db-tab-btn" data-table="soil" id="db-tab-soil">🖥️ TABLE: hardware_sensors (<span id="count-soil">5</span>)</button>
-        </div>
-
-        <div class="table-scroll-wrapper">
-          <table class="clashing-table table-pg-view" id="pg-data-table">
-            <thead id="pg-table-head">
-              <!-- Populated by JS -->
-            </thead>
-            <tbody id="pg-table-body">
-              <!-- Populated by JS -->
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-    </section>
-
-
-    <!-- ========================================== -->
-    <!-- VIEW 6: PC HEALTH & TELEMETRY LAB          -->
-    <!-- ========================================== -->
-    <section class="tab-pane" id="view-analytics" aria-labelledby="nav-analytics">
-      
-      <div class="analytics-header">
-        <h2 class="analytics-title">📈 WEIRD GAMER HARDWARE OSCILLOSCOPE & SALT LAB 📊</h2>
-        <p class="chart-disclaimer">Warning: Telemetry graphs are constructed with eye-searing neon lines and nonsensical rage multipliers.</p>
-      </div>
-
-      <div class="analytics-grid">
-        
-        <!-- CHART 1: WEIRD DONUT / PIE -->
-        <div class="analytics-card card-pie">
-          <h3 class="card-pie-title">🥧 WHY DID YOU DIE? (CONFUSION PIE)</h3>
-          <div class="weird-donut-container">
-            <div class="css-conic-pie" id="conic-pie"></div>
-          </div>
-          <div class="pie-legend">
-            <span style="color: #a800ff;">■ "Lag": 48%</span>
-            <span style="color: #ff007f;">■ "Cheater": 24%</span>
-            <span style="color: #39ff14;">■ "Bad Team": 18%</span>
-            <span style="color: #00f0ff;">■ "Broken Mouse": 8%</span>
-            <span style="color: #ffee00;">■ "Actual Skill Issue": 2%</span>
-          </div>
-        </div>
-
-        <!-- CHART 2: SATELLITE RADAR CLOUD SCAN -->
-        <div class="analytics-card card-radar">
-          <h3 class="card-radar-title">🛰️ SWEATY LOBBY DOPPLER RADAR (SIMULATED)</h3>
-          <div class="radar-screen">
-            <div class="radar-sweep"></div>
-            <div class="radar-blip blip-1" title="Sweaty 14yo">👶</div>
-            <div class="radar-blip blip-2" title="Spinbotter">🌀</div>
-            <div class="radar-blip blip-3" title="Toxic Mod">🤬</div>
-            <div class="radar-blip blip-4" title="Lost AFK Guy">🍕</div>
-            <div class="radar-grid-lines"></div>
-          </div>
-          <p class="radar-note">Active Sweep: 5.4 GHz Discord Ping / 0.00% Tactical Value</p>
-        </div>
-
-        <!-- CHART 3: YIELD PREDICTION OSCILLOSCOPE -->
-        <div class="analytics-card card-oscilloscope">
-          <h3 class="card-osc-title">⚡ BRAIN TILT OSCILLATION FREQUENCY</h3>
-          <div class="oscilloscope-screen">
-            <svg viewBox="0 0 400 120" class="osc-svg" preserveAspectRatio="none">
-              <path d="M 0 60 Q 25 10 50 60 T 100 60 T 150 60 T 200 60 T 250 60 T 300 60 T 350 60 T 400 60" fill="none" stroke="#39ff14" stroke-width="4" class="animated-sine-wave"/>
-              <path d="M 0 60 Q 30 110 60 60 T 120 60 T 180 60 T 240 60 T 300 60 T 360 60 T 400 60" fill="none" stroke="#ff007f" stroke-width="3" stroke-dasharray="5,5" class="animated-sine-wave-2"/>
-            </svg>
-          </div>
-          <div class="osc-controls">
-            <span>Frequency: 1337 Hz</span>
-            <span>Blood Pressure: ELEVATED</span>
-            <span>Keyboard Survival: AT RISK</span>
-          </div>
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ========================================== -->
-    <!-- VIEW 7: RAGEBAIT SHOP / FREE STUFF         -->
-    <!-- ========================================== -->
-    <section class="tab-pane" id="view-ragebait-shop" aria-labelledby="nav-ragebait-shop">
-      
-      <div class="form-chaotic-header">
-        <h2 class="form-main-heading">🎁 100% TOTALLY REAL NOT-A-SCAM GAMING PRIZES 🎁</h2>
-        <p class="form-warning-strip">🚨 EVERYTHING IS 99.9% OFF. WE PROMISE YOU WON'T GET DISAPPOINTED (WE ARE LYING). 🚨</p>
-      </div>
-
-      <div class="game-cards-grid">
-        <div class="game-card card-fortnite">
-          <h4 class="game-title">FREE RTX 5090 (256GB VRAM)</h4>
-          <p>Price: <strong>$0.00</strong> (Originally $9,999.00)</p>
-          <button class="btn-game-play" onclick="triggerRageJoke('rtx')">CLAIM FREE GPU NOW</button>
-        </div>
-
-        <div class="game-card card-cs">
-          <h4 class="game-title">DELETE YOUR ACCOUNT</h4>
-          <p>Instantly delete your Steam and Epic account with one click.</p>
-          <button class="btn-game-play btn-fake-danger" onclick="triggerRageJoke('delete_account')">DELETE ACCOUNT IMMEDIATELY</button>
-        </div>
-
-        <div class="game-card card-elden">
-          <h4 class="game-title">CLAIM 999,999 V-BUCKS & COINS</h4>
-          <p>Direct deposit into your wallet right this second.</p>
-          <button class="btn-game-play" onclick="triggerRageJoke('coins')">DEPOSIT 999,999 COINS</button>
-        </div>
-
-        <div class="game-card card-gta">
-          <h4 class="game-title">ABSOLUTELY DO NOT PRESS THIS</h4>
-          <p>Serious warning: Pressing this button will do literally nothing.</p>
-          <button class="btn-game-play" onclick="triggerRageJoke('do_not_press')">DO NOT PRESS</button>
-        </div>
-      </div>
-
-    </section>
-
-
-    <!-- ========================================== -->
-    <!-- VIEW 8: SETTINGS & AUTH                    -->
-    <!-- ========================================== -->
-    <section class="tab-pane" id="view-settings" aria-labelledby="nav-settings">
-      
-      <div class="settings-header">
-        <h2 class="settings-title">⚙️ GAMER AUTHENTICATION, ROLES & GEMINI SETTINGS ⚡</h2>
-        <p class="settings-subtext">Manage who has the clearance to flame teammates and ask Gemini about counter-strafing.</p>
-      </div>
-
-      <div class="settings-grid">
-        
-        <!-- AUTHENTICATION CARD -->
-        <div class="settings-card auth-card">
-          <h3 class="set-card-title">👤 ACTIVE GAMER PROFILE & IDENTITY</h3>
-          <div class="current-user-box">
-            <div class="user-avatar-large">🎮💀</div>
-            <div class="user-details">
-              <h4 id="auth-username-display">xX_NoobSlayer_Xx</h4>
-              <p>Role: <strong id="auth-role-display">Master Tilt Overseer (Level 99)</strong></p>
-              <p>Permissions: <em>ALL GAMES, FULL GEMINI OVERCLOCK, UNRESTRICTED SALT</em></p>
-            </div>
-          </div>
-
-          <div class="role-switcher-box">
-            <label for="switch-user-select" class="ugly-label">SWITCH OPERATOR ACCOUNT:</label>
-            <select id="switch-user-select" class="ugly-select">
-              <option value="bob">xX_NoobSlayer_Xx (Toilet III)</option>
-              <option value="alice">Pro_Esports_Coach_Dave (Senior Strategist)</option>
-              <option value="overseer">Cyber_Aimbot_9000 (Autonomous Mode)</option>
-              <option value="guest">ToiletGamer69 (WiFi Enjoyer)</option>
-            </select>
-            <button class="btn-ugly-action" id="btn-switch-user">🔄 SWITCH GAMER SESSION</button>
-          </div>
-        </div>
-
-        <!-- GEMINI API SETTINGS -->
-        <div class="settings-card api-card">
-          <h3 class="set-card-title">🔑 GOOGLE GEMINI API CONFIGURATION</h3>
-          <p class="tiny-text">Save your Google Gemini API Key here to enable live calls to Google Generative AI servers directly from this client!</p>
-          
-          <label for="cfg-gemini-key" class="ugly-label">API KEY:</label>
-          <input type="password" id="cfg-gemini-key" class="ugly-input-ctl" placeholder="Paste AIzaSy... here">
-          
-          <div class="api-btn-row">
-            <button class="btn-ugly-secondary" id="btn-save-key">💾 SAVE KEY TO BROWSER</button>
-            <button class="btn-micro" id="btn-clear-key">Clear Key</button>
-          </div>
-          <span id="api-key-status" class="api-status-msg">Using Built-in Gaming Fallback Engine (No key required!)</span>
-        </div>
-
-        <!-- SOUND & COSMETIC CONTROLS -->
-        <div class="settings-card cosmetic-card">
-          <h3 class="set-card-title">🔊 AUDIO SYNTHESIZER & TILT TESTS</h3>
-          <p class="tiny-text">Toggle the custom Web Audio API beep synthesizer for 8-bit retro sounds.</p>
-          <button class="btn-ugly-action" id="btn-test-sound">📢 TEST 8-BIT LASER BEEP</button>
-          <button class="btn-ugly-secondary" id="btn-screen-shake">💥 TEST SCREEN SHAKE VIBRATION</button>
-          <button class="btn-micro" id="btn-trigger-popup-test">Trigger Annoying Fake Popup</button>
-        </div>
-
-      </div>
-
-    </section>
-
-  </main>
-
-  <!-- BOTTOM CRAZY FOOTER -->
-  <footer class="chaotic-footer">
-    <div class="footer-marquee">
-      ★★★ © 2026 ULTRA GAMER 9000 ★★★ NO REFUNDS BECAUSE THERE IS NOTHING TO REFUND ★★★ THIS WEBSITE HAS NO IDEA WHAT IT IS DOING ★★★ POWERED BY PURE CHAOS & GEMINI AI ★★★ YOUR FPS IS YOUR PROBLEM ★★★
-    </div>
-    <div class="footer-links-soup">
-      <a href="#dashboard" class="footer-link">Home</a> |
-      <a href="#advisory-form" class="footer-link">AI Strategy</a> |
-      <a href="#leaderboard" class="footer-link">Shame Leaderboard</a> |
-      <a href="#database-pg" class="footer-link">PostgreSQL Store</a> |
-      <a href="javascript:alert('Privacy Policy: We sell all your missed shots to your friends.')" class="footer-link">Gamer Privacy Policy</a> |
-      <a href="javascript:alert('Terms of Tilt: You agree that lag is your fault.')" class="footer-link">Terms of Tilt</a> |
-      <a href="javascript:alert('Warning: Staring at this website too long will lower your Elo rating.')" class="footer-link">Eye Safety</a>
-    </div>
-    <div class="footer-bottom-badges">
-      <img src="assets/pixel_skull_badge.jpg" alt="Skull" width="32" height="32">
-      <span>BEST VIEWED ON A CRACKED CRT MONITOR AT 640x480 WITH WINDOWS 98</span>
-      <img src="assets/pixel_skull_badge.jpg" alt="Skull" width="32" height="32">
-    </div>
-  </footer>
-
-  <!-- SCRIPT INCLUSION -->
   <script src="app.js"></script>
 </body>
 </html>
